@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript",
-    "start": "node dist/examples/typescript/projects.js"
+    "projects-example": "node dist/examples/typescript/projects.js"
   },
   "dependencies": {},
   "devDependencies": {
