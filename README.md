@@ -1,4 +1,4 @@
-# posthog-api
+# Posthog OpenApi clients
 
 ## Global configuration
 ```
