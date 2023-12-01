@@ -7,10 +7,11 @@ import type { PatchedPlugin } from '../models/PatchedPlugin';
 import type { Plugin } from '../models/Plugin';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PluginsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -19,12 +20,12 @@ export class PluginsService {
      * @returns PaginatedPluginList
      * @throws ApiError
      */
-    public static pluginsList(
+    public pluginsList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/',
             path: {
@@ -43,11 +44,11 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsCreate(
+    public pluginsCreate(
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/',
             path: {
@@ -64,11 +65,11 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsRetrieve(
+    public pluginsRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsUpdate(
+    public pluginsUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsPartialUpdate(
+    public pluginsPartialUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class PluginsService {
      * @returns void
      * @throws ApiError
      */
-    public static pluginsDestroy(
+    public pluginsDestroy(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
             path: {
@@ -152,11 +153,11 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsCheckForUpdatesRetrieve(
+    public pluginsCheckForUpdatesRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/check_for_updates/',
             path: {
@@ -172,11 +173,11 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsSourceRetrieve(
+    public pluginsSourceRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/source/',
             path: {
@@ -193,12 +194,12 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsUpdateSourcePartialUpdate(
+    public pluginsUpdateSourcePartialUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/update_source/',
             path: {
@@ -217,12 +218,12 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsUpgradeCreate(
+    public pluginsUpgradeCreate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/upgrade/',
             path: {
@@ -239,10 +240,10 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsActivityRetrieve(
+    public pluginsActivityRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/activity/',
             path: {
@@ -256,10 +257,10 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsRepositoryRetrieve(
+    public pluginsRepositoryRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/repository/',
             path: {
@@ -273,10 +274,10 @@ export class PluginsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pluginsUnusedRetrieve(
+    public pluginsUnusedRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/plugins/unused/',
             path: {

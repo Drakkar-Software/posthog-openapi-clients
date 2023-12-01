@@ -7,10 +7,11 @@ import type { PaginatedExperimentList } from '../models/PaginatedExperimentList'
 import type { PatchedExperiment } from '../models/PatchedExperiment';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ExperimentsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class ExperimentsService {
      * @returns PaginatedExperimentList
      * @throws ApiError
      */
-    public static experimentsList(
+    public experimentsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedExperimentList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/',
             path: {
@@ -43,11 +44,11 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsCreate(
+    public experimentsCreate(
         projectId: string,
         requestBody: Experiment,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/experiments/',
             path: {
@@ -64,11 +65,11 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsRetrieve(
+    public experimentsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsUpdate(
+    public experimentsUpdate(
         id: number,
         projectId: string,
         requestBody: Experiment,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/experiments/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsPartialUpdate(
+    public experimentsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedExperiment,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/experiments/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class ExperimentsService {
      * @returns void
      * @throws ApiError
      */
-    public static experimentsDestroy(
+    public experimentsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/experiments/{id}/',
             path: {
@@ -152,11 +153,11 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsResultsRetrieve(
+    public experimentsResultsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/{id}/results/',
             path: {
@@ -172,11 +173,11 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsSecondaryResultsRetrieve(
+    public experimentsSecondaryResultsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/{id}/secondary_results/',
             path: {
@@ -191,10 +192,10 @@ export class ExperimentsService {
      * @returns Experiment
      * @throws ApiError
      */
-    public static experimentsRequiresFlagImplementationRetrieve(
+    public experimentsRequiresFlagImplementationRetrieve(
         projectId: string,
     ): CancelablePromise<Experiment> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/requires_flag_implementation/',
             path: {

@@ -7,10 +7,11 @@ import type { PaginatedHookList } from '../models/PaginatedHookList';
 import type { PatchedHook } from '../models/PatchedHook';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class HooksService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Retrieve, create, update or destroy REST hooks.
@@ -20,12 +21,12 @@ export class HooksService {
      * @returns PaginatedHookList
      * @throws ApiError
      */
-    public static hooksList(
+    public hooksList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedHookList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/hooks/',
             path: {
@@ -45,11 +46,11 @@ export class HooksService {
      * @returns Hook
      * @throws ApiError
      */
-    public static hooksCreate(
+    public hooksCreate(
         projectId: string,
         requestBody: Hook,
     ): CancelablePromise<Hook> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/hooks/',
             path: {
@@ -67,11 +68,11 @@ export class HooksService {
      * @returns Hook
      * @throws ApiError
      */
-    public static hooksRetrieve(
+    public hooksRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<Hook> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/hooks/{id}/',
             path: {
@@ -89,12 +90,12 @@ export class HooksService {
      * @returns Hook
      * @throws ApiError
      */
-    public static hooksUpdate(
+    public hooksUpdate(
         id: string,
         projectId: string,
         requestBody: Hook,
     ): CancelablePromise<Hook> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/hooks/{id}/',
             path: {
@@ -114,12 +115,12 @@ export class HooksService {
      * @returns Hook
      * @throws ApiError
      */
-    public static hooksPartialUpdate(
+    public hooksPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedHook,
     ): CancelablePromise<Hook> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/hooks/{id}/',
             path: {
@@ -138,11 +139,11 @@ export class HooksService {
      * @returns void
      * @throws ApiError
      */
-    public static hooksDestroy(
+    public hooksDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/hooks/{id}/',
             path: {

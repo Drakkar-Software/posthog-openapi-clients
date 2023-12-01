@@ -7,10 +7,11 @@ import type { PaginatedExternalDataSourceSerializersList } from '../models/Pagin
 import type { PatchedExternalDataSourceSerializers } from '../models/PatchedExternalDataSourceSerializers';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ExternalDataSourcesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, Read, Update and Delete External data Sources.
@@ -21,13 +22,13 @@ export class ExternalDataSourcesService {
      * @returns PaginatedExternalDataSourceSerializersList
      * @throws ApiError
      */
-    public static externalDataSourcesList(
+    public externalDataSourcesList(
         projectId: string,
         limit?: number,
         offset?: number,
         search?: string,
     ): CancelablePromise<PaginatedExternalDataSourceSerializersList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/external_data_sources/',
             path: {
@@ -48,11 +49,11 @@ export class ExternalDataSourcesService {
      * @returns ExternalDataSourceSerializers
      * @throws ApiError
      */
-    public static externalDataSourcesCreate(
+    public externalDataSourcesCreate(
         projectId: string,
         requestBody: ExternalDataSourceSerializers,
     ): CancelablePromise<ExternalDataSourceSerializers> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/external_data_sources/',
             path: {
@@ -70,11 +71,11 @@ export class ExternalDataSourcesService {
      * @returns ExternalDataSourceSerializers
      * @throws ApiError
      */
-    public static externalDataSourcesRetrieve(
+    public externalDataSourcesRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<ExternalDataSourceSerializers> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/external_data_sources/{id}/',
             path: {
@@ -92,12 +93,12 @@ export class ExternalDataSourcesService {
      * @returns ExternalDataSourceSerializers
      * @throws ApiError
      */
-    public static externalDataSourcesUpdate(
+    public externalDataSourcesUpdate(
         id: string,
         projectId: string,
         requestBody: ExternalDataSourceSerializers,
     ): CancelablePromise<ExternalDataSourceSerializers> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/external_data_sources/{id}/',
             path: {
@@ -117,12 +118,12 @@ export class ExternalDataSourcesService {
      * @returns ExternalDataSourceSerializers
      * @throws ApiError
      */
-    public static externalDataSourcesPartialUpdate(
+    public externalDataSourcesPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedExternalDataSourceSerializers,
     ): CancelablePromise<ExternalDataSourceSerializers> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/external_data_sources/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class ExternalDataSourcesService {
      * @returns void
      * @throws ApiError
      */
-    public static externalDataSourcesDestroy(
+    public externalDataSourcesDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/external_data_sources/{id}/',
             path: {
@@ -163,12 +164,12 @@ export class ExternalDataSourcesService {
      * @returns ExternalDataSourceSerializers
      * @throws ApiError
      */
-    public static externalDataSourcesReloadCreate(
+    public externalDataSourcesReloadCreate(
         id: string,
         projectId: string,
         requestBody: ExternalDataSourceSerializers,
     ): CancelablePromise<ExternalDataSourceSerializers> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/external_data_sources/{id}/reload/',
             path: {

@@ -8,10 +8,11 @@ import type { PatchedPluginConfig } from '../models/PatchedPluginConfig';
 import type { PluginConfig } from '../models/PluginConfig';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PluginConfigsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -20,12 +21,12 @@ export class PluginConfigsService {
      * @returns PaginatedPluginConfigList
      * @throws ApiError
      */
-    public static pluginConfigsList(
+    public pluginConfigsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginConfigList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/plugin_configs/',
             path: {
@@ -44,11 +45,11 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsCreate(
+    public pluginConfigsCreate(
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/plugin_configs/',
             path: {
@@ -67,13 +68,13 @@ export class PluginConfigsService {
      * @returns PaginatedPluginLogEntryList
      * @throws ApiError
      */
-    public static pluginConfigsLogsList(
+    public pluginConfigsLogsList(
         parentLookupPluginConfigId: string,
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginLogEntryList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/plugin_configs/{parent_lookup_plugin_config_id}/logs/',
             path: {
@@ -93,11 +94,11 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsRetrieve(
+    public pluginConfigsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/plugin_configs/{id}/',
             path: {
@@ -114,12 +115,12 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsUpdate(
+    public pluginConfigsUpdate(
         id: number,
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/plugin_configs/{id}/',
             path: {
@@ -138,12 +139,12 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsPartialUpdate(
+    public pluginConfigsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedPluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/plugin_configs/{id}/',
             path: {
@@ -161,11 +162,11 @@ export class PluginConfigsService {
      * @returns void
      * @throws ApiError
      */
-    public static pluginConfigsDestroy(
+    public pluginConfigsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/plugin_configs/{id}/',
             path: {
@@ -181,11 +182,11 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsFrontendRetrieve(
+    public pluginConfigsFrontendRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/plugin_configs/{id}/frontend/',
             path: {
@@ -202,12 +203,12 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsJobCreate(
+    public pluginConfigsJobCreate(
         id: number,
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/plugin_configs/{id}/job/',
             path: {
@@ -225,11 +226,11 @@ export class PluginConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pluginConfigsRearrangePartialUpdate(
+    public pluginConfigsRearrangePartialUpdate(
         projectId: string,
         requestBody?: PatchedPluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/plugin_configs/rearrange/',
             path: {

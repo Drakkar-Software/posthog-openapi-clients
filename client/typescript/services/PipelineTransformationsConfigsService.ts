@@ -7,10 +7,11 @@ import type { PatchedPluginConfig } from '../models/PatchedPluginConfig';
 import type { PluginConfig } from '../models/PluginConfig';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PipelineTransformationsConfigsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class PipelineTransformationsConfigsService {
      * @returns PaginatedPluginConfigList
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsList(
+    public pipelineTransformationsConfigsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginConfigList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/',
             path: {
@@ -43,11 +44,11 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsCreate(
+    public pipelineTransformationsConfigsCreate(
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/',
             path: {
@@ -64,11 +65,11 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsRetrieve(
+    public pipelineTransformationsConfigsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsUpdate(
+    public pipelineTransformationsConfigsUpdate(
         id: number,
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsPartialUpdate(
+    public pipelineTransformationsConfigsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedPluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class PipelineTransformationsConfigsService {
      * @returns void
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsDestroy(
+    public pipelineTransformationsConfigsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/',
             path: {
@@ -152,11 +153,11 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsFrontendRetrieve(
+    public pipelineTransformationsConfigsFrontendRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/frontend/',
             path: {
@@ -173,12 +174,12 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsJobCreate(
+    public pipelineTransformationsConfigsJobCreate(
         id: number,
         projectId: string,
         requestBody: PluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/{id}/job/',
             path: {
@@ -196,11 +197,11 @@ export class PipelineTransformationsConfigsService {
      * @returns PluginConfig
      * @throws ApiError
      */
-    public static pipelineTransformationsConfigsRearrangePartialUpdate(
+    public pipelineTransformationsConfigsRearrangePartialUpdate(
         projectId: string,
         requestBody?: PatchedPluginConfig,
     ): CancelablePromise<PluginConfig> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/pipeline_transformations_configs/rearrange/',
             path: {

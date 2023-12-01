@@ -36,6 +36,7 @@ export namespace PropertyItem {
         IS_DATE_BEFORE = 'is_date_before',
         IS_RELATIVE_DATE_AFTER = 'is_relative_date_after',
         IS_RELATIVE_DATE_BEFORE = 'is_relative_date_before',
+        
     }
 
     export enum type {
@@ -50,6 +51,7 @@ export namespace PropertyItem {
         BEHAVIORAL = 'behavioral',
         SESSION = 'session',
         HOGQL = 'hogql',
+        
     }
 
 

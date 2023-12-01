@@ -3,10 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class UploadedMediaService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      *
@@ -18,10 +19,10 @@ export class UploadedMediaService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static uploadedMediaCreate(
+    public uploadedMediaCreate(
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/uploaded_media/',
             path: {

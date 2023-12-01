@@ -7,10 +7,11 @@ import type { PaginatedDashboardTemplateList } from '../models/PaginatedDashboar
 import type { PatchedDashboardTemplate } from '../models/PatchedDashboardTemplate';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class DashboardTemplatesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class DashboardTemplatesService {
      * @returns PaginatedDashboardTemplateList
      * @throws ApiError
      */
-    public static dashboardTemplatesList(
+    public dashboardTemplatesList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedDashboardTemplateList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboard_templates/',
             path: {
@@ -43,11 +44,11 @@ export class DashboardTemplatesService {
      * @returns DashboardTemplate
      * @throws ApiError
      */
-    public static dashboardTemplatesCreate(
+    public dashboardTemplatesCreate(
         projectId: string,
         requestBody?: DashboardTemplate,
     ): CancelablePromise<DashboardTemplate> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/dashboard_templates/',
             path: {
@@ -64,11 +65,11 @@ export class DashboardTemplatesService {
      * @returns DashboardTemplate
      * @throws ApiError
      */
-    public static dashboardTemplatesRetrieve(
+    public dashboardTemplatesRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<DashboardTemplate> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboard_templates/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class DashboardTemplatesService {
      * @returns DashboardTemplate
      * @throws ApiError
      */
-    public static dashboardTemplatesUpdate(
+    public dashboardTemplatesUpdate(
         id: string,
         projectId: string,
         requestBody?: DashboardTemplate,
     ): CancelablePromise<DashboardTemplate> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/dashboard_templates/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class DashboardTemplatesService {
      * @returns DashboardTemplate
      * @throws ApiError
      */
-    public static dashboardTemplatesPartialUpdate(
+    public dashboardTemplatesPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedDashboardTemplate,
     ): CancelablePromise<DashboardTemplate> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/dashboard_templates/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class DashboardTemplatesService {
      * @returns void
      * @throws ApiError
      */
-    public static dashboardTemplatesDestroy(
+    public dashboardTemplatesDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/dashboard_templates/{id}/',
             path: {
@@ -155,10 +156,10 @@ export class DashboardTemplatesService {
      * @returns DashboardTemplate
      * @throws ApiError
      */
-    public static dashboardTemplatesJsonSchemaRetrieve(
+    public dashboardTemplatesJsonSchemaRetrieve(
         projectId: string,
     ): CancelablePromise<DashboardTemplate> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboard_templates/json_schema/',
             path: {

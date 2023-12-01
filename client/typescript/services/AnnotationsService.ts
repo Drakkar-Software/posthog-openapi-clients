@@ -7,10 +7,11 @@ import type { PaginatedAnnotationList } from '../models/PaginatedAnnotationList'
 import type { PatchedAnnotation } from '../models/PatchedAnnotation';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class AnnotationsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
@@ -21,13 +22,13 @@ export class AnnotationsService {
      * @returns PaginatedAnnotationList
      * @throws ApiError
      */
-    public static annotationsList(
+    public annotationsList(
         projectId: string,
         limit?: number,
         offset?: number,
         search?: string,
     ): CancelablePromise<PaginatedAnnotationList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/annotations/',
             path: {
@@ -48,11 +49,11 @@ export class AnnotationsService {
      * @returns Annotation
      * @throws ApiError
      */
-    public static annotationsCreate(
+    public annotationsCreate(
         projectId: string,
         requestBody?: Annotation,
     ): CancelablePromise<Annotation> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/annotations/',
             path: {
@@ -70,11 +71,11 @@ export class AnnotationsService {
      * @returns Annotation
      * @throws ApiError
      */
-    public static annotationsRetrieve(
+    public annotationsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Annotation> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/annotations/{id}/',
             path: {
@@ -92,12 +93,12 @@ export class AnnotationsService {
      * @returns Annotation
      * @throws ApiError
      */
-    public static annotationsUpdate(
+    public annotationsUpdate(
         id: number,
         projectId: string,
         requestBody?: Annotation,
     ): CancelablePromise<Annotation> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/annotations/{id}/',
             path: {
@@ -117,12 +118,12 @@ export class AnnotationsService {
      * @returns Annotation
      * @throws ApiError
      */
-    public static annotationsPartialUpdate(
+    public annotationsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedAnnotation,
     ): CancelablePromise<Annotation> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/annotations/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class AnnotationsService {
      * @returns void
      * @throws ApiError
      */
-    public static annotationsDestroy(
+    public annotationsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/annotations/{id}/',
             path: {

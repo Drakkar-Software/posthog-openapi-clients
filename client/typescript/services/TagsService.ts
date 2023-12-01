@@ -5,10 +5,11 @@
 import type { PaginatedTaggedItemList } from '../models/PaginatedTaggedItemList';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class TagsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -17,12 +18,12 @@ export class TagsService {
      * @returns PaginatedTaggedItemList
      * @throws ApiError
      */
-    public static tagsList(
+    public tagsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedTaggedItemList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/tags/',
             path: {

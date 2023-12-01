@@ -7,10 +7,11 @@ import type { PaginatedOrganizationMemberList } from '../models/PaginatedOrganiz
 import type { PatchedOrganizationMember } from '../models/PatchedOrganizationMember';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class MembersService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -19,12 +20,12 @@ export class MembersService {
      * @returns PaginatedOrganizationMemberList
      * @throws ApiError
      */
-    public static membersList(
+    public membersList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationMemberList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/members/',
             path: {
@@ -44,12 +45,12 @@ export class MembersService {
      * @returns OrganizationMember
      * @throws ApiError
      */
-    public static membersUpdate(
+    public membersUpdate(
         parentLookupOrganizationId: string,
         userUuid: string,
         requestBody?: OrganizationMember,
     ): CancelablePromise<OrganizationMember> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
             path: {
@@ -68,12 +69,12 @@ export class MembersService {
      * @returns OrganizationMember
      * @throws ApiError
      */
-    public static membersPartialUpdate(
+    public membersPartialUpdate(
         parentLookupOrganizationId: string,
         userUuid: string,
         requestBody?: PatchedOrganizationMember,
     ): CancelablePromise<OrganizationMember> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
             path: {
@@ -91,11 +92,11 @@ export class MembersService {
      * @returns void
      * @throws ApiError
      */
-    public static membersDestroy(
+    public membersDestroy(
         parentLookupOrganizationId: string,
         userUuid: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
             path: {

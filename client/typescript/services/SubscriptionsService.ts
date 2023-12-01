@@ -7,10 +7,11 @@ import type { PatchedSubscription } from '../models/PatchedSubscription';
 import type { Subscription } from '../models/Subscription';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class SubscriptionsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class SubscriptionsService {
      * @returns PaginatedSubscriptionList
      * @throws ApiError
      */
-    public static subscriptionsList(
+    public subscriptionsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedSubscriptionList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/subscriptions/',
             path: {
@@ -43,11 +44,11 @@ export class SubscriptionsService {
      * @returns Subscription
      * @throws ApiError
      */
-    public static subscriptionsCreate(
+    public subscriptionsCreate(
         projectId: string,
         requestBody: Subscription,
     ): CancelablePromise<Subscription> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/subscriptions/',
             path: {
@@ -64,11 +65,11 @@ export class SubscriptionsService {
      * @returns Subscription
      * @throws ApiError
      */
-    public static subscriptionsRetrieve(
+    public subscriptionsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Subscription> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/subscriptions/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class SubscriptionsService {
      * @returns Subscription
      * @throws ApiError
      */
-    public static subscriptionsUpdate(
+    public subscriptionsUpdate(
         id: number,
         projectId: string,
         requestBody: Subscription,
     ): CancelablePromise<Subscription> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/subscriptions/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class SubscriptionsService {
      * @returns Subscription
      * @throws ApiError
      */
-    public static subscriptionsPartialUpdate(
+    public subscriptionsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedSubscription,
     ): CancelablePromise<Subscription> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/subscriptions/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class SubscriptionsService {
      * @returns void
      * @throws ApiError
      */
-    public static subscriptionsDestroy(
+    public subscriptionsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/subscriptions/{id}/',
             path: {

@@ -28,6 +28,7 @@ export namespace PatchedPlugin {
         CUSTOM = 'custom',
         REPOSITORY = 'repository',
         SOURCE = 'source',
+        
     }
 
 

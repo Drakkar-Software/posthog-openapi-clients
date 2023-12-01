@@ -24,18 +24,21 @@ export namespace ActionStep {
         CONTAINS = 'contains',
         REGEX = 'regex',
         EXACT = 'exact',
+        
     }
 
     export enum href_matching {
         CONTAINS = 'contains',
         REGEX = 'regex',
         EXACT = 'exact',
+        
     }
 
     export enum url_matching {
         CONTAINS = 'contains',
         REGEX = 'regex',
         EXACT = 'exact',
+        
     }
 
 

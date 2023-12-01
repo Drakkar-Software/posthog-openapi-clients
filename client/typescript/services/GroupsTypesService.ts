@@ -6,20 +6,21 @@ import type { GroupType } from '../models/GroupType';
 import type { PatchedGroupType } from '../models/PatchedGroupType';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class GroupsTypesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns GroupType
      * @throws ApiError
      */
-    public static groupsTypesList(
+    public groupsTypesList(
         projectId: string,
     ): CancelablePromise<Array<GroupType>> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups_types/',
             path: {
@@ -34,11 +35,11 @@ export class GroupsTypesService {
      * @returns GroupType
      * @throws ApiError
      */
-    public static groupsTypesUpdateMetadataPartialUpdate(
+    public groupsTypesUpdateMetadataPartialUpdate(
         projectId: string,
         requestBody?: PatchedGroupType,
     ): CancelablePromise<GroupType> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/groups_types/update_metadata/',
             path: {

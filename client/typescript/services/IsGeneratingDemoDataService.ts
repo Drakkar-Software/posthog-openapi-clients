@@ -5,10 +5,11 @@
 import type { Team } from '../models/Team';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class IsGeneratingDemoDataService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Projects for the current organization.
@@ -16,10 +17,10 @@ export class IsGeneratingDemoDataService {
      * @returns Team
      * @throws ApiError
      */
-    public static isGeneratingDemoDataRetrieve(
+    public isGeneratingDemoDataRetrieve(
         id: number,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{id}/is_generating_demo_data/',
             path: {

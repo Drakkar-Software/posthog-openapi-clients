@@ -3,10 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class QueryService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -23,13 +24,13 @@ export class QueryService {
      * @returns any Query results
      * @throws ApiError
      */
-    public static queryCreate(
+    public queryCreate(
         projectId: string,
         async?: boolean,
         clientQueryId?: string,
         query?: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/query/',
             path: {
@@ -50,11 +51,11 @@ export class QueryService {
      * @returns any Query status
      * @throws ApiError
      */
-    public static queryRetrieve(
+    public queryRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/query/{id}/',
             path: {
@@ -71,11 +72,11 @@ export class QueryService {
      * @returns void
      * @throws ApiError
      */
-    public static queryDestroy(
+    public queryDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/query/{id}/',
             path: {
@@ -90,10 +91,10 @@ export class QueryService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static queryDraftSqlRetrieve(
+    public queryDraftSqlRetrieve(
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/query/draft_sql/',
             path: {

@@ -7,10 +7,11 @@ import type { PatchedTeam } from '../models/PatchedTeam';
 import type { Team } from '../models/Team';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ProjectsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Projects for the current organization.
@@ -19,11 +20,11 @@ export class ProjectsService {
      * @returns PaginatedTeamBasicList
      * @throws ApiError
      */
-    public static list(
+    public list(
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedTeamBasicList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/',
             query: {
@@ -39,10 +40,10 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public static create(
+    public create(
         requestBody?: Team,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/',
             body: requestBody,
@@ -56,10 +57,10 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public static retrieve(
+    public retrieve(
         id: number,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{id}/',
             path: {
@@ -75,11 +76,11 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public static update(
+    public update(
         id: number,
         requestBody?: Team,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{id}/',
             path: {
@@ -97,11 +98,11 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public static partialUpdate(
+    public partialUpdate(
         id: number,
         requestBody?: PatchedTeam,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{id}/',
             path: {
@@ -118,10 +119,10 @@ export class ProjectsService {
      * @returns void
      * @throws ApiError
      */
-    public static destroy(
+    public destroy(
         id: number,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{id}/',
             path: {

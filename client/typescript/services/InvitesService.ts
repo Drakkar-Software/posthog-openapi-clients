@@ -6,10 +6,11 @@ import type { OrganizationInvite } from '../models/OrganizationInvite';
 import type { PaginatedOrganizationInviteList } from '../models/PaginatedOrganizationInviteList';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class InvitesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -18,12 +19,12 @@ export class InvitesService {
      * @returns PaginatedOrganizationInviteList
      * @throws ApiError
      */
-    public static invitesList(
+    public invitesList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationInviteList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/invites/',
             path: {
@@ -42,11 +43,11 @@ export class InvitesService {
      * @returns OrganizationInvite
      * @throws ApiError
      */
-    public static invitesCreate(
+    public invitesCreate(
         parentLookupOrganizationId: string,
         requestBody: OrganizationInvite,
     ): CancelablePromise<OrganizationInvite> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/invites/',
             path: {
@@ -63,11 +64,11 @@ export class InvitesService {
      * @returns void
      * @throws ApiError
      */
-    public static invitesDestroy(
+    public invitesDestroy(
         id: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/invites/{id}/',
             path: {
@@ -83,11 +84,11 @@ export class InvitesService {
      * @returns OrganizationInvite
      * @throws ApiError
      */
-    public static invitesBulkCreate(
+    public invitesBulkCreate(
         parentLookupOrganizationId: string,
         requestBody: OrganizationInvite,
     ): CancelablePromise<OrganizationInvite> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/invites/bulk/',
             path: {

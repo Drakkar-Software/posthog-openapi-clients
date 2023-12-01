@@ -6,10 +6,11 @@ import type { Integration } from '../models/Integration';
 import type { PaginatedIntegrationList } from '../models/PaginatedIntegrationList';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class IntegrationsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -18,12 +19,12 @@ export class IntegrationsService {
      * @returns PaginatedIntegrationList
      * @throws ApiError
      */
-    public static integrationsList(
+    public integrationsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedIntegrationList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/integrations/',
             path: {
@@ -42,11 +43,11 @@ export class IntegrationsService {
      * @returns Integration
      * @throws ApiError
      */
-    public static integrationsCreate(
+    public integrationsCreate(
         projectId: string,
         requestBody: Integration,
     ): CancelablePromise<Integration> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/integrations/',
             path: {
@@ -63,11 +64,11 @@ export class IntegrationsService {
      * @returns Integration
      * @throws ApiError
      */
-    public static integrationsRetrieve(
+    public integrationsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Integration> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/integrations/{id}/',
             path: {
@@ -83,11 +84,11 @@ export class IntegrationsService {
      * @returns void
      * @throws ApiError
      */
-    public static integrationsDestroy(
+    public integrationsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/integrations/{id}/',
             path: {
@@ -103,11 +104,11 @@ export class IntegrationsService {
      * @returns Integration
      * @throws ApiError
      */
-    public static integrationsChannelsRetrieve(
+    public integrationsChannelsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Integration> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/integrations/{id}/channels/',
             path: {

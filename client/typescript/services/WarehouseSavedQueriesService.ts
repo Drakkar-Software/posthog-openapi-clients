@@ -7,10 +7,11 @@ import type { PaginatedDataWarehouseSavedQueryList } from '../models/PaginatedDa
 import type { PatchedDataWarehouseSavedQuery } from '../models/PatchedDataWarehouseSavedQuery';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class WarehouseSavedQueriesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, Read, Update and Delete Warehouse Tables.
@@ -21,13 +22,13 @@ export class WarehouseSavedQueriesService {
      * @returns PaginatedDataWarehouseSavedQueryList
      * @throws ApiError
      */
-    public static warehouseSavedQueriesList(
+    public warehouseSavedQueriesList(
         projectId: string,
         limit?: number,
         offset?: number,
         search?: string,
     ): CancelablePromise<PaginatedDataWarehouseSavedQueryList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_saved_queries/',
             path: {
@@ -48,11 +49,11 @@ export class WarehouseSavedQueriesService {
      * @returns DataWarehouseSavedQuery
      * @throws ApiError
      */
-    public static warehouseSavedQueriesCreate(
+    public warehouseSavedQueriesCreate(
         projectId: string,
         requestBody: DataWarehouseSavedQuery,
     ): CancelablePromise<DataWarehouseSavedQuery> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/warehouse_saved_queries/',
             path: {
@@ -70,11 +71,11 @@ export class WarehouseSavedQueriesService {
      * @returns DataWarehouseSavedQuery
      * @throws ApiError
      */
-    public static warehouseSavedQueriesRetrieve(
+    public warehouseSavedQueriesRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<DataWarehouseSavedQuery> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_saved_queries/{id}/',
             path: {
@@ -92,12 +93,12 @@ export class WarehouseSavedQueriesService {
      * @returns DataWarehouseSavedQuery
      * @throws ApiError
      */
-    public static warehouseSavedQueriesUpdate(
+    public warehouseSavedQueriesUpdate(
         id: string,
         projectId: string,
         requestBody: DataWarehouseSavedQuery,
     ): CancelablePromise<DataWarehouseSavedQuery> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/warehouse_saved_queries/{id}/',
             path: {
@@ -117,12 +118,12 @@ export class WarehouseSavedQueriesService {
      * @returns DataWarehouseSavedQuery
      * @throws ApiError
      */
-    public static warehouseSavedQueriesPartialUpdate(
+    public warehouseSavedQueriesPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedDataWarehouseSavedQuery,
     ): CancelablePromise<DataWarehouseSavedQuery> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/warehouse_saved_queries/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class WarehouseSavedQueriesService {
      * @returns void
      * @throws ApiError
      */
-    public static warehouseSavedQueriesDestroy(
+    public warehouseSavedQueriesDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/warehouse_saved_queries/{id}/',
             path: {

@@ -25,6 +25,7 @@ export namespace PatchedDashboardTemplate {
         TEAM = 'team',
         GLOBAL = 'global',
         FEATURE_FLAG = 'feature_flag',
+        
     }
 
 

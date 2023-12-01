@@ -9,10 +9,11 @@ import type { PaginatedFeatureFlagRoleAccessList } from '../models/PaginatedFeat
 import type { PatchedFeatureFlag } from '../models/PatchedFeatureFlag';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class FeatureFlagsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Retrieves all feature flags for a given organization and key.
@@ -21,11 +22,11 @@ export class FeatureFlagsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static featureFlagsRetrieve(
+    public featureFlagsRetrieve(
         featureFlagKey: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/feature_flags/{feature_flag_key}/',
             path: {
@@ -41,10 +42,10 @@ export class FeatureFlagsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static featureFlagsCopyFlagsCreate(
+    public featureFlagsCopyFlagsCreate(
         parentLookupOrganizationId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/feature_flags/copy_flags/',
             path: {
@@ -63,12 +64,12 @@ export class FeatureFlagsService {
      * @returns PaginatedFeatureFlagList
      * @throws ApiError
      */
-    public static featureFlagsList(
+    public featureFlagsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedFeatureFlagList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/',
             path: {
@@ -90,11 +91,11 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsCreate(
+    public featureFlagsCreate(
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/',
             path: {
@@ -113,13 +114,13 @@ export class FeatureFlagsService {
      * @returns PaginatedFeatureFlagRoleAccessList
      * @throws ApiError
      */
-    public static featureFlagsRoleAccessList(
+    public featureFlagsRoleAccessList(
         parentLookupFeatureFlagId: string,
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedFeatureFlagRoleAccessList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/{parent_lookup_feature_flag_id}/role_access/',
             path: {
@@ -140,12 +141,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlagRoleAccess
      * @throws ApiError
      */
-    public static featureFlagsRoleAccessCreate(
+    public featureFlagsRoleAccessCreate(
         parentLookupFeatureFlagId: string,
         projectId: string,
         requestBody: FeatureFlagRoleAccess,
     ): CancelablePromise<FeatureFlagRoleAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{parent_lookup_feature_flag_id}/role_access/',
             path: {
@@ -164,12 +165,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlagRoleAccess
      * @throws ApiError
      */
-    public static featureFlagsRoleAccessRetrieve(
+    public featureFlagsRoleAccessRetrieve(
         id: number,
         parentLookupFeatureFlagId: string,
         projectId: string,
     ): CancelablePromise<FeatureFlagRoleAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/{parent_lookup_feature_flag_id}/role_access/{id}/',
             path: {
@@ -187,12 +188,12 @@ export class FeatureFlagsService {
      * @returns void
      * @throws ApiError
      */
-    public static featureFlagsRoleAccessDestroy(
+    public featureFlagsRoleAccessDestroy(
         id: number,
         parentLookupFeatureFlagId: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/feature_flags/{parent_lookup_feature_flag_id}/role_access/{id}/',
             path: {
@@ -212,11 +213,11 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsRetrieve2(
+    public featureFlagsRetrieve2(
         id: number,
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/{id}/',
             path: {
@@ -236,12 +237,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsUpdate(
+    public featureFlagsUpdate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/feature_flags/{id}/',
             path: {
@@ -263,12 +264,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsPartialUpdate(
+    public featureFlagsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedFeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/feature_flags/{id}/',
             path: {
@@ -287,11 +288,11 @@ export class FeatureFlagsService {
      * @returns void
      * @throws ApiError
      */
-    public static featureFlagsDestroy(
+    public featureFlagsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/feature_flags/{id}/',
             path: {
@@ -313,11 +314,11 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsActivityRetrieve2(
+    public featureFlagsActivityRetrieve2(
         id: number,
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/{id}/activity/',
             path: {
@@ -337,12 +338,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsCreateStaticCohortForFlagCreate(
+    public featureFlagsCreateStaticCohortForFlagCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/create_static_cohort_for_flag/',
             path: {
@@ -364,12 +365,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsDashboardCreate(
+    public featureFlagsDashboardCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/dashboard/',
             path: {
@@ -391,12 +392,12 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsEnrichUsageDashboardCreate(
+    public featureFlagsEnrichUsageDashboardCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/enrich_usage_dashboard/',
             path: {
@@ -416,10 +417,10 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsActivityRetrieve(
+    public featureFlagsActivityRetrieve(
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/activity/',
             path: {
@@ -436,10 +437,10 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsEvaluationReasonsRetrieve(
+    public featureFlagsEvaluationReasonsRetrieve(
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/evaluation_reasons/',
             path: {
@@ -456,10 +457,10 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsLocalEvaluationRetrieve(
+    public featureFlagsLocalEvaluationRetrieve(
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/local_evaluation/',
             path: {
@@ -476,10 +477,10 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsMyFlagsRetrieve(
+    public featureFlagsMyFlagsRetrieve(
         projectId: string,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/my_flags/',
             path: {
@@ -497,11 +498,11 @@ export class FeatureFlagsService {
      * @returns FeatureFlag
      * @throws ApiError
      */
-    public static featureFlagsUserBlastRadiusCreate(
+    public featureFlagsUserBlastRadiusCreate(
         projectId: string,
         requestBody: FeatureFlag,
     ): CancelablePromise<FeatureFlag> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/user_blast_radius/',
             path: {

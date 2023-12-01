@@ -7,10 +7,11 @@ import type { PaginatedEnterprisePropertyDefinitionList } from '../models/Pagina
 import type { PatchedEnterprisePropertyDefinition } from '../models/PatchedEnterprisePropertyDefinition';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PropertyDefinitionsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -28,7 +29,7 @@ export class PropertyDefinitionsService {
      * @returns PaginatedEnterprisePropertyDefinitionList
      * @throws ApiError
      */
-    public static propertyDefinitionsList(
+    public propertyDefinitionsList(
         projectId: string,
         eventNames?: string,
         excludedProperties?: string,
@@ -42,7 +43,7 @@ export class PropertyDefinitionsService {
         search?: string,
         type: 'event' | 'person' | 'group' = 'event',
     ): CancelablePromise<PaginatedEnterprisePropertyDefinitionList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/',
             path: {
@@ -70,11 +71,11 @@ export class PropertyDefinitionsService {
      * @returns EnterprisePropertyDefinition
      * @throws ApiError
      */
-    public static propertyDefinitionsRetrieve(
+    public propertyDefinitionsRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<EnterprisePropertyDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
             path: {
@@ -91,12 +92,12 @@ export class PropertyDefinitionsService {
      * @returns EnterprisePropertyDefinition
      * @throws ApiError
      */
-    public static propertyDefinitionsUpdate(
+    public propertyDefinitionsUpdate(
         id: string,
         projectId: string,
         requestBody?: EnterprisePropertyDefinition,
     ): CancelablePromise<EnterprisePropertyDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
             path: {
@@ -115,12 +116,12 @@ export class PropertyDefinitionsService {
      * @returns EnterprisePropertyDefinition
      * @throws ApiError
      */
-    public static propertyDefinitionsPartialUpdate(
+    public propertyDefinitionsPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedEnterprisePropertyDefinition,
     ): CancelablePromise<EnterprisePropertyDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
             path: {
@@ -138,11 +139,11 @@ export class PropertyDefinitionsService {
      * @returns void
      * @throws ApiError
      */
-    public static propertyDefinitionsDestroy(
+    public propertyDefinitionsDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
             path: {
@@ -159,10 +160,10 @@ export class PropertyDefinitionsService {
      * @returns EnterprisePropertyDefinition
      * @throws ApiError
      */
-    public static propertyDefinitionsSeenTogetherRetrieve(
+    public propertyDefinitionsSeenTogetherRetrieve(
         projectId: string,
     ): CancelablePromise<EnterprisePropertyDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/seen_together/',
             path: {

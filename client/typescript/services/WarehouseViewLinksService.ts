@@ -7,10 +7,11 @@ import type { PatchedViewLink } from '../models/PatchedViewLink';
 import type { ViewLink } from '../models/ViewLink';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class WarehouseViewLinksService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, Read, Update and Delete View Columns.
@@ -21,13 +22,13 @@ export class WarehouseViewLinksService {
      * @returns PaginatedViewLinkList
      * @throws ApiError
      */
-    public static warehouseViewLinksList(
+    public warehouseViewLinksList(
         projectId: string,
         limit?: number,
         offset?: number,
         search?: string,
     ): CancelablePromise<PaginatedViewLinkList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_view_links/',
             path: {
@@ -48,11 +49,11 @@ export class WarehouseViewLinksService {
      * @returns ViewLink
      * @throws ApiError
      */
-    public static warehouseViewLinksCreate(
+    public warehouseViewLinksCreate(
         projectId: string,
         requestBody: ViewLink,
     ): CancelablePromise<ViewLink> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/warehouse_view_links/',
             path: {
@@ -70,11 +71,11 @@ export class WarehouseViewLinksService {
      * @returns ViewLink
      * @throws ApiError
      */
-    public static warehouseViewLinksRetrieve(
+    public warehouseViewLinksRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<ViewLink> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_view_links/{id}/',
             path: {
@@ -92,12 +93,12 @@ export class WarehouseViewLinksService {
      * @returns ViewLink
      * @throws ApiError
      */
-    public static warehouseViewLinksUpdate(
+    public warehouseViewLinksUpdate(
         id: string,
         projectId: string,
         requestBody: ViewLink,
     ): CancelablePromise<ViewLink> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/warehouse_view_links/{id}/',
             path: {
@@ -117,12 +118,12 @@ export class WarehouseViewLinksService {
      * @returns ViewLink
      * @throws ApiError
      */
-    public static warehouseViewLinksPartialUpdate(
+    public warehouseViewLinksPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedViewLink,
     ): CancelablePromise<ViewLink> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/warehouse_view_links/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class WarehouseViewLinksService {
      * @returns void
      * @throws ApiError
      */
-    public static warehouseViewLinksDestroy(
+    public warehouseViewLinksDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/warehouse_view_links/{id}/',
             path: {

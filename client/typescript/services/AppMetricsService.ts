@@ -3,10 +3,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class AppMetricsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupPluginConfigId
@@ -14,11 +15,11 @@ export class AppMetricsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static appMetricsHistoricalExportsRetrieve(
+    public appMetricsHistoricalExportsRetrieve(
         parentLookupPluginConfigId: string,
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/app_metrics/{parent_lookup_plugin_config_id}/historical_exports/',
             path: {
@@ -35,12 +36,12 @@ export class AppMetricsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static appMetricsHistoricalExportsRetrieve2(
+    public appMetricsHistoricalExportsRetrieve2(
         id: string,
         parentLookupPluginConfigId: string,
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/app_metrics/{parent_lookup_plugin_config_id}/historical_exports/{id}/',
             path: {
@@ -57,11 +58,11 @@ export class AppMetricsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static appMetricsRetrieve(
+    public appMetricsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/app_metrics/{id}/',
             path: {
@@ -77,11 +78,11 @@ export class AppMetricsService {
      * @returns any No response body
      * @throws ApiError
      */
-    public static appMetricsErrorDetailsRetrieve(
+    public appMetricsErrorDetailsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<any> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/app_metrics/{id}/error_details/',
             path: {

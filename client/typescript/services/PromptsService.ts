@@ -3,18 +3,19 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PromptsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, read, update and delete prompt sequences state for a person.
      * @returns any No response body
      * @throws ApiError
      */
-    public static promptsMyPromptsPartialUpdate(): CancelablePromise<any> {
-        return __request(OpenAPI, {
+    public promptsMyPromptsPartialUpdate(): CancelablePromise<any> {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/prompts/my_prompts/',
         });

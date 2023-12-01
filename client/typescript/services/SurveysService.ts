@@ -8,10 +8,11 @@ import type { Survey } from '../models/Survey';
 import type { SurveySerializerCreateUpdateOnly } from '../models/SurveySerializerCreateUpdateOnly';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class SurveysService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -20,12 +21,12 @@ export class SurveysService {
      * @returns PaginatedSurveyList
      * @throws ApiError
      */
-    public static surveysList(
+    public surveysList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedSurveyList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/',
             path: {
@@ -44,11 +45,11 @@ export class SurveysService {
      * @returns SurveySerializerCreateUpdateOnly
      * @throws ApiError
      */
-    public static surveysCreate(
+    public surveysCreate(
         projectId: string,
         requestBody: SurveySerializerCreateUpdateOnly,
     ): CancelablePromise<SurveySerializerCreateUpdateOnly> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/surveys/',
             path: {
@@ -65,11 +66,11 @@ export class SurveysService {
      * @returns Survey
      * @throws ApiError
      */
-    public static surveysRetrieve(
+    public surveysRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<Survey> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/{id}/',
             path: {
@@ -86,12 +87,12 @@ export class SurveysService {
      * @returns Survey
      * @throws ApiError
      */
-    public static surveysUpdate(
+    public surveysUpdate(
         id: string,
         projectId: string,
         requestBody: Survey,
     ): CancelablePromise<Survey> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/surveys/{id}/',
             path: {
@@ -110,12 +111,12 @@ export class SurveysService {
      * @returns SurveySerializerCreateUpdateOnly
      * @throws ApiError
      */
-    public static surveysPartialUpdate(
+    public surveysPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedSurveySerializerCreateUpdateOnly,
     ): CancelablePromise<SurveySerializerCreateUpdateOnly> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/surveys/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class SurveysService {
      * @returns void
      * @throws ApiError
      */
-    public static surveysDestroy(
+    public surveysDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/surveys/{id}/',
             path: {
@@ -152,10 +153,10 @@ export class SurveysService {
      * @returns Survey
      * @throws ApiError
      */
-    public static surveysResponsesCountRetrieve(
+    public surveysResponsesCountRetrieve(
         projectId: string,
     ): CancelablePromise<Survey> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/responses_count/',
             path: {

@@ -6,10 +6,11 @@ import type { ActivityLog } from '../models/ActivityLog';
 import type { PaginatedActivityLogList } from '../models/PaginatedActivityLogList';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ActivityLogService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -17,11 +18,11 @@ export class ActivityLogService {
      * @returns PaginatedActivityLogList
      * @throws ApiError
      */
-    public static activityLogList(
+    public activityLogList(
         projectId: string,
         cursor?: string,
     ): CancelablePromise<PaginatedActivityLogList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/activity_log/',
             path: {
@@ -39,11 +40,11 @@ export class ActivityLogService {
      * @returns ActivityLog
      * @throws ApiError
      */
-    public static activityLogBookmarkActivityNotificationCreate(
+    public activityLogBookmarkActivityNotificationCreate(
         projectId: string,
         requestBody: ActivityLog,
     ): CancelablePromise<ActivityLog> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/activity_log/bookmark_activity_notification/',
             path: {
@@ -59,10 +60,10 @@ export class ActivityLogService {
      * @returns ActivityLog
      * @throws ApiError
      */
-    public static activityLogImportantChangesRetrieve(
+    public activityLogImportantChangesRetrieve(
         projectId: string,
     ): CancelablePromise<ActivityLog> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/activity_log/important_changes/',
             path: {

@@ -9,10 +9,11 @@ import type { Role } from '../models/Role';
 import type { RoleMembership } from '../models/RoleMembership';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class RolesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -21,12 +22,12 @@ export class RolesService {
      * @returns PaginatedRoleList
      * @throws ApiError
      */
-    public static rolesList(
+    public rolesList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedRoleList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/',
             path: {
@@ -45,11 +46,11 @@ export class RolesService {
      * @returns Role
      * @throws ApiError
      */
-    public static rolesCreate(
+    public rolesCreate(
         parentLookupOrganizationId: string,
         requestBody: Role,
     ): CancelablePromise<Role> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/',
             path: {
@@ -68,13 +69,13 @@ export class RolesService {
      * @returns PaginatedRoleMembershipList
      * @throws ApiError
      */
-    public static rolesRoleMembershipsList(
+    public rolesRoleMembershipsList(
         parentLookupOrganizationId: string,
         parentLookupRoleId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedRoleMembershipList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/',
             path: {
@@ -95,12 +96,12 @@ export class RolesService {
      * @returns RoleMembership
      * @throws ApiError
      */
-    public static rolesRoleMembershipsCreate(
+    public rolesRoleMembershipsCreate(
         parentLookupOrganizationId: string,
         parentLookupRoleId: string,
         requestBody: RoleMembership,
     ): CancelablePromise<RoleMembership> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/',
             path: {
@@ -119,12 +120,12 @@ export class RolesService {
      * @returns void
      * @throws ApiError
      */
-    public static rolesRoleMembershipsDestroy(
+    public rolesRoleMembershipsDestroy(
         id: string,
         parentLookupOrganizationId: string,
         parentLookupRoleId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class RolesService {
      * @returns Role
      * @throws ApiError
      */
-    public static rolesRetrieve(
+    public rolesRetrieve(
         id: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Role> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
             path: {
@@ -162,12 +163,12 @@ export class RolesService {
      * @returns Role
      * @throws ApiError
      */
-    public static rolesUpdate(
+    public rolesUpdate(
         id: string,
         parentLookupOrganizationId: string,
         requestBody: Role,
     ): CancelablePromise<Role> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
             path: {
@@ -186,12 +187,12 @@ export class RolesService {
      * @returns Role
      * @throws ApiError
      */
-    public static rolesPartialUpdate(
+    public rolesPartialUpdate(
         id: string,
         parentLookupOrganizationId: string,
         requestBody?: PatchedRole,
     ): CancelablePromise<Role> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
             path: {
@@ -209,11 +210,11 @@ export class RolesService {
      * @returns void
      * @throws ApiError
      */
-    public static rolesDestroy(
+    public rolesDestroy(
         id: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
             path: {

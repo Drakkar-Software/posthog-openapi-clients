@@ -7,10 +7,11 @@ import type { PaginatedOrganizationDomainList } from '../models/PaginatedOrganiz
 import type { PatchedOrganizationDomain } from '../models/PatchedOrganizationDomain';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class DomainsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -19,12 +20,12 @@ export class DomainsService {
      * @returns PaginatedOrganizationDomainList
      * @throws ApiError
      */
-    public static domainsList(
+    public domainsList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationDomainList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/',
             path: {
@@ -43,11 +44,11 @@ export class DomainsService {
      * @returns OrganizationDomain
      * @throws ApiError
      */
-    public static domainsCreate(
+    public domainsCreate(
         parentLookupOrganizationId: string,
         requestBody: OrganizationDomain,
     ): CancelablePromise<OrganizationDomain> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/',
             path: {
@@ -64,11 +65,11 @@ export class DomainsService {
      * @returns OrganizationDomain
      * @throws ApiError
      */
-    public static domainsRetrieve(
+    public domainsRetrieve(
         id: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<OrganizationDomain> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class DomainsService {
      * @returns OrganizationDomain
      * @throws ApiError
      */
-    public static domainsUpdate(
+    public domainsUpdate(
         id: string,
         parentLookupOrganizationId: string,
         requestBody: OrganizationDomain,
     ): CancelablePromise<OrganizationDomain> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class DomainsService {
      * @returns OrganizationDomain
      * @throws ApiError
      */
-    public static domainsPartialUpdate(
+    public domainsPartialUpdate(
         id: string,
         parentLookupOrganizationId: string,
         requestBody?: PatchedOrganizationDomain,
     ): CancelablePromise<OrganizationDomain> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class DomainsService {
      * @returns void
      * @throws ApiError
      */
-    public static domainsDestroy(
+    public domainsDestroy(
         id: string,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/{id}/',
             path: {
@@ -153,12 +154,12 @@ export class DomainsService {
      * @returns OrganizationDomain
      * @throws ApiError
      */
-    public static domainsVerifyCreate(
+    public domainsVerifyCreate(
         id: string,
         parentLookupOrganizationId: string,
         requestBody: OrganizationDomain,
     ): CancelablePromise<OrganizationDomain> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/domains/{id}/verify/',
             path: {

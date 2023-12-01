@@ -8,10 +8,11 @@ import type { PaginatedEarlyAccessFeatureList } from '../models/PaginatedEarlyAc
 import type { PatchedEarlyAccessFeature } from '../models/PatchedEarlyAccessFeature';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class EarlyAccessFeatureService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -20,12 +21,12 @@ export class EarlyAccessFeatureService {
      * @returns PaginatedEarlyAccessFeatureList
      * @throws ApiError
      */
-    public static earlyAccessFeatureList(
+    public earlyAccessFeatureList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedEarlyAccessFeatureList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/early_access_feature/',
             path: {
@@ -44,11 +45,11 @@ export class EarlyAccessFeatureService {
      * @returns EarlyAccessFeatureSerializerCreateOnly
      * @throws ApiError
      */
-    public static earlyAccessFeatureCreate(
+    public earlyAccessFeatureCreate(
         projectId: string,
         requestBody: EarlyAccessFeatureSerializerCreateOnly,
     ): CancelablePromise<EarlyAccessFeatureSerializerCreateOnly> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/early_access_feature/',
             path: {
@@ -65,11 +66,11 @@ export class EarlyAccessFeatureService {
      * @returns EarlyAccessFeature
      * @throws ApiError
      */
-    public static earlyAccessFeatureRetrieve(
+    public earlyAccessFeatureRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<EarlyAccessFeature> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/early_access_feature/{id}/',
             path: {
@@ -86,12 +87,12 @@ export class EarlyAccessFeatureService {
      * @returns EarlyAccessFeature
      * @throws ApiError
      */
-    public static earlyAccessFeatureUpdate(
+    public earlyAccessFeatureUpdate(
         id: string,
         projectId: string,
         requestBody: EarlyAccessFeature,
     ): CancelablePromise<EarlyAccessFeature> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/early_access_feature/{id}/',
             path: {
@@ -110,12 +111,12 @@ export class EarlyAccessFeatureService {
      * @returns EarlyAccessFeature
      * @throws ApiError
      */
-    public static earlyAccessFeaturePartialUpdate(
+    public earlyAccessFeaturePartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedEarlyAccessFeature,
     ): CancelablePromise<EarlyAccessFeature> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/early_access_feature/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class EarlyAccessFeatureService {
      * @returns void
      * @throws ApiError
      */
-    public static earlyAccessFeatureDestroy(
+    public earlyAccessFeatureDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/early_access_feature/{id}/',
             path: {

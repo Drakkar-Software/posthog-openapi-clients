@@ -6,10 +6,11 @@ import type { Funnel } from '../models/Funnel';
 import type { FunnelStepsResults } from '../models/FunnelStepsResults';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class FunnelService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -18,12 +19,12 @@ export class FunnelService {
      * @returns FunnelStepsResults Note, if funnel_viz_type is set the response will be different.
      * @throws ApiError
      */
-    public static funnels(
+    public funnels(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Funnel,
     ): CancelablePromise<FunnelStepsResults> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/funnel/',
             path: {

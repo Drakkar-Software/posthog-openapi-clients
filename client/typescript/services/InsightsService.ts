@@ -11,10 +11,11 @@ import type { Trend } from '../models/Trend';
 import type { TrendResults } from '../models/TrendResults';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class InsightsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -26,7 +27,7 @@ export class InsightsService {
      * @returns PaginatedInsightList
      * @throws ApiError
      */
-    public static insightsList(
+    public insightsList(
         projectId: string,
         createdBy?: number,
         format?: 'csv' | 'json',
@@ -34,7 +35,7 @@ export class InsightsService {
         offset?: number,
         shortId?: string,
     ): CancelablePromise<PaginatedInsightList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/',
             path: {
@@ -57,12 +58,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsCreate(
+    public insightsCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/',
             path: {
@@ -96,14 +97,14 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsRetrieve(
+    public insightsRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         fromDashboard?: number,
         refresh?: boolean,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/{id}/',
             path: {
@@ -126,13 +127,13 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsUpdate(
+    public insightsUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/insights/{id}/',
             path: {
@@ -155,13 +156,13 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsPartialUpdate(
+    public insightsPartialUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: PatchedInsight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/insights/{id}/',
             path: {
@@ -184,12 +185,12 @@ export class InsightsService {
      * @returns void
      * @throws ApiError
      */
-    public static insightsDestroy(
+    public insightsDestroy(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/insights/{id}/',
             path: {
@@ -212,12 +213,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsActivityRetrieve2(
+    public insightsActivityRetrieve2(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/{id}/activity/',
             path: {
@@ -238,13 +239,13 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsViewedCreate(
+    public insightsViewedCreate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/{id}/viewed/',
             path: {
@@ -265,11 +266,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsActivityRetrieve(
+    public insightsActivityRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/activity/',
             path: {
@@ -288,12 +289,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsCancelCreate(
+    public insightsCancelCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/cancel/',
             path: {
@@ -313,11 +314,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsFunnelRetrieve(
+    public insightsFunnelRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/funnel/',
             path: {
@@ -336,12 +337,12 @@ export class InsightsService {
      * @returns FunnelStepsResults Note, if funnel_viz_type is set the response will be different.
      * @throws ApiError
      */
-    public static funnels(
+    public funnels(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Funnel,
     ): CancelablePromise<FunnelStepsResults> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/funnel/',
             path: {
@@ -361,11 +362,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsFunnelCorrelationRetrieve(
+    public insightsFunnelCorrelationRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/funnel/correlation/',
             path: {
@@ -384,12 +385,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsFunnelCorrelationCreate(
+    public insightsFunnelCorrelationCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/funnel/correlation/',
             path: {
@@ -410,11 +411,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsMyLastViewedRetrieve(
+    public insightsMyLastViewedRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/my_last_viewed/',
             path: {
@@ -432,11 +433,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsPathRetrieve(
+    public insightsPathRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/path/',
             path: {
@@ -455,12 +456,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsPathCreate(
+    public insightsPathCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/path/',
             path: {
@@ -480,11 +481,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsRetentionRetrieve(
+    public insightsRetentionRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/retention/',
             path: {
@@ -503,12 +504,12 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsTimingCreate(
+    public insightsTimingCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/timing/',
             path: {
@@ -528,11 +529,11 @@ export class InsightsService {
      * @returns Insight
      * @throws ApiError
      */
-    public static insightsTrendRetrieve(
+    public insightsTrendRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Insight> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/trend/',
             path: {
@@ -551,12 +552,12 @@ export class InsightsService {
      * @returns TrendResults
      * @throws ApiError
      */
-    public static trends(
+    public trends(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Trend,
     ): CancelablePromise<TrendResults> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/trend/',
             path: {

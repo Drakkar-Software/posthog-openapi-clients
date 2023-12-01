@@ -7,10 +7,11 @@ import type { PatchedSessionRecordingPlaylist } from '../models/PatchedSessionRe
 import type { SessionRecordingPlaylist } from '../models/SessionRecordingPlaylist';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class SessionRecordingPlaylistsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -21,14 +22,14 @@ export class SessionRecordingPlaylistsService {
      * @returns PaginatedSessionRecordingPlaylistList
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsList(
+    public sessionRecordingPlaylistsList(
         projectId: string,
         createdBy?: number,
         limit?: number,
         offset?: number,
         shortId?: string,
     ): CancelablePromise<PaginatedSessionRecordingPlaylistList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recording_playlists/',
             path: {
@@ -49,11 +50,11 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsCreate(
+    public sessionRecordingPlaylistsCreate(
         projectId: string,
         requestBody?: SessionRecordingPlaylist,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/session_recording_playlists/',
             path: {
@@ -70,11 +71,11 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsRetrieve(
+    public sessionRecordingPlaylistsRetrieve(
         projectId: string,
         shortId: string,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/',
             path: {
@@ -91,12 +92,12 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsUpdate(
+    public sessionRecordingPlaylistsUpdate(
         projectId: string,
         shortId: string,
         requestBody?: SessionRecordingPlaylist,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/',
             path: {
@@ -115,12 +116,12 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsPartialUpdate(
+    public sessionRecordingPlaylistsPartialUpdate(
         projectId: string,
         shortId: string,
         requestBody?: PatchedSessionRecordingPlaylist,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/',
             path: {
@@ -139,11 +140,11 @@ export class SessionRecordingPlaylistsService {
      * @returns void
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsDestroy(
+    public sessionRecordingPlaylistsDestroy(
         projectId: string,
         shortId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/',
             path: {
@@ -162,11 +163,11 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsRecordingsRetrieve(
+    public sessionRecordingPlaylistsRecordingsRetrieve(
         projectId: string,
         shortId: string,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/',
             path: {
@@ -184,13 +185,13 @@ export class SessionRecordingPlaylistsService {
      * @returns SessionRecordingPlaylist
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsRecordingsCreate(
+    public sessionRecordingPlaylistsRecordingsCreate(
         projectId: string,
         sessionRecordingId: string,
         shortId: string,
         requestBody?: SessionRecordingPlaylist,
     ): CancelablePromise<SessionRecordingPlaylist> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/{session_recording_id}/',
             path: {
@@ -210,12 +211,12 @@ export class SessionRecordingPlaylistsService {
      * @returns void
      * @throws ApiError
      */
-    public static sessionRecordingPlaylistsRecordingsDestroy(
+    public sessionRecordingPlaylistsRecordingsDestroy(
         projectId: string,
         sessionRecordingId: string,
         shortId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/{session_recording_id}/',
             path: {

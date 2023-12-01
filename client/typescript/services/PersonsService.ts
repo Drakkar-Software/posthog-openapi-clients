@@ -8,10 +8,11 @@ import type { Person } from '../models/Person';
 import type { Property } from '../models/Property';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PersonsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
@@ -26,7 +27,7 @@ export class PersonsService {
      * @returns PaginatedPersonList
      * @throws ApiError
      */
-    public static personsList(
+    public personsList(
         projectId: string,
         distinctId?: string,
         email?: string,
@@ -36,7 +37,7 @@ export class PersonsService {
         properties?: Array<Property>,
         search?: string,
     ): CancelablePromise<PaginatedPersonList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/',
             path: {
@@ -62,12 +63,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsRetrieve(
+    public personsRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/{id}/',
             path: {
@@ -91,13 +92,13 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsUpdate(
+    public personsUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/persons/{id}/',
             path: {
@@ -121,13 +122,13 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsPartialUpdate(
+    public personsPartialUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: PatchedPerson,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/persons/{id}/',
             path: {
@@ -151,13 +152,13 @@ export class PersonsService {
      * @returns void
      * @throws ApiError
      */
-    public static personsDestroy(
+    public personsDestroy(
         id: number,
         projectId: string,
         deleteEvents: boolean = false,
         format?: 'csv' | 'json',
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/persons/{id}/',
             path: {
@@ -179,12 +180,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsActivityRetrieve2(
+    public personsActivityRetrieve2(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/{id}/activity/',
             path: {
@@ -207,14 +208,14 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsDeletePropertyCreate(
+    public personsDeletePropertyCreate(
         unset: string,
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/delete_property/',
             path: {
@@ -238,12 +239,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsPropertiesTimelineRetrieve(
+    public personsPropertiesTimelineRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/{id}/properties_timeline/',
             path: {
@@ -265,13 +266,13 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsSplitCreate(
+    public personsSplitCreate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/split/',
             path: {
@@ -297,7 +298,7 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsUpdatePropertyCreate(
+    public personsUpdatePropertyCreate(
         id: number,
         key: string,
         projectId: string,
@@ -305,7 +306,7 @@ export class PersonsService {
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/update_property/',
             path: {
@@ -329,11 +330,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsActivityRetrieve(
+    public personsActivityRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/activity/',
             path: {
@@ -352,11 +353,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsCohortsRetrieve(
+    public personsCohortsRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/cohorts/',
             path: {
@@ -375,11 +376,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsFunnelRetrieve(
+    public personsFunnelRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/funnel/',
             path: {
@@ -399,12 +400,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsFunnelCreate(
+    public personsFunnelCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/funnel/',
             path: {
@@ -425,11 +426,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsFunnelCorrelationRetrieve(
+    public personsFunnelCorrelationRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/funnel/correlation/',
             path: {
@@ -449,12 +450,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsFunnelCorrelationCreate(
+    public personsFunnelCorrelationCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/funnel/correlation/',
             path: {
@@ -475,11 +476,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsLifecycleRetrieve(
+    public personsLifecycleRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/lifecycle/',
             path: {
@@ -498,11 +499,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsPathRetrieve(
+    public personsPathRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/path/',
             path: {
@@ -522,12 +523,12 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsPathCreate(
+    public personsPathCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/path/',
             path: {
@@ -548,11 +549,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsRetentionRetrieve(
+    public personsRetentionRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/retention/',
             path: {
@@ -571,11 +572,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsStickinessRetrieve(
+    public personsStickinessRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/stickiness/',
             path: {
@@ -594,11 +595,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsTrendsRetrieve(
+    public personsTrendsRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/trends/',
             path: {
@@ -617,11 +618,11 @@ export class PersonsService {
      * @returns Person
      * @throws ApiError
      */
-    public static personsValuesRetrieve(
+    public personsValuesRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Person> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/values/',
             path: {

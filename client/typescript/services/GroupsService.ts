@@ -6,10 +6,11 @@ import type { Group } from '../models/Group';
 import type { PaginatedGroupList } from '../models/PaginatedGroupList';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class GroupsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * List all groups of a specific group type. You must pass ?group_type_index= in the URL. To get a list of valid group types, call /api/:project_id/groups_types/
@@ -20,13 +21,13 @@ export class GroupsService {
      * @returns PaginatedGroupList
      * @throws ApiError
      */
-    public static groupsList(
+    public groupsList(
         groupTypeIndex: number,
         projectId: string,
         search: string,
         cursor?: string,
     ): CancelablePromise<PaginatedGroupList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/',
             path: {
@@ -47,12 +48,12 @@ export class GroupsService {
      * @returns Group
      * @throws ApiError
      */
-    public static groupsFindRetrieve(
+    public groupsFindRetrieve(
         groupKey: string,
         groupTypeIndex: number,
         projectId: string,
     ): CancelablePromise<Group> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/find/',
             path: {
@@ -70,10 +71,10 @@ export class GroupsService {
      * @returns Group
      * @throws ApiError
      */
-    public static groupsPropertyDefinitionsRetrieve(
+    public groupsPropertyDefinitionsRetrieve(
         projectId: string,
     ): CancelablePromise<Group> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/property_definitions/',
             path: {
@@ -89,12 +90,12 @@ export class GroupsService {
      * @returns Group
      * @throws ApiError
      */
-    public static groupsPropertyValuesRetrieve(
+    public groupsPropertyValuesRetrieve(
         groupTypeIndex: number,
         key: string,
         projectId: string,
     ): CancelablePromise<Group> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/property_values/',
             path: {
@@ -114,12 +115,12 @@ export class GroupsService {
      * @returns Group
      * @throws ApiError
      */
-    public static groupsRelatedRetrieve(
+    public groupsRelatedRetrieve(
         groupTypeIndex: number,
         id: string,
         projectId: string,
     ): CancelablePromise<Group> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/related/',
             path: {

@@ -10,10 +10,11 @@ import type { PaginatedBatchExportRunList } from '../models/PaginatedBatchExport
 import type { PatchedBatchExport } from '../models/PatchedBatchExport';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class BatchExportsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -22,12 +23,12 @@ export class BatchExportsService {
      * @returns PaginatedBatchExportList
      * @throws ApiError
      */
-    public static batchExportsList(
+    public batchExportsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/',
             path: {
@@ -46,11 +47,11 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsCreate(
+    public batchExportsCreate(
         projectId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/',
             path: {
@@ -69,13 +70,13 @@ export class BatchExportsService {
      * @returns PaginatedBatchExportLogEntryList
      * @throws ApiError
      */
-    public static batchExportsLogsList(
+    public batchExportsLogsList(
         parentLookupBatchExportId: string,
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportLogEntryList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/logs/',
             path: {
@@ -97,12 +98,12 @@ export class BatchExportsService {
      * @returns PaginatedBatchExportRunList
      * @throws ApiError
      */
-    public static batchExportsRunsList(
+    public batchExportsRunsList(
         parentLookupBatchExportId: string,
         projectId: string,
         cursor?: string,
     ): CancelablePromise<PaginatedBatchExportRunList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/',
             path: {
@@ -124,14 +125,14 @@ export class BatchExportsService {
      * @returns PaginatedBatchExportLogEntryList
      * @throws ApiError
      */
-    public static batchExportsRunsLogsList(
+    public batchExportsRunsLogsList(
         parentLookupBatchExportId: string,
         parentLookupRunId: string,
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportLogEntryList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/{parent_lookup_run_id}/logs/',
             path: {
@@ -153,12 +154,12 @@ export class BatchExportsService {
      * @returns BatchExportRun
      * @throws ApiError
      */
-    public static batchExportsRunsRetrieve(
+    public batchExportsRunsRetrieve(
         id: string,
         parentLookupBatchExportId: string,
         projectId: string,
     ): CancelablePromise<BatchExportRun> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/{id}/',
             path: {
@@ -175,11 +176,11 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsRetrieve(
+    public batchExportsRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{id}/',
             path: {
@@ -196,12 +197,12 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsUpdate(
+    public batchExportsUpdate(
         id: string,
         projectId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/batch_exports/{id}/',
             path: {
@@ -220,12 +221,12 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsPartialUpdate(
+    public batchExportsPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedBatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/batch_exports/{id}/',
             path: {
@@ -243,11 +244,11 @@ export class BatchExportsService {
      * @returns void
      * @throws ApiError
      */
-    public static batchExportsDestroy(
+    public batchExportsDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/batch_exports/{id}/',
             path: {
@@ -265,12 +266,12 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsBackfillCreate(
+    public batchExportsBackfillCreate(
         id: string,
         projectId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/backfill/',
             path: {
@@ -290,12 +291,12 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsPauseCreate(
+    public batchExportsPauseCreate(
         id: string,
         projectId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/pause/',
             path: {
@@ -315,12 +316,12 @@ export class BatchExportsService {
      * @returns BatchExport
      * @throws ApiError
      */
-    public static batchExportsUnpauseCreate(
+    public batchExportsUnpauseCreate(
         id: string,
         projectId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/unpause/',
             path: {

@@ -6,10 +6,11 @@ import type { Trend } from '../models/Trend';
 import type { TrendResults } from '../models/TrendResults';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class TrendService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -18,12 +19,12 @@ export class TrendService {
      * @returns TrendResults
      * @throws ApiError
      */
-    public static trends(
+    public trends(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Trend,
     ): CancelablePromise<TrendResults> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/trend/',
             path: {

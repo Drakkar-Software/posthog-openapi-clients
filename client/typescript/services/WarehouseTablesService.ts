@@ -7,10 +7,11 @@ import type { PatchedTable } from '../models/PatchedTable';
 import type { Table } from '../models/Table';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class WarehouseTablesService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Create, Read, Update and Delete Warehouse Tables.
@@ -21,13 +22,13 @@ export class WarehouseTablesService {
      * @returns PaginatedTableList
      * @throws ApiError
      */
-    public static warehouseTablesList(
+    public warehouseTablesList(
         projectId: string,
         limit?: number,
         offset?: number,
         search?: string,
     ): CancelablePromise<PaginatedTableList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_tables/',
             path: {
@@ -48,11 +49,11 @@ export class WarehouseTablesService {
      * @returns Table
      * @throws ApiError
      */
-    public static warehouseTablesCreate(
+    public warehouseTablesCreate(
         projectId: string,
         requestBody: Table,
     ): CancelablePromise<Table> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/warehouse_tables/',
             path: {
@@ -70,11 +71,11 @@ export class WarehouseTablesService {
      * @returns Table
      * @throws ApiError
      */
-    public static warehouseTablesRetrieve(
+    public warehouseTablesRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<Table> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/warehouse_tables/{id}/',
             path: {
@@ -92,12 +93,12 @@ export class WarehouseTablesService {
      * @returns Table
      * @throws ApiError
      */
-    public static warehouseTablesUpdate(
+    public warehouseTablesUpdate(
         id: string,
         projectId: string,
         requestBody: Table,
     ): CancelablePromise<Table> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/warehouse_tables/{id}/',
             path: {
@@ -117,12 +118,12 @@ export class WarehouseTablesService {
      * @returns Table
      * @throws ApiError
      */
-    public static warehouseTablesPartialUpdate(
+    public warehouseTablesPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedTable,
     ): CancelablePromise<Table> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/warehouse_tables/{id}/',
             path: {
@@ -141,11 +142,11 @@ export class WarehouseTablesService {
      * @returns void
      * @throws ApiError
      */
-    public static warehouseTablesDestroy(
+    public warehouseTablesDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/warehouse_tables/{id}/',
             path: {

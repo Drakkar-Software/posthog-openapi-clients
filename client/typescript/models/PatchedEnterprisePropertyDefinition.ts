@@ -30,6 +30,7 @@ export namespace PatchedEnterprisePropertyDefinition {
         STRING = 'String',
         NUMERIC = 'Numeric',
         BOOLEAN = 'Boolean',
+        
     }
 
 

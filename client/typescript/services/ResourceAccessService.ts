@@ -7,10 +7,11 @@ import type { PaginatedOrganizationResourceAccessList } from '../models/Paginate
 import type { PatchedOrganizationResourceAccess } from '../models/PatchedOrganizationResourceAccess';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ResourceAccessService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -19,12 +20,12 @@ export class ResourceAccessService {
      * @returns PaginatedOrganizationResourceAccessList
      * @throws ApiError
      */
-    public static resourceAccessList(
+    public resourceAccessList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationResourceAccessList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/',
             path: {
@@ -43,11 +44,11 @@ export class ResourceAccessService {
      * @returns OrganizationResourceAccess
      * @throws ApiError
      */
-    public static resourceAccessCreate(
+    public resourceAccessCreate(
         parentLookupOrganizationId: string,
         requestBody: OrganizationResourceAccess,
     ): CancelablePromise<OrganizationResourceAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/',
             path: {
@@ -64,11 +65,11 @@ export class ResourceAccessService {
      * @returns OrganizationResourceAccess
      * @throws ApiError
      */
-    public static resourceAccessRetrieve(
+    public resourceAccessRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<OrganizationResourceAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class ResourceAccessService {
      * @returns OrganizationResourceAccess
      * @throws ApiError
      */
-    public static resourceAccessUpdate(
+    public resourceAccessUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody: OrganizationResourceAccess,
     ): CancelablePromise<OrganizationResourceAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class ResourceAccessService {
      * @returns OrganizationResourceAccess
      * @throws ApiError
      */
-    public static resourceAccessPartialUpdate(
+    public resourceAccessPartialUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: PatchedOrganizationResourceAccess,
     ): CancelablePromise<OrganizationResourceAccess> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class ResourceAccessService {
      * @returns void
      * @throws ApiError
      */
-    public static resourceAccessDestroy(
+    public resourceAccessDestroy(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/resource_access/{id}/',
             path: {

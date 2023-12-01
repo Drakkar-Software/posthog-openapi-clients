@@ -6,10 +6,11 @@ import type { PaginatedSessionRecordingList } from '../models/PaginatedSessionRe
 import type { SessionRecording } from '../models/SessionRecording';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class SessionRecordingsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -18,12 +19,12 @@ export class SessionRecordingsService {
      * @returns PaginatedSessionRecordingList
      * @throws ApiError
      */
-    public static sessionRecordingsList(
+    public sessionRecordingsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedSessionRecordingList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recordings/',
             path: {
@@ -42,11 +43,11 @@ export class SessionRecordingsService {
      * @returns SessionRecording
      * @throws ApiError
      */
-    public static sessionRecordingsRetrieve(
+    public sessionRecordingsRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<SessionRecording> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recordings/{id}/',
             path: {
@@ -62,11 +63,11 @@ export class SessionRecordingsService {
      * @returns void
      * @throws ApiError
      */
-    public static sessionRecordingsDestroy(
+    public sessionRecordingsDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/session_recordings/{id}/',
             path: {
@@ -83,12 +84,12 @@ export class SessionRecordingsService {
      * @returns SessionRecording
      * @throws ApiError
      */
-    public static sessionRecordingsPersistCreate(
+    public sessionRecordingsPersistCreate(
         id: string,
         projectId: string,
         requestBody?: SessionRecording,
     ): CancelablePromise<SessionRecording> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/session_recordings/{id}/persist/',
             path: {
@@ -115,11 +116,11 @@ export class SessionRecordingsService {
      * @returns SessionRecording
      * @throws ApiError
      */
-    public static sessionRecordingsSnapshotsRetrieve(
+    public sessionRecordingsSnapshotsRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<SessionRecording> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recordings/{id}/snapshots/',
             path: {
@@ -139,10 +140,10 @@ export class SessionRecordingsService {
      * @returns SessionRecording
      * @throws ApiError
      */
-    public static sessionRecordingsMatchingEventsRetrieve(
+    public sessionRecordingsMatchingEventsRetrieve(
         projectId: string,
     ): CancelablePromise<SessionRecording> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recordings/matching_events/',
             path: {
@@ -156,10 +157,10 @@ export class SessionRecordingsService {
      * @returns SessionRecording
      * @throws ApiError
      */
-    public static sessionRecordingsPropertiesRetrieve(
+    public sessionRecordingsPropertiesRetrieve(
         projectId: string,
     ): CancelablePromise<SessionRecording> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recordings/properties/',
             path: {

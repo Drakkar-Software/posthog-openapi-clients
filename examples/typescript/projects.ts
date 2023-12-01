@@ -1,10 +1,12 @@
-import { OpenAPI, ProjectsService } from "../../client/typescript/index";
-
-OpenAPI.TOKEN = process.env.POSTHOG_PERSONAL_API_KEY;
-OpenAPI.BASE = process.env.POSTHOG_BASE_URL || "https://app.posthog.com";
+import { PosthogAPIClient } from "../../client/typescript/index";
 
 async function fetchProjects() {
-  const projects = await ProjectsService.list();
+  const client = new PosthogAPIClient({
+    BASE: process.env.POSTHOG_BASE_URL || "https://app.posthog.com",
+    TOKEN: process.env.POSTHOG_PERSONAL_API_KEY,
+  });
+
+  const projects = await client.projects.list();
   console.log(projects);
 }
 

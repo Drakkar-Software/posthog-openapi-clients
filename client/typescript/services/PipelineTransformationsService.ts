@@ -7,10 +7,11 @@ import type { PatchedPlugin } from '../models/PatchedPlugin';
 import type { Plugin } from '../models/Plugin';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class PipelineTransformationsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param parentLookupOrganizationId
@@ -19,12 +20,12 @@ export class PipelineTransformationsService {
      * @returns PaginatedPluginList
      * @throws ApiError
      */
-    public static pipelineTransformationsList(
+    public pipelineTransformationsList(
         parentLookupOrganizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/',
             path: {
@@ -43,11 +44,11 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsCreate(
+    public pipelineTransformationsCreate(
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/',
             path: {
@@ -64,11 +65,11 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsRetrieve(
+    public pipelineTransformationsRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsUpdate(
+    public pipelineTransformationsUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsPartialUpdate(
+    public pipelineTransformationsPartialUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/',
             path: {
@@ -132,11 +133,11 @@ export class PipelineTransformationsService {
      * @returns void
      * @throws ApiError
      */
-    public static pipelineTransformationsDestroy(
+    public pipelineTransformationsDestroy(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/',
             path: {
@@ -152,11 +153,11 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsCheckForUpdatesRetrieve(
+    public pipelineTransformationsCheckForUpdatesRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/check_for_updates/',
             path: {
@@ -172,11 +173,11 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsSourceRetrieve(
+    public pipelineTransformationsSourceRetrieve(
         id: number,
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/source/',
             path: {
@@ -193,12 +194,12 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsUpdateSourcePartialUpdate(
+    public pipelineTransformationsUpdateSourcePartialUpdate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/update_source/',
             path: {
@@ -217,12 +218,12 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsUpgradeCreate(
+    public pipelineTransformationsUpgradeCreate(
         id: number,
         parentLookupOrganizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/{id}/upgrade/',
             path: {
@@ -239,10 +240,10 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsActivityRetrieve(
+    public pipelineTransformationsActivityRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/activity/',
             path: {
@@ -256,10 +257,10 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsRepositoryRetrieve(
+    public pipelineTransformationsRepositoryRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/repository/',
             path: {
@@ -273,10 +274,10 @@ export class PipelineTransformationsService {
      * @returns Plugin
      * @throws ApiError
      */
-    public static pipelineTransformationsUnusedRetrieve(
+    public pipelineTransformationsUnusedRetrieve(
         parentLookupOrganizationId: string,
     ): CancelablePromise<Plugin> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{parent_lookup_organization_id}/pipeline_transformations/unused/',
             path: {

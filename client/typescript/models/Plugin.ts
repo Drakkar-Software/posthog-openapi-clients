@@ -28,6 +28,7 @@ export namespace Plugin {
         CUSTOM = 'custom',
         REPOSITORY = 'repository',
         SOURCE = 'source',
+        
     }
 
 

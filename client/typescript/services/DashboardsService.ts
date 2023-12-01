@@ -7,10 +7,11 @@ import type { PaginatedDashboardBasicList } from '../models/PaginatedDashboardBa
 import type { PatchedDashboard } from '../models/PatchedDashboard';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class DashboardsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class DashboardsService {
      * @returns PaginatedDashboardBasicList
      * @throws ApiError
      */
-    public static dashboardsList(
+    public dashboardsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedDashboardBasicList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboards/',
             path: {
@@ -43,11 +44,11 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsCreate(
+    public dashboardsCreate(
         projectId: string,
         requestBody?: Dashboard,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/dashboards/',
             path: {
@@ -64,11 +65,11 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsRetrieve(
+    public dashboardsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboards/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsUpdate(
+    public dashboardsUpdate(
         id: number,
         projectId: string,
         requestBody?: Dashboard,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/dashboards/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsPartialUpdate(
+    public dashboardsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedDashboard,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/dashboards/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class DashboardsService {
      * @returns void
      * @throws ApiError
      */
-    public static dashboardsDestroy(
+    public dashboardsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/dashboards/{id}/',
             path: {
@@ -157,12 +158,12 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsMoveTilePartialUpdate(
+    public dashboardsMoveTilePartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedDashboard,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/dashboards/{id}/move_tile/',
             path: {
@@ -180,11 +181,11 @@ export class DashboardsService {
      * @returns Dashboard
      * @throws ApiError
      */
-    public static dashboardsCreateFromTemplateJsonCreate(
+    public dashboardsCreateFromTemplateJsonCreate(
         projectId: string,
         requestBody?: Dashboard,
     ): CancelablePromise<Dashboard> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/dashboards/create_from_template_json/',
             path: {

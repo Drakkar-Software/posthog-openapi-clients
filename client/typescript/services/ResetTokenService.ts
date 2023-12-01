@@ -6,10 +6,11 @@ import type { PatchedTeam } from '../models/PatchedTeam';
 import type { Team } from '../models/Team';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ResetTokenService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * Projects for the current organization.
@@ -18,11 +19,11 @@ export class ResetTokenService {
      * @returns Team
      * @throws ApiError
      */
-    public static resetTokenPartialUpdate(
+    public resetTokenPartialUpdate(
         id: number,
         requestBody?: PatchedTeam,
     ): CancelablePromise<Team> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{id}/reset_token/',
             path: {

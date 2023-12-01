@@ -7,10 +7,11 @@ import type { PaginatedEnterpriseEventDefinitionList } from '../models/Paginated
 import type { PatchedEnterpriseEventDefinition } from '../models/PatchedEnterpriseEventDefinition';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class EventDefinitionsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class EventDefinitionsService {
      * @returns PaginatedEnterpriseEventDefinitionList
      * @throws ApiError
      */
-    public static eventDefinitionsList(
+    public eventDefinitionsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedEnterpriseEventDefinitionList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/event_definitions/',
             path: {
@@ -43,11 +44,11 @@ export class EventDefinitionsService {
      * @returns EnterpriseEventDefinition
      * @throws ApiError
      */
-    public static eventDefinitionsRetrieve(
+    public eventDefinitionsRetrieve(
         id: string,
         projectId: string,
     ): CancelablePromise<EnterpriseEventDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
             path: {
@@ -64,12 +65,12 @@ export class EventDefinitionsService {
      * @returns EnterpriseEventDefinition
      * @throws ApiError
      */
-    public static eventDefinitionsUpdate(
+    public eventDefinitionsUpdate(
         id: string,
         projectId: string,
         requestBody?: EnterpriseEventDefinition,
     ): CancelablePromise<EnterpriseEventDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
             path: {
@@ -88,12 +89,12 @@ export class EventDefinitionsService {
      * @returns EnterpriseEventDefinition
      * @throws ApiError
      */
-    public static eventDefinitionsPartialUpdate(
+    public eventDefinitionsPartialUpdate(
         id: string,
         projectId: string,
         requestBody?: PatchedEnterpriseEventDefinition,
     ): CancelablePromise<EnterpriseEventDefinition> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
             path: {
@@ -111,11 +112,11 @@ export class EventDefinitionsService {
      * @returns void
      * @throws ApiError
      */
-    public static eventDefinitionsDestroy(
+    public eventDefinitionsDestroy(
         id: string,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
             path: {

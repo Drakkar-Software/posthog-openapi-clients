@@ -7,10 +7,11 @@ import type { PaginatedActionList } from '../models/PaginatedActionList';
 import type { PatchedAction } from '../models/PatchedAction';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class ActionsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -20,13 +21,13 @@ export class ActionsService {
      * @returns PaginatedActionList
      * @throws ApiError
      */
-    public static actionsList(
+    public actionsList(
         projectId: string,
         format?: 'csv' | 'json',
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedActionList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/actions/',
             path: {
@@ -47,12 +48,12 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsCreate(
+    public actionsCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Action,
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/actions/',
             path: {
@@ -73,12 +74,12 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsRetrieve(
+    public actionsRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/actions/{id}/',
             path: {
@@ -99,13 +100,13 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsUpdate(
+    public actionsUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Action,
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/actions/{id}/',
             path: {
@@ -128,13 +129,13 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsPartialUpdate(
+    public actionsPartialUpdate(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: PatchedAction,
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/actions/{id}/',
             path: {
@@ -157,12 +158,12 @@ export class ActionsService {
      * @returns void
      * @throws ApiError
      */
-    public static actionsDestroy(
+    public actionsDestroy(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/actions/{id}/',
             path: {
@@ -185,12 +186,12 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsCountRetrieve(
+    public actionsCountRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/actions/{id}/count/',
             path: {
@@ -209,11 +210,11 @@ export class ActionsService {
      * @returns Action
      * @throws ApiError
      */
-    public static actionsPeopleRetrieve(
+    public actionsPeopleRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Action> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/actions/people/',
             path: {

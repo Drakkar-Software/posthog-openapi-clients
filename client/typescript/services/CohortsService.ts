@@ -7,10 +7,11 @@ import type { PaginatedCohortList } from '../models/PaginatedCohortList';
 import type { PatchedCohort } from '../models/PatchedCohort';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class CohortsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -19,12 +20,12 @@ export class CohortsService {
      * @returns PaginatedCohortList
      * @throws ApiError
      */
-    public static cohortsList(
+    public cohortsList(
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedCohortList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/',
             path: {
@@ -43,11 +44,11 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsCreate(
+    public cohortsCreate(
         projectId: string,
         requestBody?: Cohort,
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/cohorts/',
             path: {
@@ -64,11 +65,11 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsRetrieve(
+    public cohortsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/',
             path: {
@@ -85,12 +86,12 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsUpdate(
+    public cohortsUpdate(
         id: number,
         projectId: string,
         requestBody?: Cohort,
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/cohorts/{id}/',
             path: {
@@ -109,12 +110,12 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsPartialUpdate(
+    public cohortsPartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedCohort,
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/cohorts/{id}/',
             path: {
@@ -133,11 +134,11 @@ export class CohortsService {
      * @returns void
      * @throws ApiError
      */
-    public static cohortsDestroy(
+    public cohortsDestroy(
         id: number,
         projectId: string,
     ): CancelablePromise<void> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'DELETE',
             url: '/api/projects/{project_id}/cohorts/{id}/',
             path: {
@@ -156,11 +157,11 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsDuplicateAsStaticCohortRetrieve(
+    public cohortsDuplicateAsStaticCohortRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/duplicate_as_static_cohort/',
             path: {
@@ -177,12 +178,12 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
-    public static cohortsPersonsRetrieve(
+    public cohortsPersonsRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<Cohort> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/persons/',
             path: {

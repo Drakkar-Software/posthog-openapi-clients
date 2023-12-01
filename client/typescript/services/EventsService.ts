@@ -7,10 +7,11 @@ import type { PaginatedClickhouseEventList } from '../models/PaginatedClickhouse
 import type { Property } from '../models/Property';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
 export class EventsService {
+
+    constructor(public readonly httpRequest: BaseHttpRequest) {}
 
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -28,7 +29,7 @@ export class EventsService {
      * @returns PaginatedClickhouseEventList
      * @throws ApiError
      */
-    public static eventsList(
+    public eventsList(
         projectId: string,
         after?: string,
         before?: string,
@@ -42,7 +43,7 @@ export class EventsService {
         select?: Array<string>,
         where?: Array<string>,
     ): CancelablePromise<PaginatedClickhouseEventList> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/events/',
             path: {
@@ -71,12 +72,12 @@ export class EventsService {
      * @returns ClickhouseEvent
      * @throws ApiError
      */
-    public static eventsRetrieve(
+    public eventsRetrieve(
         id: string,
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<ClickhouseEvent> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/events/{id}/',
             path: {
@@ -95,11 +96,11 @@ export class EventsService {
      * @returns ClickhouseEvent
      * @throws ApiError
      */
-    public static eventsValuesRetrieve(
+    public eventsValuesRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
     ): CancelablePromise<ClickhouseEvent> {
-        return __request(OpenAPI, {
+        return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/events/values/',
             path: {

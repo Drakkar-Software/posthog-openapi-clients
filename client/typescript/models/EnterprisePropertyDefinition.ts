@@ -30,6 +30,7 @@ export namespace EnterprisePropertyDefinition {
         STRING = 'String',
         NUMERIC = 'Numeric',
         BOOLEAN = 'Boolean',
+        
     }
 
 
