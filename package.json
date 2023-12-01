@@ -1,8 +1,20 @@
 {
   "name": "posthog-openapi-client",
-  "description": "Posthog open api client",
+  "description": "Posthog openapi client",
   "version": "0.0.1",
   "main": "dist/client/typescript/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drakkar-Software/posthog-api"
+  },
+  "keywords": [
+    "openapi",
+    "client",
+    "typescript",
+    "posthog"
+  ],
+  "author": "Drakkar-Software",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript",
