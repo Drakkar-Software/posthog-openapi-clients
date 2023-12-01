@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "esnext",
+    "rootDir": "./",
+    "module": "CommonJS",
     "outDir": "./dist",
-    "baseUrl": "src",
-    "lib": ["dom", "dom.iterable", "es6"],
+    "lib": ["es6"],
     "declaration": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,9 +13,8 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "incremental": true,
-    "jsx": "react-jsx"
+    "incremental": true
   },
-  "include": ["client/typescript"],
+  "include": ["client/typescript/**/*", "examples/typescript/**/*"],
   "exclude": ["node_modules", "dist"]
 }

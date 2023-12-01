@@ -2,10 +2,11 @@
   "name": "posthog-openapi-client",
   "description": "Posthog open api client",
   "version": "0.0.1",
-  "private": true,
+  "main": "dist/client/typescript/index.js",
   "scripts": {
     "build": "tsc",
-    "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript"
+    "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript",
+    "start": "node dist/examples/typescript/projects.js"
   },
   "dependencies": {},
   "devDependencies": {
