@@ -18,3 +18,22 @@ pnpm build
 ```
 pnpm projects-example
 ```
+
+## Developers
+
+### Regenerate client
+Download the schema with an authenticated request:
+```
+wget https://app.posthog.com/api/schema/ -O schema.yaml
+```
+
+OR
+
+```
+wget https://eu.posthog.com/api/schema/ -O schema.yaml
+```
+
+#### Typescript
+```
+pnpx openapi-typescript-codegen --input schema.yaml --output client/typescript
+```
