@@ -2,8 +2,8 @@ name: Posthog API - Publish
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 jobs:
   publish-npm:
