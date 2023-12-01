@@ -35,3 +35,6 @@ yarn-error.log*
 # schema
 *.yaml
 *.yml
+
+# pnpm
+!pnpm-lock.yaml
