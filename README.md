@@ -6,7 +6,13 @@ export POSTHOG_PERSONAL_API_KEY=YOUR_POSTHOG_API_KEY
 export POSTHOG_BASE_URL="https://eu.posthog.com" or export POSTHOG_BASE_URL="https://app.posthog.com"
 ```
 
-## Typescript
+## Typescript ![NPM](https://img.shields.io/npm/v/posthog-openapi-client)
+
+
+### Install
+```
+pnpm install posthog-openapi-client
+```
 
 ### Setup
 ```
