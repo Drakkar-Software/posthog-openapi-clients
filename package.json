@@ -1,7 +1,7 @@
 {
   "name": "posthog-openapi-client",
   "description": "Posthog openapi client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/client/typescript/index.js",
   "repository": {
     "type": "git",
@@ -17,8 +17,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript",
-    "projects-example": "node dist/examples/typescript/projects.js"
+    "generate": "openapi-typescript-codegen --input schema.yaml --output client/typescript"
   },
   "dependencies": {},
   "devDependencies": {
