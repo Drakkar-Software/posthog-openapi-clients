@@ -5,7 +5,7 @@
   "main": "dist/client/typescript/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Drakkar-Software/posthog-api"
+    "url": "git+https://github.com/Drakkar-Software/posthog-openapi-client"
   },
   "keywords": [
     "openapi",
