@@ -4,11 +4,8 @@
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class AppMetricsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupPluginConfigId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -28,7 +25,6 @@ export class AppMetricsService {
             },
         });
     }
-
     /**
      * @param id
      * @param parentLookupPluginConfigId
@@ -51,7 +47,6 @@ export class AppMetricsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -71,7 +66,6 @@ export class AppMetricsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -91,5 +85,4 @@ export class AppMetricsService {
             },
         });
     }
-
 }

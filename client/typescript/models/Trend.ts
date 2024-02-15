@@ -2,11 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { FilterAction } from './FilterAction';
 import type { FilterEvent } from './FilterEvent';
 import type { Property } from './Property';
-
 export type Trend = {
     /**
      * Events to filter on. One of `events` or `actions` is required.
@@ -41,10 +39,26 @@ export type Trend = {
     breakdown?: string;
     /**
      * Type of property to break down on.
+     *
+     * * `event` - event
+     * * `person` - person
+     * * `cohort` - cohort
+     * * `group` - group
+     * * `session` - session
+     * * `hogql` - hogql
      */
     breakdown_type?: Trend.breakdown_type;
     /**
      * How to display the data. Will change how the data is returned.
+     *
+     * * `ActionsLineGraph` - ActionsLineGraph
+     * * `ActionsLineGraphCumulative` - ActionsLineGraphCumulative
+     * * `ActionsTable` - ActionsTable
+     * * `ActionsPie` - ActionsPie
+     * * `ActionsBar` - ActionsBar
+     * * `ActionsBarValue` - ActionsBarValue
+     * * `WorldMap` - WorldMap
+     * * `BoldNumber` - BoldNumber
      */
     display?: Trend.display;
     /**
@@ -56,11 +70,16 @@ export type Trend = {
      */
     compare?: boolean;
 };
-
 export namespace Trend {
-
     /**
      * Type of property to break down on.
+     *
+     * * `event` - event
+     * * `person` - person
+     * * `cohort` - cohort
+     * * `group` - group
+     * * `session` - session
+     * * `hogql` - hogql
      */
     export enum breakdown_type {
         EVENT = 'event',
@@ -70,9 +89,17 @@ export namespace Trend {
         SESSION = 'session',
         HOGQL = 'hogql',
     }
-
     /**
      * How to display the data. Will change how the data is returned.
+     *
+     * * `ActionsLineGraph` - ActionsLineGraph
+     * * `ActionsLineGraphCumulative` - ActionsLineGraphCumulative
+     * * `ActionsTable` - ActionsTable
+     * * `ActionsPie` - ActionsPie
+     * * `ActionsBar` - ActionsBar
+     * * `ActionsBarValue` - ActionsBarValue
+     * * `WorldMap` - WorldMap
+     * * `BoldNumber` - BoldNumber
      */
     export enum display {
         ACTIONS_LINE_GRAPH = 'ActionsLineGraph',
@@ -84,7 +111,5 @@ export namespace Trend {
         WORLD_MAP = 'WorldMap',
         BOLD_NUMBER = 'BoldNumber',
     }
-
-
 }
 

@@ -3,14 +3,10 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ExportedAsset } from '../models/ExportedAsset';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ExportsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -31,7 +27,6 @@ export class ExportsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this exported asset.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -51,7 +46,6 @@ export class ExportsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this exported asset.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -71,5 +65,4 @@ export class ExportsService {
             },
         });
     }
-
 }

@@ -5,14 +5,10 @@
 import type { PaginatedSessionRecordingPlaylistList } from '../models/PaginatedSessionRecordingPlaylistList';
 import type { PatchedSessionRecordingPlaylist } from '../models/PatchedSessionRecordingPlaylist';
 import type { SessionRecordingPlaylist } from '../models/SessionRecordingPlaylist';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class SessionRecordingPlaylistsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param createdBy
@@ -43,7 +39,6 @@ export class SessionRecordingPlaylistsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -64,7 +59,6 @@ export class SessionRecordingPlaylistsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
@@ -84,7 +78,6 @@ export class SessionRecordingPlaylistsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
@@ -108,7 +101,6 @@ export class SessionRecordingPlaylistsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
@@ -132,7 +124,6 @@ export class SessionRecordingPlaylistsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -156,7 +147,6 @@ export class SessionRecordingPlaylistsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
@@ -176,7 +166,6 @@ export class SessionRecordingPlaylistsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param sessionRecordingId
@@ -203,7 +192,6 @@ export class SessionRecordingPlaylistsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param sessionRecordingId
@@ -226,5 +214,4 @@ export class SessionRecordingPlaylistsService {
             },
         });
     }
-
 }

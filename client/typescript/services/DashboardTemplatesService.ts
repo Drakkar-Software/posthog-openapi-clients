@@ -5,14 +5,10 @@
 import type { DashboardTemplate } from '../models/DashboardTemplate';
 import type { PaginatedDashboardTemplateList } from '../models/PaginatedDashboardTemplateList';
 import type { PatchedDashboardTemplate } from '../models/PatchedDashboardTemplate';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class DashboardTemplatesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class DashboardTemplatesService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -58,7 +53,6 @@ export class DashboardTemplatesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -78,7 +72,6 @@ export class DashboardTemplatesService {
             },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -102,7 +95,6 @@ export class DashboardTemplatesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -126,7 +118,6 @@ export class DashboardTemplatesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id
@@ -150,7 +141,6 @@ export class DashboardTemplatesService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns DashboardTemplate
@@ -167,5 +157,4 @@ export class DashboardTemplatesService {
             },
         });
     }
-
 }

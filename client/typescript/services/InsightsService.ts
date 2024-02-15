@@ -9,14 +9,10 @@ import type { PaginatedInsightList } from '../models/PaginatedInsightList';
 import type { PatchedInsight } from '../models/PatchedInsight';
 import type { Trend } from '../models/Trend';
 import type { TrendResults } from '../models/TrendResults';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class InsightsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param createdBy
@@ -50,7 +46,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -76,7 +71,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -118,7 +112,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -147,7 +140,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -176,7 +168,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this insight.
@@ -205,7 +196,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -230,7 +220,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -259,7 +248,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -281,7 +269,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -307,7 +294,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -329,7 +315,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -355,7 +340,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -377,7 +361,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -403,7 +386,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Returns basic details about the last 5 insights viewed by this user. Most recently viewed first.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -426,7 +408,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -448,7 +429,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -474,7 +454,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -496,7 +475,31 @@ export class InsightsService {
             },
         });
     }
-
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param format
+     * @param requestBody
+     * @returns Insight
+     * @throws ApiError
+     */
+    public insightsRetentionCreate(
+        projectId: string,
+        format?: 'csv' | 'json',
+        requestBody?: Insight,
+    ): CancelablePromise<Insight> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/insights/retention/',
+            path: {
+                'project_id': projectId,
+            },
+            query: {
+                'format': format,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -522,7 +525,6 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -544,7 +546,6 @@ export class InsightsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -570,5 +571,4 @@ export class InsightsService {
             mediaType: 'application/json',
         });
     }
-
 }

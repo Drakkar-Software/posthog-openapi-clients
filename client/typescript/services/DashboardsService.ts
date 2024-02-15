@@ -5,14 +5,10 @@
 import type { Dashboard } from '../models/Dashboard';
 import type { PaginatedDashboardBasicList } from '../models/PaginatedDashboardBasicList';
 import type { PatchedDashboard } from '../models/PatchedDashboard';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class DashboardsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class DashboardsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -58,7 +53,6 @@ export class DashboardsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this dashboard.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -78,7 +72,6 @@ export class DashboardsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this dashboard.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -102,7 +95,6 @@ export class DashboardsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this dashboard.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -126,7 +118,6 @@ export class DashboardsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this dashboard.
@@ -150,7 +141,6 @@ export class DashboardsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this dashboard.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -174,7 +164,6 @@ export class DashboardsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -195,5 +184,4 @@ export class DashboardsService {
             mediaType: 'application/json',
         });
     }
-
 }

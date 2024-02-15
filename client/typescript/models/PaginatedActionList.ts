@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { Action } from './Action';
-
 export type PaginatedActionList = {
     count?: number;
     next?: string | null;

@@ -6,7 +6,7 @@ async function fetchProjects() {
     TOKEN: process.env.POSTHOG_PERSONAL_API_KEY,
   });
 
-  const projects = await client.projects.list();
+  const projects = await client.projects.list2();
   console.log(projects);
 }
 

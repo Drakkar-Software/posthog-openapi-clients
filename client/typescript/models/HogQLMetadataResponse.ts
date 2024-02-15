@@ -1,0 +1,15 @@
+/* generated using openapi-typescript-codegen -- do no edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+import type { HogQLNotice } from './HogQLNotice';
+export type HogQLMetadataResponse = {
+    errors: Array<HogQLNotice>;
+    inputExpr?: (string | null);
+    inputSelect?: (string | null);
+    isValid?: (boolean | null);
+    isValidView?: (boolean | null);
+    notices: Array<HogQLNotice>;
+    warnings: Array<HogQLNotice>;
+};
+

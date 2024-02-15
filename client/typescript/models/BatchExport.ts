@@ -2,20 +2,28 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { BatchExportDestination } from './BatchExportDestination';
 import type { BatchExportRun } from './BatchExportRun';
-
 /**
  * Serializer for a BatchExport model.
  */
 export type BatchExport = {
     readonly id: string;
     /**
+     * The team this belongs to.
+     */
+    readonly team_id: number;
+    /**
      * A human-readable name for this BatchExport.
      */
     name: string;
     destination: BatchExportDestination;
+    /**
+     * * `hour` - hour
+     * * `day` - day
+     * * `week` - week
+     * * `every 5 minutes` - every 5 minutes
+     */
     interval: BatchExport.interval;
     /**
      * Whether this BatchExport is paused or not.
@@ -42,17 +50,24 @@ export type BatchExport = {
      */
     end_at?: string | null;
     readonly latest_runs: Array<BatchExportRun>;
+    hogql_query?: string;
+    /**
+     * A schema of custom fields to select when exporting data.
+     */
+    readonly schema: any;
 };
-
 export namespace BatchExport {
-
+    /**
+     * * `hour` - hour
+     * * `day` - day
+     * * `week` - week
+     * * `every 5 minutes` - every 5 minutes
+     */
     export enum interval {
         HOUR = 'hour',
         DAY = 'day',
         WEEK = 'week',
         EVERY_5_MINUTES = 'every 5 minutes',
     }
-
-
 }
 

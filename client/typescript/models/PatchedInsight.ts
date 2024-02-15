@@ -2,10 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { DashboardTileBasic } from './DashboardTileBasic';
 import type { UserBasic } from './UserBasic';
-
 /**
  * Simplified serializer to speed response times when loading large amounts of objects.
  */
@@ -14,11 +12,11 @@ export type PatchedInsight = {
     readonly short_id?: string;
     name?: string | null;
     derived_name?: string | null;
-    filters?: Record<string, any>;
+    filters?: any;
     /**
      * Query node JSON string
      */
-    query?: Record<string, any> | null;
+    query?: any;
     order?: number | null;
     deleted?: boolean;
     /**
@@ -69,19 +67,14 @@ export type PatchedInsight = {
     readonly timezone?: string;
     readonly is_cached?: string;
 };
-
 export namespace PatchedInsight {
-
     export enum effective_restriction_level {
         '_21' = 21,
         '_37' = 37,
     }
-
     export enum effective_privilege_level {
         '_21' = 21,
         '_37' = 37,
     }
-
-
 }
 

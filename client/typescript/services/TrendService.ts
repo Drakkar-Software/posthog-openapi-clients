@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { Trend } from '../models/Trend';
 import type { TrendResults } from '../models/TrendResults';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class TrendService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -37,5 +33,4 @@ export class TrendService {
             mediaType: 'application/json',
         });
     }
-
 }

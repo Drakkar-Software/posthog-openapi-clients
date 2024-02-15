@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { PaginatedSessionRecordingList } from '../models/PaginatedSessionRecordingList';
 import type { SessionRecording } from '../models/SessionRecording';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class SessionRecordingsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -36,7 +32,6 @@ export class SessionRecordingsService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this session recording.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -56,7 +51,6 @@ export class SessionRecordingsService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this session recording.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -76,7 +70,6 @@ export class SessionRecordingsService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this session recording.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -100,7 +93,6 @@ export class SessionRecordingsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Snapshots can be loaded from multiple places:
      * 1. From S3 if the session is older than our ingestion limit. This will be multiple files that can be streamed to the client
@@ -129,7 +121,29 @@ export class SessionRecordingsService {
             },
         });
     }
-
+    /**
+     * @param id A UUID string identifying this session recording.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns SessionRecording
+     * @throws ApiError
+     */
+    public sessionRecordingsSummarizeCreate(
+        id: string,
+        projectId: string,
+        requestBody?: SessionRecording,
+    ): CancelablePromise<SessionRecording> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/session_recordings/{id}/summarize/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
     /**
      *
      * Gets a list of event ids that match the given session recording filter.
@@ -151,7 +165,6 @@ export class SessionRecordingsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns SessionRecording
@@ -168,5 +181,4 @@ export class SessionRecordingsService {
             },
         });
     }
-
 }

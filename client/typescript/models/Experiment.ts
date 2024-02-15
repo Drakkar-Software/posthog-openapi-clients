@@ -2,10 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { MinimalFeatureFlag } from './MinimalFeatureFlag';
 import type { UserBasic } from './UserBasic';
-
 export type Experiment = {
     readonly id: number;
     name: string;
@@ -14,9 +12,9 @@ export type Experiment = {
     end_date?: string | null;
     feature_flag_key: string;
     readonly feature_flag: MinimalFeatureFlag;
-    parameters?: Record<string, any> | null;
-    secondary_metrics?: Record<string, any> | null;
-    filters?: Record<string, any>;
+    parameters?: any;
+    secondary_metrics?: any;
+    filters?: any;
     archived?: boolean;
     readonly created_by: UserBasic;
     readonly created_at: string;

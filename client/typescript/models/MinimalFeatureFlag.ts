@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 export type MinimalFeatureFlag = {
     readonly id: number;
     readonly team_id: number;

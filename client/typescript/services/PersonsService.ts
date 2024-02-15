@@ -6,14 +6,10 @@ import type { PaginatedPersonList } from '../models/PaginatedPersonList';
 import type { PatchedPerson } from '../models/PatchedPerson';
 import type { Person } from '../models/Person';
 import type { Property } from '../models/Property';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class PersonsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -54,7 +50,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -80,7 +75,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * Only for setting properties on the person. "properties" from the request data will be updated via a "$set" event.
      * This means that only the properties listed will be updated, but other properties won't be removed nor updated.
@@ -112,7 +106,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -142,7 +135,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -171,7 +163,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -197,7 +188,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param unset Specify the property key to delete
@@ -230,7 +220,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -256,7 +245,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -286,7 +274,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param id A unique integer value identifying this person.
@@ -322,7 +309,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -345,7 +331,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -368,7 +353,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -391,7 +375,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -418,7 +401,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -441,7 +423,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -468,7 +449,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -491,7 +471,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -514,7 +493,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -541,7 +519,6 @@ export class PersonsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -564,7 +541,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -587,7 +563,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -610,7 +585,6 @@ export class PersonsService {
             },
         });
     }
-
     /**
      * To create or update persons, use a PostHog library of your choice and [use an identify call](/docs/integrate/identifying-users). This API endpoint is only for reading and deleting.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -633,5 +607,4 @@ export class PersonsService {
             },
         });
     }
-
 }

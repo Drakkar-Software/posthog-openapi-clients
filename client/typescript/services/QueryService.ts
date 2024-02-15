@@ -2,48 +2,32 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { QueryRequest } from '../models/QueryRequest';
+import type { QueryResponseAlternative } from '../models/QueryResponseAlternative';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class QueryService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param async (Experimental) Whether to run the query asynchronously. Defaults to False. If True, the `id` of the query can be used to check the status and to cancel it.
-     * @param clientQueryId Client provided query ID. Can be used to retrieve the status or cancel the query.
-     * @param query Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.
-     *
-     * Example payload:
-     * ```
-     * {"query": {"kind": "HogQLQuery", "query": "select * from events limit 100"}}
-     * ```
-     *
-     * For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).
-     * @returns any Query results
+     * @param requestBody
+     * @returns QueryResponseAlternative
      * @throws ApiError
      */
     public queryCreate(
         projectId: string,
-        async?: boolean,
-        clientQueryId?: string,
-        query?: string,
-    ): CancelablePromise<any> {
+        requestBody: QueryRequest,
+    ): CancelablePromise<QueryResponseAlternative> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/query/',
             path: {
                 'project_id': projectId,
             },
-            query: {
-                'async': async,
-                'client_query_id': clientQueryId,
-                'query': query,
-            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
-
     /**
      * (Experimental)
      * @param id
@@ -64,7 +48,6 @@ export class QueryService {
             },
         });
     }
-
     /**
      * (Experimental)
      * @param id
@@ -85,7 +68,6 @@ export class QueryService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
@@ -102,5 +84,4 @@ export class QueryService {
             },
         });
     }
-
 }

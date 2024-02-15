@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { ExplicitTeamMember } from '../models/ExplicitTeamMember';
 import type { PatchedExplicitTeamMember } from '../models/PatchedExplicitTeamMember';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ExplicitMembersService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns ExplicitTeamMember
@@ -28,7 +24,6 @@ export class ExplicitMembersService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -49,7 +44,6 @@ export class ExplicitMembersService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentMembershipUserUuid
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -69,7 +63,6 @@ export class ExplicitMembersService {
             },
         });
     }
-
     /**
      * @param parentMembershipUserUuid
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -93,7 +86,6 @@ export class ExplicitMembersService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentMembershipUserUuid
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -117,7 +109,6 @@ export class ExplicitMembersService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentMembershipUserUuid
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -137,5 +128,4 @@ export class ExplicitMembersService {
             },
         });
     }
-
 }

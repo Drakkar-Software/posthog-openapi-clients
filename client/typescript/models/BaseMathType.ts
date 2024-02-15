@@ -1,0 +1,11 @@
+/* generated using openapi-typescript-codegen -- do no edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export enum BaseMathType {
+    TOTAL = 'total',
+    DAU = 'dau',
+    WEEKLY_ACTIVE = 'weekly_active',
+    MONTHLY_ACTIVE = 'monthly_active',
+    UNIQUE_SESSION = 'unique_session',
+}

@@ -6,14 +6,10 @@ import type { PaginatedSurveyList } from '../models/PaginatedSurveyList';
 import type { PatchedSurveySerializerCreateUpdateOnly } from '../models/PatchedSurveySerializerCreateUpdateOnly';
 import type { Survey } from '../models/Survey';
 import type { SurveySerializerCreateUpdateOnly } from '../models/SurveySerializerCreateUpdateOnly';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class SurveysService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -38,7 +34,6 @@ export class SurveysService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -59,7 +54,6 @@ export class SurveysService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this survey.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -79,7 +73,6 @@ export class SurveysService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this survey.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -103,7 +96,6 @@ export class SurveysService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this survey.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -127,7 +119,6 @@ export class SurveysService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this survey.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -147,7 +138,6 @@ export class SurveysService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns Survey
@@ -164,5 +154,4 @@ export class SurveysService {
             },
         });
     }
-
 }

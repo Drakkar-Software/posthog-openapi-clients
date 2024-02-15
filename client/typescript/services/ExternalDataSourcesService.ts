@@ -5,14 +5,10 @@
 import type { ExternalDataSourceSerializers } from '../models/ExternalDataSourceSerializers';
 import type { PaginatedExternalDataSourceSerializersList } from '../models/PaginatedExternalDataSourceSerializersList';
 import type { PatchedExternalDataSourceSerializers } from '../models/PatchedExternalDataSourceSerializers';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ExternalDataSourcesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -41,7 +37,6 @@ export class ExternalDataSourcesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -63,7 +58,6 @@ export class ExternalDataSourcesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param id A UUID string identifying this external data source.
@@ -84,7 +78,6 @@ export class ExternalDataSourcesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param id A UUID string identifying this external data source.
@@ -109,7 +102,6 @@ export class ExternalDataSourcesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param id A UUID string identifying this external data source.
@@ -134,7 +126,6 @@ export class ExternalDataSourcesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param id A UUID string identifying this external data source.
@@ -155,7 +146,6 @@ export class ExternalDataSourcesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete External data Sources.
      * @param id A UUID string identifying this external data source.
@@ -180,5 +170,21 @@ export class ExternalDataSourcesService {
             mediaType: 'application/json',
         });
     }
-
+    /**
+     * Create, Read, Update and Delete External data Sources.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns ExternalDataSourceSerializers
+     * @throws ApiError
+     */
+    public externalDataSourcesDatabaseSchemaRetrieve(
+        projectId: string,
+    ): CancelablePromise<ExternalDataSourceSerializers> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/external_data_sources/database_schema/',
+            path: {
+                'project_id': projectId,
+            },
+        });
+    }
 }

@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 /**
  * Serializer for a BatchExportRun model.
  */
@@ -10,6 +9,15 @@ export type BatchExportRun = {
     readonly id: string;
     /**
      * The status of this run.
+     *
+     * * `Cancelled` - Cancelled
+     * * `Completed` - Completed
+     * * `ContinuedAsNew` - Continuedasnew
+     * * `Failed` - Failed
+     * * `Terminated` - Terminated
+     * * `TimedOut` - Timedout
+     * * `Running` - Running
+     * * `Starting` - Starting
      */
     status: BatchExportRun.status;
     /**
@@ -49,11 +57,18 @@ export type BatchExportRun = {
      */
     readonly batch_export: string;
 };
-
 export namespace BatchExportRun {
-
     /**
      * The status of this run.
+     *
+     * * `Cancelled` - Cancelled
+     * * `Completed` - Completed
+     * * `ContinuedAsNew` - Continuedasnew
+     * * `Failed` - Failed
+     * * `Terminated` - Terminated
+     * * `TimedOut` - Timedout
+     * * `Running` - Running
+     * * `Starting` - Starting
      */
     export enum status {
         CANCELLED = 'Cancelled',
@@ -65,7 +80,5 @@ export namespace BatchExportRun {
         RUNNING = 'Running',
         STARTING = 'Starting',
     }
-
-
 }
 

@@ -5,14 +5,10 @@
 import type { Annotation } from '../models/Annotation';
 import type { PaginatedAnnotationList } from '../models/PaginatedAnnotationList';
 import type { PatchedAnnotation } from '../models/PatchedAnnotation';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class AnnotationsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -41,7 +37,6 @@ export class AnnotationsService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -63,7 +58,6 @@ export class AnnotationsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
      * @param id A unique integer value identifying this annotation.
@@ -84,7 +78,6 @@ export class AnnotationsService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
      * @param id A unique integer value identifying this annotation.
@@ -109,7 +102,6 @@ export class AnnotationsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/user-guides/annotations) for more information on annotations.
      * @param id A unique integer value identifying this annotation.
@@ -134,7 +126,6 @@ export class AnnotationsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this annotation.
@@ -158,5 +149,4 @@ export class AnnotationsService {
             },
         });
     }
-
 }

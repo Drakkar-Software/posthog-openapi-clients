@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { OrganizationInvite } from '../models/OrganizationInvite';
 import type { PaginatedOrganizationInviteList } from '../models/PaginatedOrganizationInviteList';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class InvitesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupOrganizationId
      * @param limit Number of results to return per page.
@@ -36,7 +32,6 @@ export class InvitesService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -57,7 +52,6 @@ export class InvitesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this organization invite.
      * @param parentLookupOrganizationId
@@ -77,7 +71,6 @@ export class InvitesService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -98,5 +91,4 @@ export class InvitesService {
             mediaType: 'application/json',
         });
     }
-
 }

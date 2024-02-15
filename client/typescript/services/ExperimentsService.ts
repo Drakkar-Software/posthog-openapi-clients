@@ -5,14 +5,10 @@
 import type { Experiment } from '../models/Experiment';
 import type { PaginatedExperimentList } from '../models/PaginatedExperimentList';
 import type { PatchedExperiment } from '../models/PatchedExperiment';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ExperimentsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class ExperimentsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -58,7 +53,6 @@ export class ExperimentsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -78,7 +72,6 @@ export class ExperimentsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -102,7 +95,6 @@ export class ExperimentsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -126,7 +118,6 @@ export class ExperimentsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -146,7 +137,6 @@ export class ExperimentsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -166,7 +156,6 @@ export class ExperimentsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -186,7 +175,6 @@ export class ExperimentsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns Experiment
@@ -203,5 +191,4 @@ export class ExperimentsService {
             },
         });
     }
-
 }

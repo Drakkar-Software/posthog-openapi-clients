@@ -5,14 +5,10 @@
 import type { OrganizationDomain } from '../models/OrganizationDomain';
 import type { PaginatedOrganizationDomainList } from '../models/PaginatedOrganizationDomainList';
 import type { PatchedOrganizationDomain } from '../models/PatchedOrganizationDomain';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class DomainsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupOrganizationId
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class DomainsService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -58,7 +53,6 @@ export class DomainsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this domain.
      * @param parentLookupOrganizationId
@@ -78,7 +72,6 @@ export class DomainsService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this domain.
      * @param parentLookupOrganizationId
@@ -102,7 +95,6 @@ export class DomainsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this domain.
      * @param parentLookupOrganizationId
@@ -126,7 +118,6 @@ export class DomainsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this domain.
      * @param parentLookupOrganizationId
@@ -146,7 +137,6 @@ export class DomainsService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this domain.
      * @param parentLookupOrganizationId
@@ -170,5 +160,4 @@ export class DomainsService {
             mediaType: 'application/json',
         });
     }
-
 }

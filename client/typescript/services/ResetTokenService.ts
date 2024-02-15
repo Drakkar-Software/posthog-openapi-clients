@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { PatchedTeam } from '../models/PatchedTeam';
 import type { Team } from '../models/Team';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ResetTokenService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Projects for the current organization.
      * @param id A unique integer value identifying this team.
@@ -33,5 +29,4 @@ export class ResetTokenService {
             mediaType: 'application/json',
         });
     }
-
 }

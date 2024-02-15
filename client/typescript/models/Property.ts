@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { PropertyItem } from './PropertyItem';
-
 export type Property = {
     /**
      *
@@ -47,13 +45,14 @@ export type Property = {
                                              * }
                                              * ```
                                              *
+                                             *
+                                             * * `AND` - AND
+                                             * * `OR` - OR
                                              */
                                             type?: Property.type;
                                             values: Array<PropertyItem>;
                                         };
-
                                         export namespace Property {
-
                                             /**
                                              *
                                              * You can use a simplified version:
@@ -95,12 +94,13 @@ export type Property = {
                                                                                      * }
                                                                                      * ```
                                                                                      *
+                                                                                     *
+                                                                                     * * `AND` - AND
+                                                                                     * * `OR` - OR
                                                                                      */
                                                                                     export enum type {
                                                                                         AND = 'AND',
                                                                                         OR = 'OR',
                                                                                     }
-
-
                                                                                 }
 

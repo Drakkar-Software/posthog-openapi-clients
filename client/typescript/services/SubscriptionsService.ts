@@ -5,14 +5,10 @@
 import type { PaginatedSubscriptionList } from '../models/PaginatedSubscriptionList';
 import type { PatchedSubscription } from '../models/PatchedSubscription';
 import type { Subscription } from '../models/Subscription';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class SubscriptionsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class SubscriptionsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -58,7 +53,6 @@ export class SubscriptionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this subscription.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -78,7 +72,6 @@ export class SubscriptionsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this subscription.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -102,7 +95,6 @@ export class SubscriptionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this subscription.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -126,7 +118,6 @@ export class SubscriptionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this subscription.
@@ -150,5 +141,4 @@ export class SubscriptionsService {
             },
         });
     }
-
 }

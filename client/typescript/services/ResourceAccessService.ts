@@ -5,14 +5,10 @@
 import type { OrganizationResourceAccess } from '../models/OrganizationResourceAccess';
 import type { PaginatedOrganizationResourceAccessList } from '../models/PaginatedOrganizationResourceAccessList';
 import type { PatchedOrganizationResourceAccess } from '../models/PatchedOrganizationResourceAccess';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ResourceAccessService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupOrganizationId
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class ResourceAccessService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -58,7 +53,6 @@ export class ResourceAccessService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this organization resource access.
      * @param parentLookupOrganizationId
@@ -78,7 +72,6 @@ export class ResourceAccessService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this organization resource access.
      * @param parentLookupOrganizationId
@@ -102,7 +95,6 @@ export class ResourceAccessService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this organization resource access.
      * @param parentLookupOrganizationId
@@ -126,7 +118,6 @@ export class ResourceAccessService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this organization resource access.
      * @param parentLookupOrganizationId
@@ -146,5 +137,4 @@ export class ResourceAccessService {
             },
         });
     }
-
 }

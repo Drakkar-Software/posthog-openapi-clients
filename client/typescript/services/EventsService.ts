@@ -5,15 +5,18 @@
 import type { ClickhouseEvent } from '../models/ClickhouseEvent';
 import type { PaginatedClickhouseEventList } from '../models/PaginatedClickhouseEventList';
 import type { Property } from '../models/Property';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class EventsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
+     *
+     * This endpoint allows you to list and filter events.
+     * It is effectively deprecated and is kept only for backwards compatibility.
+     * If you ever ask about it you will be advised to not use it...
+     * If you want to ad-hoc list or aggregate events, use the Query endpoint instead.
+     * If you want to export all events or many pages of events you should use our CDP/Batch Exports products instead.
+     *
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param after Only return events with a timestamp after this time.
      * @param before Only return events with a timestamp before this time.
@@ -64,7 +67,6 @@ export class EventsService {
             },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -89,7 +91,6 @@ export class EventsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -111,5 +112,4 @@ export class EventsService {
             },
         });
     }
-
 }

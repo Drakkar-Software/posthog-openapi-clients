@@ -6,14 +6,10 @@ import type { PaginatedPluginConfigList } from '../models/PaginatedPluginConfigL
 import type { PaginatedPluginLogEntryList } from '../models/PaginatedPluginLogEntryList';
 import type { PatchedPluginConfig } from '../models/PatchedPluginConfig';
 import type { PluginConfig } from '../models/PluginConfig';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class PluginConfigsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -38,7 +34,6 @@ export class PluginConfigsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -59,7 +54,6 @@ export class PluginConfigsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentLookupPluginConfigId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -87,7 +81,6 @@ export class PluginConfigsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -107,7 +100,6 @@ export class PluginConfigsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -131,7 +123,6 @@ export class PluginConfigsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -155,7 +146,6 @@ export class PluginConfigsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -175,7 +165,6 @@ export class PluginConfigsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -195,7 +184,6 @@ export class PluginConfigsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -219,7 +207,6 @@ export class PluginConfigsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -240,5 +227,4 @@ export class PluginConfigsService {
             mediaType: 'application/json',
         });
     }
-
 }

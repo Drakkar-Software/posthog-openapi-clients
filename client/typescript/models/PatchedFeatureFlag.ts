@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { UserBasic } from './UserBasic';
-
 /**
  * Serializer mixin that resolves appropriate response for tags depending on license.
  */
@@ -26,7 +24,7 @@ export type PatchedFeatureFlag = {
     readonly experiment_set?: Array<number>;
     readonly surveys?: Record<string, any>;
     readonly features?: Record<string, any>;
-    rollback_conditions?: Record<string, any> | null;
+    rollback_conditions?: any;
     performed_rollback?: boolean | null;
     readonly can_edit?: boolean;
     tags?: Array<any>;

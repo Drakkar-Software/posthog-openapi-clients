@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 export type PropertyItem = {
     /**
      * Key of the property you're filtering on. For example `email` or `$current_url`
@@ -12,12 +11,57 @@ export type PropertyItem = {
      * Value of your filter. For example `test@example.com` or `https://example.com/test/`. Can be an array for an OR query, like `["test@example.com","ok@example.com"]`
      */
     value: string;
+    /**
+     * * `exact` - exact
+     * * `is_not` - is_not
+     * * `icontains` - icontains
+     * * `not_icontains` - not_icontains
+     * * `regex` - regex
+     * * `not_regex` - not_regex
+     * * `gt` - gt
+     * * `lt` - lt
+     * * `gte` - gte
+     * * `lte` - lte
+     * * `is_set` - is_set
+     * * `is_not_set` - is_not_set
+     * * `is_date_exact` - is_date_exact
+     * * `is_date_after` - is_date_after
+     * * `is_date_before` - is_date_before
+     */
     operator?: PropertyItem.operator | null;
+    /**
+     * * `event` - event
+     * * `person` - person
+     * * `cohort` - cohort
+     * * `element` - element
+     * * `static-cohort` - static-cohort
+     * * `precalculated-cohort` - precalculated-cohort
+     * * `group` - group
+     * * `recording` - recording
+     * * `behavioral` - behavioral
+     * * `session` - session
+     * * `hogql` - hogql
+     */
     type?: PropertyItem.type;
 };
-
 export namespace PropertyItem {
-
+    /**
+     * * `exact` - exact
+     * * `is_not` - is_not
+     * * `icontains` - icontains
+     * * `not_icontains` - not_icontains
+     * * `regex` - regex
+     * * `not_regex` - not_regex
+     * * `gt` - gt
+     * * `lt` - lt
+     * * `gte` - gte
+     * * `lte` - lte
+     * * `is_set` - is_set
+     * * `is_not_set` - is_not_set
+     * * `is_date_exact` - is_date_exact
+     * * `is_date_after` - is_date_after
+     * * `is_date_before` - is_date_before
+     */
     export enum operator {
         EXACT = 'exact',
         IS_NOT = 'is_not',
@@ -34,11 +78,21 @@ export namespace PropertyItem {
         IS_DATE_EXACT = 'is_date_exact',
         IS_DATE_AFTER = 'is_date_after',
         IS_DATE_BEFORE = 'is_date_before',
-        IS_RELATIVE_DATE_AFTER = 'is_relative_date_after',
-        IS_RELATIVE_DATE_BEFORE = 'is_relative_date_before',
         
     }
-
+    /**
+     * * `event` - event
+     * * `person` - person
+     * * `cohort` - cohort
+     * * `element` - element
+     * * `static-cohort` - static-cohort
+     * * `precalculated-cohort` - precalculated-cohort
+     * * `group` - group
+     * * `recording` - recording
+     * * `behavioral` - behavioral
+     * * `session` - session
+     * * `hogql` - hogql
+     */
     export enum type {
         EVENT = 'event',
         PERSON = 'person',
@@ -53,7 +107,5 @@ export namespace PropertyItem {
         HOGQL = 'hogql',
         
     }
-
-
 }
 

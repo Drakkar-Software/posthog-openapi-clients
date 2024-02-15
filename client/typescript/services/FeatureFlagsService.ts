@@ -7,14 +7,10 @@ import type { FeatureFlagRoleAccess } from '../models/FeatureFlagRoleAccess';
 import type { PaginatedFeatureFlagList } from '../models/PaginatedFeatureFlagList';
 import type { PaginatedFeatureFlagRoleAccessList } from '../models/PaginatedFeatureFlagRoleAccessList';
 import type { PatchedFeatureFlag } from '../models/PatchedFeatureFlag';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class FeatureFlagsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Retrieves all feature flags for a given organization and key.
      * @param featureFlagKey
@@ -35,7 +31,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Retrieves all feature flags for a given organization and key.
      * @param parentLookupOrganizationId
@@ -53,7 +48,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -81,7 +75,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -105,7 +98,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentLookupFeatureFlagId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -133,7 +125,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * @param parentLookupFeatureFlagId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -157,7 +148,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this feature flag role access.
      * @param parentLookupFeatureFlagId
@@ -180,7 +170,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this feature flag role access.
      * @param parentLookupFeatureFlagId
@@ -203,7 +192,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -226,7 +214,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -253,7 +240,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -280,7 +266,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this feature flag.
@@ -304,7 +289,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -327,7 +311,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -354,7 +337,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -381,7 +363,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -408,7 +389,6 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -428,7 +408,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -448,7 +427,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -468,7 +446,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -488,7 +465,6 @@ export class FeatureFlagsService {
             },
         });
     }
-
     /**
      * Create, read, update and delete feature flags. [See docs](https://posthog.com/docs/user-guides/feature-flags) for more information on feature flags.
      *
@@ -512,5 +488,4 @@ export class FeatureFlagsService {
             mediaType: 'application/json',
         });
     }
-
 }

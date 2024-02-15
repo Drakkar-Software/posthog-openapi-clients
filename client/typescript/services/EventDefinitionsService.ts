@@ -2,52 +2,36 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { EnterpriseEventDefinition } from '../models/EnterpriseEventDefinition';
-import type { PaginatedEnterpriseEventDefinitionList } from '../models/PaginatedEnterpriseEventDefinitionList';
-import type { PatchedEnterpriseEventDefinition } from '../models/PatchedEnterpriseEventDefinition';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class EventDefinitionsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedEnterpriseEventDefinitionList
+     * @returns any No response body
      * @throws ApiError
      */
-    public eventDefinitionsList(
+    public eventDefinitionsRetrieve(
         projectId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedEnterpriseEventDefinitionList> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/event_definitions/',
             path: {
                 'project_id': projectId,
             },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns EnterpriseEventDefinition
+     * @returns any No response body
      * @throws ApiError
      */
-    public eventDefinitionsRetrieve(
+    public eventDefinitionsRetrieve2(
         id: string,
         projectId: string,
-    ): CancelablePromise<EnterpriseEventDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
@@ -57,19 +41,16 @@ export class EventDefinitionsService {
             },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param requestBody
-     * @returns EnterpriseEventDefinition
+     * @returns any No response body
      * @throws ApiError
      */
     public eventDefinitionsUpdate(
         id: string,
         projectId: string,
-        requestBody?: EnterpriseEventDefinition,
-    ): CancelablePromise<EnterpriseEventDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
@@ -77,23 +58,18 @@ export class EventDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param requestBody
-     * @returns EnterpriseEventDefinition
+     * @returns any No response body
      * @throws ApiError
      */
     public eventDefinitionsPartialUpdate(
         id: string,
         projectId: string,
-        requestBody?: PatchedEnterpriseEventDefinition,
-    ): CancelablePromise<EnterpriseEventDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/event_definitions/{id}/',
@@ -101,11 +77,8 @@ export class EventDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -125,5 +98,4 @@ export class EventDefinitionsService {
             },
         });
     }
-
 }

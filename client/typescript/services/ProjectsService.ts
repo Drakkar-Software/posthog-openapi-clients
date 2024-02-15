@@ -5,14 +5,10 @@
 import type { PaginatedTeamBasicList } from '../models/PaginatedTeamBasicList';
 import type { PatchedTeam } from '../models/PatchedTeam';
 import type { Team } from '../models/Team';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ProjectsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Projects for the current organization.
      * @param limit Number of results to return per page.
@@ -20,7 +16,7 @@ export class ProjectsService {
      * @returns PaginatedTeamBasicList
      * @throws ApiError
      */
-    public list(
+    public list2(
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedTeamBasicList> {
@@ -33,14 +29,13 @@ export class ProjectsService {
             },
         });
     }
-
     /**
      * Projects for the current organization.
      * @param requestBody
      * @returns Team
      * @throws ApiError
      */
-    public create(
+    public create2(
         requestBody?: Team,
     ): CancelablePromise<Team> {
         return this.httpRequest.request({
@@ -50,14 +45,13 @@ export class ProjectsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Projects for the current organization.
      * @param id A unique integer value identifying this team.
      * @returns Team
      * @throws ApiError
      */
-    public retrieve(
+    public retrieve2(
         id: number,
     ): CancelablePromise<Team> {
         return this.httpRequest.request({
@@ -68,7 +62,6 @@ export class ProjectsService {
             },
         });
     }
-
     /**
      * Projects for the current organization.
      * @param id A unique integer value identifying this team.
@@ -76,7 +69,7 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public update(
+    public update2(
         id: number,
         requestBody?: Team,
     ): CancelablePromise<Team> {
@@ -90,7 +83,6 @@ export class ProjectsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Projects for the current organization.
      * @param id A unique integer value identifying this team.
@@ -98,7 +90,7 @@ export class ProjectsService {
      * @returns Team
      * @throws ApiError
      */
-    public partialUpdate(
+    public partialUpdate2(
         id: number,
         requestBody?: PatchedTeam,
     ): CancelablePromise<Team> {
@@ -112,14 +104,13 @@ export class ProjectsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Projects for the current organization.
      * @param id A unique integer value identifying this team.
      * @returns void
      * @throws ApiError
      */
-    public destroy(
+    public destroy2(
         id: number,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
@@ -130,5 +121,4 @@ export class ProjectsService {
             },
         });
     }
-
 }

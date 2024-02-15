@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { UserBasic } from './UserBasic';
-
 export type SessionRecordingPlaylist = {
     readonly id: number;
     readonly short_id: string;
@@ -15,7 +13,7 @@ export type SessionRecordingPlaylist = {
     readonly created_at: string;
     readonly created_by: UserBasic;
     deleted?: boolean;
-    filters?: Record<string, any>;
+    filters?: any;
     readonly last_modified_at: string;
     readonly last_modified_by: UserBasic;
 };

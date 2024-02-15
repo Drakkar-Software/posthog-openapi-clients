@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { RoleMembership } from './RoleMembership';
-
 export type PaginatedRoleMembershipList = {
     count?: number;
     next?: string | null;

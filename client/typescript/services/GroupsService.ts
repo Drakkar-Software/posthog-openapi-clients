@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { Group } from '../models/Group';
 import type { PaginatedGroupList } from '../models/PaginatedGroupList';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class GroupsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * List all groups of a specific group type. You must pass ?group_type_index= in the URL. To get a list of valid group types, call /api/:project_id/groups_types/
      * @param groupTypeIndex Specify the group type to list
@@ -40,7 +36,6 @@ export class GroupsService {
             },
         });
     }
-
     /**
      * @param groupKey Specify the key of the group to find
      * @param groupTypeIndex Specify the group type to find
@@ -65,7 +60,6 @@ export class GroupsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns Group
@@ -82,7 +76,6 @@ export class GroupsService {
             },
         });
     }
-
     /**
      * @param groupTypeIndex Specify the group type to find property values of
      * @param key Specify the property key to find values for
@@ -107,7 +100,6 @@ export class GroupsService {
             },
         });
     }
-
     /**
      * @param groupTypeIndex Specify the group type to find
      * @param id Specify the id of the user to find groups for
@@ -132,5 +124,4 @@ export class GroupsService {
             },
         });
     }
-
 }

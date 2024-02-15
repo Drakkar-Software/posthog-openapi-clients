@@ -5,14 +5,10 @@
 import type { PaginatedViewLinkList } from '../models/PaginatedViewLinkList';
 import type { PatchedViewLink } from '../models/PatchedViewLink';
 import type { ViewLink } from '../models/ViewLink';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class WarehouseViewLinkService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -41,7 +37,6 @@ export class WarehouseViewLinkService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -63,7 +58,6 @@ export class WarehouseViewLinkService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param id A UUID string identifying this data warehouse view link.
@@ -84,7 +78,6 @@ export class WarehouseViewLinkService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param id A UUID string identifying this data warehouse view link.
@@ -109,7 +102,6 @@ export class WarehouseViewLinkService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param id A UUID string identifying this data warehouse view link.
@@ -134,7 +126,6 @@ export class WarehouseViewLinkService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete View Columns.
      * @param id A UUID string identifying this data warehouse view link.
@@ -155,5 +146,4 @@ export class WarehouseViewLinkService {
             },
         });
     }
-
 }

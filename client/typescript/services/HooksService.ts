@@ -5,14 +5,10 @@
 import type { Hook } from '../models/Hook';
 import type { PaginatedHookList } from '../models/PaginatedHookList';
 import type { PatchedHook } from '../models/PatchedHook';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class HooksService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -38,7 +34,6 @@ export class HooksService {
             },
         });
     }
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -60,7 +55,6 @@ export class HooksService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param id A unique value identifying this hook.
@@ -81,7 +75,6 @@ export class HooksService {
             },
         });
     }
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param id A unique value identifying this hook.
@@ -106,7 +99,6 @@ export class HooksService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param id A unique value identifying this hook.
@@ -131,7 +123,6 @@ export class HooksService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Retrieve, create, update or destroy REST hooks.
      * @param id A unique value identifying this hook.
@@ -152,5 +143,4 @@ export class HooksService {
             },
         });
     }
-
 }

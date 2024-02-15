@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { Property } from './Property';
-
 export type FunnelExclusion = {
     /**
      * Name of the event to filter on. For example `$pageview` or `user sign up`.

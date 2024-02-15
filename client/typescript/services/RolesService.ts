@@ -7,14 +7,10 @@ import type { PaginatedRoleMembershipList } from '../models/PaginatedRoleMembers
 import type { PatchedRole } from '../models/PatchedRole';
 import type { Role } from '../models/Role';
 import type { RoleMembership } from '../models/RoleMembership';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class RolesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupOrganizationId
      * @param limit Number of results to return per page.
@@ -39,7 +35,6 @@ export class RolesService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -60,7 +55,6 @@ export class RolesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param parentLookupRoleId
@@ -88,7 +82,6 @@ export class RolesService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param parentLookupRoleId
@@ -112,7 +105,6 @@ export class RolesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this role membership.
      * @param parentLookupOrganizationId
@@ -135,7 +127,6 @@ export class RolesService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this role.
      * @param parentLookupOrganizationId
@@ -155,7 +146,6 @@ export class RolesService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this role.
      * @param parentLookupOrganizationId
@@ -179,7 +169,6 @@ export class RolesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this role.
      * @param parentLookupOrganizationId
@@ -203,7 +192,6 @@ export class RolesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this role.
      * @param parentLookupOrganizationId
@@ -223,5 +211,4 @@ export class RolesService {
             },
         });
     }
-
 }

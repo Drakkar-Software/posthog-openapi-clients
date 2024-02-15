@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { Cohort } from './Cohort';
-
 export type PaginatedCohortList = {
     count?: number;
     next?: string | null;

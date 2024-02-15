@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { UserBasic } from './UserBasic';
-
 export type ViewLink = {
     readonly id: string;
     deleted?: boolean | null;

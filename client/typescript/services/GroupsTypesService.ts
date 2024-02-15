@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { GroupType } from '../models/GroupType';
 import type { PatchedGroupType } from '../models/PatchedGroupType';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class GroupsTypesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns GroupType
@@ -28,7 +24,6 @@ export class GroupsTypesService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -49,5 +44,4 @@ export class GroupsTypesService {
             mediaType: 'application/json',
         });
     }
-
 }

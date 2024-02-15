@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { Integration } from '../models/Integration';
 import type { PaginatedIntegrationList } from '../models/PaginatedIntegrationList';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class IntegrationsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -36,7 +32,6 @@ export class IntegrationsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -57,7 +52,6 @@ export class IntegrationsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this integration.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -77,7 +71,6 @@ export class IntegrationsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this integration.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -97,7 +90,6 @@ export class IntegrationsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this integration.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -117,5 +109,4 @@ export class IntegrationsService {
             },
         });
     }
-
 }

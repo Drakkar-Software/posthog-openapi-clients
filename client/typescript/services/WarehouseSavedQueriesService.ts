@@ -5,14 +5,10 @@
 import type { DataWarehouseSavedQuery } from '../models/DataWarehouseSavedQuery';
 import type { PaginatedDataWarehouseSavedQueryList } from '../models/PaginatedDataWarehouseSavedQueryList';
 import type { PatchedDataWarehouseSavedQuery } from '../models/PatchedDataWarehouseSavedQuery';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class WarehouseSavedQueriesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -41,7 +37,6 @@ export class WarehouseSavedQueriesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -63,7 +58,6 @@ export class WarehouseSavedQueriesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse saved query.
@@ -84,7 +78,6 @@ export class WarehouseSavedQueriesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse saved query.
@@ -109,7 +102,6 @@ export class WarehouseSavedQueriesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse saved query.
@@ -134,7 +126,6 @@ export class WarehouseSavedQueriesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse saved query.
@@ -155,5 +146,4 @@ export class WarehouseSavedQueriesService {
             },
         });
     }
-
 }

@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 export type PatchedGroupType = {
     readonly group_type?: string;
     readonly group_type_index?: number;

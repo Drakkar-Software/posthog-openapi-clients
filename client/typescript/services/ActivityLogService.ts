@@ -4,14 +4,10 @@
 /* eslint-disable */
 import type { ActivityLog } from '../models/ActivityLog';
 import type { PaginatedActivityLogList } from '../models/PaginatedActivityLogList';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ActivityLogService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param cursor The pagination cursor value.
@@ -33,7 +29,6 @@ export class ActivityLogService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -54,7 +49,6 @@ export class ActivityLogService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns ActivityLog
@@ -71,5 +65,4 @@ export class ActivityLogService {
             },
         });
     }
-
 }

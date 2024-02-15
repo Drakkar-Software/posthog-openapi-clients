@@ -5,14 +5,10 @@
 import type { PaginatedTableList } from '../models/PaginatedTableList';
 import type { PatchedTable } from '../models/PatchedTable';
 import type { Table } from '../models/Table';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class WarehouseTablesService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -41,7 +37,6 @@ export class WarehouseTablesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -63,7 +58,6 @@ export class WarehouseTablesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse table.
@@ -84,7 +78,6 @@ export class WarehouseTablesService {
             },
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse table.
@@ -109,7 +102,6 @@ export class WarehouseTablesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse table.
@@ -134,7 +126,6 @@ export class WarehouseTablesService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Create, Read, Update and Delete Warehouse Tables.
      * @param id A UUID string identifying this data warehouse table.
@@ -155,5 +146,4 @@ export class WarehouseTablesService {
             },
         });
     }
-
 }

@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { UserBasic } from './UserBasic';
-
 export type PatchedDataWarehouseSavedQuery = {
     readonly id?: string;
     deleted?: boolean | null;
@@ -12,7 +10,7 @@ export type PatchedDataWarehouseSavedQuery = {
     /**
      * HogQL query
      */
-    query?: Record<string, any> | null;
+    query?: any;
     readonly created_by?: UserBasic;
     readonly created_at?: string;
     readonly columns?: Array<{

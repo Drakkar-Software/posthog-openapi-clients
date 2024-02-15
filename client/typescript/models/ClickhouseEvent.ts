@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 export type ClickhouseEvent = {
     readonly id: string;
     readonly distinct_id: string;

@@ -5,14 +5,10 @@
 import type { PaginatedPluginList } from '../models/PaginatedPluginList';
 import type { PatchedPlugin } from '../models/PatchedPlugin';
 import type { Plugin } from '../models/Plugin';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class PluginsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param parentLookupOrganizationId
      * @param limit Number of results to return per page.
@@ -37,7 +33,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @param requestBody
@@ -58,7 +53,6 @@ export class PluginsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -78,7 +72,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -102,7 +95,6 @@ export class PluginsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -126,7 +118,6 @@ export class PluginsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -146,7 +137,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -166,7 +156,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -186,7 +175,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -210,7 +198,6 @@ export class PluginsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this plugin.
      * @param parentLookupOrganizationId
@@ -234,7 +221,6 @@ export class PluginsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @returns Plugin
@@ -251,7 +237,22 @@ export class PluginsService {
             },
         });
     }
-
+    /**
+     * @param parentLookupOrganizationId
+     * @returns Plugin
+     * @throws ApiError
+     */
+    public pluginsExportsUnsubscribeConfigsRetrieve(
+        parentLookupOrganizationId: string,
+    ): CancelablePromise<Plugin> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{parent_lookup_organization_id}/plugins/exports_unsubscribe_configs/',
+            path: {
+                'parent_lookup_organization_id': parentLookupOrganizationId,
+            },
+        });
+    }
     /**
      * @param parentLookupOrganizationId
      * @returns Plugin
@@ -268,7 +269,6 @@ export class PluginsService {
             },
         });
     }
-
     /**
      * @param parentLookupOrganizationId
      * @returns Plugin
@@ -285,5 +285,4 @@ export class PluginsService {
             },
         });
     }
-
 }

@@ -2,7 +2,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 export type GroupType = {
     readonly group_type: string;
     readonly group_type_index: number;

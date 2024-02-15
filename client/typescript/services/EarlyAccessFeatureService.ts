@@ -6,14 +6,10 @@ import type { EarlyAccessFeature } from '../models/EarlyAccessFeature';
 import type { EarlyAccessFeatureSerializerCreateOnly } from '../models/EarlyAccessFeatureSerializerCreateOnly';
 import type { PaginatedEarlyAccessFeatureList } from '../models/PaginatedEarlyAccessFeatureList';
 import type { PatchedEarlyAccessFeature } from '../models/PatchedEarlyAccessFeature';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class EarlyAccessFeatureService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
@@ -38,7 +34,6 @@ export class EarlyAccessFeatureService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -59,7 +54,6 @@ export class EarlyAccessFeatureService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this early access feature.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -79,7 +73,6 @@ export class EarlyAccessFeatureService {
             },
         });
     }
-
     /**
      * @param id A UUID string identifying this early access feature.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -103,7 +96,6 @@ export class EarlyAccessFeatureService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this early access feature.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -127,7 +119,6 @@ export class EarlyAccessFeatureService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A UUID string identifying this early access feature.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -147,5 +138,4 @@ export class EarlyAccessFeatureService {
             },
         });
     }
-
 }

@@ -5,13 +5,14 @@
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 import { FetchHttpRequest } from './core/FetchHttpRequest';
-
 import { ActionsService } from './services/ActionsService';
+import { ActivityService } from './services/ActivityService';
 import { ActivityLogService } from './services/ActivityLogService';
 import { AnnotationsService } from './services/AnnotationsService';
 import { AppMetricsService } from './services/AppMetricsService';
 import { BatchExportsService } from './services/BatchExportsService';
 import { CohortsService } from './services/CohortsService';
+import { CommentsService } from './services/CommentsService';
 import { DashboardsService } from './services/DashboardsService';
 import { DashboardTemplatesService } from './services/DashboardTemplatesService';
 import { DataManagementService } from './services/DataManagementService';
@@ -22,6 +23,7 @@ import { EventsService } from './services/EventsService';
 import { ExperimentsService } from './services/ExperimentsService';
 import { ExplicitMembersService } from './services/ExplicitMembersService';
 import { ExportsService } from './services/ExportsService';
+import { ExternalDataSchemasService } from './services/ExternalDataSchemasService';
 import { ExternalDataSourcesService } from './services/ExternalDataSourcesService';
 import { FeatureFlagsService } from './services/FeatureFlagsService';
 import { FunnelService } from './services/FunnelService';
@@ -36,17 +38,19 @@ import { IsGeneratingDemoDataService } from './services/IsGeneratingDemoDataServ
 import { MembersService } from './services/MembersService';
 import { OrganizationsService } from './services/OrganizationsService';
 import { PersonsService } from './services/PersonsService';
+import { PipelineDestinationConfigsService } from './services/PipelineDestinationConfigsService';
+import { PipelineDestinationsService } from './services/PipelineDestinationsService';
+import { PipelineTransformationConfigsService } from './services/PipelineTransformationConfigsService';
 import { PipelineTransformationsService } from './services/PipelineTransformationsService';
-import { PipelineTransformationsConfigsService } from './services/PipelineTransformationsConfigsService';
 import { PluginConfigsService } from './services/PluginConfigsService';
 import { PluginsService } from './services/PluginsService';
 import { ProjectsService } from './services/ProjectsService';
-import { PromptsService } from './services/PromptsService';
 import { PropertyDefinitionsService } from './services/PropertyDefinitionsService';
 import { QueryService } from './services/QueryService';
 import { ResetTokenService } from './services/ResetTokenService';
 import { ResourceAccessService } from './services/ResourceAccessService';
 import { RolesService } from './services/RolesService';
+import { ScheduledChangesService } from './services/ScheduledChangesService';
 import { SearchService } from './services/SearchService';
 import { SessionRecordingPlaylistsService } from './services/SessionRecordingPlaylistsService';
 import { SessionRecordingsService } from './services/SessionRecordingsService';
@@ -59,17 +63,16 @@ import { WarehouseSavedQueriesService } from './services/WarehouseSavedQueriesSe
 import { WarehouseTablesService } from './services/WarehouseTablesService';
 import { WarehouseViewLinkService } from './services/WarehouseViewLinkService';
 import { WarehouseViewLinksService } from './services/WarehouseViewLinksService';
-
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
-
 export class PosthogAPIClient {
-
     public readonly actions: ActionsService;
+    public readonly activity: ActivityService;
     public readonly activityLog: ActivityLogService;
     public readonly annotations: AnnotationsService;
     public readonly appMetrics: AppMetricsService;
     public readonly batchExports: BatchExportsService;
     public readonly cohorts: CohortsService;
+    public readonly comments: CommentsService;
     public readonly dashboards: DashboardsService;
     public readonly dashboardTemplates: DashboardTemplatesService;
     public readonly dataManagement: DataManagementService;
@@ -80,6 +83,7 @@ export class PosthogAPIClient {
     public readonly experiments: ExperimentsService;
     public readonly explicitMembers: ExplicitMembersService;
     public readonly exports: ExportsService;
+    public readonly externalDataSchemas: ExternalDataSchemasService;
     public readonly externalDataSources: ExternalDataSourcesService;
     public readonly featureFlags: FeatureFlagsService;
     public readonly funnel: FunnelService;
@@ -94,17 +98,19 @@ export class PosthogAPIClient {
     public readonly members: MembersService;
     public readonly organizations: OrganizationsService;
     public readonly persons: PersonsService;
+    public readonly pipelineDestinationConfigs: PipelineDestinationConfigsService;
+    public readonly pipelineDestinations: PipelineDestinationsService;
+    public readonly pipelineTransformationConfigs: PipelineTransformationConfigsService;
     public readonly pipelineTransformations: PipelineTransformationsService;
-    public readonly pipelineTransformationsConfigs: PipelineTransformationsConfigsService;
     public readonly pluginConfigs: PluginConfigsService;
     public readonly plugins: PluginsService;
     public readonly projects: ProjectsService;
-    public readonly prompts: PromptsService;
     public readonly propertyDefinitions: PropertyDefinitionsService;
     public readonly query: QueryService;
     public readonly resetToken: ResetTokenService;
     public readonly resourceAccess: ResourceAccessService;
     public readonly roles: RolesService;
+    public readonly scheduledChanges: ScheduledChangesService;
     public readonly search: SearchService;
     public readonly sessionRecordingPlaylists: SessionRecordingPlaylistsService;
     public readonly sessionRecordings: SessionRecordingsService;
@@ -117,9 +123,7 @@ export class PosthogAPIClient {
     public readonly warehouseTables: WarehouseTablesService;
     public readonly warehouseViewLink: WarehouseViewLinkService;
     public readonly warehouseViewLinks: WarehouseViewLinksService;
-
     public readonly request: BaseHttpRequest;
-
     constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = FetchHttpRequest) {
         this.request = new HttpRequest({
             BASE: config?.BASE ?? '',
@@ -132,13 +136,14 @@ export class PosthogAPIClient {
             HEADERS: config?.HEADERS,
             ENCODE_PATH: config?.ENCODE_PATH,
         });
-
         this.actions = new ActionsService(this.request);
+        this.activity = new ActivityService(this.request);
         this.activityLog = new ActivityLogService(this.request);
         this.annotations = new AnnotationsService(this.request);
         this.appMetrics = new AppMetricsService(this.request);
         this.batchExports = new BatchExportsService(this.request);
         this.cohorts = new CohortsService(this.request);
+        this.comments = new CommentsService(this.request);
         this.dashboards = new DashboardsService(this.request);
         this.dashboardTemplates = new DashboardTemplatesService(this.request);
         this.dataManagement = new DataManagementService(this.request);
@@ -149,6 +154,7 @@ export class PosthogAPIClient {
         this.experiments = new ExperimentsService(this.request);
         this.explicitMembers = new ExplicitMembersService(this.request);
         this.exports = new ExportsService(this.request);
+        this.externalDataSchemas = new ExternalDataSchemasService(this.request);
         this.externalDataSources = new ExternalDataSourcesService(this.request);
         this.featureFlags = new FeatureFlagsService(this.request);
         this.funnel = new FunnelService(this.request);
@@ -163,17 +169,19 @@ export class PosthogAPIClient {
         this.members = new MembersService(this.request);
         this.organizations = new OrganizationsService(this.request);
         this.persons = new PersonsService(this.request);
+        this.pipelineDestinationConfigs = new PipelineDestinationConfigsService(this.request);
+        this.pipelineDestinations = new PipelineDestinationsService(this.request);
+        this.pipelineTransformationConfigs = new PipelineTransformationConfigsService(this.request);
         this.pipelineTransformations = new PipelineTransformationsService(this.request);
-        this.pipelineTransformationsConfigs = new PipelineTransformationsConfigsService(this.request);
         this.pluginConfigs = new PluginConfigsService(this.request);
         this.plugins = new PluginsService(this.request);
         this.projects = new ProjectsService(this.request);
-        this.prompts = new PromptsService(this.request);
         this.propertyDefinitions = new PropertyDefinitionsService(this.request);
         this.query = new QueryService(this.request);
         this.resetToken = new ResetTokenService(this.request);
         this.resourceAccess = new ResourceAccessService(this.request);
         this.roles = new RolesService(this.request);
+        this.scheduledChanges = new ScheduledChangesService(this.request);
         this.search = new SearchService(this.request);
         this.sessionRecordingPlaylists = new SessionRecordingPlaylistsService(this.request);
         this.sessionRecordings = new SessionRecordingsService(this.request);

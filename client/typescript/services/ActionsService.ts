@@ -5,14 +5,10 @@
 import type { Action } from '../models/Action';
 import type { PaginatedActionList } from '../models/PaginatedActionList';
 import type { PatchedAction } from '../models/PatchedAction';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class ActionsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -40,7 +36,6 @@ export class ActionsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -66,7 +61,6 @@ export class ActionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this action.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -91,7 +85,6 @@ export class ActionsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this action.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -120,7 +113,6 @@ export class ActionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * @param id A unique integer value identifying this action.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -149,7 +141,6 @@ export class ActionsService {
             mediaType: 'application/json',
         });
     }
-
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this action.
@@ -178,7 +169,6 @@ export class ActionsService {
             },
         });
     }
-
     /**
      * @param id A unique integer value identifying this action.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -203,7 +193,6 @@ export class ActionsService {
             },
         });
     }
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -225,5 +214,4 @@ export class ActionsService {
             },
         });
     }
-
 }

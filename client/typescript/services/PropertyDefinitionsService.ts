@@ -2,17 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { EnterprisePropertyDefinition } from '../models/EnterprisePropertyDefinition';
-import type { PaginatedEnterprisePropertyDefinitionList } from '../models/PaginatedEnterprisePropertyDefinitionList';
-import type { PatchedEnterprisePropertyDefinition } from '../models/PatchedEnterprisePropertyDefinition';
-
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class PropertyDefinitionsService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param eventNames If sent, response value will have `is_seen_on_filtered_events` populated. JSON-encoded
@@ -21,15 +14,17 @@ export class PropertyDefinitionsService {
      * @param groupTypeIndex What group type is the property for. Only should be set if `type=group`
      * @param isFeatureFlag Whether to return only (or excluding) feature flag properties
      * @param isNumerical Whether to return only (or excluding) numerical property definitions
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
      * @param properties Comma-separated list of properties to filter
      * @param search Searches properties by name
      * @param type What property definitions to return
-     * @returns PaginatedEnterprisePropertyDefinitionList
+     *
+     * * `event` - event
+     * * `person` - person
+     * * `group` - group
+     * @returns any No response body
      * @throws ApiError
      */
-    public propertyDefinitionsList(
+    public propertyDefinitionsRetrieve(
         projectId: string,
         eventNames?: string,
         excludedProperties?: string,
@@ -37,12 +32,10 @@ export class PropertyDefinitionsService {
         groupTypeIndex?: number,
         isFeatureFlag?: boolean | null,
         isNumerical?: boolean | null,
-        limit?: number,
-        offset?: number,
         properties?: string,
         search?: string,
         type: 'event' | 'person' | 'group' = 'event',
-    ): CancelablePromise<PaginatedEnterprisePropertyDefinitionList> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/',
@@ -56,25 +49,22 @@ export class PropertyDefinitionsService {
                 'group_type_index': groupTypeIndex,
                 'is_feature_flag': isFeatureFlag,
                 'is_numerical': isNumerical,
-                'limit': limit,
-                'offset': offset,
                 'properties': properties,
                 'search': search,
                 'type': type,
             },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns EnterprisePropertyDefinition
+     * @returns any No response body
      * @throws ApiError
      */
-    public propertyDefinitionsRetrieve(
+    public propertyDefinitionsRetrieve2(
         id: string,
         projectId: string,
-    ): CancelablePromise<EnterprisePropertyDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -84,19 +74,16 @@ export class PropertyDefinitionsService {
             },
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param requestBody
-     * @returns EnterprisePropertyDefinition
+     * @returns any No response body
      * @throws ApiError
      */
     public propertyDefinitionsUpdate(
         id: string,
         projectId: string,
-        requestBody?: EnterprisePropertyDefinition,
-    ): CancelablePromise<EnterprisePropertyDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -104,23 +91,18 @@ export class PropertyDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param requestBody
-     * @returns EnterprisePropertyDefinition
+     * @returns any No response body
      * @throws ApiError
      */
     public propertyDefinitionsPartialUpdate(
         id: string,
         projectId: string,
-        requestBody?: PatchedEnterprisePropertyDefinition,
-    ): CancelablePromise<EnterprisePropertyDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -128,11 +110,8 @@ export class PropertyDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
-            body: requestBody,
-            mediaType: 'application/json',
         });
     }
-
     /**
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -152,17 +131,16 @@ export class PropertyDefinitionsService {
             },
         });
     }
-
     /**
      * Allows a caller to provide a list of event names and a single property name
      * Returns a map of the event names to a boolean representing whether that property has ever been seen with that event_name
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns EnterprisePropertyDefinition
+     * @returns any No response body
      * @throws ApiError
      */
     public propertyDefinitionsSeenTogetherRetrieve(
         projectId: string,
-    ): CancelablePromise<EnterprisePropertyDefinition> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/seen_together/',
@@ -171,5 +149,4 @@ export class PropertyDefinitionsService {
             },
         });
     }
-
 }

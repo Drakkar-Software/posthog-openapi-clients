@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-
 import type { Property } from './Property';
-
 export type FilterEvent = {
     /**
      * Name of the event to filter on. For example `$pageview` or `user sign up`.
@@ -28,12 +26,33 @@ export type FilterEvent = {
      * - `p95` 95th percentile of a numeric property.
      * - `p99`: 99th percentile of a numeric property.
      *
+     *
+     * * `total` - total
+     * * `dau` - dau
+     * * `weekly_active` - weekly_active
+     * * `monthly_active` - monthly_active
+     * * `unique_group` - unique_group
+     * * `unique_session` - unique_session
+     * * `sum` - sum
+     * * `min` - min
+     * * `max` - max
+     * * `avg` - avg
+     * * `median` - median
+     * * `p90` - p90
+     * * `p95` - p95
+     * * `p99` - p99
+     * * `min_count_per_actor` - min_count_per_actor
+     * * `max_count_per_actor` - max_count_per_actor
+     * * `avg_count_per_actor` - avg_count_per_actor
+     * * `median_count_per_actor` - median_count_per_actor
+     * * `p90_count_per_actor` - p90_count_per_actor
+     * * `p95_count_per_actor` - p95_count_per_actor
+     * * `p99_count_per_actor` - p99_count_per_actor
+     * * `hogql` - hogql
      */
     math?: FilterEvent.math;
 };
-
 export namespace FilterEvent {
-
     /**
      * How to aggregate results, shown as "counted by" in the interface.
      * - `total` (default): no aggregation, count by events
@@ -51,6 +70,29 @@ export namespace FilterEvent {
      * - `p95` 95th percentile of a numeric property.
      * - `p99`: 99th percentile of a numeric property.
      *
+     *
+     * * `total` - total
+     * * `dau` - dau
+     * * `weekly_active` - weekly_active
+     * * `monthly_active` - monthly_active
+     * * `unique_group` - unique_group
+     * * `unique_session` - unique_session
+     * * `sum` - sum
+     * * `min` - min
+     * * `max` - max
+     * * `avg` - avg
+     * * `median` - median
+     * * `p90` - p90
+     * * `p95` - p95
+     * * `p99` - p99
+     * * `min_count_per_actor` - min_count_per_actor
+     * * `max_count_per_actor` - max_count_per_actor
+     * * `avg_count_per_actor` - avg_count_per_actor
+     * * `median_count_per_actor` - median_count_per_actor
+     * * `p90_count_per_actor` - p90_count_per_actor
+     * * `p95_count_per_actor` - p95_count_per_actor
+     * * `p99_count_per_actor` - p99_count_per_actor
+     * * `hogql` - hogql
      */
     export enum math {
         TOTAL = 'total',
@@ -76,7 +118,5 @@ export namespace FilterEvent {
         P99_COUNT_PER_ACTOR = 'p99_count_per_actor',
         HOGQL = 'hogql',
     }
-
-
 }
 

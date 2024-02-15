@@ -4,11 +4,8 @@
 /* eslint-disable */
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-
 export class UploadedMediaService {
-
     constructor(public readonly httpRequest: BaseHttpRequest) {}
-
     /**
      *
      * When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards.
@@ -30,5 +27,4 @@ export class UploadedMediaService {
             },
         });
     }
-
 }
