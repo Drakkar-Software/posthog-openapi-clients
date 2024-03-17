@@ -7,7 +7,7 @@ export POSTHOG_PERSONAL_API_KEY=YOUR_POSTHOG_API_KEY
 export POSTHOG_BASE_URL="https://eu.posthog.com" or export POSTHOG_BASE_URL="https://app.posthog.com"
 ```
 
-## Typescript [![NPM](https://img.shields.io/npm/v/posthog-openapi-client)](https://www.npmjs.com/package/coingecko-openapi-client)
+## Typescript [![NPM](https://img.shields.io/npm/v/posthog-openapi-client)](https://www.npmjs.com/package/posthog-openapi-client)
 
 ### Install
 
