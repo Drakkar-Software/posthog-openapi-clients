@@ -9,22 +9,22 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class InvitesService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedOrganizationInviteList
      * @throws ApiError
      */
     public invitesList(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationInviteList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/invites/',
+            url: '/api/organizations/{organization_id}/invites/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             query: {
                 'limit': limit,
@@ -33,20 +33,20 @@ export class InvitesService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns OrganizationInvite
      * @throws ApiError
      */
     public invitesCreate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: OrganizationInvite,
     ): CancelablePromise<OrganizationInvite> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/invites/',
+            url: '/api/organizations/{organization_id}/invites/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -54,38 +54,38 @@ export class InvitesService {
     }
     /**
      * @param id A UUID string identifying this organization invite.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns void
      * @throws ApiError
      */
     public invitesDestroy(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/invites/{id}/',
+            url: '/api/organizations/{organization_id}/invites/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns OrganizationInvite
      * @throws ApiError
      */
     public invitesBulkCreate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: OrganizationInvite,
     ): CancelablePromise<OrganizationInvite> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/invites/bulk/',
+            url: '/api/organizations/{organization_id}/invites/bulk/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',

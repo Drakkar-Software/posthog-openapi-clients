@@ -9,7 +9,7 @@ import type { FunnelStepReference } from './FunnelStepReference';
 import type { FunnelVizType } from './FunnelVizType';
 import type { StepOrderValue } from './StepOrderValue';
 export type FunnelsFilter = {
-    binCount?: (string | number | null);
+    binCount?: (number | null);
     breakdownAttributionType?: (BreakdownAttributionType | null);
     breakdownAttributionValue?: (number | null);
     exclusions?: null;

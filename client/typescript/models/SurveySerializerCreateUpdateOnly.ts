@@ -3,20 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { MinimalFeatureFlag } from './MinimalFeatureFlag';
+import type { Type7baEnum } from './Type7baEnum';
 import type { UserBasic } from './UserBasic';
 export type SurveySerializerCreateUpdateOnly = {
     readonly id: string;
     name: string;
     description?: string;
-    /**
-     * * `popover` - popover
-     * * `widget` - widget
-     * * `button` - button
-     * * `email` - email
-     * * `full_screen` - full screen
-     * * `api` - api
-     */
-    type: SurveySerializerCreateUpdateOnly.type;
+    type: Type7baEnum;
     readonly linked_flag: MinimalFeatureFlag;
     linked_flag_id?: number | null;
     targeting_flag_id?: number;
@@ -32,22 +25,4 @@ export type SurveySerializerCreateUpdateOnly = {
     end_date?: string | null;
     archived?: boolean;
 };
-export namespace SurveySerializerCreateUpdateOnly {
-    /**
-     * * `popover` - popover
-     * * `widget` - widget
-     * * `button` - button
-     * * `email` - email
-     * * `full_screen` - full screen
-     * * `api` - api
-     */
-    export enum type {
-        POPOVER = 'popover',
-        WIDGET = 'widget',
-        BUTTON = 'button',
-        EMAIL = 'email',
-        FULL_SCREEN = 'full_screen',
-        API = 'api',
-    }
-}
 

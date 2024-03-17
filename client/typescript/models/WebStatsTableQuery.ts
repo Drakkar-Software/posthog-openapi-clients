@@ -19,5 +19,6 @@ export type WebStatsTableQuery = {
     properties: Array<(EventPropertyFilter | PersonPropertyFilter)>;
     response?: (WebStatsTableQueryResponse | null);
     sampling?: (Sampling | null);
+    useSessionsTable?: (boolean | null);
 };
 

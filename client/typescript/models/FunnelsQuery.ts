@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { ActionsNode } from './ActionsNode';
 import type { BreakdownFilter } from './BreakdownFilter';
+import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
 import type { FunnelsFilter } from './FunnelsFilter';
@@ -46,6 +47,6 @@ export type FunnelsQuery = {
     /**
      * Events and actions to include
      */
-    series: Array<(EventsNode | ActionsNode)>;
+    series: Array<(EventsNode | ActionsNode | DataWarehouseNode)>;
 };
 

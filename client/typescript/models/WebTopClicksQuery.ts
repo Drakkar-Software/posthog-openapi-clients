@@ -13,5 +13,6 @@ export type WebTopClicksQuery = {
     properties: Array<(EventPropertyFilter | PersonPropertyFilter)>;
     response?: (WebTopClicksQueryResponse | null);
     sampling?: (Sampling | null);
+    useSessionsTable?: (boolean | null);
 };
 

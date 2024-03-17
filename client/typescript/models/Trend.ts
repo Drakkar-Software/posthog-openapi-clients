@@ -2,6 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BreakdownTypeEnum } from './BreakdownTypeEnum';
+import type { DisplayEnum } from './DisplayEnum';
 import type { FilterAction } from './FilterAction';
 import type { FilterEvent } from './FilterEvent';
 import type { Property } from './Property';
@@ -47,7 +49,7 @@ export type Trend = {
      * * `session` - session
      * * `hogql` - hogql
      */
-    breakdown_type?: Trend.breakdown_type;
+    breakdown_type?: BreakdownTypeEnum;
     /**
      * How to display the data. Will change how the data is returned.
      *
@@ -60,7 +62,7 @@ export type Trend = {
      * * `WorldMap` - WorldMap
      * * `BoldNumber` - BoldNumber
      */
-    display?: Trend.display;
+    display?: DisplayEnum;
     /**
      * Combine the result of events or actions into a single number. For example `A + B` or `(A-B)/B`. The letters correspond to the order of the `events` or `actions` lists.
      */
@@ -70,46 +72,4 @@ export type Trend = {
      */
     compare?: boolean;
 };
-export namespace Trend {
-    /**
-     * Type of property to break down on.
-     *
-     * * `event` - event
-     * * `person` - person
-     * * `cohort` - cohort
-     * * `group` - group
-     * * `session` - session
-     * * `hogql` - hogql
-     */
-    export enum breakdown_type {
-        EVENT = 'event',
-        PERSON = 'person',
-        COHORT = 'cohort',
-        GROUP = 'group',
-        SESSION = 'session',
-        HOGQL = 'hogql',
-    }
-    /**
-     * How to display the data. Will change how the data is returned.
-     *
-     * * `ActionsLineGraph` - ActionsLineGraph
-     * * `ActionsLineGraphCumulative` - ActionsLineGraphCumulative
-     * * `ActionsTable` - ActionsTable
-     * * `ActionsPie` - ActionsPie
-     * * `ActionsBar` - ActionsBar
-     * * `ActionsBarValue` - ActionsBarValue
-     * * `WorldMap` - WorldMap
-     * * `BoldNumber` - BoldNumber
-     */
-    export enum display {
-        ACTIONS_LINE_GRAPH = 'ActionsLineGraph',
-        ACTIONS_LINE_GRAPH_CUMULATIVE = 'ActionsLineGraphCumulative',
-        ACTIONS_TABLE = 'ActionsTable',
-        ACTIONS_PIE = 'ActionsPie',
-        ACTIONS_BAR = 'ActionsBar',
-        ACTIONS_BAR_VALUE = 'ActionsBarValue',
-        WORLD_MAP = 'WorldMap',
-        BOLD_NUMBER = 'BoldNumber',
-    }
-}
 

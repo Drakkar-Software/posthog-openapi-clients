@@ -12,22 +12,22 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class RolesService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedRoleList
      * @throws ApiError
      */
     public rolesList(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedRoleList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/',
+            url: '/api/organizations/{organization_id}/roles/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             query: {
                 'limit': limit,
@@ -36,45 +36,129 @@ export class RolesService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Role
      * @throws ApiError
      */
     public rolesCreate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: Role,
     ): CancelablePromise<Role> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/',
+            url: '/api/organizations/{organization_id}/roles/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
         });
     }
     /**
-     * @param parentLookupOrganizationId
-     * @param parentLookupRoleId
+     * @param id A UUID string identifying this role.
+     * @param organizationId
+     * @returns Role
+     * @throws ApiError
+     */
+    public rolesRetrieve(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<Role> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/roles/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+        });
+    }
+    /**
+     * @param id A UUID string identifying this role.
+     * @param organizationId
+     * @param requestBody
+     * @returns Role
+     * @throws ApiError
+     */
+    public rolesUpdate(
+        id: string,
+        organizationId: string,
+        requestBody: Role,
+    ): CancelablePromise<Role> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/organizations/{organization_id}/roles/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A UUID string identifying this role.
+     * @param organizationId
+     * @param requestBody
+     * @returns Role
+     * @throws ApiError
+     */
+    public rolesPartialUpdate(
+        id: string,
+        organizationId: string,
+        requestBody?: PatchedRole,
+    ): CancelablePromise<Role> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/roles/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A UUID string identifying this role.
+     * @param organizationId
+     * @returns void
+     * @throws ApiError
+     */
+    public rolesDestroy(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/organizations/{organization_id}/roles/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+        });
+    }
+    /**
+     * @param organizationId
+     * @param roleId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedRoleMembershipList
      * @throws ApiError
      */
     public rolesRoleMembershipsList(
-        parentLookupOrganizationId: string,
-        parentLookupRoleId: string,
+        organizationId: string,
+        roleId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedRoleMembershipList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/',
+            url: '/api/organizations/{organization_id}/roles/{role_id}/role_memberships/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-                'parent_lookup_role_id': parentLookupRoleId,
+                'organization_id': organizationId,
+                'role_id': roleId,
             },
             query: {
                 'limit': limit,
@@ -83,23 +167,23 @@ export class RolesService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
-     * @param parentLookupRoleId
+     * @param organizationId
+     * @param roleId
      * @param requestBody
      * @returns RoleMembership
      * @throws ApiError
      */
     public rolesRoleMembershipsCreate(
-        parentLookupOrganizationId: string,
-        parentLookupRoleId: string,
+        organizationId: string,
+        roleId: string,
         requestBody: RoleMembership,
     ): CancelablePromise<RoleMembership> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/',
+            url: '/api/organizations/{organization_id}/roles/{role_id}/role_memberships/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-                'parent_lookup_role_id': parentLookupRoleId,
+                'organization_id': organizationId,
+                'role_id': roleId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -107,107 +191,23 @@ export class RolesService {
     }
     /**
      * @param id A UUID string identifying this role membership.
-     * @param parentLookupOrganizationId
-     * @param parentLookupRoleId
+     * @param organizationId
+     * @param roleId
      * @returns void
      * @throws ApiError
      */
     public rolesRoleMembershipsDestroy(
         id: string,
-        parentLookupOrganizationId: string,
-        parentLookupRoleId: string,
+        organizationId: string,
+        roleId: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{parent_lookup_role_id}/role_memberships/{id}/',
+            url: '/api/organizations/{organization_id}/roles/{role_id}/role_memberships/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-                'parent_lookup_role_id': parentLookupRoleId,
-            },
-        });
-    }
-    /**
-     * @param id A UUID string identifying this role.
-     * @param parentLookupOrganizationId
-     * @returns Role
-     * @throws ApiError
-     */
-    public rolesRetrieve(
-        id: string,
-        parentLookupOrganizationId: string,
-    ): CancelablePromise<Role> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
-            path: {
-                'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-            },
-        });
-    }
-    /**
-     * @param id A UUID string identifying this role.
-     * @param parentLookupOrganizationId
-     * @param requestBody
-     * @returns Role
-     * @throws ApiError
-     */
-    public rolesUpdate(
-        id: string,
-        parentLookupOrganizationId: string,
-        requestBody: Role,
-    ): CancelablePromise<Role> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
-            path: {
-                'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A UUID string identifying this role.
-     * @param parentLookupOrganizationId
-     * @param requestBody
-     * @returns Role
-     * @throws ApiError
-     */
-    public rolesPartialUpdate(
-        id: string,
-        parentLookupOrganizationId: string,
-        requestBody?: PatchedRole,
-    ): CancelablePromise<Role> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
-            path: {
-                'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A UUID string identifying this role.
-     * @param parentLookupOrganizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public rolesDestroy(
-        id: string,
-        parentLookupOrganizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/roles/{id}/',
-            path: {
-                'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
+                'role_id': roleId,
             },
         });
     }

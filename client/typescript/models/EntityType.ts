@@ -5,5 +5,6 @@
 export enum EntityType {
     ACTIONS = 'actions',
     EVENTS = 'events',
+    DATA_WAREHOUSE = 'data_warehouse',
     NEW_ENTITY = 'new_entity',
 }

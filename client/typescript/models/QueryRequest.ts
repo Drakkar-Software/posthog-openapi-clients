@@ -7,8 +7,10 @@ import type { ActorsQuery } from './ActorsQuery';
 import type { DatabaseSchemaQuery } from './DatabaseSchemaQuery';
 import type { DataTableNode } from './DataTableNode';
 import type { DataVisualizationNode } from './DataVisualizationNode';
+import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
+import type { FunnelCorrelationQuery } from './FunnelCorrelationQuery';
 import type { FunnelsQuery } from './FunnelsQuery';
 import type { HogQLAutocomplete } from './HogQLAutocomplete';
 import type { HogQLMetadata } from './HogQLMetadata';
@@ -50,7 +52,7 @@ export type QueryRequest = {
      *
      * For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).
      */
-    query: (EventsNode | ActionsNode | PersonsNode | TimeToSeeDataSessionsQuery | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | DataVisualizationNode | DataTableNode | SavedInsightNode | InsightVizNode | TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery | DatabaseSchemaQuery);
+    query: (EventsNode | ActionsNode | PersonsNode | DataWarehouseNode | TimeToSeeDataSessionsQuery | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | DataVisualizationNode | DataTableNode | SavedInsightNode | InsightVizNode | TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery | FunnelCorrelationQuery | DatabaseSchemaQuery);
     refresh?: (boolean | null);
 };
 

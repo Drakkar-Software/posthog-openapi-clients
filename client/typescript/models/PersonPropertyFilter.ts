@@ -7,6 +7,7 @@ export type PersonPropertyFilter = {
     key: string;
     label?: (string | null);
     operator: PropertyOperator;
+    table?: (string | null);
     /**
      * Person properties
      */

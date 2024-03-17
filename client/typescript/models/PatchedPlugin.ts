@@ -2,15 +2,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BlankEnum } from './BlankEnum';
+import type { NullEnum } from './NullEnum';
+import type { PluginTypeEnum } from './PluginTypeEnum';
 export type PatchedPlugin = {
     readonly id?: number;
-    /**
-     * * `local` - local
-     * * `custom` - custom
-     * * `repository` - repository
-     * * `source` - source
-     */
-    plugin_type?: PatchedPlugin.plugin_type | null;
+    plugin_type?: (PluginTypeEnum | BlankEnum | NullEnum) | null;
     name?: string | null;
     description?: string | null;
     readonly url?: string | null;
@@ -25,19 +22,4 @@ export type PatchedPlugin = {
     metrics?: any;
     public_jobs?: any;
 };
-export namespace PatchedPlugin {
-    /**
-     * * `local` - local
-     * * `custom` - custom
-     * * `repository` - repository
-     * * `source` - source
-     */
-    export enum plugin_type {
-        LOCAL = 'local',
-        CUSTOM = 'custom',
-        REPOSITORY = 'repository',
-        SOURCE = 'source',
-        
-    }
-}
 

@@ -9,4 +9,5 @@ export enum BreakdownType {
     GROUP = 'group',
     SESSION = 'session',
     HOGQL = 'hogql',
+    DATA_WAREHOUSE = 'data_warehouse',
 }

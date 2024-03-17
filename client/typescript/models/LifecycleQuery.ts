@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ActionsNode } from './ActionsNode';
+import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
 import type { IntervalType } from './IntervalType';
@@ -39,6 +40,6 @@ export type LifecycleQuery = {
     /**
      * Events and actions to include
      */
-    series: Array<(EventsNode | ActionsNode)>;
+    series: Array<(EventsNode | ActionsNode | DataWarehouseNode)>;
 };
 

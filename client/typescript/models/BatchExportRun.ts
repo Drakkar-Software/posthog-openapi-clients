@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { StatusEnum } from './StatusEnum';
 /**
  * Serializer for a BatchExportRun model.
  */
@@ -12,14 +13,15 @@ export type BatchExportRun = {
      *
      * * `Cancelled` - Cancelled
      * * `Completed` - Completed
-     * * `ContinuedAsNew` - Continuedasnew
+     * * `ContinuedAsNew` - Continued As New
      * * `Failed` - Failed
+     * * `FailedRetryable` - Failed Retryable
      * * `Terminated` - Terminated
      * * `TimedOut` - Timedout
      * * `Running` - Running
      * * `Starting` - Starting
      */
-    status: BatchExportRun.status;
+    status: StatusEnum;
     /**
      * The number of records that have been exported.
      */
@@ -57,28 +59,4 @@ export type BatchExportRun = {
      */
     readonly batch_export: string;
 };
-export namespace BatchExportRun {
-    /**
-     * The status of this run.
-     *
-     * * `Cancelled` - Cancelled
-     * * `Completed` - Completed
-     * * `ContinuedAsNew` - Continuedasnew
-     * * `Failed` - Failed
-     * * `Terminated` - Terminated
-     * * `TimedOut` - Timedout
-     * * `Running` - Running
-     * * `Starting` - Starting
-     */
-    export enum status {
-        CANCELLED = 'Cancelled',
-        COMPLETED = 'Completed',
-        CONTINUED_AS_NEW = 'ContinuedAsNew',
-        FAILED = 'Failed',
-        TERMINATED = 'Terminated',
-        TIMED_OUT = 'TimedOut',
-        RUNNING = 'Running',
-        STARTING = 'Starting',
-    }
-}
 

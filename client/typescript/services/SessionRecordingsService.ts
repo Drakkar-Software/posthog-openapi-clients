@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { PaginatedSessionRecordingList } from '../models/PaginatedSessionRecordingList';
 import type { SessionRecording } from '../models/SessionRecording';
+import type { SharingConfiguration } from '../models/SharingConfiguration';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class SessionRecordingsService {
@@ -94,6 +95,25 @@ export class SessionRecordingsService {
         });
     }
     /**
+     * @param id A UUID string identifying this session recording.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns SessionRecording
+     * @throws ApiError
+     */
+    public sessionRecordingsSimilarSessionsRetrieve(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<SessionRecording> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/session_recordings/{id}/similar_sessions/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
      * Snapshots can be loaded from multiple places:
      * 1. From S3 if the session is older than our ingestion limit. This will be multiple files that can be streamed to the client
      * 2. or from Redis if the session is newer than our ingestion limit.
@@ -142,6 +162,41 @@ export class SessionRecordingsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param recordingId
+     * @returns SharingConfiguration
+     * @throws ApiError
+     */
+    public sessionRecordingsSharingList(
+        projectId: string,
+        recordingId: string,
+    ): CancelablePromise<Array<SharingConfiguration>> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/session_recordings/{recording_id}/sharing/',
+            path: {
+                'project_id': projectId,
+                'recording_id': recordingId,
+            },
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns SessionRecording
+     * @throws ApiError
+     */
+    public sessionRecordingsErrorClustersRetrieve(
+        projectId: string,
+    ): CancelablePromise<SessionRecording> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/session_recordings/error_clusters/',
+            path: {
+                'project_id': projectId,
+            },
         });
     }
     /**

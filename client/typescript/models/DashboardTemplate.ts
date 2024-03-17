@@ -2,6 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BlankEnum } from './BlankEnum';
+import type { DashboardTemplateScopeEnum } from './DashboardTemplateScopeEnum';
+import type { NullEnum } from './NullEnum';
 export type DashboardTemplate = {
     readonly id: string;
     template_name?: string | null;
@@ -15,24 +18,6 @@ export type DashboardTemplate = {
     created_by?: number | null;
     image_url?: string | null;
     readonly team_id: number | null;
-    /**
-     * * `team` - Only team
-     * * `global` - Global
-     * * `feature_flag` - Feature Flag
-     */
-    scope?: DashboardTemplate.scope | null;
+    scope?: (DashboardTemplateScopeEnum | BlankEnum | NullEnum) | null;
 };
-export namespace DashboardTemplate {
-    /**
-     * * `team` - Only team
-     * * `global` - Global
-     * * `feature_flag` - Feature Flag
-     */
-    export enum scope {
-        TEAM = 'team',
-        GLOBAL = 'global',
-        FEATURE_FLAG = 'feature_flag',
-        
-    }
-}
 

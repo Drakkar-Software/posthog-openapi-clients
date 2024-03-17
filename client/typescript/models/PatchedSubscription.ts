@@ -2,6 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { ByweekdayEnum } from './ByweekdayEnum';
+import type { FrequencyEnum } from './FrequencyEnum';
+import type { TargetTypeEnum } from './TargetTypeEnum';
 import type { UserBasic } from './UserBasic';
 /**
  * Standard Subscription serializer.
@@ -10,22 +13,11 @@ export type PatchedSubscription = {
     readonly id?: number;
     dashboard?: number | null;
     insight?: number | null;
-    /**
-     * * `email` - Email
-     * * `slack` - Slack
-     * * `webhook` - Webhook
-     */
-    target_type?: PatchedSubscription.target_type;
+    target_type?: TargetTypeEnum;
     target_value?: string;
-    /**
-     * * `daily` - Daily
-     * * `weekly` - Weekly
-     * * `monthly` - Monthly
-     * * `yearly` - Yearly
-     */
-    frequency?: PatchedSubscription.frequency;
+    frequency?: FrequencyEnum;
     interval?: number;
-    byweekday?: Array<'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday'> | null;
+    byweekday?: Array<ByweekdayEnum> | null;
     bysetpos?: number | null;
     count?: number | null;
     start_date?: string;
@@ -38,28 +30,4 @@ export type PatchedSubscription = {
     readonly next_delivery_date?: string | null;
     invite_message?: string | null;
 };
-export namespace PatchedSubscription {
-    /**
-     * * `email` - Email
-     * * `slack` - Slack
-     * * `webhook` - Webhook
-     */
-    export enum target_type {
-        EMAIL = 'email',
-        SLACK = 'slack',
-        WEBHOOK = 'webhook',
-    }
-    /**
-     * * `daily` - Daily
-     * * `weekly` - Weekly
-     * * `monthly` - Monthly
-     * * `yearly` - Yearly
-     */
-    export enum frequency {
-        DAILY = 'daily',
-        WEEKLY = 'weekly',
-        MONTHLY = 'monthly',
-        YEARLY = 'yearly',
-    }
-}
 

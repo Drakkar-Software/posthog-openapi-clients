@@ -14,5 +14,6 @@ export type WebOverviewQuery = {
     properties: Array<(EventPropertyFilter | PersonPropertyFilter)>;
     response?: (WebOverviewQueryResponse | null);
     sampling?: (Sampling | null);
+    useSessionsTable?: (boolean | null);
 };
 

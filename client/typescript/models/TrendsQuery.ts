@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { ActionsNode } from './ActionsNode';
 import type { BreakdownFilter } from './BreakdownFilter';
+import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
 import type { IntervalType } from './IntervalType';
@@ -44,7 +45,7 @@ export type TrendsQuery = {
     /**
      * Events and actions to include
      */
-    series: Array<(EventsNode | ActionsNode)>;
+    series: Array<(EventsNode | ActionsNode | DataWarehouseNode)>;
     /**
      * Properties specific to the trends insight
      */

@@ -10,22 +10,22 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class MembersService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedOrganizationMemberList
      * @throws ApiError
      */
     public membersList(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedOrganizationMemberList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/members/',
+            url: '/api/organizations/{organization_id}/members/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             query: {
                 'limit': limit,
@@ -34,22 +34,22 @@ export class MembersService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param userUuid
      * @param requestBody
      * @returns OrganizationMember
      * @throws ApiError
      */
     public membersUpdate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         userUuid: string,
         requestBody?: OrganizationMember,
     ): CancelablePromise<OrganizationMember> {
         return this.httpRequest.request({
             method: 'PUT',
-            url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
+            url: '/api/organizations/{organization_id}/members/{user__uuid}/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
                 'user__uuid': userUuid,
             },
             body: requestBody,
@@ -57,22 +57,22 @@ export class MembersService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param userUuid
      * @param requestBody
      * @returns OrganizationMember
      * @throws ApiError
      */
     public membersPartialUpdate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         userUuid: string,
         requestBody?: PatchedOrganizationMember,
     ): CancelablePromise<OrganizationMember> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
+            url: '/api/organizations/{organization_id}/members/{user__uuid}/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
                 'user__uuid': userUuid,
             },
             body: requestBody,
@@ -80,20 +80,20 @@ export class MembersService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param userUuid
      * @returns void
      * @throws ApiError
      */
     public membersDestroy(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         userUuid: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/members/{user__uuid}/',
+            url: '/api/organizations/{organization_id}/members/{user__uuid}/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
                 'user__uuid': userUuid,
             },
         });

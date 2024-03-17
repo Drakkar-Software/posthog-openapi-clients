@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { BatchExportDestination } from './BatchExportDestination';
 import type { BatchExportRun } from './BatchExportRun';
+import type { IntervalEnum } from './IntervalEnum';
 /**
  * Serializer for a BatchExport model.
  */
@@ -18,13 +19,7 @@ export type BatchExport = {
      */
     name: string;
     destination: BatchExportDestination;
-    /**
-     * * `hour` - hour
-     * * `day` - day
-     * * `week` - week
-     * * `every 5 minutes` - every 5 minutes
-     */
-    interval: BatchExport.interval;
+    interval: IntervalEnum;
     /**
      * Whether this BatchExport is paused or not.
      */
@@ -56,18 +51,4 @@ export type BatchExport = {
      */
     readonly schema: any;
 };
-export namespace BatchExport {
-    /**
-     * * `hour` - hour
-     * * `day` - day
-     * * `week` - week
-     * * `every 5 minutes` - every 5 minutes
-     */
-    export enum interval {
-        HOUR = 'hour',
-        DAY = 'day',
-        WEEK = 'week',
-        EVERY_5_MINUTES = 'every 5 minutes',
-    }
-}
 

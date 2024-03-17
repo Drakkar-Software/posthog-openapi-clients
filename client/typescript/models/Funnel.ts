@@ -2,9 +2,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BreakdownTypeEnum } from './BreakdownTypeEnum';
 import type { FilterAction } from './FilterAction';
 import type { FilterEvent } from './FilterEvent';
 import type { FunnelExclusion } from './FunnelExclusion';
+import type { FunnelOrderTypeEnum } from './FunnelOrderTypeEnum';
+import type { FunnelVizTypeEnum } from './FunnelVizTypeEnum';
+import type { FunnelWindowIntervalTypeEnum } from './FunnelWindowIntervalTypeEnum';
 import type { Property } from './Property';
 export type Funnel = {
     /**
@@ -48,7 +52,7 @@ export type Funnel = {
      * * `session` - session
      * * `hogql` - hogql
      */
-    breakdown_type?: Funnel.breakdown_type;
+    breakdown_type?: BreakdownTypeEnum;
     /**
      * Funnel window size. Set in combination with funnel_window_interval, so defaults to 'days'.
      */
@@ -63,7 +67,7 @@ export type Funnel = {
      * * `WEEK` - WEEK
      * * `MONTH` - MONTH
      */
-    funnel_window_interval_type?: Funnel.funnel_window_interval_type;
+    funnel_window_interval_type?: FunnelWindowIntervalTypeEnum;
     /**
      * The visualisation type.
      * - `steps` Track instances progress between steps of the funnel
@@ -74,7 +78,7 @@ export type Funnel = {
      * * `time_to_convert` - time_to_convert
      * * `steps` - steps
      */
-    funnel_viz_type?: Funnel.funnel_viz_type;
+    funnel_viz_type?: FunnelVizTypeEnum;
     /**
      * - `ordered` - Step B must happen after Step A, but any number events can happen between A and B.
      * - `strict` - Step B must happen directly after Step A without any events in between.
@@ -84,7 +88,7 @@ export type Funnel = {
      * * `unordered` - unordered
      * * `ordered` - ordered
      */
-    funnel_order_type?: Funnel.funnel_order_type;
+    funnel_order_type?: FunnelOrderTypeEnum;
     /**
      * Exclude users/groups that completed the specified event between two specific steps. Note that these users/groups will be completely excluded from the entire funnel.
      */
@@ -99,71 +103,4 @@ export type Funnel = {
      */
     funnel_window_days?: number;
 };
-export namespace Funnel {
-    /**
-     * Type of property to break down on.
-     *
-     * * `event` - event
-     * * `person` - person
-     * * `cohort` - cohort
-     * * `group` - group
-     * * `session` - session
-     * * `hogql` - hogql
-     */
-    export enum breakdown_type {
-        EVENT = 'event',
-        PERSON = 'person',
-        COHORT = 'cohort',
-        GROUP = 'group',
-        SESSION = 'session',
-        HOGQL = 'hogql',
-    }
-    /**
-     * The type of interval. Used in combination with `funnel_window_intervals`.
-     *
-     * * `DAY` - DAY
-     * * `SECOND` - SECOND
-     * * `MINUTE` - MINUTE
-     * * `HOUR` - HOUR
-     * * `WEEK` - WEEK
-     * * `MONTH` - MONTH
-     */
-    export enum funnel_window_interval_type {
-        DAY = 'DAY',
-        SECOND = 'SECOND',
-        MINUTE = 'MINUTE',
-        HOUR = 'HOUR',
-        WEEK = 'WEEK',
-        MONTH = 'MONTH',
-    }
-    /**
-     * The visualisation type.
-     * - `steps` Track instances progress between steps of the funnel
-     * - `trends` Track how this funnel's conversion rate is trending over time.
-     * - `time_to_convert` Track how long it takes for instances to convert
-     *
-     * * `trends` - trends
-     * * `time_to_convert` - time_to_convert
-     * * `steps` - steps
-     */
-    export enum funnel_viz_type {
-        TRENDS = 'trends',
-        TIME_TO_CONVERT = 'time_to_convert',
-        STEPS = 'steps',
-    }
-    /**
-     * - `ordered` - Step B must happen after Step A, but any number events can happen between A and B.
-     * - `strict` - Step B must happen directly after Step A without any events in between.
-     * - `unordered` - Steps can be completed in any sequence.
-     *
-     * * `strict` - strict
-     * * `unordered` - unordered
-     * * `ordered` - ordered
-     */
-    export enum funnel_order_type {
-        STRICT = 'strict',
-        UNORDERED = 'unordered',
-        ORDERED = 'ordered',
-    }
-}
 

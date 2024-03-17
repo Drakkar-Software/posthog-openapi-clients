@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { DashboardTileBasic } from './DashboardTileBasic';
+import type { EffectivePrivilegeLevelEnum } from './EffectivePrivilegeLevelEnum';
+import type { EffectiveRestrictionLevelEnum } from './EffectiveRestrictionLevelEnum';
 import type { UserBasic } from './UserBasic';
 /**
  * Simplified serializer to speed response times when loading large amounts of objects.
@@ -59,22 +61,12 @@ export type Insight = {
     readonly last_modified_at: string;
     readonly last_modified_by: UserBasic;
     readonly is_sample: boolean;
-    readonly effective_restriction_level: Insight.effective_restriction_level;
-    readonly effective_privilege_level: Insight.effective_privilege_level;
+    readonly effective_restriction_level: EffectiveRestrictionLevelEnum;
+    readonly effective_privilege_level: EffectivePrivilegeLevelEnum;
     /**
      * The timezone this chart is displayed in.
      */
     readonly timezone: string;
     readonly is_cached: string;
 };
-export namespace Insight {
-    export enum effective_restriction_level {
-        '_21' = 21,
-        '_37' = 37,
-    }
-    export enum effective_privilege_level {
-        '_21' = 21,
-        '_37' = 37,
-    }
-}
 

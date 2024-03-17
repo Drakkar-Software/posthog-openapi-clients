@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { PropertyItem } from './PropertyItem';
+import type { PropertyTypeEnum } from './PropertyTypeEnum';
 export type Property = {
     /**
      *
@@ -49,58 +50,7 @@ export type Property = {
                                              * * `AND` - AND
                                              * * `OR` - OR
                                              */
-                                            type?: Property.type;
+                                            type?: PropertyTypeEnum;
                                             values: Array<PropertyItem>;
                                         };
-                                        export namespace Property {
-                                            /**
-                                             *
-                                             * You can use a simplified version:
-                                             * ```json
-                                             * {
-                                                 * "properties": [
-                                                     * {
-                                                         * "key": "email",
-                                                         * "value": "x@y.com",
-                                                         * "operator": "exact",
-                                                         * "type": "event"
-                                                         * }
-                                                         * ]
-                                                         * }
-                                                         * ```
-                                                         *
-                                                         * Or you can create more complicated queries with AND and OR:
-                                                         * ```json
-                                                         * {
-                                                             * "properties": {
-                                                                 * "type": "AND",
-                                                                 * "values": [
-                                                                     * {
-                                                                         * "type": "OR",
-                                                                         * "values": [
-                                                                             * {"key": "email", ...},
-                                                                             * {"key": "email", ...}
-                                                                             * ]
-                                                                             * },
-                                                                             * {
-                                                                                 * "type": "AND",
-                                                                                 * "values": [
-                                                                                     * {"key": "email", ...},
-                                                                                     * {"key": "email", ...}
-                                                                                     * ]
-                                                                                     * }
-                                                                                     * ]
-                                                                                     * ]
-                                                                                     * }
-                                                                                     * ```
-                                                                                     *
-                                                                                     *
-                                                                                     * * `AND` - AND
-                                                                                     * * `OR` - OR
-                                                                                     */
-                                                                                    export enum type {
-                                                                                        AND = 'AND',
-                                                                                        OR = 'OR',
-                                                                                    }
-                                                                                }
 

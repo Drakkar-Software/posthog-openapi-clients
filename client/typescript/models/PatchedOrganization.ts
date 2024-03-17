@@ -2,20 +2,16 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { EffectiveMembershipLevelEnum } from './EffectiveMembershipLevelEnum';
+import type { PluginsAccessLevelEnum } from './PluginsAccessLevelEnum';
 export type PatchedOrganization = {
     readonly id?: string;
     name?: string;
     readonly slug?: string;
     readonly created_at?: string;
     readonly updated_at?: string;
-    readonly membership_level?: PatchedOrganization.membership_level | null;
-    /**
-     * * `0` - none
-     * * `3` - config
-     * * `6` - install
-     * * `9` - root
-     */
-    readonly plugins_access_level?: PatchedOrganization.plugins_access_level;
+    readonly membership_level?: EffectiveMembershipLevelEnum | null;
+    readonly plugins_access_level?: PluginsAccessLevelEnum;
     readonly teams?: Array<Record<string, any>>;
     readonly available_features?: Array<string>;
     readonly available_product_features?: Array<any> | null;
@@ -23,24 +19,6 @@ export type PatchedOrganization = {
     readonly metadata?: string;
     readonly customer_id?: string | null;
     enforce_2fa?: boolean | null;
+    readonly member_count?: string;
 };
-export namespace PatchedOrganization {
-    export enum membership_level {
-        '_1' = 1,
-        '_8' = 8,
-        '_15' = 15,
-    }
-    /**
-     * * `0` - none
-     * * `3` - config
-     * * `6` - install
-     * * `9` - root
-     */
-    export enum plugins_access_level {
-        '_0' = 0,
-        '_3' = 3,
-        '_6' = 6,
-        '_9' = 9,
-    }
-}
 

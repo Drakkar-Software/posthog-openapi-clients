@@ -3,20 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { MinimalFeatureFlag } from './MinimalFeatureFlag';
+import type { Type7baEnum } from './Type7baEnum';
 import type { UserBasic } from './UserBasic';
 export type Survey = {
     readonly id: string;
     name: string;
     description?: string;
-    /**
-     * * `popover` - popover
-     * * `widget` - widget
-     * * `button` - button
-     * * `email` - email
-     * * `full_screen` - full screen
-     * * `api` - api
-     */
-    type: Survey.type;
+    type: Type7baEnum;
     readonly linked_flag: MinimalFeatureFlag;
     linked_flag_id?: number | null;
     readonly targeting_flag: MinimalFeatureFlag;
@@ -29,22 +22,4 @@ export type Survey = {
     end_date?: string | null;
     archived?: boolean;
 };
-export namespace Survey {
-    /**
-     * * `popover` - popover
-     * * `widget` - widget
-     * * `button` - button
-     * * `email` - email
-     * * `full_screen` - full screen
-     * * `api` - api
-     */
-    export enum type {
-        POPOVER = 'popover',
-        WIDGET = 'widget',
-        BUTTON = 'button',
-        EMAIL = 'email',
-        FULL_SCREEN = 'full_screen',
-        API = 'api',
-    }
-}
 

@@ -10,22 +10,22 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class PluginsService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedPluginList
      * @throws ApiError
      */
     public pluginsList(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedPluginList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/',
+            url: '/api/organizations/{organization_id}/plugins/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             query: {
                 'limit': limit,
@@ -34,20 +34,20 @@ export class PluginsService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsCreate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/',
+            url: '/api/organizations/{organization_id}/plugins/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -55,41 +55,41 @@ export class PluginsService {
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsRetrieve(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsUpdate(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'PUT',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -97,22 +97,22 @@ export class PluginsService {
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsPartialUpdate(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -120,79 +120,79 @@ export class PluginsService {
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns void
      * @throws ApiError
      */
     public pluginsDestroy(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsCheckForUpdatesRetrieve(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/check_for_updates/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/check_for_updates/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsSourceRetrieve(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/source/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/source/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsUpdateSourcePartialUpdate(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: PatchedPlugin,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/update_source/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/update_source/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -200,88 +200,88 @@ export class PluginsService {
     }
     /**
      * @param id A unique integer value identifying this plugin.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsUpgradeCreate(
         id: number,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: Plugin,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/{id}/upgrade/',
+            url: '/api/organizations/{organization_id}/plugins/{id}/upgrade/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsActivityRetrieve(
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/activity/',
+            url: '/api/organizations/{organization_id}/plugins/activity/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsExportsUnsubscribeConfigsRetrieve(
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/exports_unsubscribe_configs/',
+            url: '/api/organizations/{organization_id}/plugins/exports_unsubscribe_configs/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsRepositoryRetrieve(
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/repository/',
+            url: '/api/organizations/{organization_id}/plugins/repository/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns Plugin
      * @throws ApiError
      */
     public pluginsUnusedRetrieve(
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<Plugin> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/plugins/unused/',
+            url: '/api/organizations/{organization_id}/plugins/unused/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }

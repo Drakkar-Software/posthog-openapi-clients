@@ -14,8 +14,9 @@ export type InsightActorsQuery = {
     breakdown?: (string | number | null);
     compare?: (Compare | null);
     day?: (string | number | null);
+    includeRecordings?: (boolean | null);
     /**
-     * An interval selected out of available intervals in source query
+     * An interval selected out of available intervals in source query.
      */
     interval?: (number | null);
     kind?: any;

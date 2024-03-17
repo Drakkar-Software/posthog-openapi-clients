@@ -3,10 +3,35 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ExportedAsset } from '../models/ExportedAsset';
+import type { PaginatedExportedAssetList } from '../models/PaginatedExportedAssetList';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class ExportsService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param limit Number of results to return per page.
+     * @param offset The initial index from which to return the results.
+     * @returns PaginatedExportedAssetList
+     * @throws ApiError
+     */
+    public exportsList(
+        projectId: string,
+        limit?: number,
+        offset?: number,
+    ): CancelablePromise<PaginatedExportedAssetList> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/exports/',
+            path: {
+                'project_id': projectId,
+            },
+            query: {
+                'limit': limit,
+                'offset': offset,
+            },
+        });
+    }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody

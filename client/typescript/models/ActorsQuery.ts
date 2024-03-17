@@ -3,6 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ActorsQueryResponse } from './ActorsQueryResponse';
+import type { FunnelCorrelationActorsQuery } from './FunnelCorrelationActorsQuery';
+import type { FunnelsActorsQuery } from './FunnelsActorsQuery';
 import type { HogQLQuery } from './HogQLQuery';
 import type { InsightActorsQuery } from './InsightActorsQuery';
 export type ActorsQuery = {
@@ -18,6 +20,6 @@ export type ActorsQuery = {
     response?: (ActorsQueryResponse | null);
     search?: (string | null);
     select?: (Array<string> | null);
-    source?: (InsightActorsQuery | HogQLQuery | null);
+    source?: (InsightActorsQuery | FunnelsActorsQuery | FunnelCorrelationActorsQuery | HogQLQuery | null);
 };
 

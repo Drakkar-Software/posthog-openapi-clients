@@ -13,22 +13,22 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class BatchExportsService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedBatchExportList
      * @throws ApiError
      */
     public batchExportsList(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/',
+            url: '/api/organizations/{organization_id}/batch_exports/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             query: {
                 'limit': limit,
@@ -37,20 +37,20 @@ export class BatchExportsService {
         });
     }
     /**
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsCreate(
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/',
+            url: '/api/organizations/{organization_id}/batch_exports/',
             path: {
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -58,41 +58,41 @@ export class BatchExportsService {
     }
     /**
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsRetrieve(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsUpdate(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'PUT',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -100,22 +100,22 @@ export class BatchExportsService {
     }
     /**
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsPartialUpdate(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody?: PatchedBatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'PATCH',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -123,42 +123,42 @@ export class BatchExportsService {
     }
     /**
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @returns void
      * @throws ApiError
      */
     public batchExportsDestroy(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
     ): CancelablePromise<void> {
         return this.httpRequest.request({
             method: 'DELETE',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
         });
     }
     /**
      * Trigger a backfill for a BatchExport.
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsBackfillCreate(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/backfill/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/backfill/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -167,22 +167,22 @@ export class BatchExportsService {
     /**
      * Pause a BatchExport.
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsPauseCreate(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/pause/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/pause/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -191,22 +191,22 @@ export class BatchExportsService {
     /**
      * Unpause a BatchExport.
      * @param id A UUID string identifying this batch export.
-     * @param parentLookupOrganizationId
+     * @param organizationId
      * @param requestBody
      * @returns BatchExport
      * @throws ApiError
      */
     public batchExportsUnpauseCreate(
         id: string,
-        parentLookupOrganizationId: string,
+        organizationId: string,
         requestBody: BatchExport,
     ): CancelablePromise<BatchExport> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/organizations/{parent_lookup_organization_id}/batch_exports/{id}/unpause/',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/unpause/',
             path: {
                 'id': id,
-                'parent_lookup_organization_id': parentLookupOrganizationId,
+                'organization_id': organizationId,
             },
             body: requestBody,
             mediaType: 'application/json',
@@ -257,7 +257,7 @@ export class BatchExportsService {
         });
     }
     /**
-     * @param parentLookupBatchExportId
+     * @param batchExportId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
@@ -265,16 +265,16 @@ export class BatchExportsService {
      * @throws ApiError
      */
     public batchExportsLogsList(
-        parentLookupBatchExportId: string,
+        batchExportId: string,
         projectId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportLogEntryList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/logs/',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/logs/',
             path: {
-                'parent_lookup_batch_export_id': parentLookupBatchExportId,
+                'batch_export_id': batchExportId,
                 'project_id': projectId,
             },
             query: {
@@ -285,22 +285,22 @@ export class BatchExportsService {
     }
     /**
      * Get all BatchExportRuns for a BatchExport.
-     * @param parentLookupBatchExportId
+     * @param batchExportId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param cursor The pagination cursor value.
      * @returns PaginatedBatchExportRunList
      * @throws ApiError
      */
     public batchExportsRunsList(
-        parentLookupBatchExportId: string,
+        batchExportId: string,
         projectId: string,
         cursor?: string,
     ): CancelablePromise<PaginatedBatchExportRunList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/',
             path: {
-                'parent_lookup_batch_export_id': parentLookupBatchExportId,
+                'batch_export_id': batchExportId,
                 'project_id': projectId,
             },
             query: {
@@ -309,54 +309,54 @@ export class BatchExportsService {
         });
     }
     /**
-     * @param parentLookupBatchExportId
-     * @param parentLookupRunId
+     * @param batchExportId
+     * @param id A UUID string identifying this batch export run.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns BatchExportRun
+     * @throws ApiError
+     */
+    public batchExportsRunsRetrieve(
+        batchExportId: string,
+        id: string,
+        projectId: string,
+    ): CancelablePromise<BatchExportRun> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/',
+            path: {
+                'batch_export_id': batchExportId,
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param batchExportId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param runId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
      * @returns PaginatedBatchExportLogEntryList
      * @throws ApiError
      */
     public batchExportsRunsLogsList(
-        parentLookupBatchExportId: string,
-        parentLookupRunId: string,
+        batchExportId: string,
         projectId: string,
+        runId: string,
         limit?: number,
         offset?: number,
     ): CancelablePromise<PaginatedBatchExportLogEntryList> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/{parent_lookup_run_id}/logs/',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{run_id}/logs/',
             path: {
-                'parent_lookup_batch_export_id': parentLookupBatchExportId,
-                'parent_lookup_run_id': parentLookupRunId,
+                'batch_export_id': batchExportId,
                 'project_id': projectId,
+                'run_id': runId,
             },
             query: {
                 'limit': limit,
                 'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param id A UUID string identifying this batch export run.
-     * @param parentLookupBatchExportId
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns BatchExportRun
-     * @throws ApiError
-     */
-    public batchExportsRunsRetrieve(
-        id: string,
-        parentLookupBatchExportId: string,
-        projectId: string,
-    ): CancelablePromise<BatchExportRun> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{parent_lookup_batch_export_id}/runs/{id}/',
-            path: {
-                'id': id,
-                'parent_lookup_batch_export_id': parentLookupBatchExportId,
-                'project_id': projectId,
             },
         });
     }

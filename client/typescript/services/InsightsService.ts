@@ -7,6 +7,7 @@ import type { FunnelStepsResults } from '../models/FunnelStepsResults';
 import type { Insight } from '../models/Insight';
 import type { PaginatedInsightList } from '../models/PaginatedInsightList';
 import type { PatchedInsight } from '../models/PatchedInsight';
+import type { SharingConfiguration } from '../models/SharingConfiguration';
 import type { Trend } from '../models/Trend';
 import type { TrendResults } from '../models/TrendResults';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -69,6 +70,25 @@ export class InsightsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param insightId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns SharingConfiguration
+     * @throws ApiError
+     */
+    public insightsSharingList(
+        insightId: number,
+        projectId: string,
+    ): CancelablePromise<Array<SharingConfiguration>> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/insights/{insight_id}/sharing/',
+            path: {
+                'insight_id': insightId,
+                'project_id': projectId,
+            },
         });
     }
     /**

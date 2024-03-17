@@ -3,8 +3,10 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Dashboard } from '../models/Dashboard';
+import type { DashboardCollaborator } from '../models/DashboardCollaborator';
 import type { PaginatedDashboardBasicList } from '../models/PaginatedDashboardBasicList';
 import type { PatchedDashboard } from '../models/PatchedDashboard';
+import type { SharingConfiguration } from '../models/SharingConfiguration';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class DashboardsService {
@@ -51,6 +53,89 @@ export class DashboardsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param dashboardId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns DashboardCollaborator
+     * @throws ApiError
+     */
+    public dashboardsCollaboratorsList(
+        dashboardId: number,
+        projectId: string,
+    ): CancelablePromise<Array<DashboardCollaborator>> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/',
+            path: {
+                'dashboard_id': dashboardId,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param dashboardId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns DashboardCollaborator
+     * @throws ApiError
+     */
+    public dashboardsCollaboratorsCreate(
+        dashboardId: number,
+        projectId: string,
+        requestBody: DashboardCollaborator,
+    ): CancelablePromise<DashboardCollaborator> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/',
+            path: {
+                'dashboard_id': dashboardId,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param dashboardId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param userUuid
+     * @returns void
+     * @throws ApiError
+     */
+    public dashboardsCollaboratorsDestroy(
+        dashboardId: number,
+        projectId: string,
+        userUuid: string,
+    ): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/{user__uuid}/',
+            path: {
+                'dashboard_id': dashboardId,
+                'project_id': projectId,
+                'user__uuid': userUuid,
+            },
+        });
+    }
+    /**
+     * @param dashboardId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns SharingConfiguration
+     * @throws ApiError
+     */
+    public dashboardsSharingList(
+        dashboardId: number,
+        projectId: string,
+    ): CancelablePromise<Array<SharingConfiguration>> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/dashboards/{dashboard_id}/sharing/',
+            path: {
+                'dashboard_id': dashboardId,
+                'project_id': projectId,
+            },
         });
     }
     /**
