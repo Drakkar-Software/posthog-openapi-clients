@@ -11,6 +11,8 @@ export POSTHOG_BASE_URL="https://eu.posthog.com" or export POSTHOG_BASE_URL="htt
 
 ### Install
 ```
+npm i posthog-openapi-client
+yarn add posthog-openapi-client
 pnpm install posthog-openapi-client
 ```
 
