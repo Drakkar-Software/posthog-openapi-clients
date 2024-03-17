@@ -24,7 +24,7 @@ pnpm build
 
 ### Usage
 ```
-pnpm projects-example
+pnpm start
 ```
 
 ## Developers
