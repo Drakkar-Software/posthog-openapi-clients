@@ -4,8 +4,7 @@
 /* eslint-disable */
 export enum PersonsOnEventsMode {
     DISABLED = 'disabled',
-    V1_ENABLED = 'v1_enabled',
-    V1_MIXED = 'v1_mixed',
-    V2_ENABLED = 'v2_enabled',
-    V3_ENABLED = 'v3_enabled',
+    PERSON_ID_NO_OVERRIDE_PROPERTIES_ON_EVENTS = 'person_id_no_override_properties_on_events',
+    PERSON_ID_OVERRIDE_PROPERTIES_ON_EVENTS = 'person_id_override_properties_on_events',
+    PERSON_ID_OVERRIDE_PROPERTIES_JOINED = 'person_id_override_properties_joined',
 }

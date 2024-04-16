@@ -169,49 +169,4 @@ export class ActionsService {
             },
         });
     }
-    /**
-     * @param id A unique integer value identifying this action.
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param format
-     * @returns Action
-     * @throws ApiError
-     */
-    public actionsCountRetrieve(
-        id: number,
-        projectId: string,
-        format?: 'csv' | 'json',
-    ): CancelablePromise<Action> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/actions/{id}/count/',
-            path: {
-                'id': id,
-                'project_id': projectId,
-            },
-            query: {
-                'format': format,
-            },
-        });
-    }
-    /**
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param format
-     * @returns Action
-     * @throws ApiError
-     */
-    public actionsPeopleRetrieve(
-        projectId: string,
-        format?: 'csv' | 'json',
-    ): CancelablePromise<Action> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/actions/people/',
-            path: {
-                'project_id': projectId,
-            },
-            query: {
-                'format': format,
-            },
-        });
-    }
 }

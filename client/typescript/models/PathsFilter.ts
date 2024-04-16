@@ -2,15 +2,12 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { FunnelPathType } from './FunnelPathType';
 import type { PathCleaningFilter } from './PathCleaningFilter';
 import type { PathType } from './PathType';
 export type PathsFilter = {
     edgeLimit?: (number | null);
     endPoint?: (string | null);
     excludeEvents?: (Array<string> | null);
-    funnelFilter?: (Record<string, any> | null);
-    funnelPaths?: (FunnelPathType | null);
     includeEventTypes?: (Array<PathType> | null);
     localPathCleaningFilters?: (Array<PathCleaningFilter> | null);
     maxEdgeWeight?: (number | null);

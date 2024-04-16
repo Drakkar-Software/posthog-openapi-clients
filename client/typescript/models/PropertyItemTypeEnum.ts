@@ -16,6 +16,7 @@
  * * `session` - session
  * * `hogql` - hogql
  * * `data_warehouse` - data_warehouse
+ * * `data_warehouse_person_property` - data_warehouse_person_property
  */
 export enum PropertyItemTypeEnum {
     EVENT = 'event',
@@ -31,4 +32,5 @@ export enum PropertyItemTypeEnum {
     SESSION = 'session',
     HOGQL = 'hogql',
     DATA_WAREHOUSE = 'data_warehouse',
+    DATA_WAREHOUSE_PERSON_PROPERTY = 'data_warehouse_person_property',
 }

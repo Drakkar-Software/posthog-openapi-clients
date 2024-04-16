@@ -3,13 +3,10 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { PropertyOperator } from './PropertyOperator';
-export type PersonPropertyFilter = {
+export type DataWarehousePersonPropertyFilter = {
     key: string;
     label?: (string | null);
     operator: PropertyOperator;
-    /**
-     * Person properties
-     */
     type?: any;
     value?: (string | number | null);
 };

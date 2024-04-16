@@ -4,7 +4,7 @@
 /* eslint-disable */
 import type { PropertyOperator } from './PropertyOperator';
 export type SessionPropertyFilter = {
-    key?: any;
+    key: string;
     label?: (string | null);
     operator: PropertyOperator;
     type?: any;

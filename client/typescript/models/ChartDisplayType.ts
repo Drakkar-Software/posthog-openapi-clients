@@ -4,12 +4,12 @@
 /* eslint-disable */
 export enum ChartDisplayType {
     ACTIONS_LINE_GRAPH = 'ActionsLineGraph',
-    ACTIONS_LINE_GRAPH_CUMULATIVE = 'ActionsLineGraphCumulative',
-    ACTIONS_AREA_GRAPH = 'ActionsAreaGraph',
-    ACTIONS_TABLE = 'ActionsTable',
-    ACTIONS_PIE = 'ActionsPie',
     ACTIONS_BAR = 'ActionsBar',
-    ACTIONS_BAR_VALUE = 'ActionsBarValue',
-    WORLD_MAP = 'WorldMap',
+    ACTIONS_AREA_GRAPH = 'ActionsAreaGraph',
+    ACTIONS_LINE_GRAPH_CUMULATIVE = 'ActionsLineGraphCumulative',
     BOLD_NUMBER = 'BoldNumber',
+    ACTIONS_PIE = 'ActionsPie',
+    ACTIONS_BAR_VALUE = 'ActionsBarValue',
+    ACTIONS_TABLE = 'ActionsTable',
+    WORLD_MAP = 'WorldMap',
 }

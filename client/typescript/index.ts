@@ -59,6 +59,7 @@ export type { DataTableNode } from './models/DataTableNode';
 export type { DataVisualizationNode } from './models/DataVisualizationNode';
 export type { DataWarehouseEventsModifier } from './models/DataWarehouseEventsModifier';
 export type { DataWarehouseNode } from './models/DataWarehouseNode';
+export type { DataWarehousePersonPropertyFilter } from './models/DataWarehousePersonPropertyFilter';
 export type { DataWarehousePropertyFilter } from './models/DataWarehousePropertyFilter';
 export type { DateRange } from './models/DateRange';
 export type { DayItem } from './models/DayItem';
@@ -104,6 +105,7 @@ export type { FunnelExclusionActionsNode } from './models/FunnelExclusionActions
 export type { FunnelExclusionEventsNode } from './models/FunnelExclusionEventsNode';
 export { FunnelLayout } from './models/FunnelLayout';
 export { FunnelOrderTypeEnum } from './models/FunnelOrderTypeEnum';
+export type { FunnelPathsFilter } from './models/FunnelPathsFilter';
 export { FunnelPathType } from './models/FunnelPathType';
 export type { FunnelsActorsQuery } from './models/FunnelsActorsQuery';
 export type { FunnelsFilter } from './models/FunnelsFilter';

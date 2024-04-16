@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CohortPropertyFilter } from './CohortPropertyFilter';
+import type { DataWarehousePersonPropertyFilter } from './DataWarehousePersonPropertyFilter';
 import type { DataWarehousePropertyFilter } from './DataWarehousePropertyFilter';
 import type { ElementPropertyFilter } from './ElementPropertyFilter';
 import type { EmptyPropertyFilter } from './EmptyPropertyFilter';
@@ -16,6 +17,6 @@ import type { RecordingDurationFilter } from './RecordingDurationFilter';
 import type { SessionPropertyFilter } from './SessionPropertyFilter';
 export type PropertyGroupFilterValue = {
     type: FilterLogicalOperator;
-    values: Array<(PropertyGroupFilterValue | EventPropertyFilter | PersonPropertyFilter | ElementPropertyFilter | SessionPropertyFilter | CohortPropertyFilter | RecordingDurationFilter | GroupPropertyFilter | FeaturePropertyFilter | HogQLPropertyFilter | EmptyPropertyFilter | DataWarehousePropertyFilter)>;
+    values: Array<(PropertyGroupFilterValue | EventPropertyFilter | PersonPropertyFilter | ElementPropertyFilter | SessionPropertyFilter | CohortPropertyFilter | RecordingDurationFilter | GroupPropertyFilter | FeaturePropertyFilter | HogQLPropertyFilter | EmptyPropertyFilter | DataWarehousePropertyFilter | DataWarehousePersonPropertyFilter)>;
 };
 

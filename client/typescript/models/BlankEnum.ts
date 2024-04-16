@@ -2,5 +2,4 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-export enum BlankEnum {
-}
+export enum BlankEnum {}

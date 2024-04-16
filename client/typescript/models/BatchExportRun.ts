@@ -55,6 +55,10 @@ export type BatchExportRun = {
      */
     readonly last_updated_at: string;
     /**
+     * The total count of records that should be exported in this BatchExportRun.
+     */
+    records_total_count?: number | null;
+    /**
      * The BatchExport this run belongs to.
      */
     readonly batch_export: string;

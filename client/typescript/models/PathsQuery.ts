@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { DateRange } from './DateRange';
+import type { FunnelPathsFilter } from './FunnelPathsFilter';
 import type { PathsFilter } from './PathsFilter';
 import type { PathsQueryResponse } from './PathsQueryResponse';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
@@ -19,6 +20,10 @@ export type PathsQuery = {
      * Exclude internal and test users by applying the respective filters
      */
     filterTestAccounts?: (boolean | null);
+    /**
+     * Used for displaying paths in relation to funnel steps.
+     */
+    funnelPathsFilter?: (FunnelPathsFilter | null);
     kind?: any;
     /**
      * Properties specific to the paths insight
