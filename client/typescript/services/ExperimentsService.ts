@@ -140,6 +140,29 @@ export class ExperimentsService {
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns Experiment
+     * @throws ApiError
+     */
+    public experimentsCreateExposureCohortForExperimentCreate(
+        id: number,
+        projectId: string,
+        requestBody: Experiment,
+    ): CancelablePromise<Experiment> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/experiments/{id}/create_exposure_cohort_for_experiment/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A unique integer value identifying this experiment.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns Experiment
      * @throws ApiError
      */

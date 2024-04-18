@@ -18,5 +18,6 @@ export type PatchedCohort = {
     readonly errors_calculating?: number;
     readonly count?: number | null;
     is_static?: boolean;
+    readonly experiment_set?: Array<number>;
 };
 

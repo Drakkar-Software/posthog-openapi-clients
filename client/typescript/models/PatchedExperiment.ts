@@ -12,6 +12,7 @@ export type PatchedExperiment = {
     end_date?: string | null;
     feature_flag_key?: string;
     readonly feature_flag?: MinimalFeatureFlag;
+    readonly exposure_cohort?: number | null;
     parameters?: any;
     secondary_metrics?: any;
     filters?: any;
