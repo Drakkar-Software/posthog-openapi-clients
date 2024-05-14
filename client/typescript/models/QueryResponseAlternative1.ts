@@ -2,9 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { EventType } from './EventType';
 export type QueryResponseAlternative1 = {
-    next?: (string | null);
-    results: Array<EventType>;
+    results: Array<Record<string, any>>;
 };
 

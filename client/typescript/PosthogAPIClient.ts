@@ -46,6 +46,7 @@ import { QueryService } from './services/QueryService';
 import { RolesService } from './services/RolesService';
 import { SessionRecordingPlaylistsService } from './services/SessionRecordingPlaylistsService';
 import { SessionRecordingsService } from './services/SessionRecordingsService';
+import { SessionsService } from './services/SessionsService';
 import { SubscriptionsService } from './services/SubscriptionsService';
 import { SurveysService } from './services/SurveysService';
 import { TrendService } from './services/TrendService';
@@ -93,6 +94,7 @@ export class PosthogAPIClient {
     public readonly roles: RolesService;
     public readonly sessionRecordingPlaylists: SessionRecordingPlaylistsService;
     public readonly sessionRecordings: SessionRecordingsService;
+    public readonly sessions: SessionsService;
     public readonly subscriptions: SubscriptionsService;
     public readonly surveys: SurveysService;
     public readonly trend: TrendService;
@@ -151,6 +153,7 @@ export class PosthogAPIClient {
         this.roles = new RolesService(this.request);
         this.sessionRecordingPlaylists = new SessionRecordingPlaylistsService(this.request);
         this.sessionRecordings = new SessionRecordingsService(this.request);
+        this.sessions = new SessionsService(this.request);
         this.subscriptions = new SubscriptionsService(this.request);
         this.surveys = new SurveysService(this.request);
         this.trend = new TrendService(this.request);

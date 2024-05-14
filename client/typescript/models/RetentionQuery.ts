@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { DateRange } from './DateRange';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 import type { RetentionFilter } from './RetentionFilter';
 import type { RetentionQueryResponse } from './RetentionQueryResponse';
@@ -20,6 +21,10 @@ export type RetentionQuery = {
      */
     filterTestAccounts?: (boolean | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     /**
      * Property filters for all series
      */

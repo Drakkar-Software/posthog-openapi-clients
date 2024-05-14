@@ -8,6 +8,8 @@ import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
 import type { FunnelsFilter } from './FunnelsFilter';
+import type { FunnelsQueryResponse } from './FunnelsQueryResponse';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { IntervalType } from './IntervalType';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 export type FunnelsQuery = {
@@ -37,9 +39,14 @@ export type FunnelsQuery = {
     interval?: (IntervalType | null);
     kind?: any;
     /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
+    /**
      * Property filters for all series
      */
     properties?: (PropertyGroupFilter | null);
+    response?: (FunnelsQueryResponse | null);
     /**
      * Sampling rate
      */

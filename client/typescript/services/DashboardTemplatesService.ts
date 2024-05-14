@@ -54,7 +54,7 @@ export class DashboardTemplatesService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this dashboard template.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns DashboardTemplate
      * @throws ApiError
@@ -73,7 +73,7 @@ export class DashboardTemplatesService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this dashboard template.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
      * @returns DashboardTemplate
@@ -96,7 +96,7 @@ export class DashboardTemplatesService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this dashboard template.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
      * @returns DashboardTemplate
@@ -120,7 +120,7 @@ export class DashboardTemplatesService {
     }
     /**
      * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
-     * @param id
+     * @param id A UUID string identifying this dashboard template.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns void
      * @throws ApiError

@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { HogQLAutocompleteResponse } from './HogQLAutocompleteResponse';
 import type { HogQLFilters } from './HogQLFilters';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type HogQLAutocomplete = {
     /**
      * End position of the editor word
@@ -15,8 +16,9 @@ export type HogQLAutocomplete = {
     filters?: (HogQLFilters | null);
     kind?: any;
     /**
-     * Cached query response
+     * Modifiers used when performing the query
      */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (HogQLAutocompleteResponse | null);
     /**
      * Full select query to validate

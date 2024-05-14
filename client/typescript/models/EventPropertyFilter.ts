@@ -6,7 +6,7 @@ import type { PropertyOperator } from './PropertyOperator';
 export type EventPropertyFilter = {
     key: string;
     label?: (string | null);
-    operator: PropertyOperator;
+    operator?: (PropertyOperator | null);
     /**
      * Event properties
      */

@@ -2,14 +2,25 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { AutocompleteCompletionItem } from './AutocompleteCompletionItem';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { QueryTiming } from './QueryTiming';
+import type { SamplingRate } from './SamplingRate';
+import type { WebOverviewItem } from './WebOverviewItem';
 export type QueryResponseAlternative9 = {
     /**
-     * Whether or not the suggestions returned are complete
+     * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
-    incomplete_list: boolean;
-    suggestions: Array<AutocompleteCompletionItem>;
+    error?: (string | null);
+    /**
+     * Generated HogQL query.
+     */
+    hogql?: (string | null);
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
+    results: Array<WebOverviewItem>;
+    samplingRate?: (SamplingRate | null);
     /**
      * Measured timings for different parts of the query generation process
      */

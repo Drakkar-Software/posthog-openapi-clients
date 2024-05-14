@@ -21,6 +21,7 @@ export class PropertyDefinitionsService {
      * * `event` - event
      * * `person` - person
      * * `group` - group
+     * * `session` - session
      * @returns any No response body
      * @throws ApiError
      */
@@ -34,7 +35,7 @@ export class PropertyDefinitionsService {
         isNumerical?: boolean | null,
         properties?: string,
         search?: string,
-        type: 'event' | 'person' | 'group' = 'event',
+        type: 'event' | 'person' | 'group' | 'session' = 'event',
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
@@ -56,7 +57,7 @@ export class PropertyDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -75,7 +76,7 @@ export class PropertyDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -94,7 +95,7 @@ export class PropertyDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -113,7 +114,7 @@ export class PropertyDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns void
      * @throws ApiError

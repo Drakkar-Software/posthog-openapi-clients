@@ -49,7 +49,10 @@ export type PatchedTeam = {
     readonly groups_on_events_querying_enabled?: boolean;
     inject_web_apps?: boolean | null;
     extra_settings?: any;
+    modifiers?: any;
+    readonly default_modifiers?: Record<string, any>;
     has_completed_onboarding_for?: any;
     surveys_opt_in?: boolean | null;
+    heatmaps_opt_in?: boolean | null;
 };
 

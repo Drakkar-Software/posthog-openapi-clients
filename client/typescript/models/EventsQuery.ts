@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { EventsQueryResponse } from './EventsQueryResponse';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type EventsQuery = {
     /**
      * Show events matching a given action
@@ -34,6 +35,10 @@ export type EventsQuery = {
      */
     limit?: (number | null);
     /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
+    /**
      * Number of rows to skip before returning rows
      */
     offset?: (number | null);
@@ -49,9 +54,6 @@ export type EventsQuery = {
      * Properties configurable in the interface
      */
     properties?: null;
-    /**
-     * Cached query response
-     */
     response?: (EventsQueryResponse | null);
     /**
      * Return a limited set of data. Required.

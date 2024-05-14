@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { DateRange } from './DateRange';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { TimeToSeeDataSessionsQueryResponse } from './TimeToSeeDataSessionsQueryResponse';
 export type TimeToSeeDataSessionsQuery = {
     /**
@@ -11,8 +12,9 @@ export type TimeToSeeDataSessionsQuery = {
     dateRange?: (DateRange | null);
     kind?: any;
     /**
-     * Cached query response
+     * Modifiers used when performing the query
      */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (TimeToSeeDataSessionsQueryResponse | null);
     /**
      * Project to filter on. Defaults to current project

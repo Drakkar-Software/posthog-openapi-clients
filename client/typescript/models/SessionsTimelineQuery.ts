@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { SessionsTimelineQueryResponse } from './SessionsTimelineQueryResponse';
 export type SessionsTimelineQuery = {
     /**
@@ -14,12 +15,13 @@ export type SessionsTimelineQuery = {
     before?: (string | null);
     kind?: any;
     /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
+    /**
      * Fetch sessions only for a given person
      */
     personId?: (string | null);
-    /**
-     * Cached query response
-     */
     response?: (SessionsTimelineQueryResponse | null);
 };
 

@@ -7,6 +7,7 @@ import type { BreakdownFilter } from './BreakdownFilter';
 import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { IntervalType } from './IntervalType';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 import type { TrendsFilter } from './TrendsFilter';
@@ -33,6 +34,10 @@ export type TrendsQuery = {
      */
     interval?: (IntervalType | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     /**
      * Property filters for all series
      */

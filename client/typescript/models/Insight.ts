@@ -51,6 +51,7 @@ export type Insight = {
      */
     readonly next_allowed_client_refresh: string;
     readonly result: string;
+    readonly columns: string;
     readonly created_at: string | null;
     readonly created_by: UserBasic;
     description?: string | null;

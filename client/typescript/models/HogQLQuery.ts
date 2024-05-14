@@ -9,11 +9,11 @@ export type HogQLQuery = {
     explain?: (boolean | null);
     filters?: (HogQLFilters | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
     modifiers?: (HogQLQueryModifiers | null);
     query: string;
-    /**
-     * Cached query response
-     */
     response?: (HogQLQueryResponse | null);
     /**
      * Constant values that can be referenced with the {placeholder} syntax in the query

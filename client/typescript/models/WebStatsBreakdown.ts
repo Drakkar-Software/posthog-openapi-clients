@@ -5,6 +5,7 @@
 export enum WebStatsBreakdown {
     PAGE = 'Page',
     INITIAL_PAGE = 'InitialPage',
+    EXIT_PAGE = 'ExitPage',
     INITIAL_CHANNEL_TYPE = 'InitialChannelType',
     INITIAL_REFERRING_DOMAIN = 'InitialReferringDomain',
     INITIAL_UTMSOURCE = 'InitialUTMSource',

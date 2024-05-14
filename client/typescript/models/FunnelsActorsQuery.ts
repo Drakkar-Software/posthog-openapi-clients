@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { ActorsQueryResponse } from './ActorsQueryResponse';
 import type { FunnelsQuery } from './FunnelsQuery';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type FunnelsActorsQuery = {
     /**
      * Custom step numbers to get persons for. This overrides `funnelStep`. Primarily for correlation use.
@@ -24,6 +25,10 @@ export type FunnelsActorsQuery = {
     funnelTrendsEntrancePeriodStart?: (string | null);
     includeRecordings?: (boolean | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (ActorsQueryResponse | null);
     source: FunnelsQuery;
 };

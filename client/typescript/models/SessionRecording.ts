@@ -21,5 +21,6 @@ export type SessionRecording = {
     readonly start_url: string | null;
     person?: MinimalPerson;
     readonly storage: string;
+    readonly snapshot_source: string | null;
 };
 

@@ -5,6 +5,7 @@
 import type { ActorsQueryResponse } from './ActorsQueryResponse';
 import type { Compare } from './Compare';
 import type { FunnelsQuery } from './FunnelsQuery';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { LifecycleQuery } from './LifecycleQuery';
 import type { PathsQuery } from './PathsQuery';
 import type { RetentionQuery } from './RetentionQuery';
@@ -20,6 +21,10 @@ export type InsightActorsQuery = {
      */
     interval?: (number | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (ActorsQueryResponse | null);
     series?: (number | null);
     source: (TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery);

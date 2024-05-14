@@ -11,6 +11,7 @@ export type RetentionFilter = {
     retentionReference?: (RetentionReference | null);
     retentionType?: (RetentionType | null);
     returningEntity?: (RetentionEntity | null);
+    showMean?: (boolean | null);
     targetEntity?: (RetentionEntity | null);
     totalIntervals?: (number | null);
 };

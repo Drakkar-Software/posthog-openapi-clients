@@ -57,7 +57,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @returns Team
      * @throws ApiError
@@ -77,7 +77,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @param requestBody
      * @returns Team
@@ -101,7 +101,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @param requestBody
      * @returns Team
@@ -125,7 +125,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @returns void
      * @throws ApiError
@@ -145,7 +145,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @returns Team
      * @throws ApiError
@@ -165,7 +165,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @returns Team
      * @throws ApiError
@@ -185,7 +185,7 @@ export class ProjectsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team.
+     * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @param requestBody
      * @returns Team

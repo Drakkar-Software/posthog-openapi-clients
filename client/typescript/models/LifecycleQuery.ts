@@ -6,11 +6,16 @@ import type { ActionsNode } from './ActionsNode';
 import type { DataWarehouseNode } from './DataWarehouseNode';
 import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { IntervalType } from './IntervalType';
 import type { LifecycleFilter } from './LifecycleFilter';
 import type { LifecycleQueryResponse } from './LifecycleQueryResponse';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 export type LifecycleQuery = {
+    /**
+     * Groups aggregation
+     */
+    aggregation_group_type_index?: (number | null);
     /**
      * Date range for the query
      */
@@ -28,6 +33,10 @@ export type LifecycleQuery = {
      * Properties specific to the lifecycle insight
      */
     lifecycleFilter?: (LifecycleFilter | null);
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     /**
      * Property filters for all series
      */

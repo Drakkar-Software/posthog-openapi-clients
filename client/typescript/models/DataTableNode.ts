@@ -7,6 +7,13 @@ import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
 import type { HogQLQuery } from './HogQLQuery';
 import type { PersonsNode } from './PersonsNode';
+import type { Response } from './Response';
+import type { Response1 } from './Response1';
+import type { Response2 } from './Response2';
+import type { Response3 } from './Response3';
+import type { Response4 } from './Response4';
+import type { Response5 } from './Response5';
+import type { Response6 } from './Response6';
 import type { TimeToSeeDataSessionsQuery } from './TimeToSeeDataSessionsQuery';
 import type { WebOverviewQuery } from './WebOverviewQuery';
 import type { WebStatsTableQuery } from './WebStatsTableQuery';
@@ -41,6 +48,7 @@ export type DataTableNode = {
      * Link properties via the URL (default: false)
      */
     propertiesViaUrl?: (boolean | null);
+    response?: (Record<string, any> | Response | Response1 | Response2 | Response3 | Response4 | Response5 | Response6 | null);
     /**
      * Show the kebab menu at the end of the row
      */

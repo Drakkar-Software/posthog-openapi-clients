@@ -24,5 +24,6 @@ export type PatchedSurveySerializerCreateUpdateOnly = {
     start_date?: string | null;
     end_date?: string | null;
     archived?: boolean;
+    responses_limit?: number | null;
 };
 

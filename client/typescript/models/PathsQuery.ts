@@ -4,6 +4,7 @@
 /* eslint-disable */
 import type { DateRange } from './DateRange';
 import type { FunnelPathsFilter } from './FunnelPathsFilter';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { PathsFilter } from './PathsFilter';
 import type { PathsQueryResponse } from './PathsQueryResponse';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
@@ -25,6 +26,10 @@ export type PathsQuery = {
      */
     funnelPathsFilter?: (FunnelPathsFilter | null);
     kind?: any;
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     /**
      * Properties specific to the paths insight
      */

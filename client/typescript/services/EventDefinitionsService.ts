@@ -23,7 +23,7 @@ export class EventDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this event definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -42,7 +42,7 @@ export class EventDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this event definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -61,7 +61,7 @@ export class EventDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this event definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -80,7 +80,7 @@ export class EventDefinitionsService {
         });
     }
     /**
-     * @param id
+     * @param id A UUID string identifying this event definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns void
      * @throws ApiError

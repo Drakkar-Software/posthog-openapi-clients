@@ -15,7 +15,7 @@ export type HogQLQueryResponse = {
      */
     columns?: null;
     /**
-     * Query error. Returned only if 'explain' is true. Throws an error otherwise.
+     * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
     error?: (string | null);
     /**
@@ -24,7 +24,7 @@ export type HogQLQueryResponse = {
     explain?: (Array<string> | null);
     hasMore?: (boolean | null);
     /**
-     * Generated HogQL query
+     * Generated HogQL query.
      */
     hogql?: (string | null);
     limit?: (number | null);
@@ -41,10 +41,7 @@ export type HogQLQueryResponse = {
      * Input query string
      */
     query?: (string | null);
-    /**
-     * Query results
-     */
-    results?: null;
+    results: Array<any>;
     /**
      * Measured timings for different parts of the query generation process
      */

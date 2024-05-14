@@ -25,9 +25,6 @@ export type DataWarehouseNode = {
      * Properties configurable in the interface
      */
     properties?: null;
-    /**
-     * Cached query response
-     */
     response?: (Record<string, any> | null);
     table_name: string;
     timestamp_field: string;

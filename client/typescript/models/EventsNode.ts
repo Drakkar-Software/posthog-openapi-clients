@@ -6,7 +6,6 @@ import type { BaseMathType } from './BaseMathType';
 import type { CountPerActorMathType } from './CountPerActorMathType';
 import type { MathGroupTypeIndex } from './MathGroupTypeIndex';
 import type { PropertyMathType } from './PropertyMathType';
-import type { Response } from './Response';
 export type EventsNode = {
     custom_name?: (string | null);
     /**
@@ -32,9 +31,6 @@ export type EventsNode = {
      * Properties configurable in the interface
      */
     properties?: null;
-    /**
-     * Return a limited set of data
-     */
-    response?: (Response | null);
+    response?: (Record<string, any> | null);
 };
 

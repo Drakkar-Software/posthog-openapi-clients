@@ -284,7 +284,6 @@ export class BatchExportsService {
         });
     }
     /**
-     * Get all BatchExportRuns for a BatchExport.
      * @param batchExportId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param cursor The pagination cursor value.

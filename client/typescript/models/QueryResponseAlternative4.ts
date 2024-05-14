@@ -2,16 +2,18 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { QueryTiming } from './QueryTiming';
+import type { BreakdownItem } from './BreakdownItem';
+import type { CompareItem } from './CompareItem';
+import type { DayItem } from './DayItem';
+import type { IntervalItem } from './IntervalItem';
+import type { Series } from './Series';
+import type { StatusItem } from './StatusItem';
 export type QueryResponseAlternative4 = {
-    columns: Array<any>;
-    hasMore?: (boolean | null);
-    hogql: string;
-    limit: number;
-    missing_actors_count?: (number | null);
-    offset: number;
-    results: Array<Array<any>>;
-    timings?: (Array<QueryTiming> | null);
-    types: Array<string>;
+    breakdown?: (Array<BreakdownItem> | null);
+    compare?: (Array<CompareItem> | null);
+    day?: (Array<DayItem> | null);
+    interval?: (Array<IntervalItem> | null);
+    series?: (Array<Series> | null);
+    status?: (Array<StatusItem> | null);
 };
 

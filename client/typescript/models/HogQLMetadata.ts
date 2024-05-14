@@ -10,6 +10,7 @@ import type { HogQLAutocomplete } from './HogQLAutocomplete';
 import type { HogQLFilters } from './HogQLFilters';
 import type { HogQLMetadataResponse } from './HogQLMetadataResponse';
 import type { HogQLQuery } from './HogQLQuery';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { InsightActorsQuery } from './InsightActorsQuery';
 import type { InsightActorsQueryOptions } from './InsightActorsQueryOptions';
 import type { PersonsNode } from './PersonsNode';
@@ -37,8 +38,9 @@ export type HogQLMetadata = {
     filters?: (HogQLFilters | null);
     kind?: any;
     /**
-     * Cached query response
+     * Modifiers used when performing the query
      */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (HogQLMetadataResponse | null);
     /**
      * Full select query to validate (use `select` or `expr`, but not both)

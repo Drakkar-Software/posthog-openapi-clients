@@ -3,11 +3,13 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { DatabaseSchemaQueryResponseField } from './DatabaseSchemaQueryResponseField';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type DatabaseSchemaQuery = {
     kind?: any;
     /**
-     * Cached query response
+     * Modifiers used when performing the query
      */
+    modifiers?: (HogQLQueryModifiers | null);
     response?: (Record<string, Array<DatabaseSchemaQueryResponseField>> | null);
 };
 

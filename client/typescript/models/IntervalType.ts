@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export enum IntervalType {
+    MINUTE = 'minute',
     HOUR = 'hour',
     DAY = 'day',
     WEEK = 'week',

@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ActionStep } from './ActionStep';
+import type { ActionStepJSON } from './ActionStepJSON';
 import type { UserBasic } from './UserBasic';
 /**
  * Serializer mixin that resolves appropriate response for tags depending on license.
@@ -14,7 +14,7 @@ export type PatchedAction = {
     tags?: Array<any>;
     post_to_slack?: boolean;
     slack_message_format?: string;
-    steps?: Array<ActionStep>;
+    steps?: Array<ActionStepJSON>;
     readonly created_at?: string;
     readonly created_by?: UserBasic;
     deleted?: boolean;

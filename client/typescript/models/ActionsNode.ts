@@ -23,9 +23,6 @@ export type ActionsNode = {
      * Properties configurable in the interface
      */
     properties?: null;
-    /**
-     * Cached query response
-     */
     response?: (Record<string, any> | null);
 };
 

@@ -2,6 +2,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type PersonsNode = {
     cohort?: (number | null);
     distinctId?: (string | null);
@@ -11,14 +12,15 @@ export type PersonsNode = {
     fixedProperties?: null;
     kind?: any;
     limit?: (number | null);
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
     offset?: (number | null);
     /**
      * Properties configurable in the interface
      */
     properties?: null;
-    /**
-     * Cached query response
-     */
     response?: (Record<string, any> | null);
     search?: (string | null);
 };

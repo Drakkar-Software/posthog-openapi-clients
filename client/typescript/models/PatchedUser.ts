@@ -13,13 +13,13 @@ import type { ToolbarModeEnum } from './ToolbarModeEnum';
 export type PatchedUser = {
     readonly date_joined?: string;
     readonly uuid?: string;
-    distinct_id?: string | null;
+    readonly distinct_id?: string | null;
     first_name?: string;
     last_name?: string;
     email?: string;
-    pending_email?: string | null;
+    readonly pending_email?: string | null;
     email_opt_in?: boolean | null;
-    is_email_verified?: boolean | null;
+    readonly is_email_verified?: boolean | null;
     notification_settings?: Record<string, any>;
     anonymize_data?: boolean | null;
     toolbar_mode?: (ToolbarModeEnum | BlankEnum | NullEnum) | null;
@@ -29,6 +29,8 @@ export type PatchedUser = {
      */
     is_staff?: boolean;
     readonly is_impersonated?: boolean | null;
+    readonly is_impersonated_until?: string | null;
+    readonly sensitive_session_expires_at?: string | null;
     readonly team?: TeamBasic;
     readonly organization?: Organization;
     readonly organizations?: Array<OrganizationBasic>;

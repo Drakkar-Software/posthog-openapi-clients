@@ -2,14 +2,17 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HogQLNotice } from './HogQLNotice';
+import type { AutocompleteCompletionItem } from './AutocompleteCompletionItem';
+import type { QueryTiming } from './QueryTiming';
 export type QueryResponseAlternative8 = {
-    errors: Array<HogQLNotice>;
-    inputExpr?: (string | null);
-    inputSelect?: (string | null);
-    isValid?: (boolean | null);
-    isValidView?: (boolean | null);
-    notices: Array<HogQLNotice>;
-    warnings: Array<HogQLNotice>;
+    /**
+     * Whether or not the suggestions returned are complete
+     */
+    incomplete_list: boolean;
+    suggestions: Array<AutocompleteCompletionItem>;
+    /**
+     * Measured timings for different parts of the query generation process
+     */
+    timings?: (Array<QueryTiming> | null);
 };
 
