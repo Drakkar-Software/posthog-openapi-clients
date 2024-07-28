@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -29,6 +29,7 @@ export type PatchedTeam = {
     correlation_config?: any;
     autocapture_opt_out?: boolean | null;
     autocapture_exceptions_opt_in?: boolean | null;
+    autocapture_web_vitals_opt_in?: boolean | null;
     autocapture_exceptions_errors_to_ignore?: any;
     capture_console_log_opt_in?: boolean | null;
     capture_performance_opt_in?: boolean | null;
@@ -46,7 +47,6 @@ export type PatchedTeam = {
     live_events_columns?: Array<string> | null;
     recording_domains?: Array<string | null> | null;
     readonly person_on_events_querying_enabled?: boolean;
-    readonly groups_on_events_querying_enabled?: boolean;
     inject_web_apps?: boolean | null;
     extra_settings?: any;
     modifiers?: any;
@@ -54,5 +54,6 @@ export type PatchedTeam = {
     has_completed_onboarding_for?: any;
     surveys_opt_in?: boolean | null;
     heatmaps_opt_in?: boolean | null;
+    readonly live_events_token?: string | null;
 };
 

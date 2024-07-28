@@ -1,12 +1,12 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { Subscription } from './Subscription';
 export type PaginatedSubscriptionList = {
-    count?: number;
+    count: number;
     next?: string | null;
     previous?: string | null;
-    results?: Array<Subscription>;
+    results: Array<Subscription>;
 };
 

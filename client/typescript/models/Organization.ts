@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -13,7 +13,6 @@ export type Organization = {
     readonly membership_level: EffectiveMembershipLevelEnum | null;
     readonly plugins_access_level: PluginsAccessLevelEnum;
     readonly teams: Array<Record<string, any>>;
-    readonly available_features: Array<string>;
     readonly available_product_features: Array<any> | null;
     is_member_join_email_enabled?: boolean;
     readonly metadata: string;

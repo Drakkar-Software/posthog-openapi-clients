@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -10,5 +10,6 @@ export type UserBasic = {
     last_name?: string;
     email: string;
     is_email_verified?: boolean | null;
+    readonly hedgehog_config: Record<string, any> | null;
 };
 

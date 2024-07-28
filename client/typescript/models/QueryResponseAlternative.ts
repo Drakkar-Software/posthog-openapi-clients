@@ -1,8 +1,7 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { DatabaseSchemaQueryResponseField } from './DatabaseSchemaQueryResponseField';
 import type { QueryResponseAlternative1 } from './QueryResponseAlternative1';
 import type { QueryResponseAlternative10 } from './QueryResponseAlternative10';
 import type { QueryResponseAlternative11 } from './QueryResponseAlternative11';
@@ -18,7 +17,11 @@ import type { QueryResponseAlternative2 } from './QueryResponseAlternative2';
 import type { QueryResponseAlternative20 } from './QueryResponseAlternative20';
 import type { QueryResponseAlternative21 } from './QueryResponseAlternative21';
 import type { QueryResponseAlternative22 } from './QueryResponseAlternative22';
+import type { QueryResponseAlternative23 } from './QueryResponseAlternative23';
+import type { QueryResponseAlternative24 } from './QueryResponseAlternative24';
 import type { QueryResponseAlternative25 } from './QueryResponseAlternative25';
+import type { QueryResponseAlternative28 } from './QueryResponseAlternative28';
+import type { QueryResponseAlternative29 } from './QueryResponseAlternative29';
 import type { QueryResponseAlternative3 } from './QueryResponseAlternative3';
 import type { QueryResponseAlternative4 } from './QueryResponseAlternative4';
 import type { QueryResponseAlternative5 } from './QueryResponseAlternative5';
@@ -26,5 +29,5 @@ import type { QueryResponseAlternative6 } from './QueryResponseAlternative6';
 import type { QueryResponseAlternative7 } from './QueryResponseAlternative7';
 import type { QueryResponseAlternative8 } from './QueryResponseAlternative8';
 import type { QueryResponseAlternative9 } from './QueryResponseAlternative9';
-export type QueryResponseAlternative = (Record<string, any> | QueryResponseAlternative1 | QueryResponseAlternative2 | QueryResponseAlternative3 | QueryResponseAlternative4 | QueryResponseAlternative5 | QueryResponseAlternative6 | QueryResponseAlternative7 | QueryResponseAlternative8 | QueryResponseAlternative9 | QueryResponseAlternative10 | QueryResponseAlternative11 | QueryResponseAlternative12 | QueryResponseAlternative13 | QueryResponseAlternative14 | QueryResponseAlternative15 | QueryResponseAlternative16 | QueryResponseAlternative17 | QueryResponseAlternative18 | QueryResponseAlternative19 | QueryResponseAlternative20 | QueryResponseAlternative21 | QueryResponseAlternative22 | QueryResponseAlternative25 | Record<string, Array<DatabaseSchemaQueryResponseField>>);
+export type QueryResponseAlternative = (Record<string, any> | QueryResponseAlternative1 | QueryResponseAlternative2 | QueryResponseAlternative3 | QueryResponseAlternative4 | QueryResponseAlternative5 | QueryResponseAlternative6 | QueryResponseAlternative7 | QueryResponseAlternative8 | QueryResponseAlternative9 | QueryResponseAlternative10 | QueryResponseAlternative11 | QueryResponseAlternative12 | QueryResponseAlternative13 | QueryResponseAlternative14 | QueryResponseAlternative15 | QueryResponseAlternative16 | QueryResponseAlternative17 | QueryResponseAlternative18 | QueryResponseAlternative19 | QueryResponseAlternative20 | QueryResponseAlternative21 | QueryResponseAlternative22 | QueryResponseAlternative23 | QueryResponseAlternative24 | QueryResponseAlternative25 | QueryResponseAlternative28 | QueryResponseAlternative29);
 

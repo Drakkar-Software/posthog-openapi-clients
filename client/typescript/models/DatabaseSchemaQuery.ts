@@ -1,8 +1,8 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { DatabaseSchemaQueryResponseField } from './DatabaseSchemaQueryResponseField';
+import type { DatabaseSchemaQueryResponse } from './DatabaseSchemaQueryResponse';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 export type DatabaseSchemaQuery = {
     kind?: any;
@@ -10,6 +10,6 @@ export type DatabaseSchemaQuery = {
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
-    response?: (Record<string, Array<DatabaseSchemaQueryResponseField>> | null);
+    response?: (DatabaseSchemaQueryResponse | null);
 };
 

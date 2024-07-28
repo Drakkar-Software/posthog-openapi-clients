@@ -1,11 +1,10 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { BatchExport } from '../models/BatchExport';
 import type { BatchExportRun } from '../models/BatchExportRun';
 import type { PaginatedBatchExportList } from '../models/PaginatedBatchExportList';
-import type { PaginatedBatchExportLogEntryList } from '../models/PaginatedBatchExportLogEntryList';
 import type { PaginatedBatchExportRunList } from '../models/PaginatedBatchExportRunList';
 import type { PatchedBatchExport } from '../models/PatchedBatchExport';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -165,6 +164,25 @@ export class BatchExportsService {
         });
     }
     /**
+     * @param id A UUID string identifying this batch export.
+     * @param organizationId
+     * @returns BatchExport
+     * @throws ApiError
+     */
+    public batchExportsLogsRetrieve(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<BatchExport> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/logs/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+        });
+    }
+    /**
      * Pause a BatchExport.
      * @param id A UUID string identifying this batch export.
      * @param organizationId
@@ -259,34 +277,8 @@ export class BatchExportsService {
     /**
      * @param batchExportId
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedBatchExportLogEntryList
-     * @throws ApiError
-     */
-    public batchExportsLogsList(
-        batchExportId: string,
-        projectId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedBatchExportLogEntryList> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/logs/',
-            path: {
-                'batch_export_id': batchExportId,
-                'project_id': projectId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param batchExportId
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param cursor The pagination cursor value.
+     * @param ordering Which field to use when ordering the results.
      * @returns PaginatedBatchExportRunList
      * @throws ApiError
      */
@@ -294,6 +286,7 @@ export class BatchExportsService {
         batchExportId: string,
         projectId: string,
         cursor?: string,
+        ordering?: string,
     ): CancelablePromise<PaginatedBatchExportRunList> {
         return this.httpRequest.request({
             method: 'GET',
@@ -304,6 +297,7 @@ export class BatchExportsService {
             },
             query: {
                 'cursor': cursor,
+                'ordering': ordering,
             },
         });
     }
@@ -331,31 +325,23 @@ export class BatchExportsService {
     }
     /**
      * @param batchExportId
+     * @param id A UUID string identifying this batch export run.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param runId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedBatchExportLogEntryList
+     * @returns BatchExportRun
      * @throws ApiError
      */
-    public batchExportsRunsLogsList(
+    public batchExportsRunsLogsRetrieve(
         batchExportId: string,
+        id: string,
         projectId: string,
-        runId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedBatchExportLogEntryList> {
+    ): CancelablePromise<BatchExportRun> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{run_id}/logs/',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/logs/',
             path: {
                 'batch_export_id': batchExportId,
+                'id': id,
                 'project_id': projectId,
-                'run_id': runId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
             },
         });
     }
@@ -465,6 +451,25 @@ export class BatchExportsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A UUID string identifying this batch export.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns BatchExport
+     * @throws ApiError
+     */
+    public batchExportsLogsRetrieve2(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<BatchExport> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/batch_exports/{id}/logs/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
         });
     }
     /**

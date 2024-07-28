@@ -1,11 +1,13 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BreakdownType } from './BreakdownType';
+import type { MultipleBreakdownType } from './MultipleBreakdownType';
 export type Breakdown = {
+    group_type_index?: (number | null);
+    histogram_bin_count?: (number | null);
     normalize_url?: (boolean | null);
-    property: (string | number);
-    type: BreakdownType;
+    property: string;
+    type?: (MultipleBreakdownType | null);
 };
 

@@ -1,15 +1,14 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { HogQLNotice } from './HogQLNotice';
 export type QueryResponseAlternative7 = {
     errors: Array<HogQLNotice>;
-    inputExpr?: (string | null);
-    inputSelect?: (string | null);
     isValid?: (boolean | null);
     isValidView?: (boolean | null);
     notices: Array<HogQLNotice>;
+    query?: (string | null);
     warnings: Array<HogQLNotice>;
 };
 

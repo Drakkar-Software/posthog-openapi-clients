@@ -1,9 +1,10 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { QueryRequest } from '../models/QueryRequest';
 import type { QueryResponseAlternative } from '../models/QueryResponseAlternative';
+import type { QueryStatusResponse } from '../models/QueryStatusResponse';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class QueryService {
@@ -32,13 +33,13 @@ export class QueryService {
      * (Experimental)
      * @param id
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns any Query status
+     * @returns QueryStatusResponse
      * @throws ApiError
      */
     public queryRetrieve(
         id: string,
         projectId: string,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<QueryStatusResponse> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/query/{id}/',

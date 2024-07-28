@@ -1,10 +1,13 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { BatchExportDestination } from './BatchExportDestination';
 import type { BatchExportRun } from './BatchExportRun';
+import type { BlankEnum } from './BlankEnum';
 import type { IntervalEnum } from './IntervalEnum';
+import type { ModelEnum } from './ModelEnum';
+import type { NullEnum } from './NullEnum';
 /**
  * Serializer for a BatchExport model.
  */
@@ -18,6 +21,13 @@ export type BatchExport = {
      * A human-readable name for this BatchExport.
      */
     name: string;
+    /**
+     * Which model this BatchExport is exporting.
+     *
+     * * `events` - Events
+     * * `persons` - Persons
+     */
+    model?: (ModelEnum | BlankEnum | NullEnum) | null;
     destination: BatchExportDestination;
     interval: IntervalEnum;
     /**

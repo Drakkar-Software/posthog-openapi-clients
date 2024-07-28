@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -12,7 +12,7 @@ import type { RetentionQuery } from './RetentionQuery';
 import type { StickinessQuery } from './StickinessQuery';
 import type { TrendsQuery } from './TrendsQuery';
 export type InsightActorsQuery = {
-    breakdown?: (string | number | null);
+    breakdown?: (string | Array<string> | number | null);
     compare?: (Compare | null);
     day?: (string | number | null);
     includeRecordings?: (boolean | null);

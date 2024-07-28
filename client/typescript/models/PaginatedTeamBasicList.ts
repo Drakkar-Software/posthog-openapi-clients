@@ -1,12 +1,12 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { TeamBasic } from './TeamBasic';
 export type PaginatedTeamBasicList = {
-    count?: number;
+    count: number;
     next?: string | null;
     previous?: string | null;
-    results?: Array<TeamBasic>;
+    results: Array<TeamBasic>;
 };
 

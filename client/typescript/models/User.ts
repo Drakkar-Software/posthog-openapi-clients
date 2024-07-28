@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -18,7 +18,6 @@ export type User = {
     last_name?: string;
     email: string;
     readonly pending_email: string | null;
-    email_opt_in?: boolean | null;
     readonly is_email_verified: boolean | null;
     notification_settings?: Record<string, any>;
     anonymize_data?: boolean | null;
@@ -44,5 +43,6 @@ export type User = {
     has_seen_product_intro_for?: any;
     readonly scene_personalisation: Array<ScenePersonalisationBasic>;
     theme_mode?: (ThemeModeEnum | BlankEnum | NullEnum) | null;
+    hedgehog_config?: any;
 };
 

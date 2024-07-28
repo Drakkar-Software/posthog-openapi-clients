@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -16,7 +16,7 @@ export type PatchedPlugin = {
     tag?: string | null;
     readonly latest_tag?: string | null;
     is_global?: boolean;
-    readonly organization_id?: string;
+    readonly organization_id?: string | null;
     readonly organization_name?: string;
     capabilities?: any;
     metrics?: any;

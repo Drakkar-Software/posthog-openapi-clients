@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -13,6 +13,7 @@ import type { PaginatedOrganizationInviteList } from '../models/PaginatedOrganiz
 import type { PaginatedOrganizationList } from '../models/PaginatedOrganizationList';
 import type { PaginatedOrganizationMemberList } from '../models/PaginatedOrganizationMemberList';
 import type { PaginatedPluginList } from '../models/PaginatedPluginList';
+import type { PaginatedProxyRecordList } from '../models/PaginatedProxyRecordList';
 import type { PaginatedRoleList } from '../models/PaginatedRoleList';
 import type { PaginatedRoleMembershipList } from '../models/PaginatedRoleMembershipList';
 import type { PaginatedTeamBasicList } from '../models/PaginatedTeamBasicList';
@@ -21,9 +22,11 @@ import type { PatchedOrganization } from '../models/PatchedOrganization';
 import type { PatchedOrganizationDomain } from '../models/PatchedOrganizationDomain';
 import type { PatchedOrganizationMember } from '../models/PatchedOrganizationMember';
 import type { PatchedPlugin } from '../models/PatchedPlugin';
+import type { PatchedProxyRecord } from '../models/PatchedProxyRecord';
 import type { PatchedRole } from '../models/PatchedRole';
 import type { PatchedTeam } from '../models/PatchedTeam';
 import type { Plugin } from '../models/Plugin';
+import type { ProxyRecord } from '../models/ProxyRecord';
 import type { Role } from '../models/Role';
 import type { RoleMembership } from '../models/RoleMembership';
 import type { Team } from '../models/Team';
@@ -287,6 +290,25 @@ export class OrganizationsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A UUID string identifying this batch export.
+     * @param organizationId
+     * @returns BatchExport
+     * @throws ApiError
+     */
+    public batchExportsLogsRetrieve(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<BatchExport> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/logs/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
         });
     }
     /**
@@ -2236,6 +2258,134 @@ export class OrganizationsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param organizationId
+     * @param limit Number of results to return per page.
+     * @param offset The initial index from which to return the results.
+     * @returns PaginatedProxyRecordList
+     * @throws ApiError
+     */
+    public proxyRecordsList(
+        organizationId: string,
+        limit?: number,
+        offset?: number,
+    ): CancelablePromise<PaginatedProxyRecordList> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/proxy_records/',
+            path: {
+                'organization_id': organizationId,
+            },
+            query: {
+                'limit': limit,
+                'offset': offset,
+            },
+        });
+    }
+    /**
+     * @param organizationId
+     * @param requestBody
+     * @returns ProxyRecord
+     * @throws ApiError
+     */
+    public proxyRecordsCreate(
+        organizationId: string,
+        requestBody: ProxyRecord,
+    ): CancelablePromise<ProxyRecord> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/proxy_records/',
+            path: {
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id
+     * @param organizationId
+     * @returns ProxyRecord
+     * @throws ApiError
+     */
+    public proxyRecordsRetrieve(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<ProxyRecord> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/proxy_records/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+        });
+    }
+    /**
+     * @param id
+     * @param organizationId
+     * @param requestBody
+     * @returns ProxyRecord
+     * @throws ApiError
+     */
+    public proxyRecordsUpdate(
+        id: string,
+        organizationId: string,
+        requestBody: ProxyRecord,
+    ): CancelablePromise<ProxyRecord> {
+        return this.httpRequest.request({
+            method: 'PUT',
+            url: '/api/organizations/{organization_id}/proxy_records/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id
+     * @param organizationId
+     * @param requestBody
+     * @returns ProxyRecord
+     * @throws ApiError
+     */
+    public proxyRecordsPartialUpdate(
+        id: string,
+        organizationId: string,
+        requestBody?: PatchedProxyRecord,
+    ): CancelablePromise<ProxyRecord> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/proxy_records/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id
+     * @param organizationId
+     * @returns void
+     * @throws ApiError
+     */
+    public proxyRecordsDestroy(
+        id: string,
+        organizationId: string,
+    ): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/organizations/{organization_id}/proxy_records/{id}/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
         });
     }
     /**

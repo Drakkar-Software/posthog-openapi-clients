@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -42,6 +42,7 @@ import { PluginConfigsService } from './services/PluginConfigsService';
 import { PluginsService } from './services/PluginsService';
 import { ProjectsService } from './services/ProjectsService';
 import { PropertyDefinitionsService } from './services/PropertyDefinitionsService';
+import { ProxyRecordsService } from './services/ProxyRecordsService';
 import { QueryService } from './services/QueryService';
 import { RolesService } from './services/RolesService';
 import { SessionRecordingPlaylistsService } from './services/SessionRecordingPlaylistsService';
@@ -90,6 +91,7 @@ export class PosthogAPIClient {
     public readonly plugins: PluginsService;
     public readonly projects: ProjectsService;
     public readonly propertyDefinitions: PropertyDefinitionsService;
+    public readonly proxyRecords: ProxyRecordsService;
     public readonly query: QueryService;
     public readonly roles: RolesService;
     public readonly sessionRecordingPlaylists: SessionRecordingPlaylistsService;
@@ -149,6 +151,7 @@ export class PosthogAPIClient {
         this.plugins = new PluginsService(this.request);
         this.projects = new ProjectsService(this.request);
         this.propertyDefinitions = new PropertyDefinitionsService(this.request);
+        this.proxyRecords = new ProxyRecordsService(this.request);
         this.query = new QueryService(this.request);
         this.roles = new RolesService(this.request);
         this.sessionRecordingPlaylists = new SessionRecordingPlaylistsService(this.request);

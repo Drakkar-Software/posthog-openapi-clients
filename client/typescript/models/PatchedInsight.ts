@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -44,6 +44,10 @@ export type PatchedInsight = {
      */
     readonly last_refresh?: string;
     /**
+     * The target age of the cached results for this insight.
+     */
+    readonly cache_target_age?: string;
+    /**
      *
      * The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed
      * by querying the database.
@@ -69,5 +73,7 @@ export type PatchedInsight = {
      */
     readonly timezone?: string;
     readonly is_cached?: string;
+    readonly query_status?: string;
+    readonly hogql?: string;
 };
 

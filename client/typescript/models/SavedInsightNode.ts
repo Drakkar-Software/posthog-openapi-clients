@@ -1,7 +1,8 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { TaxonomicFilterGroupType } from './TaxonomicFilterGroupType';
 import type { VizSpecificOptions } from './VizSpecificOptions';
 export type SavedInsightNode = {
     /**
@@ -71,7 +72,7 @@ export type SavedInsightNode = {
     /**
      * Include a property filter above the table
      */
-    showPropertyFilter?: (boolean | null);
+    showPropertyFilter?: (boolean | Array<TaxonomicFilterGroupType> | null);
     /**
      * Show a reload button
      */

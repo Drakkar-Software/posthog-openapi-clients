@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -13,10 +13,10 @@ import type { FilterLogicalOperator } from './FilterLogicalOperator';
 import type { GroupPropertyFilter } from './GroupPropertyFilter';
 import type { HogQLPropertyFilter } from './HogQLPropertyFilter';
 import type { PersonPropertyFilter } from './PersonPropertyFilter';
-import type { RecordingDurationFilter } from './RecordingDurationFilter';
+import type { RecordingPropertyFilter } from './RecordingPropertyFilter';
 import type { SessionPropertyFilter } from './SessionPropertyFilter';
 export type PropertyGroupFilterValue = {
     type: FilterLogicalOperator;
-    values: Array<(PropertyGroupFilterValue | EventPropertyFilter | PersonPropertyFilter | ElementPropertyFilter | SessionPropertyFilter | CohortPropertyFilter | RecordingDurationFilter | GroupPropertyFilter | FeaturePropertyFilter | HogQLPropertyFilter | EmptyPropertyFilter | DataWarehousePropertyFilter | DataWarehousePersonPropertyFilter)>;
+    values: Array<(PropertyGroupFilterValue | EventPropertyFilter | PersonPropertyFilter | ElementPropertyFilter | SessionPropertyFilter | CohortPropertyFilter | RecordingPropertyFilter | GroupPropertyFilter | FeaturePropertyFilter | HogQLPropertyFilter | EmptyPropertyFilter | DataWarehousePropertyFilter | DataWarehousePersonPropertyFilter)>;
 };
 

@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -11,6 +11,7 @@ import type { SessionPropertyFilter } from './SessionPropertyFilter';
 import type { WebTopClicksQueryResponse } from './WebTopClicksQueryResponse';
 export type WebTopClicksQuery = {
     dateRange?: (DateRange | null);
+    filterTestAccounts?: (boolean | null);
     kind?: any;
     /**
      * Modifiers used when performing the query

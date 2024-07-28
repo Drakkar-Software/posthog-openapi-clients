@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -15,12 +15,13 @@ export type QueryResponseAlternative2 = {
      * Generated HogQL query.
      */
     hogql: string;
-    limit?: (number | null);
+    limit: number;
+    missing_actors_count?: (number | null);
     /**
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
-    offset?: (number | null);
+    offset: number;
     results: Array<Array<any>>;
     /**
      * Measured timings for different parts of the query generation process

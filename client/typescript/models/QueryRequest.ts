@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -8,6 +8,7 @@ import type { DatabaseSchemaQuery } from './DatabaseSchemaQuery';
 import type { DataTableNode } from './DataTableNode';
 import type { DataVisualizationNode } from './DataVisualizationNode';
 import type { DataWarehouseNode } from './DataWarehouseNode';
+import type { ErrorTrackingQuery } from './ErrorTrackingQuery';
 import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
 import type { FunnelCorrelationQuery } from './FunnelCorrelationQuery';
@@ -15,6 +16,7 @@ import type { FunnelsQuery } from './FunnelsQuery';
 import type { HogQLAutocomplete } from './HogQLAutocomplete';
 import type { HogQLMetadata } from './HogQLMetadata';
 import type { HogQLQuery } from './HogQLQuery';
+import type { HogQuery } from './HogQuery';
 import type { InsightActorsQuery } from './InsightActorsQuery';
 import type { InsightActorsQueryOptions } from './InsightActorsQueryOptions';
 import type { InsightVizNode } from './InsightVizNode';
@@ -23,9 +25,9 @@ import type { PathsQuery } from './PathsQuery';
 import type { PersonsNode } from './PersonsNode';
 import type { RetentionQuery } from './RetentionQuery';
 import type { SavedInsightNode } from './SavedInsightNode';
+import type { SessionAttributionExplorerQuery } from './SessionAttributionExplorerQuery';
 import type { SessionsTimelineQuery } from './SessionsTimelineQuery';
 import type { StickinessQuery } from './StickinessQuery';
-import type { TimeToSeeDataSessionsQuery } from './TimeToSeeDataSessionsQuery';
 import type { TrendsQuery } from './TrendsQuery';
 import type { WebOverviewQuery } from './WebOverviewQuery';
 import type { WebStatsTableQuery } from './WebStatsTableQuery';
@@ -52,7 +54,7 @@ export type QueryRequest = {
      *
      * For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).
      */
-    query: (EventsNode | ActionsNode | PersonsNode | DataWarehouseNode | TimeToSeeDataSessionsQuery | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | DataVisualizationNode | DataTableNode | SavedInsightNode | InsightVizNode | TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery | FunnelCorrelationQuery | DatabaseSchemaQuery);
-    refresh?: (boolean | null);
+    query: (EventsNode | ActionsNode | PersonsNode | DataWarehouseNode | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | SessionAttributionExplorerQuery | ErrorTrackingQuery | DataVisualizationNode | DataTableNode | SavedInsightNode | InsightVizNode | TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery | FunnelCorrelationQuery | DatabaseSchemaQuery);
+    refresh?: (boolean | string | null);
 };
 

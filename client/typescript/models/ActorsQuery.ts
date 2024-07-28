@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -9,6 +9,9 @@ import type { HogQLQuery } from './HogQLQuery';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { InsightActorsQuery } from './InsightActorsQuery';
 export type ActorsQuery = {
+    /**
+     * Currently only person filters supported. No filters for querying groups. See `filter_conditions()` in actor_strategies.py.
+     */
     fixedProperties?: null;
     kind?: any;
     limit?: (number | null);
@@ -18,6 +21,9 @@ export type ActorsQuery = {
     modifiers?: (HogQLQueryModifiers | null);
     offset?: (number | null);
     orderBy?: (Array<string> | null);
+    /**
+     * Currently only person filters supported. No filters for querying groups. See `filter_conditions()` in actor_strategies.py.
+     */
     properties?: null;
     response?: (ActorsQueryResponse | null);
     search?: (string | null);

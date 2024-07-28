@@ -1,10 +1,11 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 export enum ChartDisplayType {
     ACTIONS_LINE_GRAPH = 'ActionsLineGraph',
     ACTIONS_BAR = 'ActionsBar',
+    ACTIONS_STACKED_BAR = 'ActionsStackedBar',
     ACTIONS_AREA_GRAPH = 'ActionsAreaGraph',
     ACTIONS_LINE_GRAPH_CUMULATIVE = 'ActionsLineGraphCumulative',
     BOLD_NUMBER = 'BoldNumber',

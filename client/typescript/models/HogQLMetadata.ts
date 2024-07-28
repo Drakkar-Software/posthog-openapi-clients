@@ -1,21 +1,24 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { ActionsNode } from './ActionsNode';
 import type { ActorsQuery } from './ActorsQuery';
+import type { ErrorTrackingQuery } from './ErrorTrackingQuery';
 import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
+import type { HogLanguage } from './HogLanguage';
 import type { HogQLAutocomplete } from './HogQLAutocomplete';
 import type { HogQLFilters } from './HogQLFilters';
 import type { HogQLMetadataResponse } from './HogQLMetadataResponse';
 import type { HogQLQuery } from './HogQLQuery';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { HogQuery } from './HogQuery';
 import type { InsightActorsQuery } from './InsightActorsQuery';
 import type { InsightActorsQueryOptions } from './InsightActorsQueryOptions';
 import type { PersonsNode } from './PersonsNode';
+import type { SessionAttributionExplorerQuery } from './SessionAttributionExplorerQuery';
 import type { SessionsTimelineQuery } from './SessionsTimelineQuery';
-import type { TimeToSeeDataSessionsQuery } from './TimeToSeeDataSessionsQuery';
 import type { WebOverviewQuery } from './WebOverviewQuery';
 import type { WebStatsTableQuery } from './WebStatsTableQuery';
 import type { WebTopClicksQuery } from './WebTopClicksQuery';
@@ -25,30 +28,30 @@ export type HogQLMetadata = {
      */
     debug?: (boolean | null);
     /**
-     * HogQL expression to validate (use `select` or `expr`, but not both)
-     */
-    expr?: (string | null);
-    /**
-     * Query within which "expr" is validated. Defaults to "select * from events"
-     */
-    exprSource?: (EventsNode | ActionsNode | PersonsNode | TimeToSeeDataSessionsQuery | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | null);
-    /**
      * Extra filters applied to query via {filters}
      */
     filters?: (HogQLFilters | null);
+    /**
+     * Extra globals for the query
+     */
+    globals?: (Record<string, any> | null);
     kind?: any;
+    /**
+     * Language to validate
+     */
+    language: HogLanguage;
     /**
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
+    /**
+     * Query to validate
+     */
+    query: string;
     response?: (HogQLMetadataResponse | null);
     /**
-     * Full select query to validate (use `select` or `expr`, but not both)
+     * Query within which "expr" and "template" are validated. Defaults to "select * from events"
      */
-    select?: (string | null);
-    /**
-     * Table to validate the expression against
-     */
-    table?: (string | null);
+    sourceQuery?: (EventsNode | ActionsNode | PersonsNode | EventsQuery | ActorsQuery | InsightActorsQuery | InsightActorsQueryOptions | SessionsTimelineQuery | HogQuery | HogQLQuery | HogQLMetadata | HogQLAutocomplete | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | SessionAttributionExplorerQuery | ErrorTrackingQuery | null);
 };
 

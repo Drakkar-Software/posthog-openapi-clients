@@ -1,12 +1,12 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { RoleMembership } from './RoleMembership';
 export type PaginatedRoleMembershipList = {
-    count?: number;
+    count: number;
     next?: string | null;
     previous?: string | null;
-    results?: Array<RoleMembership>;
+    results: Array<RoleMembership>;
 };
 

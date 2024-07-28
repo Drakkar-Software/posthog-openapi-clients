@@ -1,21 +1,26 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { ActionsNode } from './ActionsNode';
+import type { CompareFilter } from './CompareFilter';
 import type { DataWarehouseNode } from './DataWarehouseNode';
-import type { DateRange } from './DateRange';
 import type { EventsNode } from './EventsNode';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { InsightDateRange } from './InsightDateRange';
 import type { IntervalType } from './IntervalType';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 import type { StickinessFilter } from './StickinessFilter';
 import type { StickinessQueryResponse } from './StickinessQueryResponse';
 export type StickinessQuery = {
     /**
+     * Compare to date range
+     */
+    compareFilter?: (CompareFilter | null);
+    /**
      * Date range for the query
      */
-    dateRange?: (DateRange | null);
+    dateRange?: (InsightDateRange | null);
     /**
      * Exclude internal and test users by applying the respective filters
      */

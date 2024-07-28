@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -11,7 +11,7 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class PersonsService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param distinctId Filter list by distinct id.
      * @param email Filter persons by email (exact match)
@@ -51,7 +51,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -107,7 +107,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -136,7 +136,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param deleteEvents If true, a task to delete all events associated with this person will be created and queued. The task does not run immediately and instead is batched together and at 5AM UTC every Sunday (controlled by environment variable CLEAR_CLICKHOUSE_REMOVED_DATA_SCHEDULE_CRON)
@@ -164,7 +164,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -189,7 +189,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param unset Specify the property key to delete
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -221,7 +221,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -246,7 +246,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
@@ -275,7 +275,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param id A unique integer value identifying this person.
      * @param key Specify the property key
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -310,7 +310,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -332,7 +332,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -354,7 +354,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -376,7 +376,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
@@ -402,7 +402,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -424,7 +424,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
@@ -450,7 +450,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -472,7 +472,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -494,7 +494,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
@@ -520,7 +520,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -542,7 +542,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -564,7 +564,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person
@@ -586,7 +586,7 @@ export class PersonsService {
         });
     }
     /**
-     * To create or update persons, use a PostHog library of your choice and [use an identify call](/product-analytics/identify). This API endpoint is only for reading and deleting.
+     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @returns Person

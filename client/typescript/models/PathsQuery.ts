@@ -1,10 +1,10 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { DateRange } from './DateRange';
 import type { FunnelPathsFilter } from './FunnelPathsFilter';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { InsightDateRange } from './InsightDateRange';
 import type { PathsFilter } from './PathsFilter';
 import type { PathsQueryResponse } from './PathsQueryResponse';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
@@ -16,7 +16,7 @@ export type PathsQuery = {
     /**
      * Date range for the query
      */
-    dateRange?: (DateRange | null);
+    dateRange?: (InsightDateRange | null);
     /**
      * Exclude internal and test users by applying the respective filters
      */

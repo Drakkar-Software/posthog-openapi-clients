@@ -1,12 +1,13 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { DatabaseSerializedFieldType } from './DatabaseSerializedFieldType';
-export type DatabaseSchemaQueryResponseField = {
-    chain?: (Array<string> | null);
+export type DatabaseSchemaField = {
+    chain?: null;
     fields?: (Array<string> | null);
-    key: string;
+    hogql_value: string;
+    name: string;
     schema_valid: boolean;
     table?: (string | null);
     type: DatabaseSerializedFieldType;

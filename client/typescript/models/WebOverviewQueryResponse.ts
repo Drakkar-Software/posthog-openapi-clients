@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -7,6 +7,8 @@ import type { QueryTiming } from './QueryTiming';
 import type { SamplingRate } from './SamplingRate';
 import type { WebOverviewItem } from './WebOverviewItem';
 export type WebOverviewQueryResponse = {
+    dateFrom?: (string | null);
+    dateTo?: (string | null);
     /**
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */

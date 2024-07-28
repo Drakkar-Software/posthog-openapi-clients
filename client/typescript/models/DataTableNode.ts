@@ -1,8 +1,9 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { ActorsQuery } from './ActorsQuery';
+import type { ErrorTrackingQuery } from './ErrorTrackingQuery';
 import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
 import type { HogQLQuery } from './HogQLQuery';
@@ -14,7 +15,9 @@ import type { Response3 } from './Response3';
 import type { Response4 } from './Response4';
 import type { Response5 } from './Response5';
 import type { Response6 } from './Response6';
-import type { TimeToSeeDataSessionsQuery } from './TimeToSeeDataSessionsQuery';
+import type { Response7 } from './Response7';
+import type { SessionAttributionExplorerQuery } from './SessionAttributionExplorerQuery';
+import type { TaxonomicFilterGroupType } from './TaxonomicFilterGroupType';
 import type { WebOverviewQuery } from './WebOverviewQuery';
 import type { WebStatsTableQuery } from './WebStatsTableQuery';
 import type { WebTopClicksQuery } from './WebTopClicksQuery';
@@ -48,7 +51,7 @@ export type DataTableNode = {
      * Link properties via the URL (default: false)
      */
     propertiesViaUrl?: (boolean | null);
-    response?: (Record<string, any> | Response | Response1 | Response2 | Response3 | Response4 | Response5 | Response6 | null);
+    response?: (Record<string, any> | Response | Response1 | Response2 | Response3 | Response4 | Response5 | Response6 | Response7 | null);
     /**
      * Show the kebab menu at the end of the row
      */
@@ -88,7 +91,7 @@ export type DataTableNode = {
     /**
      * Include a property filter above the table
      */
-    showPropertyFilter?: (boolean | null);
+    showPropertyFilter?: (boolean | Array<TaxonomicFilterGroupType> | null);
     /**
      * Show a reload button
      */
@@ -116,6 +119,6 @@ export type DataTableNode = {
     /**
      * Source of the events
      */
-    source: (EventsNode | EventsQuery | PersonsNode | ActorsQuery | HogQLQuery | TimeToSeeDataSessionsQuery | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery);
+    source: (EventsNode | EventsQuery | PersonsNode | ActorsQuery | HogQLQuery | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | SessionAttributionExplorerQuery | ErrorTrackingQuery);
 };
 

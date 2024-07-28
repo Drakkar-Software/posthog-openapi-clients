@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -10,7 +10,7 @@
  * * `full_screen` - full screen
  * * `api` - api
  */
-export enum Type7baEnum {
+export enum SurveyType {
     POPOVER = 'popover',
     WIDGET = 'widget',
     BUTTON = 'button',

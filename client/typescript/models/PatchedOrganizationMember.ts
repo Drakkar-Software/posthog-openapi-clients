@@ -1,13 +1,13 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { OrganizationMemberLevelEnum } from './OrganizationMemberLevelEnum';
+import type { OrganizationMembershipLevel } from './OrganizationMembershipLevel';
 import type { UserBasic } from './UserBasic';
 export type PatchedOrganizationMember = {
     readonly id?: string;
     readonly user?: UserBasic;
-    level?: OrganizationMemberLevelEnum;
+    level?: OrganizationMembershipLevel;
     readonly joined_at?: string;
     readonly updated_at?: string;
     readonly is_2fa_enabled?: boolean;

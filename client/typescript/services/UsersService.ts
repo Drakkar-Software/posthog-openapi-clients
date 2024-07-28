@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -80,6 +80,42 @@ export class UsersService {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/users/{uuid}/',
+            path: {
+                'uuid': uuid,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param uuid
+     * @returns User
+     * @throws ApiError
+     */
+    public usersHedgehogConfigRetrieve(
+        uuid: string,
+    ): CancelablePromise<User> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/users/{uuid}/hedgehog_config/',
+            path: {
+                'uuid': uuid,
+            },
+        });
+    }
+    /**
+     * @param uuid
+     * @param requestBody
+     * @returns User
+     * @throws ApiError
+     */
+    public usersHedgehogConfigPartialUpdate(
+        uuid: string,
+        requestBody?: PatchedUser,
+    ): CancelablePromise<User> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/users/{uuid}/hedgehog_config/',
             path: {
                 'uuid': uuid,
             },

@@ -1,8 +1,8 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { StatusEnum } from './StatusEnum';
+import type { BatchExportRunStatusEnum } from './BatchExportRunStatusEnum';
 /**
  * Serializer for a BatchExportRun model.
  */
@@ -21,7 +21,7 @@ export type BatchExportRun = {
      * * `Running` - Running
      * * `Starting` - Starting
      */
-    status: StatusEnum;
+    status: BatchExportRunStatusEnum;
     /**
      * The number of records that have been exported.
      */

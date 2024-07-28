@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -147,6 +147,25 @@ export class CohortsService {
      * @returns Cohort
      * @throws ApiError
      */
+    public cohortsActivityRetrieve2(
+        id: number,
+        projectId: string,
+    ): CancelablePromise<Cohort> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/cohorts/{id}/activity/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param id A unique integer value identifying this cohort.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns Cohort
+     * @throws ApiError
+     */
     public cohortsDuplicateAsStaticCohortRetrieve(
         id: number,
         projectId: string,
@@ -181,6 +200,22 @@ export class CohortsService {
             },
             query: {
                 'format': format,
+            },
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns Cohort
+     * @throws ApiError
+     */
+    public cohortsActivityRetrieve(
+        projectId: string,
+    ): CancelablePromise<Cohort> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/cohorts/activity/',
+            path: {
+                'project_id': projectId,
             },
         });
     }

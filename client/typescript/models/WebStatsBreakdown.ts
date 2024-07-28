@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -13,6 +13,7 @@ export enum WebStatsBreakdown {
     INITIAL_UTMMEDIUM = 'InitialUTMMedium',
     INITIAL_UTMTERM = 'InitialUTMTerm',
     INITIAL_UTMCONTENT = 'InitialUTMContent',
+    INITIAL_UTMSOURCE_MEDIUM_CAMPAIGN = 'InitialUTMSourceMediumCampaign',
     BROWSER = 'Browser',
     OS = 'OS',
     DEVICE_TYPE = 'DeviceType',

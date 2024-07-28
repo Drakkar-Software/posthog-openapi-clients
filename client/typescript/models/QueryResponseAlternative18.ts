@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -11,14 +11,17 @@ export type QueryResponseAlternative18 = {
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
     error?: (string | null);
+    hasMore?: (boolean | null);
     /**
      * Generated HogQL query.
      */
     hogql?: (string | null);
+    limit?: (number | null);
     /**
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
+    offset?: (number | null);
     results: Array<any>;
     samplingRate?: (SamplingRate | null);
     /**

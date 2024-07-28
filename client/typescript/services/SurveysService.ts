@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -134,6 +134,41 @@ export class SurveysService {
             url: '/api/projects/{project_id}/surveys/{id}/',
             path: {
                 'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param id A UUID string identifying this survey.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns Survey
+     * @throws ApiError
+     */
+    public surveysActivityRetrieve2(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<Survey> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/surveys/{id}/activity/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns Survey
+     * @throws ApiError
+     */
+    public surveysActivityRetrieve(
+        projectId: string,
+    ): CancelablePromise<Survey> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/surveys/activity/',
+            path: {
                 'project_id': projectId,
             },
         });

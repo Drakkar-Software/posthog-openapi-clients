@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -51,6 +51,14 @@ export type Trend = {
      */
     breakdown_type?: BreakdownTypeEnum;
     /**
+     * To compare or not
+     */
+    compare?: boolean;
+    /**
+     * What to compare to
+     */
+    compare_to?: string;
+    /**
      * How to display the data. Will change how the data is returned.
      *
      * * `ActionsLineGraph` - ActionsLineGraph
@@ -67,9 +75,5 @@ export type Trend = {
      * Combine the result of events or actions into a single number. For example `A + B` or `(A-B)/B`. The letters correspond to the order of the `events` or `actions` lists.
      */
     formula?: string;
-    /**
-     * For each returned result show the current period and the previous period. The result will contain `compare:true` and a `compare_label` with either `current` or `previous`.
-     */
-    compare?: boolean;
 };
 

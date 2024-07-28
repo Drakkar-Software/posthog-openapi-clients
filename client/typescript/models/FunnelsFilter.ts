@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -21,7 +21,7 @@ export type FunnelsFilter = {
     funnelVizType?: (FunnelVizType | null);
     funnelWindowInterval?: (number | null);
     funnelWindowIntervalUnit?: (FunnelConversionWindowTimeUnit | null);
-    hidden_legend_breakdowns?: (Array<string> | null);
+    hiddenLegendBreakdowns?: (Array<string> | null);
     layout?: (FunnelLayout | null);
 };
 

@@ -1,0 +1,35 @@
+/* generated using openapi-typescript-codegen -- do no edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export enum TaxonomicFilterGroupType {
+    METADATA = 'metadata',
+    ACTIONS = 'actions',
+    COHORTS = 'cohorts',
+    COHORTS_WITH_ALL = 'cohorts_with_all',
+    DATA_WAREHOUSE = 'data_warehouse',
+    DATA_WAREHOUSE_PROPERTIES = 'data_warehouse_properties',
+    DATA_WAREHOUSE_PERSON_PROPERTIES = 'data_warehouse_person_properties',
+    ELEMENTS = 'elements',
+    EVENTS = 'events',
+    EVENT_PROPERTIES = 'event_properties',
+    EVENT_FEATURE_FLAGS = 'event_feature_flags',
+    NUMERICAL_EVENT_PROPERTIES = 'numerical_event_properties',
+    PERSON_PROPERTIES = 'person_properties',
+    PAGEVIEW_URLS = 'pageview_urls',
+    SCREENS = 'screens',
+    CUSTOM_EVENTS = 'custom_events',
+    WILDCARD = 'wildcard',
+    GROUPS = 'groups',
+    PERSONS = 'persons',
+    FEATURE_FLAGS = 'feature_flags',
+    INSIGHTS = 'insights',
+    EXPERIMENTS = 'experiments',
+    PLUGINS = 'plugins',
+    DASHBOARDS = 'dashboards',
+    NAME_GROUPS = 'name_groups',
+    SESSION_PROPERTIES = 'session_properties',
+    HOGQL_EXPRESSION = 'hogql_expression',
+    NOTEBOOKS = 'notebooks',
+    REPLAY = 'replay',
+}

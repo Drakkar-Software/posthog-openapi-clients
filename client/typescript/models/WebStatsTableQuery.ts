@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -14,6 +14,7 @@ export type WebStatsTableQuery = {
     breakdownBy: WebStatsBreakdown;
     dateRange?: (DateRange | null);
     doPathCleaning?: (boolean | null);
+    filterTestAccounts?: (boolean | null);
     includeBounceRate?: (boolean | null);
     includeScrollDepth?: (boolean | null);
     kind?: any;

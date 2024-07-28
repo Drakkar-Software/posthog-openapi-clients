@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do not edit */
+/* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -12,6 +12,7 @@ import type { WebOverviewQueryResponse } from './WebOverviewQueryResponse';
 export type WebOverviewQuery = {
     compare?: (boolean | null);
     dateRange?: (DateRange | null);
+    filterTestAccounts?: (boolean | null);
     kind?: any;
     /**
      * Modifiers used when performing the query
