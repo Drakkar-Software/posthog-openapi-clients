@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -8,18 +8,17 @@ import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { Order } from './Order';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
 export type ErrorTrackingQuery = {
+    assignee?: (number | null);
     dateRange: DateRange;
-    eventColumns?: (Array<string> | null);
     filterGroup?: (PropertyGroupFilter | null);
     filterTestAccounts?: (boolean | null);
-    fingerprint?: (string | null);
+    fingerprint?: (Array<string> | null);
     kind?: any;
     limit?: (number | null);
     /**
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
-    offset?: (number | null);
     order?: (Order | null);
     response?: (ErrorTrackingQueryResponse | null);
     select?: (Array<string> | null);

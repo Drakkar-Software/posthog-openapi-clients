@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -140,13 +140,13 @@ export class PluginsService {
     /**
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsCheckForUpdatesRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/{id}/check_for_updates/',
@@ -159,13 +159,13 @@ export class PluginsService {
     /**
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsSourceRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/{id}/source/',
@@ -179,14 +179,14 @@ export class PluginsService {
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
      * @param requestBody
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsUpdateSourcePartialUpdate(
         id: number,
         organizationId: string,
         requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{organization_id}/plugins/{id}/update_source/',
@@ -202,14 +202,14 @@ export class PluginsService {
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
      * @param requestBody
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsUpgradeCreate(
         id: number,
         organizationId: string,
         requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/plugins/{id}/upgrade/',
@@ -223,12 +223,12 @@ export class PluginsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsActivityRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/activity/',
@@ -239,12 +239,12 @@ export class PluginsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsExportsUnsubscribeConfigsRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/exports_unsubscribe_configs/',
@@ -255,12 +255,12 @@ export class PluginsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsRepositoryRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/repository/',
@@ -271,12 +271,12 @@ export class PluginsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pluginsUnusedRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/plugins/unused/',

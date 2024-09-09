@@ -1,14 +1,19 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { QueryStatus } from './QueryStatus';
 import type { QueryTiming } from './QueryTiming';
 export type TrendsQueryResponse = {
     /**
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
     error?: (string | null);
+    /**
+     * Wether more breakdown values are available.
+     */
+    hasMore?: (boolean | null);
     /**
      * Generated HogQL query.
      */
@@ -17,6 +22,10 @@ export type TrendsQueryResponse = {
      * Modifiers used when performing the query
      */
     modifiers?: (HogQLQueryModifiers | null);
+    /**
+     * Query status indicates whether next to the provided data, a query is still running.
+     */
+    query_status?: (QueryStatus | null);
     results: Array<Record<string, any>>;
     /**
      * Measured timings for different parts of the query generation process

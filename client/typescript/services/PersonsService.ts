@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -168,14 +168,14 @@ export class PersonsService {
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsActivityRetrieve2(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/{id}/activity/',
@@ -195,7 +195,7 @@ export class PersonsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsDeletePropertyCreate(
@@ -204,7 +204,7 @@ export class PersonsService {
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/delete_property/',
@@ -225,14 +225,14 @@ export class PersonsService {
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsPropertiesTimelineRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/{id}/properties_timeline/',
@@ -251,7 +251,7 @@ export class PersonsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsSplitCreate(
@@ -259,7 +259,7 @@ export class PersonsService {
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/split/',
@@ -282,7 +282,7 @@ export class PersonsService {
      * @param value Specify the property value
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsUpdatePropertyCreate(
@@ -292,7 +292,7 @@ export class PersonsService {
         value: any,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/{id}/update_property/',
@@ -313,13 +313,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsActivityRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/activity/',
@@ -335,13 +335,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsCohortsRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/cohorts/',
@@ -357,13 +357,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsFunnelRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/funnel/',
@@ -380,14 +380,14 @@ export class PersonsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsFunnelCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/funnel/',
@@ -405,13 +405,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsFunnelCorrelationRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/funnel/correlation/',
@@ -428,14 +428,14 @@ export class PersonsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsFunnelCorrelationCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/funnel/correlation/',
@@ -453,13 +453,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsLifecycleRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/lifecycle/',
@@ -475,13 +475,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsPathRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/path/',
@@ -498,14 +498,14 @@ export class PersonsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsPathCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/persons/path/',
@@ -523,13 +523,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsRetentionRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/retention/',
@@ -545,13 +545,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsStickinessRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/stickiness/',
@@ -567,13 +567,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsTrendsRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/trends/',
@@ -589,13 +589,13 @@ export class PersonsService {
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Person
+     * @returns any No response body
      * @throws ApiError
      */
     public personsValuesRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Person> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/persons/values/',

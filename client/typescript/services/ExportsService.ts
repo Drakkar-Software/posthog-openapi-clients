@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -74,13 +74,13 @@ export class ExportsService {
     /**
      * @param id A unique integer value identifying this exported asset.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns ExportedAsset
+     * @returns any No response body
      * @throws ApiError
      */
     public exportsContentRetrieve(
         id: number,
         projectId: string,
-    ): CancelablePromise<ExportedAsset> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/exports/{id}/content/',

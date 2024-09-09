@@ -1,9 +1,10 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
 import type { HogQLMetadataResponse } from './HogQLMetadataResponse';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { QueryStatus } from './QueryStatus';
 import type { QueryTiming } from './QueryTiming';
 export type QueryResponseAlternative6 = {
     /**
@@ -41,6 +42,10 @@ export type QueryResponseAlternative6 = {
      * Input query string
      */
     query?: (string | null);
+    /**
+     * Query status indicates whether next to the provided data, a query is still running.
+     */
+    query_status?: (QueryStatus | null);
     results: Array<any>;
     /**
      * Measured timings for different parts of the query generation process

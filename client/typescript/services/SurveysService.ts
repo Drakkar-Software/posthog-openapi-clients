@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -141,13 +141,13 @@ export class SurveysService {
     /**
      * @param id A UUID string identifying this survey.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Survey
+     * @returns any No response body
      * @throws ApiError
      */
     public surveysActivityRetrieve2(
         id: string,
         projectId: string,
-    ): CancelablePromise<Survey> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/{id}/activity/',
@@ -159,12 +159,12 @@ export class SurveysService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Survey
+     * @returns any No response body
      * @throws ApiError
      */
     public surveysActivityRetrieve(
         projectId: string,
-    ): CancelablePromise<Survey> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/activity/',
@@ -175,12 +175,12 @@ export class SurveysService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Survey
+     * @returns any No response body
      * @throws ApiError
      */
     public surveysResponsesCountRetrieve(
         projectId: string,
-    ): CancelablePromise<Survey> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/responses_count/',

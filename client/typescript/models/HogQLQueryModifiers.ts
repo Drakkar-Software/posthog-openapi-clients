@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -9,6 +9,7 @@ import type { MaterializationMode } from './MaterializationMode';
 import type { PersonsArgMaxVersion } from './PersonsArgMaxVersion';
 import type { PersonsJoinMode } from './PersonsJoinMode';
 import type { PersonsOnEventsMode } from './PersonsOnEventsMode';
+import type { PropertyGroupsMode } from './PropertyGroupsMode';
 import type { SessionTableVersion } from './SessionTableVersion';
 export type HogQLQueryModifiers = {
     bounceRatePageViewMode?: (BounceRatePageViewMode | null);
@@ -20,6 +21,7 @@ export type HogQLQueryModifiers = {
     personsArgMaxVersion?: (PersonsArgMaxVersion | null);
     personsJoinMode?: (PersonsJoinMode | null);
     personsOnEventsMode?: (PersonsOnEventsMode | null);
+    propertyGroupsMode?: (PropertyGroupsMode | null);
     s3TableUseInvalidColumns?: (boolean | null);
     sessionTableVersion?: (SessionTableVersion | null);
 };

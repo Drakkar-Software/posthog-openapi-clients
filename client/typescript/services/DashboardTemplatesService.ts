@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -143,12 +143,12 @@ export class DashboardTemplatesService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns DashboardTemplate
+     * @returns any No response body
      * @throws ApiError
      */
     public dashboardTemplatesJsonSchemaRetrieve(
         projectId: string,
-    ): CancelablePromise<DashboardTemplate> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/dashboard_templates/json_schema/',

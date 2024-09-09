@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -89,12 +89,12 @@ export class UsersService {
     }
     /**
      * @param uuid
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersHedgehogConfigRetrieve(
         uuid: string,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/users/{uuid}/hedgehog_config/',
@@ -106,13 +106,13 @@ export class UsersService {
     /**
      * @param uuid
      * @param requestBody
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersHedgehogConfigPartialUpdate(
         uuid: string,
         requestBody?: PatchedUser,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/users/{uuid}/hedgehog_config/',
@@ -126,13 +126,13 @@ export class UsersService {
     /**
      * @param uuid
      * @param requestBody
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersRequestEmailVerificationCreate(
         uuid: string,
         requestBody: User,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/users/{uuid}/request_email_verification/',
@@ -146,13 +146,13 @@ export class UsersService {
     /**
      * @param uuid
      * @param requestBody
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersScenePersonalisationCreate(
         uuid: string,
         requestBody: User,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/users/{uuid}/scene_personalisation/',
@@ -165,12 +165,12 @@ export class UsersService {
     }
     /**
      * @param uuid
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersStart2FaSetupRetrieve(
         uuid: string,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/users/{uuid}/start_2fa_setup/',
@@ -182,13 +182,13 @@ export class UsersService {
     /**
      * @param uuid
      * @param requestBody
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersValidate2FaCreate(
         uuid: string,
         requestBody: User,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/users/{uuid}/validate_2fa/',
@@ -202,13 +202,13 @@ export class UsersService {
     /**
      * @param uuid
      * @param requestBody
-     * @returns User
+     * @returns any No response body
      * @throws ApiError
      */
     public usersVerifyEmailCreate(
         uuid: string,
         requestBody: User,
-    ): CancelablePromise<User> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/users/{uuid}/verify_email/',

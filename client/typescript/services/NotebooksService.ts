@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -167,13 +167,13 @@ export class NotebooksService {
      * The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
-     * @returns Notebook
+     * @returns any No response body
      * @throws ApiError
      */
     public notebooksActivityRetrieve2(
         projectId: string,
         shortId: string,
-    ): CancelablePromise<Notebook> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/notebooks/{short_id}/activity/',
@@ -186,12 +186,12 @@ export class NotebooksService {
     /**
      * The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Notebook
+     * @returns any No response body
      * @throws ApiError
      */
     public notebooksActivityRetrieve(
         projectId: string,
-    ): CancelablePromise<Notebook> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/notebooks/activity/',

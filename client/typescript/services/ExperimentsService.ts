@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -141,14 +141,14 @@ export class ExperimentsService {
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns Experiment
+     * @returns any No response body
      * @throws ApiError
      */
     public experimentsCreateExposureCohortForExperimentCreate(
         id: number,
         projectId: string,
         requestBody: Experiment,
-    ): CancelablePromise<Experiment> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/experiments/{id}/create_exposure_cohort_for_experiment/',
@@ -163,13 +163,13 @@ export class ExperimentsService {
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Experiment
+     * @returns any No response body
      * @throws ApiError
      */
     public experimentsResultsRetrieve(
         id: number,
         projectId: string,
-    ): CancelablePromise<Experiment> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/{id}/results/',
@@ -182,13 +182,13 @@ export class ExperimentsService {
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Experiment
+     * @returns any No response body
      * @throws ApiError
      */
     public experimentsSecondaryResultsRetrieve(
         id: number,
         projectId: string,
-    ): CancelablePromise<Experiment> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/{id}/secondary_results/',
@@ -200,12 +200,12 @@ export class ExperimentsService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Experiment
+     * @returns any No response body
      * @throws ApiError
      */
     public experimentsRequiresFlagImplementationRetrieve(
         projectId: string,
-    ): CancelablePromise<Experiment> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/experiments/requires_flag_implementation/',

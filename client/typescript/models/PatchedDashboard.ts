@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -23,7 +23,7 @@ export type PatchedDashboard = {
     use_template?: string;
     use_dashboard?: number | null;
     delete_insights?: boolean;
-    filters?: any;
+    readonly filters?: Record<string, any>;
     tags?: Array<any>;
     readonly tiles?: Array<Record<string, any>> | null;
     restriction_level?: DashboardRestrictionLevel;

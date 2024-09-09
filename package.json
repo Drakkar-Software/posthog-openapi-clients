@@ -1,7 +1,7 @@
 {
   "name": "posthog-openapi-client",
   "description": "Posthog openapi client",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "dist/client/typescript/index.js",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^20",
-    "openapi-typescript-codegen": "0.27.0",
+    "openapi-typescript-codegen": "0.29.0",
     "prettier": "3.1.0",
     "typescript": "^5"
   }

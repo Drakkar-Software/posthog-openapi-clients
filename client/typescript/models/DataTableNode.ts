@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -6,18 +6,24 @@ import type { ActorsQuery } from './ActorsQuery';
 import type { ErrorTrackingQuery } from './ErrorTrackingQuery';
 import type { EventsNode } from './EventsNode';
 import type { EventsQuery } from './EventsQuery';
+import type { ExperimentResultQuery } from './ExperimentResultQuery';
 import type { HogQLQuery } from './HogQLQuery';
 import type { PersonsNode } from './PersonsNode';
 import type { Response } from './Response';
 import type { Response1 } from './Response1';
+import type { Response10 } from './Response10';
+import type { Response11 } from './Response11';
 import type { Response2 } from './Response2';
 import type { Response3 } from './Response3';
 import type { Response4 } from './Response4';
-import type { Response5 } from './Response5';
 import type { Response6 } from './Response6';
 import type { Response7 } from './Response7';
+import type { Response8 } from './Response8';
+import type { Response9 } from './Response9';
 import type { SessionAttributionExplorerQuery } from './SessionAttributionExplorerQuery';
 import type { TaxonomicFilterGroupType } from './TaxonomicFilterGroupType';
+import type { WebExternalClicksTableQuery } from './WebExternalClicksTableQuery';
+import type { WebGoalsQuery } from './WebGoalsQuery';
 import type { WebOverviewQuery } from './WebOverviewQuery';
 import type { WebStatsTableQuery } from './WebStatsTableQuery';
 import type { WebTopClicksQuery } from './WebTopClicksQuery';
@@ -51,7 +57,7 @@ export type DataTableNode = {
      * Link properties via the URL (default: false)
      */
     propertiesViaUrl?: (boolean | null);
-    response?: (Record<string, any> | Response | Response1 | Response2 | Response3 | Response4 | Response5 | Response6 | Response7 | null);
+    response?: (Record<string, any> | Response | Response1 | Response2 | Response3 | Response4 | Response6 | Response7 | Response8 | Response9 | Response10 | Response11 | null);
     /**
      * Show the kebab menu at the end of the row
      */
@@ -119,6 +125,6 @@ export type DataTableNode = {
     /**
      * Source of the events
      */
-    source: (EventsNode | EventsQuery | PersonsNode | ActorsQuery | HogQLQuery | WebOverviewQuery | WebStatsTableQuery | WebTopClicksQuery | SessionAttributionExplorerQuery | ErrorTrackingQuery);
+    source: (EventsNode | EventsQuery | PersonsNode | ActorsQuery | HogQLQuery | WebOverviewQuery | WebStatsTableQuery | WebExternalClicksTableQuery | WebTopClicksQuery | WebGoalsQuery | SessionAttributionExplorerQuery | ErrorTrackingQuery | ExperimentResultQuery);
 };
 

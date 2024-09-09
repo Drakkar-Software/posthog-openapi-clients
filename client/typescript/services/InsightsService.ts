@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -20,6 +20,10 @@ export class InsightsService {
      * @param format
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
+     * @param refresh
+     * Whether to refresh the retrieved insights and how aggressively. (The default `force_cache` value never refreshes.)
+     * If an `_async` mode is chosen, this request kicks off a background query and returns immediately.
+     * Background calculation can be tracked using the `query_status` response field.
      * @param shortId
      * @returns PaginatedInsightList
      * @throws ApiError
@@ -30,6 +34,7 @@ export class InsightsService {
         format?: 'csv' | 'json',
         limit?: number,
         offset?: number,
+        refresh: 'async' | 'blocking' | 'force_async' | 'force_blocking' | 'force_cache' | 'lazy_async' = 'force_cache',
         shortId?: string,
     ): CancelablePromise<PaginatedInsightList> {
         return this.httpRequest.request({
@@ -43,6 +48,7 @@ export class InsightsService {
                 'format': format,
                 'limit': limit,
                 'offset': offset,
+                'refresh': refresh,
                 'short_id': shortId,
             },
         });
@@ -96,18 +102,12 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param fromDashboard
-     * When loading an insight for a dashboard pass a `from_dashboard` query parameter containing the dashboard ID
-     *
-     * e.g. `"/api/projects/{team_id}/insights/{insight_id}?from_dashboard={dashboard_id}"`
-     *
-     * Insights can be added to more than one dashboard, this allows the insight to be loaded in the correct context.
-     *
-     * Using the correct cache and enriching the response with dashboard specific config (e.g. layouts or colors)
+     * Only if loading an insight in the context of a dashboard: The relevant dashboard's ID.
+     * When set, the specified dashboard's filters and date range override will be applied.
      * @param refresh
-     * The client can request that an insight be refreshed by setting the `refresh=true` parameter.
-     * The server will then decide if the data should or not be refreshed based on a set of heuristics
-     * meant to determine the staleness of cached data. The result will contain as `is_cached` field
-     * that indicates whether the insight was actually refreshed or not through the request.
+     * Whether to refresh the insight and how aggressively. (The default `force_cache` value never refreshes.)
+     * If an `_async` mode is chosen, this request kicks off a background query and returns immediately.
+     * Background calculation can be tracked using the `query_status` response field.
      * @returns Insight
      * @throws ApiError
      */
@@ -116,7 +116,7 @@ export class InsightsService {
         projectId: string,
         format?: 'csv' | 'json',
         fromDashboard?: number,
-        refresh?: boolean,
+        refresh: 'async' | 'blocking' | 'force_async' | 'force_blocking' | 'force_cache' | 'lazy_async' = 'force_cache',
     ): CancelablePromise<Insight> {
         return this.httpRequest.request({
             method: 'GET',
@@ -220,14 +220,14 @@ export class InsightsService {
      * @param id A unique integer value identifying this insight.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsActivityRetrieve2(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/{id}/activity/',
@@ -245,7 +245,7 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsViewedCreate(
@@ -253,7 +253,7 @@ export class InsightsService {
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/{id}/viewed/',
@@ -271,13 +271,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsActivityRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/activity/',
@@ -293,14 +293,14 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsCancelCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/cancel/',
@@ -317,13 +317,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsFunnelRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/funnel/',
@@ -363,13 +363,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsFunnelCorrelationRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/funnel/correlation/',
@@ -385,14 +385,14 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsFunnelCorrelationCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/funnel/correlation/',
@@ -410,13 +410,13 @@ export class InsightsService {
      * Returns basic details about the last 5 insights viewed by this user. Most recently viewed first.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsMyLastViewedRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/my_last_viewed/',
@@ -431,13 +431,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsPathRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/path/',
@@ -453,14 +453,14 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsPathCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/path/',
@@ -477,13 +477,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsRetentionRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/retention/',
@@ -499,14 +499,14 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsRetentionCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/retention/',
@@ -524,14 +524,14 @@ export class InsightsService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsTimingCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Insight,
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/insights/timing/',
@@ -548,13 +548,13 @@ export class InsightsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Insight
+     * @returns any No response body
      * @throws ApiError
      */
     public insightsTrendRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Insight> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/insights/trend/',

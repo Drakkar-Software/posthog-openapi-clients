@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -31,5 +31,6 @@ export enum TaxonomicFilterGroupType {
     SESSION_PROPERTIES = 'session_properties',
     HOGQL_EXPRESSION = 'hogql_expression',
     NOTEBOOKS = 'notebooks',
+    LOG_ENTRIES = 'log_entries',
     REPLAY = 'replay',
 }

@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -147,13 +147,13 @@ export class ProjectsService {
      * Projects for the current organization.
      * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
-     * @returns Team
+     * @returns any No response body
      * @throws ApiError
      */
     public activityRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Team> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/{id}/activity/',
@@ -167,13 +167,13 @@ export class ProjectsService {
      * Projects for the current organization.
      * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
-     * @returns Team
+     * @returns any No response body
      * @throws ApiError
      */
     public isGeneratingDemoDataRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Team> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/{id}/is_generating_demo_data/',
@@ -188,14 +188,14 @@ export class ProjectsService {
      * @param id A unique integer value identifying this team (soon to be environment).
      * @param organizationId
      * @param requestBody
-     * @returns Team
+     * @returns any No response body
      * @throws ApiError
      */
     public resetTokenPartialUpdate(
         id: number,
         organizationId: string,
         requestBody?: PatchedTeam,
-    ): CancelablePromise<Team> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{organization_id}/projects/{id}/reset_token/',

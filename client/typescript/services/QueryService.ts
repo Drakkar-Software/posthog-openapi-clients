@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -65,6 +65,22 @@ export class QueryService {
             url: '/api/projects/{project_id}/query/{id}/',
             path: {
                 'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public queryChatCreate(
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/query/chat/',
+            path: {
                 'project_id': projectId,
             },
         });

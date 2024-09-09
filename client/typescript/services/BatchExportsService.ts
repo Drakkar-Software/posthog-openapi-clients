@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -144,14 +144,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param organizationId
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsBackfillCreate(
         id: string,
         organizationId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/batch_exports/{id}/backfill/',
@@ -166,13 +166,13 @@ export class BatchExportsService {
     /**
      * @param id A UUID string identifying this batch export.
      * @param organizationId
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsLogsRetrieve(
         id: string,
         organizationId: string,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/batch_exports/{id}/logs/',
@@ -187,14 +187,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param organizationId
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsPauseCreate(
         id: string,
         organizationId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/batch_exports/{id}/pause/',
@@ -211,14 +211,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param organizationId
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsUnpauseCreate(
         id: string,
         organizationId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/batch_exports/{id}/unpause/',
@@ -327,14 +327,14 @@ export class BatchExportsService {
      * @param batchExportId
      * @param id A UUID string identifying this batch export run.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns BatchExportRun
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsRunsLogsRetrieve(
         batchExportId: string,
         id: string,
         projectId: string,
-    ): CancelablePromise<BatchExportRun> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/logs/',
@@ -343,6 +343,36 @@ export class BatchExportsService {
                 'id': id,
                 'project_id': projectId,
             },
+        });
+    }
+    /**
+     * Retry a batch export run.
+     *
+     * We use the same underlying mechanism as when backfilling a batch export, as retrying
+     * a run is the same as backfilling one run.
+     * @param batchExportId
+     * @param id A UUID string identifying this batch export run.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunsRetryCreate(
+        batchExportId: string,
+        id: string,
+        projectId: string,
+        requestBody: BatchExportRun,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/retry/',
+            path: {
+                'batch_export_id': batchExportId,
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**
@@ -434,14 +464,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsBackfillCreate2(
         id: string,
         projectId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/backfill/',
@@ -456,13 +486,13 @@ export class BatchExportsService {
     /**
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsLogsRetrieve2(
         id: string,
         projectId: string,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/batch_exports/{id}/logs/',
@@ -477,14 +507,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsPauseCreate2(
         id: string,
         projectId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/pause/',
@@ -501,14 +531,14 @@ export class BatchExportsService {
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns BatchExport
+     * @returns any No response body
      * @throws ApiError
      */
     public batchExportsUnpauseCreate2(
         id: string,
         projectId: string,
         requestBody: BatchExport,
-    ): CancelablePromise<BatchExport> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/{id}/unpause/',

@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -150,13 +150,13 @@ export class SessionRecordingPlaylistsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param shortId
-     * @returns SessionRecordingPlaylist
+     * @returns any No response body
      * @throws ApiError
      */
     public sessionRecordingPlaylistsRecordingsRetrieve(
         projectId: string,
         shortId: string,
-    ): CancelablePromise<SessionRecordingPlaylist> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/',
@@ -171,7 +171,7 @@ export class SessionRecordingPlaylistsService {
      * @param sessionRecordingId
      * @param shortId
      * @param requestBody
-     * @returns SessionRecordingPlaylist
+     * @returns any No response body
      * @throws ApiError
      */
     public sessionRecordingPlaylistsRecordingsCreate(
@@ -179,7 +179,7 @@ export class SessionRecordingPlaylistsService {
         sessionRecordingId: string,
         shortId: string,
         requestBody?: SessionRecordingPlaylist,
-    ): CancelablePromise<SessionRecordingPlaylist> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/{session_recording_id}/',

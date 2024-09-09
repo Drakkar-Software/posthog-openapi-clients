@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -94,13 +94,13 @@ export class EventsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns ClickhouseEvent
+     * @returns any No response body
      * @throws ApiError
      */
     public eventsValuesRetrieve(
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<ClickhouseEvent> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/events/values/',

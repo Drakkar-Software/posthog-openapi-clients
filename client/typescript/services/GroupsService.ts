@@ -1,8 +1,7 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Group } from '../models/Group';
 import type { PaginatedGroupList } from '../models/PaginatedGroupList';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -40,14 +39,14 @@ export class GroupsService {
      * @param groupKey Specify the key of the group to find
      * @param groupTypeIndex Specify the group type to find
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Group
+     * @returns any No response body
      * @throws ApiError
      */
     public groupsFindRetrieve(
         groupKey: string,
         groupTypeIndex: number,
         projectId: string,
-    ): CancelablePromise<Group> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/find/',
@@ -62,12 +61,12 @@ export class GroupsService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Group
+     * @returns any No response body
      * @throws ApiError
      */
     public groupsPropertyDefinitionsRetrieve(
         projectId: string,
-    ): CancelablePromise<Group> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/property_definitions/',
@@ -80,14 +79,14 @@ export class GroupsService {
      * @param groupTypeIndex Specify the group type to find property values of
      * @param key Specify the property key to find values for
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Group
+     * @returns any No response body
      * @throws ApiError
      */
     public groupsPropertyValuesRetrieve(
         groupTypeIndex: number,
         key: string,
         projectId: string,
-    ): CancelablePromise<Group> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/property_values/',
@@ -104,14 +103,14 @@ export class GroupsService {
      * @param groupTypeIndex Specify the group type to find
      * @param id Specify the id of the user to find groups for
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Group
+     * @returns any No response body
      * @throws ApiError
      */
     public groupsRelatedRetrieve(
         groupTypeIndex: number,
         id: string,
         projectId: string,
-    ): CancelablePromise<Group> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/groups/related/',

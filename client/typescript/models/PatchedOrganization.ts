@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -8,6 +8,7 @@ export type PatchedOrganization = {
     readonly id?: string;
     name?: string;
     readonly slug?: string;
+    logo_media_id?: string | null;
     readonly created_at?: string;
     readonly updated_at?: string;
     readonly membership_level?: EffectiveMembershipLevelEnum | null;

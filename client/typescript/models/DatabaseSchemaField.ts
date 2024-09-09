@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -7,6 +7,7 @@ export type DatabaseSchemaField = {
     chain?: null;
     fields?: (Array<string> | null);
     hogql_value: string;
+    id?: (string | null);
     name: string;
     schema_valid: boolean;
     table?: (string | null);

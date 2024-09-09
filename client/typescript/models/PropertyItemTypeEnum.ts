@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -12,6 +12,7 @@
  * * `precalculated-cohort` - precalculated-cohort
  * * `group` - group
  * * `recording` - recording
+ * * `log_entry` - log_entry
  * * `behavioral` - behavioral
  * * `session` - session
  * * `hogql` - hogql
@@ -28,6 +29,7 @@ export enum PropertyItemTypeEnum {
     PRECALCULATED_COHORT = 'precalculated-cohort',
     GROUP = 'group',
     RECORDING = 'recording',
+    LOG_ENTRY = 'log_entry',
     BEHAVIORAL = 'behavioral',
     SESSION = 'session',
     HOGQL = 'hogql',

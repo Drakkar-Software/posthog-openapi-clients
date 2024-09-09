@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -32,13 +32,13 @@ export class ActivityLogService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns ActivityLog
+     * @returns any No response body
      * @throws ApiError
      */
     public activityLogBookmarkActivityNotificationCreate(
         projectId: string,
         requestBody: ActivityLog,
-    ): CancelablePromise<ActivityLog> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/activity_log/bookmark_activity_notification/',
@@ -51,12 +51,12 @@ export class ActivityLogService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns ActivityLog
+     * @returns any No response body
      * @throws ApiError
      */
     public activityLogImportantChangesRetrieve(
         projectId: string,
-    ): CancelablePromise<ActivityLog> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/activity_log/important_changes/',

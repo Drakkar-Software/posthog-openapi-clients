@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -6,12 +6,11 @@ import type { Status } from './Status';
 export type ErrorTrackingGroup = {
     assignee?: (number | null);
     description?: (string | null);
-    events?: null;
     exception_type?: (string | null);
-    fingerprint: string;
+    fingerprint: Array<string>;
     first_seen: string;
     last_seen: string;
-    merged_fingerprints: Array<string>;
+    merged_fingerprints: Array<Array<string>>;
     occurrences: number;
     sessions: number;
     status: Status;

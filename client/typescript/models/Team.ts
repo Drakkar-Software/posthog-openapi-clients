@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -30,6 +30,7 @@ export type Team = {
     autocapture_opt_out?: boolean | null;
     autocapture_exceptions_opt_in?: boolean | null;
     autocapture_web_vitals_opt_in?: boolean | null;
+    autocapture_web_vitals_allowed_metrics?: any;
     autocapture_exceptions_errors_to_ignore?: any;
     capture_console_log_opt_in?: boolean | null;
     capture_performance_opt_in?: boolean | null;

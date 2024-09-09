@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -258,13 +258,13 @@ export class FeatureFlagsService {
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param id A unique integer value identifying this feature flag.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsActivityRetrieve2(
         id: number,
         projectId: string,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/{id}/activity/',
@@ -281,14 +281,14 @@ export class FeatureFlagsService {
      * @param id A unique integer value identifying this feature flag.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsCreateStaticCohortForFlagCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/create_static_cohort_for_flag/',
@@ -307,14 +307,14 @@ export class FeatureFlagsService {
      * @param id A unique integer value identifying this feature flag.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsDashboardCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/dashboard/',
@@ -333,14 +333,14 @@ export class FeatureFlagsService {
      * @param id A unique integer value identifying this feature flag.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsEnrichUsageDashboardCreate(
         id: number,
         projectId: string,
         requestBody: FeatureFlag,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/{id}/enrich_usage_dashboard/',
@@ -357,12 +357,12 @@ export class FeatureFlagsService {
      *
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsActivityRetrieve(
         projectId: string,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/activity/',
@@ -376,12 +376,12 @@ export class FeatureFlagsService {
      *
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsEvaluationReasonsRetrieve(
         projectId: string,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/evaluation_reasons/',
@@ -395,12 +395,12 @@ export class FeatureFlagsService {
      *
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsLocalEvaluationRetrieve(
         projectId: string,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/local_evaluation/',
@@ -414,12 +414,12 @@ export class FeatureFlagsService {
      *
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsMyFlagsRetrieve(
         projectId: string,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/feature_flags/my_flags/',
@@ -434,13 +434,13 @@ export class FeatureFlagsService {
      * If you're looking to use feature flags on your application, you can either use our JavaScript Library or our dedicated endpoint to check if feature flags are enabled for a given user.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns FeatureFlag
+     * @returns any No response body
      * @throws ApiError
      */
     public featureFlagsUserBlastRadiusCreate(
         projectId: string,
         requestBody: FeatureFlag,
-    ): CancelablePromise<FeatureFlag> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/feature_flags/user_blast_radius/',

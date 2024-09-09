@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -140,13 +140,13 @@ export class PipelineDestinationsService {
     /**
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsCheckForUpdatesRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/check_for_updates/',
@@ -159,13 +159,13 @@ export class PipelineDestinationsService {
     /**
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsSourceRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/source/',
@@ -179,14 +179,14 @@ export class PipelineDestinationsService {
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
      * @param requestBody
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsUpdateSourcePartialUpdate(
         id: number,
         organizationId: string,
         requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/update_source/',
@@ -202,14 +202,14 @@ export class PipelineDestinationsService {
      * @param id A unique integer value identifying this plugin.
      * @param organizationId
      * @param requestBody
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsUpgradeCreate(
         id: number,
         organizationId: string,
         requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/upgrade/',
@@ -223,12 +223,12 @@ export class PipelineDestinationsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsActivityRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/activity/',
@@ -239,12 +239,12 @@ export class PipelineDestinationsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsExportsUnsubscribeConfigsRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/exports_unsubscribe_configs/',
@@ -255,12 +255,12 @@ export class PipelineDestinationsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsRepositoryRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/repository/',
@@ -271,12 +271,12 @@ export class PipelineDestinationsService {
     }
     /**
      * @param organizationId
-     * @returns Plugin
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineDestinationsUnusedRetrieve(
         organizationId: string,
-    ): CancelablePromise<Plugin> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/pipeline_destinations/unused/',

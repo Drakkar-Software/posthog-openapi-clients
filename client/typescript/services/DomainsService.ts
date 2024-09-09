@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -141,14 +141,14 @@ export class DomainsService {
      * @param id A UUID string identifying this domain.
      * @param organizationId
      * @param requestBody
-     * @returns OrganizationDomain
+     * @returns any No response body
      * @throws ApiError
      */
     public domainsVerifyCreate(
         id: string,
         organizationId: string,
         requestBody: OrganizationDomain,
-    ): CancelablePromise<OrganizationDomain> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/domains/{id}/verify/',

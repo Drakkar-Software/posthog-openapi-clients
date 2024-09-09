@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -140,13 +140,32 @@ export class PipelineFrontendAppsConfigsService {
     /**
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns PluginConfig
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public pipelineFrontendAppsConfigsActivityRetrieve(
+        id: number,
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/pipeline_frontend_apps_configs/{id}/activity/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param id A unique integer value identifying this plugin config.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineFrontendAppsConfigsFrontendRetrieve(
         id: number,
         projectId: string,
-    ): CancelablePromise<PluginConfig> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/pipeline_frontend_apps_configs/{id}/frontend/',
@@ -160,14 +179,14 @@ export class PipelineFrontendAppsConfigsService {
      * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns PluginConfig
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineFrontendAppsConfigsJobCreate(
         id: number,
         projectId: string,
         requestBody: PluginConfig,
-    ): CancelablePromise<PluginConfig> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/pipeline_frontend_apps_configs/{id}/job/',
@@ -180,15 +199,38 @@ export class PipelineFrontendAppsConfigsService {
         });
     }
     /**
+     * @param id A unique integer value identifying this plugin config.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns PluginConfig
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public pipelineFrontendAppsConfigsMigrateCreate(
+        id: number,
+        projectId: string,
+        requestBody: PluginConfig,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/pipeline_frontend_apps_configs/{id}/migrate/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
      * @throws ApiError
      */
     public pipelineFrontendAppsConfigsRearrangePartialUpdate(
         projectId: string,
         requestBody?: PatchedPluginConfig,
-    ): CancelablePromise<PluginConfig> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/pipeline_frontend_apps_configs/rearrange/',

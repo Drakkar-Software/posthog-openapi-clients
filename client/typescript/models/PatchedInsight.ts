@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -55,6 +55,7 @@ export type PatchedInsight = {
      */
     readonly next_allowed_client_refresh?: string;
     readonly result?: string;
+    readonly hasMore?: string;
     readonly columns?: string;
     readonly created_at?: string | null;
     readonly created_by?: UserBasic;
@@ -75,5 +76,6 @@ export type PatchedInsight = {
     readonly is_cached?: string;
     readonly query_status?: string;
     readonly hogql?: string;
+    readonly types?: string;
 };
 

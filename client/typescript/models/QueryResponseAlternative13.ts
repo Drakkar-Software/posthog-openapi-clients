@@ -1,12 +1,13 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ErrorTrackingGroup } from './ErrorTrackingGroup';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { QueryStatus } from './QueryStatus';
 import type { QueryTiming } from './QueryTiming';
+import type { SamplingRate } from './SamplingRate';
 export type QueryResponseAlternative13 = {
-    columns?: (Array<string> | null);
+    columns?: null;
     /**
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
@@ -22,10 +23,16 @@ export type QueryResponseAlternative13 = {
      */
     modifiers?: (HogQLQueryModifiers | null);
     offset?: (number | null);
-    results: Array<ErrorTrackingGroup>;
+    /**
+     * Query status indicates whether next to the provided data, a query is still running.
+     */
+    query_status?: (QueryStatus | null);
+    results: Array<any>;
+    samplingRate?: (SamplingRate | null);
     /**
      * Measured timings for different parts of the query generation process
      */
     timings?: (Array<QueryTiming> | null);
+    types?: null;
 };
 

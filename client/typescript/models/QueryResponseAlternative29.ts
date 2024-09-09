@@ -1,12 +1,33 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { DatabaseSchemaBatchExportTable } from './DatabaseSchemaBatchExportTable';
-import type { DatabaseSchemaDataWarehouseTable } from './DatabaseSchemaDataWarehouseTable';
-import type { DatabaseSchemaPostHogTable } from './DatabaseSchemaPostHogTable';
-import type { DatabaseSchemaViewTable } from './DatabaseSchemaViewTable';
+import type { FunnelTimeToConvertResults } from './FunnelTimeToConvertResults';
+import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { QueryStatus } from './QueryStatus';
+import type { QueryTiming } from './QueryTiming';
 export type QueryResponseAlternative29 = {
-    tables: Record<string, (DatabaseSchemaPostHogTable | DatabaseSchemaDataWarehouseTable | DatabaseSchemaViewTable | DatabaseSchemaBatchExportTable)>;
+    /**
+     * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
+     */
+    error?: (string | null);
+    /**
+     * Generated HogQL query.
+     */
+    hogql?: (string | null);
+    isUdf?: (boolean | null);
+    /**
+     * Modifiers used when performing the query
+     */
+    modifiers?: (HogQLQueryModifiers | null);
+    /**
+     * Query status indicates whether next to the provided data, a query is still running.
+     */
+    query_status?: (QueryStatus | null);
+    results: FunnelTimeToConvertResults;
+    /**
+     * Measured timings for different parts of the query generation process
+     */
+    timings?: (Array<QueryTiming> | null);
 };
 

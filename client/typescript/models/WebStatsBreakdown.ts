@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -6,6 +6,7 @@ export enum WebStatsBreakdown {
     PAGE = 'Page',
     INITIAL_PAGE = 'InitialPage',
     EXIT_PAGE = 'ExitPage',
+    EXIT_CLICK = 'ExitClick',
     INITIAL_CHANNEL_TYPE = 'InitialChannelType',
     INITIAL_REFERRING_DOMAIN = 'InitialReferringDomain',
     INITIAL_UTMSOURCE = 'InitialUTMSource',

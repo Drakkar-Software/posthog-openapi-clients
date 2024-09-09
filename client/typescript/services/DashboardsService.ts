@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -230,14 +230,14 @@ export class DashboardsService {
      * @param id A unique integer value identifying this dashboard.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns Dashboard
+     * @returns any No response body
      * @throws ApiError
      */
     public dashboardsMoveTilePartialUpdate(
         id: number,
         projectId: string,
         requestBody?: PatchedDashboard,
-    ): CancelablePromise<Dashboard> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/dashboards/{id}/move_tile/',
@@ -252,13 +252,13 @@ export class DashboardsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns Dashboard
+     * @returns any No response body
      * @throws ApiError
      */
     public dashboardsCreateFromTemplateJsonCreate(
         projectId: string,
         requestBody?: Dashboard,
-    ): CancelablePromise<Dashboard> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/projects/{project_id}/dashboards/create_from_template_json/',

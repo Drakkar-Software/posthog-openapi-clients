@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -74,13 +74,13 @@ export class InvitesService {
     /**
      * @param organizationId
      * @param requestBody
-     * @returns OrganizationInvite
+     * @returns any No response body
      * @throws ApiError
      */
     public invitesBulkCreate(
         organizationId: string,
         requestBody: OrganizationInvite,
-    ): CancelablePromise<OrganizationInvite> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/invites/bulk/',

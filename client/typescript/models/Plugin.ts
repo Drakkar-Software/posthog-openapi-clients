@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -21,5 +21,6 @@ export type Plugin = {
     capabilities?: any;
     metrics?: any;
     public_jobs?: any;
+    readonly hog_function_migration_available: string;
 };
 

@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -144,13 +144,13 @@ export class CohortsService {
     /**
      * @param id A unique integer value identifying this cohort.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Cohort
+     * @returns any No response body
      * @throws ApiError
      */
     public cohortsActivityRetrieve2(
         id: number,
         projectId: string,
-    ): CancelablePromise<Cohort> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/activity/',
@@ -163,13 +163,13 @@ export class CohortsService {
     /**
      * @param id A unique integer value identifying this cohort.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Cohort
+     * @returns any No response body
      * @throws ApiError
      */
     public cohortsDuplicateAsStaticCohortRetrieve(
         id: number,
         projectId: string,
-    ): CancelablePromise<Cohort> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/duplicate_as_static_cohort/',
@@ -183,14 +183,14 @@ export class CohortsService {
      * @param id A unique integer value identifying this cohort.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
-     * @returns Cohort
+     * @returns any No response body
      * @throws ApiError
      */
     public cohortsPersonsRetrieve(
         id: number,
         projectId: string,
         format?: 'csv' | 'json',
-    ): CancelablePromise<Cohort> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/{id}/persons/',
@@ -205,12 +205,12 @@ export class CohortsService {
     }
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns Cohort
+     * @returns any No response body
      * @throws ApiError
      */
     public cohortsActivityRetrieve(
         projectId: string,
-    ): CancelablePromise<Cohort> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/cohorts/activity/',

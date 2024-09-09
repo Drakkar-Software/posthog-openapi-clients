@@ -1,4 +1,4 @@
-/* generated using openapi-typescript-codegen -- do no edit */
+/* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
@@ -27,13 +27,13 @@ export class GroupsTypesService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
-     * @returns GroupType
+     * @returns any No response body
      * @throws ApiError
      */
     public groupsTypesUpdateMetadataPartialUpdate(
         projectId: string,
         requestBody?: PatchedGroupType,
-    ): CancelablePromise<GroupType> {
+    ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/groups_types/update_metadata/',
