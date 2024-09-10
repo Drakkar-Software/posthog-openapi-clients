@@ -38,3 +38,6 @@ yarn-error.log*
 
 # pnpm
 !pnpm-lock.yaml
+
+# examples
+persons.json
