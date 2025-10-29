@@ -2,36 +2,38 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { FunnelCorrelationResult } from './FunnelCorrelationResult';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
+import type { MarketingAnalyticsItem } from './MarketingAnalyticsItem';
 import type { QueryStatus } from './QueryStatus';
 import type { QueryTiming } from './QueryTiming';
+import type { ResolvedDateRangeResponse } from './ResolvedDateRangeResponse';
+import type { SamplingRate } from './SamplingRate';
 export type QueryResponseAlternative34 = {
-    columns?: null;
     /**
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
-    error?: (string | null);
-    hasMore?: (boolean | null);
+    error?: string | null;
     /**
      * Generated HogQL query.
      */
-    hogql?: (string | null);
-    limit?: (number | null);
+    hogql?: string | null;
     /**
      * Modifiers used when performing the query
      */
-    modifiers?: (HogQLQueryModifiers | null);
-    offset?: (number | null);
+    modifiers?: HogQLQueryModifiers | null;
     /**
      * Query status indicates whether next to the provided data, a query is still running.
      */
-    query_status?: (QueryStatus | null);
-    results: FunnelCorrelationResult;
+    query_status?: QueryStatus | null;
+    /**
+     * The date range used for the query
+     */
+    resolved_date_range?: ResolvedDateRangeResponse | null;
+    results: Record<string, MarketingAnalyticsItem>;
+    samplingRate?: SamplingRate | null;
     /**
      * Measured timings for different parts of the query generation process
      */
-    timings?: (Array<QueryTiming> | null);
-    types?: null;
+    timings?: Array<QueryTiming> | null;
 };
 

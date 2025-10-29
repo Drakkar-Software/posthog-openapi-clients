@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type SamplingRate = {
-    denominator?: (number | null);
+    denominator?: number | null;
     numerator: number;
 };
 

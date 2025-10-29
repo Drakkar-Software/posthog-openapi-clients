@@ -16,5 +16,6 @@ export type ExportedAsset = {
     export_context?: any;
     readonly filename: string;
     expires_after?: string | null;
+    readonly exception: string | null;
 };
 

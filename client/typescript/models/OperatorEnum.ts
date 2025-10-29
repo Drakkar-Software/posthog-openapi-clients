@@ -18,6 +18,8 @@
  * * `is_date_exact` - is_date_exact
  * * `is_date_after` - is_date_after
  * * `is_date_before` - is_date_before
+ * * `in` - in
+ * * `not_in` - not_in
  */
 export enum OperatorEnum {
     EXACT = 'exact',
@@ -35,4 +37,6 @@ export enum OperatorEnum {
     IS_DATE_EXACT = 'is_date_exact',
     IS_DATE_AFTER = 'is_date_after',
     IS_DATE_BEFORE = 'is_date_before',
+    IN = 'in',
+    NOT_IN = 'not_in',
 }

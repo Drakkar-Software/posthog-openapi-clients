@@ -3,9 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type HogQLNotice = {
-    end?: (number | null);
-    fix?: (string | null);
+    end?: number | null;
+    fix?: string | null;
     message: string;
-    start?: (number | null);
+    start?: number | null;
 };
 

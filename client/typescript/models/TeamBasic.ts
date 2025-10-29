@@ -11,6 +11,7 @@ export type TeamBasic = {
     readonly id: number;
     readonly uuid: string;
     readonly organization: string;
+    readonly project_id: number;
     readonly api_token: string;
     readonly name: string;
     readonly completed_snippet_onboarding: boolean;

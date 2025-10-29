@@ -3,7 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { ChartAxis } from './ChartAxis';
+import type { ConditionalFormattingRule } from './ConditionalFormattingRule';
 export type TableSettings = {
-    columns?: (Array<ChartAxis> | null);
+    columns?: Array<ChartAxis> | null;
+    conditionalFormatting?: Array<ConditionalFormattingRule> | null;
 };
 

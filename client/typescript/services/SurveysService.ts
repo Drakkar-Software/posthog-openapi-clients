@@ -14,6 +14,7 @@ export class SurveysService {
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
+     * @param search A search term.
      * @returns PaginatedSurveyList
      * @throws ApiError
      */
@@ -21,6 +22,7 @@ export class SurveysService {
         projectId: string,
         limit?: number,
         offset?: number,
+        search?: string,
     ): CancelablePromise<PaginatedSurveyList> {
         return this.httpRequest.request({
             method: 'GET',
@@ -31,6 +33,7 @@ export class SurveysService {
             query: {
                 'limit': limit,
                 'offset': offset,
+                'search': search,
             },
         });
     }
@@ -158,6 +161,83 @@ export class SurveysService {
         });
     }
     /**
+     * Duplicate a survey to multiple projects in a single transaction.
+     *
+     * Accepts a list of target team IDs and creates a copy of the survey in each project.
+     * Uses an all-or-nothing approach - if any duplication fails, all changes are rolled back.
+     * @param id A UUID string identifying this survey.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public surveysDuplicateToProjectsCreate(
+        id: string,
+        projectId: string,
+        requestBody: SurveySerializerCreateUpdateOnly,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/surveys/{id}/duplicate_to_projects/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Get survey response statistics for a specific survey.
+     *
+     * Args:
+     * date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)
+     * date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)
+     *
+     * Returns:
+     * Survey statistics including event counts, unique respondents, and conversion rates
+     * @param id A UUID string identifying this survey.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public surveysStatsRetrieve2(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/surveys/{id}/stats/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * @param id A UUID string identifying this survey.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public surveysSummarizeResponsesCreate(
+        id: string,
+        projectId: string,
+        requestBody: SurveySerializerCreateUpdateOnly,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/surveys/{id}/summarize_responses/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
@@ -184,6 +264,30 @@ export class SurveysService {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/surveys/responses_count/',
+            path: {
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * Get aggregated response statistics across all surveys.
+     *
+     * Args:
+     * date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)
+     * date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)
+     *
+     * Returns:
+     * Aggregated statistics across all surveys including total counts and rates
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public surveysStatsRetrieve(
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/surveys/stats/',
             path: {
                 'project_id': projectId,
             },

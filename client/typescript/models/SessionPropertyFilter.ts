@@ -5,9 +5,14 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type SessionPropertyFilter = {
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
-    type?: any;
-    value?: (string | number | null);
+    type?: SessionPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace SessionPropertyFilter {
+    export enum type {
+        SESSION = 'session',
+    }
+}
 

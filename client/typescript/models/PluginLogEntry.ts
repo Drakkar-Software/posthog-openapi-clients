@@ -2,15 +2,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { PluginLogEntrySourceEnum } from './PluginLogEntrySourceEnum';
 import type { PluginLogEntryTypeEnum } from './PluginLogEntryTypeEnum';
-import type { SourceEnum } from './SourceEnum';
 export type PluginLogEntry = {
     id: string;
     team_id: number;
     plugin_id: number;
     plugin_config_id: number;
     timestamp: string;
-    source: SourceEnum;
+    source: PluginLogEntrySourceEnum;
     type: PluginLogEntryTypeEnum;
     message: string;
     instance_id: string;

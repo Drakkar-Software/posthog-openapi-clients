@@ -8,6 +8,7 @@
  * * `Postgres` - Postgres
  * * `Redshift` - Redshift
  * * `BigQuery` - Bigquery
+ * * `Databricks` - Databricks
  * * `HTTP` - Http
  * * `NoOp` - Noop
  */
@@ -17,6 +18,7 @@ export enum BatchExportDestinationTypeEnum {
     POSTGRES = 'Postgres',
     REDSHIFT = 'Redshift',
     BIG_QUERY = 'BigQuery',
+    DATABRICKS = 'Databricks',
     HTTP = 'HTTP',
     NO_OP = 'NoOp',
 }

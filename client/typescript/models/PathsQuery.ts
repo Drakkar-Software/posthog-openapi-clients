@@ -2,34 +2,39 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { DateRange } from './DateRange';
 import type { FunnelPathsFilter } from './FunnelPathsFilter';
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
-import type { InsightDateRange } from './InsightDateRange';
 import type { PathsFilter } from './PathsFilter';
 import type { PathsQueryResponse } from './PathsQueryResponse';
 import type { PropertyGroupFilter } from './PropertyGroupFilter';
+import type { QueryLogTags } from './QueryLogTags';
 export type PathsQuery = {
     /**
      * Groups aggregation
      */
-    aggregation_group_type_index?: (number | null);
+    aggregation_group_type_index?: number | null;
+    /**
+     * Colors used in the insight's visualization
+     */
+    dataColorTheme?: number | null;
     /**
      * Date range for the query
      */
-    dateRange?: (InsightDateRange | null);
+    dateRange?: DateRange | null;
     /**
      * Exclude internal and test users by applying the respective filters
      */
-    filterTestAccounts?: (boolean | null);
+    filterTestAccounts?: boolean | null;
     /**
      * Used for displaying paths in relation to funnel steps.
      */
-    funnelPathsFilter?: (FunnelPathsFilter | null);
-    kind?: any;
+    funnelPathsFilter?: FunnelPathsFilter | null;
+    kind?: PathsQuery.kind;
     /**
      * Modifiers used when performing the query
      */
-    modifiers?: (HogQLQueryModifiers | null);
+    modifiers?: HogQLQueryModifiers | null;
     /**
      * Properties specific to the paths insight
      */
@@ -37,11 +42,24 @@ export type PathsQuery = {
     /**
      * Property filters for all series
      */
-    properties?: (PropertyGroupFilter | null);
-    response?: (PathsQueryResponse | null);
+    properties?: PropertyGroupFilter | null;
+    response?: PathsQueryResponse | null;
     /**
      * Sampling rate
      */
-    samplingFactor?: (number | null);
+    samplingFactor?: number | null;
+    /**
+     * Tags that will be added to the Query log comment
+     */
+    tags?: QueryLogTags | null;
+    /**
+     * version of the node, used for schema migrations
+     */
+    version?: number | null;
 };
+export namespace PathsQuery {
+    export enum kind {
+        PATHS_QUERY = 'PathsQuery',
+    }
+}
 

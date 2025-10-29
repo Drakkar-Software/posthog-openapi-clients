@@ -8,6 +8,7 @@ export enum PropertyMathType {
     MIN = 'min',
     MAX = 'max',
     MEDIAN = 'median',
+    P75 = 'p75',
     P90 = 'p90',
     P95 = 'p95',
     P99 = 'p99',

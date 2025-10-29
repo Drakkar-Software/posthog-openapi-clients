@@ -8,10 +8,10 @@ export type TimelineEntry = {
     /**
      * Duration of the recording in seconds.
      */
-    recording_duration_s?: (number | null);
+    recording_duration_s?: number | null;
     /**
      * Session ID. None means out-of-session events
      */
-    sessionId?: (string | null);
+    sessionId?: string | null;
 };
 

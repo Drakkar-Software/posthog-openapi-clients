@@ -7,4 +7,5 @@ export enum Status {
     ACTIVE = 'active',
     RESOLVED = 'resolved',
     PENDING_RELEASE = 'pending_release',
+    SUPPRESSED = 'suppressed',
 }

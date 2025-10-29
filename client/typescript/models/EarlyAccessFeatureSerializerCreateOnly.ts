@@ -13,5 +13,6 @@ export type EarlyAccessFeatureSerializerCreateOnly = {
     readonly created_at: string;
     feature_flag_id?: number;
     readonly feature_flag: MinimalFeatureFlag;
+    _create_in_folder?: string;
 };
 

@@ -10,6 +10,7 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class SessionRecordingPlaylistsService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
+     * Override list to include synthetic playlists
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param createdBy
      * @param limit Number of results to return per page.

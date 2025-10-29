@@ -10,9 +10,15 @@ export type DatabaseSchemaDataWarehouseTable = {
     format: string;
     id: string;
     name: string;
-    schema?: (DatabaseSchemaSchema | null);
-    source?: (DatabaseSchemaSource | null);
-    type?: any;
+    row_count?: number | null;
+    schema?: DatabaseSchemaSchema | null;
+    source?: DatabaseSchemaSource | null;
+    type?: DatabaseSchemaDataWarehouseTable.type;
     url_pattern: string;
 };
+export namespace DatabaseSchemaDataWarehouseTable {
+    export enum type {
+        DATA_WAREHOUSE = 'data_warehouse',
+    }
+}
 

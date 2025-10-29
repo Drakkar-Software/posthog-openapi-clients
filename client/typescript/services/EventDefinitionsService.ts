@@ -98,4 +98,23 @@ export class EventDefinitionsService {
             },
         });
     }
+    /**
+     * @param id A UUID string identifying this event definition.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public eventDefinitionsMetricsRetrieve(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/event_definitions/{id}/metrics/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
 }

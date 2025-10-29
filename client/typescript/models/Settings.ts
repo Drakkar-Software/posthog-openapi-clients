@@ -5,7 +5,7 @@
 import type { ChartSettingsDisplay } from './ChartSettingsDisplay';
 import type { ChartSettingsFormatting } from './ChartSettingsFormatting';
 export type Settings = {
-    display?: (ChartSettingsDisplay | null);
-    formatting?: (ChartSettingsFormatting | null);
+    display?: ChartSettingsDisplay | null;
+    formatting?: ChartSettingsFormatting | null;
 };
 

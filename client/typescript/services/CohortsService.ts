@@ -4,7 +4,9 @@
 /* eslint-disable */
 import type { Cohort } from '../models/Cohort';
 import type { PaginatedCohortList } from '../models/PaginatedCohortList';
+import type { PatchedAddPersonsToStaticCohortRequest } from '../models/PatchedAddPersonsToStaticCohortRequest';
 import type { PatchedCohort } from '../models/PatchedCohort';
+import type { PatchedRemovePersonRequest } from '../models/PatchedRemovePersonRequest';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class CohortsService {
@@ -163,6 +165,50 @@ export class CohortsService {
     /**
      * @param id A unique integer value identifying this cohort.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public cohortsAddPersonsToStaticCohortPartialUpdate(
+        id: number,
+        projectId: string,
+        requestBody?: PatchedAddPersonsToStaticCohortRequest,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/projects/{project_id}/cohorts/{id}/add_persons_to_static_cohort/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param id A unique integer value identifying this cohort.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public cohortsCalculationHistoryRetrieve(
+        id: number,
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/cohorts/{id}/calculation_history/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * Duplicate as static cohort
+     * Create a static copy of a dynamic cohort
+     * @param id A unique integer value identifying this cohort.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
      */
@@ -201,6 +247,29 @@ export class CohortsService {
             query: {
                 'format': format,
             },
+        });
+    }
+    /**
+     * @param id A unique integer value identifying this cohort.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public cohortsRemovePersonFromStaticCohortPartialUpdate(
+        id: number,
+        projectId: string,
+        requestBody?: PatchedRemovePersonRequest,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/projects/{project_id}/cohorts/{id}/remove_person_from_static_cohort/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**

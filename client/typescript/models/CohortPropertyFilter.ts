@@ -2,10 +2,21 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { PropertyOperator } from './PropertyOperator';
 export type CohortPropertyFilter = {
-    key?: any;
-    label?: (string | null);
-    type?: any;
+    cohort_name?: string | null;
+    key?: CohortPropertyFilter.key;
+    label?: string | null;
+    operator?: PropertyOperator | null;
+    type?: CohortPropertyFilter.type;
     value: number;
 };
+export namespace CohortPropertyFilter {
+    export enum key {
+        ID = 'id',
+    }
+    export enum type {
+        COHORT = 'cohort',
+    }
+}
 

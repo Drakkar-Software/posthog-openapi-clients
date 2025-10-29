@@ -5,12 +5,20 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type PersonPropertyFilter = {
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
     /**
      * Person properties
      */
-    type?: any;
-    value?: (string | number | null);
+    type?: PersonPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace PersonPropertyFilter {
+    /**
+     * Person properties
+     */
+    export enum type {
+        PERSON = 'person',
+    }
+}
 

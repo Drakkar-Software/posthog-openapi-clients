@@ -12,5 +12,10 @@ export type NotebookMinimal = {
     readonly created_by: UserBasic;
     readonly last_modified_at: string;
     readonly last_modified_by: UserBasic;
+    /**
+     * The effective access level the user has for this object
+     */
+    readonly user_access_level: string | null;
+    _create_in_folder?: string;
 };
 

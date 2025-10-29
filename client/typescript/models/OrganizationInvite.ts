@@ -23,5 +23,6 @@ export type OrganizationInvite = {
      */
     private_project_access?: any;
     send_email?: boolean;
+    combine_pending_invites?: boolean;
 };
 

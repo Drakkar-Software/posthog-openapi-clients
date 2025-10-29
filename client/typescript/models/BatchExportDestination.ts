@@ -15,6 +15,7 @@ export type BatchExportDestination = {
      * * `Postgres` - Postgres
      * * `Redshift` - Redshift
      * * `BigQuery` - Bigquery
+     * * `Databricks` - Databricks
      * * `HTTP` - Http
      * * `NoOp` - Noop
      */
@@ -23,5 +24,10 @@ export type BatchExportDestination = {
      * A JSON field to store all configuration parameters required to access a BatchExportDestination.
      */
     config?: any;
+    /**
+     * The integration for this destination.
+     */
+    integration?: number | null;
+    integration_id?: number | null;
 };
 

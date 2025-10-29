@@ -14,11 +14,7 @@ export type PatchedInsight = {
     readonly short_id?: string;
     name?: string | null;
     derived_name?: string | null;
-    filters?: any;
-    /**
-     * Query node JSON string
-     */
-    query?: any;
+    query?: Record<string, any> | null;
     order?: number | null;
     deleted?: boolean;
     /**
@@ -63,12 +59,15 @@ export type PatchedInsight = {
     readonly updated_at?: string;
     tags?: Array<any>;
     favorited?: boolean;
-    saved?: boolean;
     readonly last_modified_at?: string;
     readonly last_modified_by?: UserBasic;
     readonly is_sample?: boolean;
     readonly effective_restriction_level?: EffectiveRestrictionLevelEnum;
     readonly effective_privilege_level?: EffectivePrivilegeLevelEnum;
+    /**
+     * The effective access level the user has for this object
+     */
+    readonly user_access_level?: string | null;
     /**
      * The timezone this chart is displayed in.
      */
@@ -77,5 +76,8 @@ export type PatchedInsight = {
     readonly query_status?: string;
     readonly hogql?: string;
     readonly types?: string;
+    _create_in_folder?: string;
+    readonly alerts?: string;
+    readonly last_viewed_at?: string;
 };
 

@@ -119,6 +119,7 @@ export class ExperimentsService {
         });
     }
     /**
+     * Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns void
@@ -134,6 +135,9 @@ export class ExperimentsService {
             path: {
                 'id': id,
                 'project_id': projectId,
+            },
+            errors: {
+                405: `No response body`,
             },
         });
     }
@@ -163,16 +167,73 @@ export class ExperimentsService {
     /**
      * @param id A unique integer value identifying this experiment.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
      * @returns any No response body
      * @throws ApiError
      */
-    public experimentsResultsRetrieve(
+    public experimentsDuplicateCreate(
+        id: number,
+        projectId: string,
+        requestBody: Experiment,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/experiments/{id}/duplicate/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Create a recalculation request for experiment timeseries data.
+     *
+     * Request body:
+     * - metric (required): The full metric object to recalculate
+     * - fingerprint (required): The fingerprint of the metric configuration
+     * @param id A unique integer value identifying this experiment.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public experimentsRecalculateTimeseriesCreate(
+        id: number,
+        projectId: string,
+        requestBody: Experiment,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/experiments/{id}/recalculate_timeseries/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Retrieve timeseries results for a specific experiment-metric combination.
+     * Aggregates daily results into a timeseries format for frontend compatibility.
+     *
+     * Query parameters:
+     * - metric_uuid (required): The UUID of the metric to retrieve results for
+     * - fingerprint (required): The fingerprint of the metric configuration
+     * @param id A unique integer value identifying this experiment.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public experimentsTimeseriesResultsRetrieve(
         id: number,
         projectId: string,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/experiments/{id}/results/',
+            url: '/api/projects/{project_id}/experiments/{id}/timeseries_results/',
             path: {
                 'id': id,
                 'project_id': projectId,
@@ -180,20 +241,31 @@ export class ExperimentsService {
         });
     }
     /**
-     * @param id A unique integer value identifying this experiment.
+     * Returns a paginated list of feature flags eligible for use in experiments.
+     *
+     * Eligible flags must:
+     * - Be multivariate with at least 2 variants
+     * - Have "control" as the first variant key
+     *
+     * Query parameters:
+     * - search: Filter by flag key or name (case insensitive)
+     * - limit: Number of results per page (default: 20)
+     * - offset: Pagination offset (default: 0)
+     * - active: Filter by active status ("true" or "false")
+     * - created_by_id: Filter by creator user ID
+     * - order: Sort order field
+     * - evaluation_runtime: Filter by evaluation runtime
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
      */
-    public experimentsSecondaryResultsRetrieve(
-        id: number,
+    public experimentsEligibleFeatureFlagsRetrieve(
         projectId: string,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/projects/{project_id}/experiments/{id}/secondary_results/',
+            url: '/api/projects/{project_id}/experiments/eligible_feature_flags/',
             path: {
-                'id': id,
                 'project_id': projectId,
             },
         });

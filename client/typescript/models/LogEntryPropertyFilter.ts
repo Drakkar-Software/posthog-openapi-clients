@@ -5,9 +5,14 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type LogEntryPropertyFilter = {
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
-    type?: any;
-    value?: (string | number | null);
+    type?: LogEntryPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace LogEntryPropertyFilter {
+    export enum type {
+        LOG_ENTRY = 'log_entry',
+    }
+}
 

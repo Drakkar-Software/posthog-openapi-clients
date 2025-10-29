@@ -4,10 +4,12 @@
 /* eslint-disable */
 import type { Scale } from './Scale';
 export type YAxisSettings = {
-    scale?: (Scale | null);
+    scale?: Scale | null;
+    showGridLines?: boolean | null;
+    showTicks?: boolean | null;
     /**
      * Whether the Y axis should start at zero
      */
-    startAtZero?: (boolean | null);
+    startAtZero?: boolean | null;
 };
 

@@ -2,35 +2,24 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
-import type { QueryStatus } from './QueryStatus';
-import type { QueryTiming } from './QueryTiming';
+import type { ExperimentSignificanceCode } from './ExperimentSignificanceCode';
+import type { ExperimentVariantFunnelsBaseStats } from './ExperimentVariantFunnelsBaseStats';
+import type { FunnelsQuery } from './FunnelsQuery';
 export type QueryResponseAlternative16 = {
-    columns: Array<any>;
-    /**
-     * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
-     */
-    error?: (string | null);
-    hasMore?: (boolean | null);
-    /**
-     * Generated HogQL query.
-     */
-    hogql: string;
-    limit?: (number | null);
-    /**
-     * Modifiers used when performing the query
-     */
-    modifiers?: (HogQLQueryModifiers | null);
-    offset?: (number | null);
-    /**
-     * Query status indicates whether next to the provided data, a query is still running.
-     */
-    query_status?: (QueryStatus | null);
-    results: Array<Array<any>>;
-    /**
-     * Measured timings for different parts of the query generation process
-     */
-    timings?: (Array<QueryTiming> | null);
-    types: Array<string>;
+    credible_intervals: Record<string, Array<number>>;
+    expected_loss: number;
+    funnels_query?: FunnelsQuery | null;
+    insight: Array<Array<Record<string, any>>>;
+    kind?: QueryResponseAlternative16.kind;
+    probability: Record<string, number>;
+    significance_code: ExperimentSignificanceCode;
+    significant: boolean;
+    stats_version?: number | null;
+    variants: Array<ExperimentVariantFunnelsBaseStats>;
 };
+export namespace QueryResponseAlternative16 {
+    export enum kind {
+        EXPERIMENT_FUNNELS_QUERY = 'ExperimentFunnelsQuery',
+    }
+}
 

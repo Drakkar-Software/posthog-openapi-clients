@@ -6,6 +6,7 @@ import type { BlankEnum } from './BlankEnum';
 import type { NullEnum } from './NullEnum';
 import type { Organization } from './Organization';
 import type { OrganizationBasic } from './OrganizationBasic';
+import type { RoleAtOrganizationEnum } from './RoleAtOrganizationEnum';
 import type { ScenePersonalisationBasic } from './ScenePersonalisationBasic';
 import type { TeamBasic } from './TeamBasic';
 import type { ThemeModeEnum } from './ThemeModeEnum';
@@ -23,6 +24,7 @@ export type User = {
     anonymize_data?: boolean | null;
     toolbar_mode?: (ToolbarModeEnum | BlankEnum | NullEnum) | null;
     readonly has_password: boolean;
+    readonly id: number;
     /**
      * Designates whether the user can log into this admin site.
      */
@@ -40,9 +42,11 @@ export type User = {
     events_column_config?: any;
     readonly is_2fa_enabled: boolean;
     readonly has_social_auth: boolean;
+    readonly has_sso_enforcement: boolean;
     has_seen_product_intro_for?: any;
     readonly scene_personalisation: Array<ScenePersonalisationBasic>;
     theme_mode?: (ThemeModeEnum | BlankEnum | NullEnum) | null;
     hedgehog_config?: any;
+    role_at_organization?: RoleAtOrganizationEnum;
 };
 

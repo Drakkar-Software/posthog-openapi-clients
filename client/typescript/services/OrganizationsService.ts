@@ -12,24 +12,21 @@ import type { PaginatedOrganizationDomainList } from '../models/PaginatedOrganiz
 import type { PaginatedOrganizationInviteList } from '../models/PaginatedOrganizationInviteList';
 import type { PaginatedOrganizationList } from '../models/PaginatedOrganizationList';
 import type { PaginatedOrganizationMemberList } from '../models/PaginatedOrganizationMemberList';
-import type { PaginatedPluginList } from '../models/PaginatedPluginList';
+import type { PaginatedProjectBackwardCompatBasicList } from '../models/PaginatedProjectBackwardCompatBasicList';
 import type { PaginatedProxyRecordList } from '../models/PaginatedProxyRecordList';
 import type { PaginatedRoleList } from '../models/PaginatedRoleList';
 import type { PaginatedRoleMembershipList } from '../models/PaginatedRoleMembershipList';
-import type { PaginatedTeamBasicList } from '../models/PaginatedTeamBasicList';
 import type { PatchedBatchExport } from '../models/PatchedBatchExport';
 import type { PatchedOrganization } from '../models/PatchedOrganization';
 import type { PatchedOrganizationDomain } from '../models/PatchedOrganizationDomain';
 import type { PatchedOrganizationMember } from '../models/PatchedOrganizationMember';
-import type { PatchedPlugin } from '../models/PatchedPlugin';
+import type { PatchedProjectBackwardCompat } from '../models/PatchedProjectBackwardCompat';
 import type { PatchedProxyRecord } from '../models/PatchedProxyRecord';
 import type { PatchedRole } from '../models/PatchedRole';
-import type { PatchedTeam } from '../models/PatchedTeam';
-import type { Plugin } from '../models/Plugin';
+import type { ProjectBackwardCompat } from '../models/ProjectBackwardCompat';
 import type { ProxyRecord } from '../models/ProxyRecord';
 import type { Role } from '../models/Role';
 import type { RoleMembership } from '../models/RoleMembership';
-import type { Team } from '../models/Team';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class OrganizationsService {
@@ -138,6 +135,29 @@ export class OrganizationsService {
             path: {
                 'id': id,
             },
+        });
+    }
+    /**
+     * Trigger environments rollback migration for users previously on multi-environment projects.
+     * The request data should be a mapping of source environment IDs to target environment IDs.
+     * Example: { "2": 2, "116911": 2, "99346": 99346, "140256": 99346 }
+     * @param id A UUID string identifying this organization.
+     * @param requestBody
+     * @returns Organization
+     * @throws ApiError
+     */
+    public environmentsRollbackCreate(
+        id: string,
+        requestBody: Organization,
+    ): CancelablePromise<Organization> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{id}/environments_rollback/',
+            path: {
+                'id': id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**
@@ -270,6 +290,8 @@ export class OrganizationsService {
     }
     /**
      * Trigger a backfill for a BatchExport.
+     *
+     * Note: This endpoint is deprecated. Please use POST /batch_exports/<id>/backfills/ instead.
      * @param id A UUID string identifying this batch export.
      * @param organizationId
      * @param requestBody
@@ -336,6 +358,29 @@ export class OrganizationsService {
         });
     }
     /**
+     * @param id A UUID string identifying this batch export.
+     * @param organizationId
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepCreate(
+        id: string,
+        organizationId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/run_test_step/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * Unpause a BatchExport.
      * @param id A UUID string identifying this batch export.
      * @param organizationId
@@ -357,6 +402,42 @@ export class OrganizationsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param organizationId
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepNewCreate(
+        organizationId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/batch_exports/run_test_step_new/',
+            path: {
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param organizationId
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsTestRetrieve(
+        organizationId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/batch_exports/test/',
+            path: {
+                'organization_id': organizationId,
+            },
         });
     }
     /**
@@ -684,1381 +765,20 @@ export class OrganizationsService {
     }
     /**
      * @param organizationId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedPluginList
+     * @param userUuid
+     * @returns OrganizationMember
      * @throws ApiError
      */
-    public pipelineDestinationsList(
+    public membersScopedApiKeysRetrieve(
         organizationId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedPluginList> {
+        userUuid: string,
+    ): CancelablePromise<OrganizationMember> {
         return this.httpRequest.request({
             method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/',
+            url: '/api/organizations/{organization_id}/members/{user__uuid}/scoped_api_keys/',
             path: {
                 'organization_id': organizationId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineDestinationsCreate(
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/',
-            path: {
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineDestinationsRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineDestinationsUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineDestinationsPartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public pipelineDestinationsDestroy(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsCheckForUpdatesRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/check_for_updates/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsSourceRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsUpdateSourcePartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/update_source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsUpgradeCreate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/{id}/upgrade/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsActivityRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/activity/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsExportsUnsubscribeConfigsRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/exports_unsubscribe_configs/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsRepositoryRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/repository/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineDestinationsUnusedRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_destinations/unused/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedPluginList
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsList(
-        organizationId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedPluginList> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/',
-            path: {
-                'organization_id': organizationId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsCreate(
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/',
-            path: {
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsPartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsDestroy(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsCheckForUpdatesRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/check_for_updates/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsSourceRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsUpdateSourcePartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/update_source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsUpgradeCreate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/{id}/upgrade/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsActivityRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/activity/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsExportsUnsubscribeConfigsRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/exports_unsubscribe_configs/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsRepositoryRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/repository/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineFrontendAppsUnusedRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_frontend_apps/unused/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedPluginList
-     * @throws ApiError
-     */
-    public pipelineImportAppsList(
-        organizationId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedPluginList> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/',
-            path: {
-                'organization_id': organizationId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineImportAppsCreate(
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/',
-            path: {
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineImportAppsRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineImportAppsUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineImportAppsPartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public pipelineImportAppsDestroy(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsCheckForUpdatesRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/check_for_updates/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsSourceRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsUpdateSourcePartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/update_source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsUpgradeCreate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/{id}/upgrade/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsActivityRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/activity/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsExportsUnsubscribeConfigsRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/exports_unsubscribe_configs/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsRepositoryRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/repository/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineImportAppsUnusedRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_import_apps/unused/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedPluginList
-     * @throws ApiError
-     */
-    public pipelineTransformationsList(
-        organizationId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedPluginList> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/',
-            path: {
-                'organization_id': organizationId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineTransformationsCreate(
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/',
-            path: {
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineTransformationsRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineTransformationsUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pipelineTransformationsPartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public pipelineTransformationsDestroy(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsCheckForUpdatesRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/check_for_updates/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsSourceRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsUpdateSourcePartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/update_source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsUpgradeCreate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/{id}/upgrade/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsActivityRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/activity/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsExportsUnsubscribeConfigsRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/exports_unsubscribe_configs/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsRepositoryRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/repository/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pipelineTransformationsUnusedRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/pipeline_transformations/unused/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param limit Number of results to return per page.
-     * @param offset The initial index from which to return the results.
-     * @returns PaginatedPluginList
-     * @throws ApiError
-     */
-    public pluginsList(
-        organizationId: string,
-        limit?: number,
-        offset?: number,
-    ): CancelablePromise<PaginatedPluginList> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/',
-            path: {
-                'organization_id': organizationId,
-            },
-            query: {
-                'limit': limit,
-                'offset': offset,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pluginsCreate(
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/plugins/',
-            path: {
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pluginsRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pluginsUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PUT',
-            url: '/api/organizations/{organization_id}/plugins/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns Plugin
-     * @throws ApiError
-     */
-    public pluginsPartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<Plugin> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/plugins/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns void
-     * @throws ApiError
-     */
-    public pluginsDestroy(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<void> {
-        return this.httpRequest.request({
-            method: 'DELETE',
-            url: '/api/organizations/{organization_id}/plugins/{id}/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsCheckForUpdatesRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/{id}/check_for_updates/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsSourceRetrieve(
-        id: number,
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/{id}/source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsUpdateSourcePartialUpdate(
-        id: number,
-        organizationId: string,
-        requestBody?: PatchedPlugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'PATCH',
-            url: '/api/organizations/{organization_id}/plugins/{id}/update_source/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param id A unique integer value identifying this plugin.
-     * @param organizationId
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsUpgradeCreate(
-        id: number,
-        organizationId: string,
-        requestBody?: Plugin,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/organizations/{organization_id}/plugins/{id}/upgrade/',
-            path: {
-                'id': id,
-                'organization_id': organizationId,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsActivityRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/activity/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsExportsUnsubscribeConfigsRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/exports_unsubscribe_configs/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsRepositoryRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/repository/',
-            path: {
-                'organization_id': organizationId,
-            },
-        });
-    }
-    /**
-     * @param organizationId
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public pluginsUnusedRetrieve(
-        organizationId: string,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/organizations/{organization_id}/plugins/unused/',
-            path: {
-                'organization_id': organizationId,
+                'user__uuid': userUuid,
             },
         });
     }
@@ -2067,14 +787,14 @@ export class OrganizationsService {
      * @param organizationId
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
-     * @returns PaginatedTeamBasicList
+     * @returns PaginatedProjectBackwardCompatBasicList
      * @throws ApiError
      */
     public list2(
         organizationId: string,
         limit?: number,
         offset?: number,
-    ): CancelablePromise<PaginatedTeamBasicList> {
+    ): CancelablePromise<PaginatedProjectBackwardCompatBasicList> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/',
@@ -2091,13 +811,13 @@ export class OrganizationsService {
      * Projects for the current organization.
      * @param organizationId
      * @param requestBody
-     * @returns Team
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public create2(
         organizationId: string,
-        requestBody?: Team,
-    ): CancelablePromise<Team> {
+        requestBody?: ProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/api/organizations/{organization_id}/projects/',
@@ -2110,15 +830,15 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
-     * @returns Team
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public retrieve2(
         id: number,
         organizationId: string,
-    ): CancelablePromise<Team> {
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/{id}/',
@@ -2130,17 +850,17 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
      * @param requestBody
-     * @returns Team
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public update2(
         id: number,
         organizationId: string,
-        requestBody?: Team,
-    ): CancelablePromise<Team> {
+        requestBody?: ProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/organizations/{organization_id}/projects/{id}/',
@@ -2154,17 +874,17 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
      * @param requestBody
-     * @returns Team
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public partialUpdate2(
         id: number,
         organizationId: string,
-        requestBody?: PatchedTeam,
-    ): CancelablePromise<Team> {
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{organization_id}/projects/{id}/',
@@ -2178,7 +898,7 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
      * @returns void
      * @throws ApiError
@@ -2198,15 +918,15 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
-     * @returns any No response body
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public activityRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/{id}/activity/',
@@ -2218,15 +938,111 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
-     * @returns any No response body
+     * @param requestBody
+     * @returns ProjectBackwardCompat
+     * @throws ApiError
+     */
+    public addProductIntentPartialUpdate(
+        id: number,
+        organizationId: string,
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/projects/{id}/add_product_intent/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Projects for the current organization.
+     * @param id A unique value identifying this project.
+     * @param organizationId
+     * @param requestBody
+     * @returns ProjectBackwardCompat
+     * @throws ApiError
+     */
+    public changeOrganizationCreate(
+        id: number,
+        organizationId: string,
+        requestBody?: ProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/projects/{id}/change_organization/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Projects for the current organization.
+     * @param id A unique value identifying this project.
+     * @param organizationId
+     * @param requestBody
+     * @returns ProjectBackwardCompat
+     * @throws ApiError
+     */
+    public completeProductOnboardingPartialUpdate(
+        id: number,
+        organizationId: string,
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/projects/{id}/complete_product_onboarding/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Projects for the current organization.
+     * @param id A unique value identifying this project.
+     * @param organizationId
+     * @param requestBody
+     * @returns ProjectBackwardCompat
+     * @throws ApiError
+     */
+    public deleteSecretTokenBackupPartialUpdate(
+        id: number,
+        organizationId: string,
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/projects/{id}/delete_secret_token_backup/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Projects for the current organization.
+     * @param id A unique value identifying this project.
+     * @param organizationId
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public isGeneratingDemoDataRetrieve(
         id: number,
         organizationId: string,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/organizations/{organization_id}/projects/{id}/is_generating_demo_data/',
@@ -2238,20 +1054,44 @@ export class OrganizationsService {
     }
     /**
      * Projects for the current organization.
-     * @param id A unique integer value identifying this team (soon to be environment).
+     * @param id A unique value identifying this project.
      * @param organizationId
      * @param requestBody
-     * @returns any No response body
+     * @returns ProjectBackwardCompat
      * @throws ApiError
      */
     public resetTokenPartialUpdate(
         id: number,
         organizationId: string,
-        requestBody?: PatchedTeam,
-    ): CancelablePromise<any> {
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/organizations/{organization_id}/projects/{id}/reset_token/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Projects for the current organization.
+     * @param id A unique value identifying this project.
+     * @param organizationId
+     * @param requestBody
+     * @returns ProjectBackwardCompat
+     * @throws ApiError
+     */
+    public rotateSecretTokenPartialUpdate(
+        id: number,
+        organizationId: string,
+        requestBody?: PatchedProjectBackwardCompat,
+    ): CancelablePromise<ProjectBackwardCompat> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/organizations/{organization_id}/projects/{id}/rotate_secret_token/',
             path: {
                 'id': id,
                 'organization_id': organizationId,

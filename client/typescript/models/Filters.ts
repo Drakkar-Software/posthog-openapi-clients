@@ -5,7 +5,7 @@
 import type { DateRange } from './DateRange';
 import type { SessionPropertyFilter } from './SessionPropertyFilter';
 export type Filters = {
-    dateRange?: (DateRange | null);
-    properties?: (Array<SessionPropertyFilter> | null);
+    dateRange?: DateRange | null;
+    properties?: Array<SessionPropertyFilter> | null;
 };
 

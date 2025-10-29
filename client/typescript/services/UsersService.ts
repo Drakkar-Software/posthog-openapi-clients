@@ -10,6 +10,7 @@ import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class UsersService {
     constructor(public readonly httpRequest: BaseHttpRequest) {}
     /**
+     * @param email
      * @param isStaff
      * @param limit Number of results to return per page.
      * @param offset The initial index from which to return the results.
@@ -17,6 +18,7 @@ export class UsersService {
      * @throws ApiError
      */
     public usersList(
+        email?: string,
         isStaff?: boolean,
         limit?: number,
         offset?: number,
@@ -25,6 +27,7 @@ export class UsersService {
             method: 'GET',
             url: '/api/users/',
             query: {
+                'email': email,
                 'is_staff': isStaff,
                 'limit': limit,
                 'offset': offset,
@@ -89,6 +92,22 @@ export class UsersService {
     }
     /**
      * @param uuid
+     * @returns void
+     * @throws ApiError
+     */
+    public usersDestroy(
+        uuid: string,
+    ): CancelablePromise<void> {
+        return this.httpRequest.request({
+            method: 'DELETE',
+            url: '/api/users/{uuid}/',
+            path: {
+                'uuid': uuid,
+            },
+        });
+    }
+    /**
+     * @param uuid
      * @returns any No response body
      * @throws ApiError
      */
@@ -116,26 +135,6 @@ export class UsersService {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/users/{uuid}/hedgehog_config/',
-            path: {
-                'uuid': uuid,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @param uuid
-     * @param requestBody
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public usersRequestEmailVerificationCreate(
-        uuid: string,
-        requestBody: User,
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'POST',
-            url: '/api/users/{uuid}/request_email_verification/',
             path: {
                 'uuid': uuid,
             },
@@ -180,6 +179,101 @@ export class UsersService {
         });
     }
     /**
+     * Generate new backup codes, invalidating any existing ones
+     * @param uuid
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersTwoFactorBackupCodesCreate(
+        uuid: string,
+        requestBody: User,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/users/{uuid}/two_factor_backup_codes/',
+            path: {
+                'uuid': uuid,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Disable 2FA and remove all related devices
+     * @param uuid
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersTwoFactorDisableCreate(
+        uuid: string,
+        requestBody: User,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/users/{uuid}/two_factor_disable/',
+            path: {
+                'uuid': uuid,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param uuid
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersTwoFactorStartSetupRetrieve(
+        uuid: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/users/{uuid}/two_factor_start_setup/',
+            path: {
+                'uuid': uuid,
+            },
+        });
+    }
+    /**
+     * Get current 2FA status including backup codes if enabled
+     * @param uuid
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersTwoFactorStatusRetrieve(
+        uuid: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/users/{uuid}/two_factor_status/',
+            path: {
+                'uuid': uuid,
+            },
+        });
+    }
+    /**
+     * @param uuid
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersTwoFactorValidateCreate(
+        uuid: string,
+        requestBody: User,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/users/{uuid}/two_factor_validate/',
+            path: {
+                'uuid': uuid,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * @param uuid
      * @param requestBody
      * @returns any No response body
@@ -200,21 +294,46 @@ export class UsersService {
         });
     }
     /**
-     * @param uuid
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersCancelEmailChangeRequestPartialUpdate(
+        requestBody?: PatchedUser,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'PATCH',
+            url: '/api/users/cancel_email_change_request/',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public usersRequestEmailVerificationCreate(
+        requestBody: User,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/users/request_email_verification/',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * @param requestBody
      * @returns any No response body
      * @throws ApiError
      */
     public usersVerifyEmailCreate(
-        uuid: string,
         requestBody: User,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/users/{uuid}/verify_email/',
-            path: {
-                'uuid': uuid,
-            },
+            url: '/api/users/verify_email/',
             body: requestBody,
             mediaType: 'application/json',
         });

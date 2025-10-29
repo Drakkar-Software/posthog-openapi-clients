@@ -9,4 +9,5 @@ export enum BaseMathType {
     MONTHLY_ACTIVE = 'monthly_active',
     UNIQUE_SESSION = 'unique_session',
     FIRST_TIME_FOR_USER = 'first_time_for_user',
+    FIRST_MATCHING_EVENT_FOR_USER = 'first_matching_event_for_user',
 }

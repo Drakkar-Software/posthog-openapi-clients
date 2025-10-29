@@ -5,9 +5,10 @@
 import type { DisplayType } from './DisplayType';
 import type { YAxisPosition } from './YAxisPosition';
 export type ChartSettingsDisplay = {
-    displayType?: (DisplayType | null);
-    label?: (string | null);
-    trendLine?: (boolean | null);
-    yAxisPosition?: (YAxisPosition | null);
+    color?: string | null;
+    displayType?: DisplayType | null;
+    label?: string | null;
+    trendLine?: boolean | null;
+    yAxisPosition?: YAxisPosition | null;
 };
 

@@ -7,6 +7,12 @@ export type DatabaseSchemaPostHogTable = {
     fields: Record<string, DatabaseSchemaField>;
     id: string;
     name: string;
-    type?: any;
+    row_count?: number | null;
+    type?: DatabaseSchemaPostHogTable.type;
 };
+export namespace DatabaseSchemaPostHogTable {
+    export enum type {
+        POSTHOG = 'posthog',
+    }
+}
 

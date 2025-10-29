@@ -2,13 +2,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Kind2 } from './Kind2';
+import type { WebAnalyticsItemKind } from './WebAnalyticsItemKind';
 export type WebOverviewItem = {
-    changeFromPreviousPct?: (number | null);
-    isIncreaseBad?: (boolean | null);
+    changeFromPreviousPct?: number | null;
+    isIncreaseBad?: boolean | null;
     key: string;
-    kind: Kind2;
-    previous?: (number | null);
-    value?: (number | null);
+    kind: WebAnalyticsItemKind;
+    previous?: number | null;
+    usedPreAggregatedTables?: boolean | null;
+    value?: number | null;
 };
 

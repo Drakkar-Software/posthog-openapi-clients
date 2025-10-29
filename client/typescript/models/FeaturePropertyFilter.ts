@@ -5,12 +5,20 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type FeaturePropertyFilter = {
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
     /**
      * Event property with "$feature/" prepended
      */
-    type?: any;
-    value?: (string | number | null);
+    type?: FeaturePropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace FeaturePropertyFilter {
+    /**
+     * Event property with "$feature/" prepended
+     */
+    export enum type {
+        FEATURE = 'feature',
+    }
+}
 

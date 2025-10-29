@@ -5,8 +5,10 @@
 /**
  * * `events` - Events
  * * `persons` - Persons
+ * * `sessions` - Sessions
  */
 export enum ModelEnum {
     EVENTS = 'events',
     PERSONS = 'persons',
+    SESSIONS = 'sessions',
 }

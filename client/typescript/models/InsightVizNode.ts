@@ -13,22 +13,32 @@ export type InsightVizNode = {
     /**
      * Query is embedded inside another bordered component
      */
-    embedded?: (boolean | null);
+    embedded?: boolean | null;
     /**
      * Show with most visual options enabled. Used in insight scene.
      */
-    full?: (boolean | null);
-    hidePersonsModal?: (boolean | null);
-    kind?: any;
-    showCorrelationTable?: (boolean | null);
-    showFilters?: (boolean | null);
-    showHeader?: (boolean | null);
-    showLastComputation?: (boolean | null);
-    showLastComputationRefresh?: (boolean | null);
-    showResults?: (boolean | null);
-    showTable?: (boolean | null);
+    full?: boolean | null;
+    hidePersonsModal?: boolean | null;
+    hideTooltipOnScroll?: boolean | null;
+    kind?: InsightVizNode.kind;
+    showCorrelationTable?: boolean | null;
+    showFilters?: boolean | null;
+    showHeader?: boolean | null;
+    showLastComputation?: boolean | null;
+    showLastComputationRefresh?: boolean | null;
+    showResults?: boolean | null;
+    showTable?: boolean | null;
     source: (TrendsQuery | FunnelsQuery | RetentionQuery | PathsQuery | StickinessQuery | LifecycleQuery);
-    suppressSessionAnalysisWarning?: (boolean | null);
-    vizSpecificOptions?: (VizSpecificOptions | null);
+    suppressSessionAnalysisWarning?: boolean | null;
+    /**
+     * version of the node, used for schema migrations
+     */
+    version?: number | null;
+    vizSpecificOptions?: VizSpecificOptions | null;
 };
+export namespace InsightVizNode {
+    export enum kind {
+        INSIGHT_VIZ_NODE = 'InsightVizNode',
+    }
+}
 

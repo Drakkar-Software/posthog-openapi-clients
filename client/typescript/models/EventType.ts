@@ -7,12 +7,14 @@ import type { Person } from './Person';
 export type EventType = {
     distinct_id: string;
     elements: Array<ElementType>;
-    elements_chain?: (string | null);
+    elements_chain?: string | null;
     event: string;
     id: string;
-    person?: (Person | null);
+    person?: Person | null;
+    person_id?: string | null;
+    person_mode?: string | null;
     properties: Record<string, any>;
     timestamp: string;
-    uuid?: (string | null);
+    uuid?: string | null;
 };
 

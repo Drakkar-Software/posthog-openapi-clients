@@ -19,5 +19,6 @@ export type DashboardTemplate = {
     image_url?: string | null;
     readonly team_id: number | null;
     scope?: (DashboardTemplateScopeEnum | BlankEnum | NullEnum) | null;
+    availability_contexts?: Array<string> | null;
 };
 

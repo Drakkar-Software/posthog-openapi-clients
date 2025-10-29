@@ -5,6 +5,7 @@
 export enum DatabaseSerializedFieldType {
     INTEGER = 'integer',
     FLOAT = 'float',
+    DECIMAL = 'decimal',
     STRING = 'string',
     DATETIME = 'datetime',
     DATE = 'date',
@@ -16,4 +17,6 @@ export enum DatabaseSerializedFieldType {
     FIELD_TRAVERSER = 'field_traverser',
     EXPRESSION = 'expression',
     VIEW = 'view',
+    MATERIALIZED_VIEW = 'materialized_view',
+    UNKNOWN = 'unknown',
 }

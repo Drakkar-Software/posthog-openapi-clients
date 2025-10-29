@@ -12,5 +12,6 @@ export type PatchedOrganizationMember = {
     readonly updated_at?: string;
     readonly is_2fa_enabled?: boolean;
     readonly has_social_auth?: boolean;
+    readonly last_login?: string;
 };
 

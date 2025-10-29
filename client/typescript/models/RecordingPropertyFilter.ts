@@ -6,9 +6,14 @@ import type { DurationType } from './DurationType';
 import type { PropertyOperator } from './PropertyOperator';
 export type RecordingPropertyFilter = {
     key: (DurationType | string);
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
-    type?: any;
-    value?: (string | number | null);
+    type?: RecordingPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace RecordingPropertyFilter {
+    export enum type {
+        RECORDING = 'recording',
+    }
+}
 

@@ -26,6 +26,7 @@ export type PatchedBatchExport = {
      *
      * * `events` - Events
      * * `persons` - Persons
+     * * `sessions` - Sessions
      */
     model?: (ModelEnum | BlankEnum | NullEnum) | null;
     destination?: BatchExportDestination;
@@ -60,5 +61,6 @@ export type PatchedBatchExport = {
      * A schema of custom fields to select when exporting data.
      */
     readonly schema?: any;
+    filters?: any;
 };
 

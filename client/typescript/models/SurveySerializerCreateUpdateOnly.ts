@@ -2,7 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BlankEnum } from './BlankEnum';
 import type { MinimalFeatureFlag } from './MinimalFeatureFlag';
+import type { NullEnum } from './NullEnum';
+import type { ResponseSamplingIntervalTypeEnum } from './ResponseSamplingIntervalTypeEnum';
 import type { SurveyType } from './SurveyType';
 import type { UserBasic } from './UserBasic';
 export type SurveySerializerCreateUpdateOnly = {
@@ -10,6 +13,7 @@ export type SurveySerializerCreateUpdateOnly = {
     name: string;
     description?: string;
     type: SurveyType;
+    schedule?: string | null;
     readonly linked_flag: MinimalFeatureFlag;
     linked_flag_id?: number | null;
     targeting_flag_id?: number;
@@ -22,6 +26,7 @@ export type SurveySerializerCreateUpdateOnly = {
      * The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.
      *
      * Basic (open-ended question)
+     * - `id`: The question ID
      * - `type`: `open`
      * - `question`: The text of the question.
      * - `description`: Optional description of the question.
@@ -31,6 +36,7 @@ export type SurveySerializerCreateUpdateOnly = {
      * - `branching`: Branching logic for the question. See branching types below for details.
      *
      * Link (a question with a link)
+     * - `id`: The question ID
      * - `type`: `link`
      * - `question`: The text of the question.
      * - `description`: Optional description of the question.
@@ -41,6 +47,7 @@ export type SurveySerializerCreateUpdateOnly = {
      * - `branching`: Branching logic for the question. See branching types below for details.
      *
      * Rating (a question with a rating scale)
+     * - `id`: The question ID
      * - `type`: `rating`
      * - `question`: The text of the question.
      * - `description`: Optional description of the question.
@@ -54,6 +61,7 @@ export type SurveySerializerCreateUpdateOnly = {
      * - `branching`: Branching logic for the question. See branching types below for details.
      *
      * Multiple choice
+     * - `id`: The question ID
      * - `type`: `single_choice` or `multiple_choice`
      * - `question`: The text of the question.
      * - `description`: Optional description of the question.
@@ -114,5 +122,12 @@ export type SurveySerializerCreateUpdateOnly = {
                         iteration_start_dates?: Array<string | null> | null;
                         current_iteration?: number | null;
                         current_iteration_start_date?: string | null;
+                        response_sampling_start_date?: string | null;
+                        response_sampling_interval_type?: (ResponseSamplingIntervalTypeEnum | BlankEnum | NullEnum) | null;
+                        response_sampling_interval?: number | null;
+                        response_sampling_limit?: number | null;
+                        response_sampling_daily_limits?: any;
+                        enable_partial_responses?: boolean | null;
+                        _create_in_folder?: string;
                     };
 

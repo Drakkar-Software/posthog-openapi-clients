@@ -3,7 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BatchExport } from '../models/BatchExport';
+import type { BatchExportBackfill } from '../models/BatchExportBackfill';
 import type { BatchExportRun } from '../models/BatchExportRun';
+import type { PaginatedBatchExportBackfillList } from '../models/PaginatedBatchExportBackfillList';
 import type { PaginatedBatchExportList } from '../models/PaginatedBatchExportList';
 import type { PaginatedBatchExportRunList } from '../models/PaginatedBatchExportRunList';
 import type { PatchedBatchExport } from '../models/PatchedBatchExport';
@@ -141,6 +143,8 @@ export class BatchExportsService {
     }
     /**
      * Trigger a backfill for a BatchExport.
+     *
+     * Note: This endpoint is deprecated. Please use POST /batch_exports/<id>/backfills/ instead.
      * @param id A UUID string identifying this batch export.
      * @param organizationId
      * @param requestBody
@@ -207,6 +211,29 @@ export class BatchExportsService {
         });
     }
     /**
+     * @param id A UUID string identifying this batch export.
+     * @param organizationId
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepCreate(
+        id: string,
+        organizationId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/batch_exports/{id}/run_test_step/',
+            path: {
+                'id': id,
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * Unpause a BatchExport.
      * @param id A UUID string identifying this batch export.
      * @param organizationId
@@ -228,6 +255,42 @@ export class BatchExportsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param organizationId
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepNewCreate(
+        organizationId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/organizations/{organization_id}/batch_exports/run_test_step_new/',
+            path: {
+                'organization_id': organizationId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param organizationId
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsTestRetrieve(
+        organizationId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/batch_exports/test/',
+            path: {
+                'organization_id': organizationId,
+            },
         });
     }
     /**
@@ -268,6 +331,112 @@ export class BatchExportsService {
             method: 'POST',
             url: '/api/projects/{project_id}/batch_exports/',
             path: {
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * ViewSet for BatchExportBackfill models.
+     *
+     * Allows creating and reading backfills, but not updating or deleting them.
+     * @param batchExportId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param cursor The pagination cursor value.
+     * @param ordering Which field to use when ordering the results.
+     * @returns PaginatedBatchExportBackfillList
+     * @throws ApiError
+     */
+    public batchExportsBackfillsList(
+        batchExportId: string,
+        projectId: string,
+        cursor?: string,
+        ordering?: string,
+    ): CancelablePromise<PaginatedBatchExportBackfillList> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/',
+            path: {
+                'batch_export_id': batchExportId,
+                'project_id': projectId,
+            },
+            query: {
+                'cursor': cursor,
+                'ordering': ordering,
+            },
+        });
+    }
+    /**
+     * Create a new backfill for a BatchExport.
+     * @param batchExportId
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns BatchExportBackfill
+     * @throws ApiError
+     */
+    public batchExportsBackfillsCreate(
+        batchExportId: string,
+        projectId: string,
+        requestBody: BatchExportBackfill,
+    ): CancelablePromise<BatchExportBackfill> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/',
+            path: {
+                'batch_export_id': batchExportId,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * ViewSet for BatchExportBackfill models.
+     *
+     * Allows creating and reading backfills, but not updating or deleting them.
+     * @param batchExportId
+     * @param id A UUID string identifying this batch export backfill.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns BatchExportBackfill
+     * @throws ApiError
+     */
+    public batchExportsBackfillsRetrieve(
+        batchExportId: string,
+        id: string,
+        projectId: string,
+    ): CancelablePromise<BatchExportBackfill> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/',
+            path: {
+                'batch_export_id': batchExportId,
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
+     * Cancel a batch export backfill.
+     * @param batchExportId
+     * @param id A UUID string identifying this batch export backfill.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsBackfillsCancelCreate(
+        batchExportId: string,
+        id: string,
+        projectId: string,
+        requestBody: BatchExportBackfill,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/{id}/cancel/',
+            path: {
+                'batch_export_id': batchExportId,
+                'id': id,
                 'project_id': projectId,
             },
             body: requestBody,
@@ -321,6 +490,33 @@ export class BatchExportsService {
                 'id': id,
                 'project_id': projectId,
             },
+        });
+    }
+    /**
+     * Cancel a batch export run.
+     * @param batchExportId
+     * @param id A UUID string identifying this batch export run.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunsCancelCreate(
+        batchExportId: string,
+        id: string,
+        projectId: string,
+        requestBody: BatchExportRun,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/cancel/',
+            path: {
+                'batch_export_id': batchExportId,
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**
@@ -461,6 +657,8 @@ export class BatchExportsService {
     }
     /**
      * Trigger a backfill for a BatchExport.
+     *
+     * Note: This endpoint is deprecated. Please use POST /batch_exports/<id>/backfills/ instead.
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param requestBody
@@ -527,6 +725,29 @@ export class BatchExportsService {
         });
     }
     /**
+     * @param id A UUID string identifying this batch export.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepCreate2(
+        id: string,
+        projectId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/{id}/run_test_step/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * Unpause a BatchExport.
      * @param id A UUID string identifying this batch export.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -548,6 +769,42 @@ export class BatchExportsService {
             },
             body: requestBody,
             mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsRunTestStepNewCreate2(
+        projectId: string,
+        requestBody: BatchExport,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/batch_exports/run_test_step_new/',
+            path: {
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public batchExportsTestRetrieve2(
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/batch_exports/test/',
+            path: {
+                'project_id': projectId,
+            },
         });
     }
 }

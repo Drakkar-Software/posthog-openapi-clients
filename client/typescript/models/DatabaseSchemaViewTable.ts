@@ -9,6 +9,12 @@ export type DatabaseSchemaViewTable = {
     id: string;
     name: string;
     query: HogQLQuery;
-    type?: any;
+    row_count?: number | null;
+    type?: DatabaseSchemaViewTable.type;
 };
+export namespace DatabaseSchemaViewTable {
+    export enum type {
+        VIEW = 'view',
+    }
+}
 

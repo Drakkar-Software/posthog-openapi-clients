@@ -7,10 +7,19 @@ import type { ChartSettings } from './ChartSettings';
 import type { HogQLQuery } from './HogQLQuery';
 import type { TableSettings } from './TableSettings';
 export type DataVisualizationNode = {
-    chartSettings?: (ChartSettings | null);
-    display?: (ChartDisplayType | null);
-    kind?: any;
+    chartSettings?: ChartSettings | null;
+    display?: ChartDisplayType | null;
+    kind?: DataVisualizationNode.kind;
     source: HogQLQuery;
-    tableSettings?: (TableSettings | null);
+    tableSettings?: TableSettings | null;
+    /**
+     * version of the node, used for schema migrations
+     */
+    version?: number | null;
 };
+export namespace DataVisualizationNode {
+    export enum kind {
+        DATA_VISUALIZATION_NODE = 'DataVisualizationNode',
+    }
+}
 

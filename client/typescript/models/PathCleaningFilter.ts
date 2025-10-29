@@ -3,7 +3,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export type PathCleaningFilter = {
-    alias?: (string | null);
-    regex?: (string | null);
+    alias?: string | null;
+    order?: number | null;
+    regex?: string | null;
 };
 

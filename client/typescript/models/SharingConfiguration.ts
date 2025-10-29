@@ -6,5 +6,8 @@ export type SharingConfiguration = {
     readonly created_at: string;
     enabled?: boolean;
     readonly access_token: string | null;
+    settings?: any;
+    password_required?: boolean;
+    readonly share_passwords: string;
 };
 

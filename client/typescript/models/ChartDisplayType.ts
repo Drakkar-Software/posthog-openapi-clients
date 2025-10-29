@@ -5,6 +5,7 @@
 export enum ChartDisplayType {
     ACTIONS_LINE_GRAPH = 'ActionsLineGraph',
     ACTIONS_BAR = 'ActionsBar',
+    ACTIONS_UNSTACKED_BAR = 'ActionsUnstackedBar',
     ACTIONS_STACKED_BAR = 'ActionsStackedBar',
     ACTIONS_AREA_GRAPH = 'ActionsAreaGraph',
     ACTIONS_LINE_GRAPH_CUMULATIVE = 'ActionsLineGraphCumulative',
@@ -13,4 +14,5 @@ export enum ChartDisplayType {
     ACTIONS_BAR_VALUE = 'ActionsBarValue',
     ACTIONS_TABLE = 'ActionsTable',
     WORLD_MAP = 'WorldMap',
+    CALENDAR_HEATMAP = 'CalendarHeatmap',
 }

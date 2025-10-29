@@ -5,8 +5,8 @@
 import type { FunnelPathType } from './FunnelPathType';
 import type { FunnelsQuery } from './FunnelsQuery';
 export type FunnelPathsFilter = {
-    funnelPathType?: (FunnelPathType | null);
+    funnelPathType?: FunnelPathType | null;
     funnelSource: FunnelsQuery;
-    funnelStep?: (number | null);
+    funnelStep?: number | null;
 };
 

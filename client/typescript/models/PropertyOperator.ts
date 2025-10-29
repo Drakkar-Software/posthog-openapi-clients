@@ -22,4 +22,8 @@ export enum PropertyOperator {
     NOT_BETWEEN = 'not_between',
     MIN = 'min',
     MAX = 'max',
+    IN = 'in',
+    NOT_IN = 'not_in',
+    IS_CLEANED_PATH_EXACT = 'is_cleaned_path_exact',
+    FLAG_EVALUATES_TO = 'flag_evaluates_to',
 }

@@ -2,8 +2,10 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { ActionsPie } from './ActionsPie';
+import type { RETENTION } from './RETENTION';
 export type VizSpecificOptions = {
-    ActionsPie?: null;
-    RETENTION?: null;
+    ActionsPie?: ActionsPie | null;
+    RETENTION?: RETENTION | null;
 };
 

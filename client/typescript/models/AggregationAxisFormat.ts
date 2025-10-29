@@ -8,4 +8,5 @@ export enum AggregationAxisFormat {
     DURATION_MS = 'duration_ms',
     PERCENTAGE = 'percentage',
     PERCENTAGE_SCALED = 'percentage_scaled',
+    CURRENCY = 'currency',
 }

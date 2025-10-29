@@ -2,6 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { PaginatedPropertyDefinitionList } from '../models/PaginatedPropertyDefinitionList';
+import type { PatchedPropertyDefinition } from '../models/PatchedPropertyDefinition';
+import type { PropertyDefinition } from '../models/PropertyDefinition';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class PropertyDefinitionsService {
@@ -9,11 +12,15 @@ export class PropertyDefinitionsService {
     /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param eventNames If sent, response value will have `is_seen_on_filtered_events` populated. JSON-encoded
+     * @param excludeCoreProperties Whether to exclude core properties
+     * @param excludeHidden Whether to exclude properties marked as hidden
      * @param excludedProperties JSON-encoded list of excluded properties
      * @param filterByEventNames Whether to return only properties for events in `event_names`
      * @param groupTypeIndex What group type is the property for. Only should be set if `type=group`
      * @param isFeatureFlag Whether to return only (or excluding) feature flag properties
      * @param isNumerical Whether to return only (or excluding) numerical property definitions
+     * @param limit Number of results to return per page.
+     * @param offset The initial index from which to return the results.
      * @param properties Comma-separated list of properties to filter
      * @param search Searches properties by name
      * @param type What property definitions to return
@@ -22,21 +29,25 @@ export class PropertyDefinitionsService {
      * * `person` - person
      * * `group` - group
      * * `session` - session
-     * @returns any No response body
+     * @returns PaginatedPropertyDefinitionList
      * @throws ApiError
      */
-    public propertyDefinitionsRetrieve(
+    public propertyDefinitionsList(
         projectId: string,
         eventNames?: string,
+        excludeCoreProperties: boolean = false,
+        excludeHidden: boolean = false,
         excludedProperties?: string,
         filterByEventNames?: boolean | null,
         groupTypeIndex?: number,
         isFeatureFlag?: boolean | null,
         isNumerical?: boolean | null,
+        limit?: number,
+        offset?: number,
         properties?: string,
         search?: string,
         type: 'event' | 'person' | 'group' | 'session' = 'event',
-    ): CancelablePromise<any> {
+    ): CancelablePromise<PaginatedPropertyDefinitionList> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/',
@@ -45,11 +56,15 @@ export class PropertyDefinitionsService {
             },
             query: {
                 'event_names': eventNames,
+                'exclude_core_properties': excludeCoreProperties,
+                'exclude_hidden': excludeHidden,
                 'excluded_properties': excludedProperties,
                 'filter_by_event_names': filterByEventNames,
                 'group_type_index': groupTypeIndex,
                 'is_feature_flag': isFeatureFlag,
                 'is_numerical': isNumerical,
+                'limit': limit,
+                'offset': offset,
                 'properties': properties,
                 'search': search,
                 'type': type,
@@ -59,13 +74,13 @@ export class PropertyDefinitionsService {
     /**
      * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns any No response body
+     * @returns PropertyDefinition
      * @throws ApiError
      */
-    public propertyDefinitionsRetrieve2(
+    public propertyDefinitionsRetrieve(
         id: string,
         projectId: string,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<PropertyDefinition> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -78,13 +93,15 @@ export class PropertyDefinitionsService {
     /**
      * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns any No response body
+     * @param requestBody
+     * @returns PropertyDefinition
      * @throws ApiError
      */
     public propertyDefinitionsUpdate(
         id: string,
         projectId: string,
-    ): CancelablePromise<any> {
+        requestBody: PropertyDefinition,
+    ): CancelablePromise<PropertyDefinition> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -92,18 +109,22 @@ export class PropertyDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**
      * @param id A UUID string identifying this property definition.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @returns any No response body
+     * @param requestBody
+     * @returns PropertyDefinition
      * @throws ApiError
      */
     public propertyDefinitionsPartialUpdate(
         id: string,
         projectId: string,
-    ): CancelablePromise<any> {
+        requestBody?: PatchedPropertyDefinition,
+    ): CancelablePromise<PropertyDefinition> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/api/projects/{project_id}/property_definitions/{id}/',
@@ -111,6 +132,8 @@ export class PropertyDefinitionsService {
                 'id': id,
                 'project_id': projectId,
             },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**

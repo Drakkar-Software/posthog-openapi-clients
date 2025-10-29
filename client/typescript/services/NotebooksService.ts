@@ -200,4 +200,21 @@ export class NotebooksService {
             },
         });
     }
+    /**
+     * The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public notebooksRecordingCommentsRetrieve(
+        projectId: string,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/notebooks/recording_comments/',
+            path: {
+                'project_id': projectId,
+            },
+        });
+    }
 }

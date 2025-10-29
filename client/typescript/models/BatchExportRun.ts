@@ -16,6 +16,7 @@ export type BatchExportRun = {
      * * `ContinuedAsNew` - Continued As New
      * * `Failed` - Failed
      * * `FailedRetryable` - Failed Retryable
+     * * `FailedBilling` - Failed Billing
      * * `Terminated` - Terminated
      * * `TimedOut` - Timedout
      * * `Running` - Running
@@ -33,7 +34,7 @@ export type BatchExportRun = {
     /**
      * The start of the data interval.
      */
-    data_interval_start: string;
+    data_interval_start?: string | null;
     /**
      * The end of the data interval.
      */
@@ -59,8 +60,16 @@ export type BatchExportRun = {
      */
     records_total_count?: number | null;
     /**
+     * The number of bytes that have been exported in this BatchExportRun.
+     */
+    bytes_exported?: number | null;
+    /**
      * The BatchExport this run belongs to.
      */
     readonly batch_export: string;
+    /**
+     * The backfill this run belongs to.
+     */
+    backfill?: string | null;
 };
 

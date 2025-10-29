@@ -4,11 +4,16 @@
 /* eslint-disable */
 import type { PropertyOperator } from './PropertyOperator';
 export type GroupPropertyFilter = {
-    group_type_index?: (number | null);
+    group_type_index?: number | null;
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
-    type?: any;
-    value?: (string | number | null);
+    type?: GroupPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace GroupPropertyFilter {
+    export enum type {
+        GROUP = 'group',
+    }
+}
 

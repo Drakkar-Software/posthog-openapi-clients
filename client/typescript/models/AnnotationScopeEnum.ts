@@ -7,10 +7,12 @@
  * * `dashboard` - dashboard
  * * `project` - project
  * * `organization` - organization
+ * * `recording` - recording
  */
 export enum AnnotationScopeEnum {
     DASHBOARD_ITEM = 'dashboard_item',
     DASHBOARD = 'dashboard',
     PROJECT = 'project',
     ORGANIZATION = 'organization',
+    RECORDING = 'recording',
 }

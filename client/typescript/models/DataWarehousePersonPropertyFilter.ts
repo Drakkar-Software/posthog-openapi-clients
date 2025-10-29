@@ -5,9 +5,14 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type DataWarehousePersonPropertyFilter = {
     key: string;
-    label?: (string | null);
+    label?: string | null;
     operator: PropertyOperator;
-    type?: any;
-    value?: (string | number | null);
+    type?: DataWarehousePersonPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace DataWarehousePersonPropertyFilter {
+    export enum type {
+        DATA_WAREHOUSE_PERSON_PROPERTY = 'data_warehouse_person_property',
+    }
+}
 

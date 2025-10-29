@@ -136,10 +136,10 @@ export class PersonsService {
         });
     }
     /**
-     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
+     * Use this endpoint to delete individual persons. For bulk deletion, use the bulk_delete endpoint instead.
      * @param id A unique integer value identifying this person.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param deleteEvents If true, a task to delete all events associated with this person will be created and queued. The task does not run immediately and instead is batched together and at 5AM UTC every Sunday (controlled by environment variable CLEAR_CLICKHOUSE_REMOVED_DATA_SCHEDULE_CRON)
+     * @param deleteEvents If true, a task to delete all events associated with this person will be created and queued. The task does not run immediately and instead is batched together and at 5AM UTC every Sunday
      * @param format
      * @returns void
      * @throws ApiError
@@ -189,6 +189,35 @@ export class PersonsService {
         });
     }
     /**
+     * Queue deletion of all events associated with this person. The task runs during non-peak hours.
+     * @param id A unique integer value identifying this person.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param format
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public personsDeleteEventsCreate(
+        id: number,
+        projectId: string,
+        format?: 'csv' | 'json',
+        requestBody?: Person,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/persons/{id}/delete_events/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            query: {
+                'format': format,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
      * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
      * @param unset Specify the property key to delete
      * @param id A unique integer value identifying this person.
@@ -214,6 +243,35 @@ export class PersonsService {
             },
             query: {
                 '$unset': unset,
+                'format': format,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * Queue deletion of all recordings associated with this person.
+     * @param id A unique integer value identifying this person.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param format
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public personsDeleteRecordingsCreate(
+        id: number,
+        projectId: string,
+        format?: 'csv' | 'json',
+        requestBody?: Person,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/persons/{id}/delete_recordings/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+            query: {
                 'format': format,
             },
             body: requestBody,
@@ -329,6 +387,41 @@ export class PersonsService {
             query: {
                 'format': format,
             },
+        });
+    }
+    /**
+     * This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param deleteEvents If true, a task to delete all events associated with this person will be created and queued. The task does not run immediately and instead is batched together and at 5AM UTC every Sunday
+     * @param distinctIds A list of distinct IDs, up to 1000 of them. We'll delete all persons associated with those distinct IDs.
+     * @param format
+     * @param ids A list of PostHog person IDs, up to 1000 of them. We'll delete all the persons listed.
+     * @param requestBody
+     * @returns any No response body
+     * @throws ApiError
+     */
+    public personsBulkDeleteCreate(
+        projectId: string,
+        deleteEvents: boolean = false,
+        distinctIds?: Record<string, any>,
+        format?: 'csv' | 'json',
+        ids?: Record<string, any>,
+        requestBody?: Person,
+    ): CancelablePromise<any> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/persons/bulk_delete/',
+            path: {
+                'project_id': projectId,
+            },
+            query: {
+                'delete_events': deleteEvents,
+                'distinct_ids': distinctIds,
+                'format': format,
+                'ids': ids,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
     /**
@@ -472,43 +565,21 @@ export class PersonsService {
         });
     }
     /**
-     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param format
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public personsPathRetrieve(
-        projectId: string,
-        format?: 'csv' | 'json',
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/persons/path/',
-            path: {
-                'project_id': projectId,
-            },
-            query: {
-                'format': format,
-            },
-        });
-    }
-    /**
-     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
+     * Reset a distinct_id for a deleted person. This allows the distinct_id to be used again.
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @param format
      * @param requestBody
      * @returns any No response body
      * @throws ApiError
      */
-    public personsPathCreate(
+    public personsResetPersonDistinctIdCreate(
         projectId: string,
         format?: 'csv' | 'json',
         requestBody?: Person,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/projects/{project_id}/persons/path/',
+            url: '/api/projects/{project_id}/persons/reset_person_distinct_id/',
             path: {
                 'project_id': projectId,
             },
@@ -517,28 +588,6 @@ export class PersonsService {
             },
             body: requestBody,
             mediaType: 'application/json',
-        });
-    }
-    /**
-     * This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs.
-     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
-     * @param format
-     * @returns any No response body
-     * @throws ApiError
-     */
-    public personsRetentionRetrieve(
-        projectId: string,
-        format?: 'csv' | 'json',
-    ): CancelablePromise<any> {
-        return this.httpRequest.request({
-            method: 'GET',
-            url: '/api/projects/{project_id}/persons/retention/',
-            path: {
-                'project_id': projectId,
-            },
-            query: {
-                'format': format,
-            },
         });
     }
     /**

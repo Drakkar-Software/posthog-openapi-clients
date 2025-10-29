@@ -3,10 +3,16 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * * `AND` - AND
- * * `OR` - OR
+ * * `DateTime` - DateTime
+ * * `String` - String
+ * * `Numeric` - Numeric
+ * * `Boolean` - Boolean
+ * * `Duration` - Duration
  */
 export enum PropertyTypeEnum {
-    AND = 'AND',
-    OR = 'OR',
+    DATE_TIME = 'DateTime',
+    STRING = 'String',
+    NUMERIC = 'Numeric',
+    BOOLEAN = 'Boolean',
+    DURATION = 'Duration',
 }

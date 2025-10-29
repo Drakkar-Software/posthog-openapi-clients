@@ -13,6 +13,6 @@ export type HogQLAutocompleteResponse = {
     /**
      * Measured timings for different parts of the query generation process
      */
-    timings?: (Array<QueryTiming> | null);
+    timings?: Array<QueryTiming> | null;
 };
 

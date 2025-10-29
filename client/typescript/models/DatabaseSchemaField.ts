@@ -4,13 +4,13 @@
 /* eslint-disable */
 import type { DatabaseSerializedFieldType } from './DatabaseSerializedFieldType';
 export type DatabaseSchemaField = {
-    chain?: null;
-    fields?: (Array<string> | null);
+    chain?: Array<(string | number)> | null;
+    fields?: Array<string> | null;
     hogql_value: string;
-    id?: (string | null);
+    id?: string | null;
     name: string;
     schema_valid: boolean;
-    table?: (string | null);
+    table?: string | null;
     type: DatabaseSerializedFieldType;
 };
 

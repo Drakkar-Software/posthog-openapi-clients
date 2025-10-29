@@ -8,6 +8,7 @@
  * * `ContinuedAsNew` - Continued As New
  * * `Failed` - Failed
  * * `FailedRetryable` - Failed Retryable
+ * * `FailedBilling` - Failed Billing
  * * `Terminated` - Terminated
  * * `TimedOut` - Timedout
  * * `Running` - Running
@@ -19,6 +20,7 @@ export enum BatchExportRunStatusEnum {
     CONTINUED_AS_NEW = 'ContinuedAsNew',
     FAILED = 'Failed',
     FAILED_RETRYABLE = 'FailedRetryable',
+    FAILED_BILLING = 'FailedBilling',
     TERMINATED = 'Terminated',
     TIMED_OUT = 'TimedOut',
     RUNNING = 'Running',

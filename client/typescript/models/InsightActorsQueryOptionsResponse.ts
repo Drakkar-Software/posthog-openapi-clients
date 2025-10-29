@@ -10,12 +10,12 @@ import type { MultipleBreakdownOptions } from './MultipleBreakdownOptions';
 import type { Series } from './Series';
 import type { StatusItem } from './StatusItem';
 export type InsightActorsQueryOptionsResponse = {
-    breakdown?: (Array<BreakdownItem> | null);
-    breakdowns?: (Array<MultipleBreakdownOptions> | null);
-    compare?: (Array<CompareItem> | null);
-    day?: (Array<DayItem> | null);
-    interval?: (Array<IntervalItem> | null);
-    series?: (Array<Series> | null);
-    status?: (Array<StatusItem> | null);
+    breakdown?: Array<BreakdownItem> | null;
+    breakdowns?: Array<MultipleBreakdownOptions> | null;
+    compare?: Array<CompareItem> | null;
+    day?: Array<DayItem> | null;
+    interval?: Array<IntervalItem> | null;
+    series?: Array<Series> | null;
+    status?: Array<StatusItem> | null;
 };
 

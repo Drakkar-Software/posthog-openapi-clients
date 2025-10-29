@@ -7,6 +7,12 @@ export type DatabaseSchemaBatchExportTable = {
     fields: Record<string, DatabaseSchemaField>;
     id: string;
     name: string;
-    type?: any;
+    row_count?: number | null;
+    type?: DatabaseSchemaBatchExportTable.type;
 };
+export namespace DatabaseSchemaBatchExportTable {
+    export enum type {
+        BATCH_EXPORT = 'batch_export',
+    }
+}
 

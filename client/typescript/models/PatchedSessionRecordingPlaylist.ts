@@ -2,6 +2,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { NullEnum } from './NullEnum';
+import type { SessionRecordingPlaylistTypeEnum } from './SessionRecordingPlaylistTypeEnum';
 import type { UserBasic } from './UserBasic';
 export type PatchedSessionRecordingPlaylist = {
     readonly id?: number;
@@ -16,5 +18,12 @@ export type PatchedSessionRecordingPlaylist = {
     filters?: any;
     readonly last_modified_at?: string;
     readonly last_modified_by?: UserBasic;
+    readonly recordings_counts?: Record<string, Record<string, (number | boolean) | null>>;
+    readonly type?: (SessionRecordingPlaylistTypeEnum | NullEnum) | null;
+    /**
+     * Return whether this is a synthetic playlist
+     */
+    readonly is_synthetic?: boolean;
+    _create_in_folder?: string;
 };
 

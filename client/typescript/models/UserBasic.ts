@@ -2,6 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BlankEnum } from './BlankEnum';
+import type { NullEnum } from './NullEnum';
+import type { RoleAtOrganizationEnum } from './RoleAtOrganizationEnum';
 export type UserBasic = {
     readonly id: number;
     readonly uuid: string;
@@ -11,5 +14,6 @@ export type UserBasic = {
     email: string;
     is_email_verified?: boolean | null;
     readonly hedgehog_config: Record<string, any> | null;
+    role_at_organization?: (RoleAtOrganizationEnum | BlankEnum | NullEnum) | null;
 };
 

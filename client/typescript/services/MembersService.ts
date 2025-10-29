@@ -98,4 +98,23 @@ export class MembersService {
             },
         });
     }
+    /**
+     * @param organizationId
+     * @param userUuid
+     * @returns OrganizationMember
+     * @throws ApiError
+     */
+    public membersScopedApiKeysRetrieve(
+        organizationId: string,
+        userUuid: string,
+    ): CancelablePromise<OrganizationMember> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/organizations/{organization_id}/members/{user__uuid}/scoped_api_keys/',
+            path: {
+                'organization_id': organizationId,
+                'user__uuid': userUuid,
+            },
+        });
+    }
 }

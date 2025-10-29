@@ -5,6 +5,6 @@
 import type { Settings } from './Settings';
 export type ChartAxis = {
     column: string;
-    settings?: (Settings | null);
+    settings?: Settings | null;
 };
 

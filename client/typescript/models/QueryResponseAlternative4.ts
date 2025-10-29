@@ -2,32 +2,20 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
-import type { QueryStatus } from './QueryStatus';
-import type { QueryTiming } from './QueryTiming';
-import type { TimelineEntry } from './TimelineEntry';
+import type { BreakdownItem } from './BreakdownItem';
+import type { CompareItem } from './CompareItem';
+import type { DayItem } from './DayItem';
+import type { IntervalItem } from './IntervalItem';
+import type { MultipleBreakdownOptions } from './MultipleBreakdownOptions';
+import type { Series } from './Series';
+import type { StatusItem } from './StatusItem';
 export type QueryResponseAlternative4 = {
-    /**
-     * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
-     */
-    error?: (string | null);
-    hasMore?: (boolean | null);
-    /**
-     * Generated HogQL query.
-     */
-    hogql?: (string | null);
-    /**
-     * Modifiers used when performing the query
-     */
-    modifiers?: (HogQLQueryModifiers | null);
-    /**
-     * Query status indicates whether next to the provided data, a query is still running.
-     */
-    query_status?: (QueryStatus | null);
-    results: Array<TimelineEntry>;
-    /**
-     * Measured timings for different parts of the query generation process
-     */
-    timings?: (Array<QueryTiming> | null);
+    breakdown?: Array<BreakdownItem> | null;
+    breakdowns?: Array<MultipleBreakdownOptions> | null;
+    compare?: Array<CompareItem> | null;
+    day?: Array<DayItem> | null;
+    interval?: Array<IntervalItem> | null;
+    series?: Array<Series> | null;
+    status?: Array<StatusItem> | null;
 };
 

@@ -5,32 +5,36 @@
 import type { HogQLQueryModifiers } from './HogQLQueryModifiers';
 import type { QueryStatus } from './QueryStatus';
 import type { QueryTiming } from './QueryTiming';
+import type { ResolvedDateRangeResponse } from './ResolvedDateRangeResponse';
+import type { SimilarIssue } from './SimilarIssue';
 export type QueryResponseAlternative14 = {
-    columns?: null;
     /**
      * Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise.
      */
-    error?: (string | null);
-    hasMore?: (boolean | null);
+    error?: string | null;
+    hasMore?: boolean | null;
     /**
      * Generated HogQL query.
      */
-    hogql?: (string | null);
-    limit?: (number | null);
+    hogql?: string | null;
+    limit?: number | null;
     /**
      * Modifiers used when performing the query
      */
-    modifiers?: (HogQLQueryModifiers | null);
-    offset?: (number | null);
+    modifiers?: HogQLQueryModifiers | null;
+    offset?: number | null;
     /**
      * Query status indicates whether next to the provided data, a query is still running.
      */
-    query_status?: (QueryStatus | null);
-    results: any;
+    query_status?: QueryStatus | null;
+    /**
+     * The date range used for the query
+     */
+    resolved_date_range?: ResolvedDateRangeResponse | null;
+    results: Array<SimilarIssue>;
     /**
      * Measured timings for different parts of the query generation process
      */
-    timings?: (Array<QueryTiming> | null);
-    types?: null;
+    timings?: Array<QueryTiming> | null;
 };
 

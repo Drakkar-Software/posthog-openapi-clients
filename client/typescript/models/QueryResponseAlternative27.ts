@@ -2,9 +2,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ExperimentVariantFunnelResult } from './ExperimentVariantFunnelResult';
+import type { ExternalQueryError } from './ExternalQueryError';
+import type { ExternalQueryStatus } from './ExternalQueryStatus';
 export type QueryResponseAlternative27 = {
-    insight?: any;
-    results: Record<string, ExperimentVariantFunnelResult>;
+    data: Record<string, any>;
+    error?: ExternalQueryError | null;
+    status: ExternalQueryStatus;
 };
 

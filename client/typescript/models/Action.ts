@@ -24,5 +24,11 @@ export type Action = {
     readonly is_action: boolean;
     readonly bytecode_error: string | null;
     pinned_at?: string | null;
+    readonly creation_context: string;
+    _create_in_folder?: string;
+    /**
+     * The effective access level the user has for this object
+     */
+    readonly user_access_level: string | null;
 };
 

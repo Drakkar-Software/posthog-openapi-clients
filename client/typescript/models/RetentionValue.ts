@@ -4,5 +4,6 @@
 /* eslint-disable */
 export type RetentionValue = {
     count: number;
+    label?: string | null;
 };
 

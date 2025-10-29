@@ -6,7 +6,8 @@ import type { MinimalPerson } from './MinimalPerson';
 export type SessionRecording = {
     readonly id: string;
     readonly distinct_id: string | null;
-    readonly viewed: string;
+    readonly viewed: boolean;
+    readonly viewers: Array<string>;
     readonly recording_duration: number;
     readonly active_seconds: number | null;
     readonly inactive_seconds: number | null;
@@ -21,6 +22,11 @@ export type SessionRecording = {
     readonly start_url: string | null;
     person?: MinimalPerson;
     readonly storage: string;
+    readonly retention_period_days: number | null;
+    readonly expiry_time: string;
+    readonly recording_ttl: string;
     readonly snapshot_source: string | null;
+    readonly ongoing: boolean;
+    readonly activity_score: number | null;
 };
 

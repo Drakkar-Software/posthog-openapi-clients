@@ -5,16 +5,12 @@
 /**
  * * `popover` - popover
  * * `widget` - widget
- * * `button` - button
- * * `email` - email
- * * `full_screen` - full screen
+ * * `external_survey` - external survey
  * * `api` - api
  */
 export enum SurveyType {
     POPOVER = 'popover',
     WIDGET = 'widget',
-    BUTTON = 'button',
-    EMAIL = 'email',
-    FULL_SCREEN = 'full_screen',
+    EXTERNAL_SURVEY = 'external_survey',
     API = 'api',
 }

@@ -5,12 +5,20 @@
 import type { PropertyOperator } from './PropertyOperator';
 export type EventPropertyFilter = {
     key: string;
-    label?: (string | null);
-    operator?: (PropertyOperator | null);
+    label?: string | null;
+    operator?: PropertyOperator | null;
     /**
      * Event properties
      */
-    type?: any;
-    value?: (string | number | null);
+    type?: EventPropertyFilter.type;
+    value?: (string | number | boolean) | null;
 };
+export namespace EventPropertyFilter {
+    /**
+     * Event properties
+     */
+    export enum type {
+        EVENT = 'event',
+    }
+}
 

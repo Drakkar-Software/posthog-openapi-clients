@@ -5,6 +5,8 @@
 import type { QueryRequest } from '../models/QueryRequest';
 import type { QueryResponseAlternative } from '../models/QueryResponseAlternative';
 import type { QueryStatusResponse } from '../models/QueryStatusResponse';
+import type { QueryUpgradeRequest } from '../models/QueryUpgradeRequest';
+import type { QueryUpgradeResponse } from '../models/QueryUpgradeResponse';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 export class QueryService {
@@ -70,16 +72,36 @@ export class QueryService {
         });
     }
     /**
+     * Get query log details from query_log_archive table for a specific query_id, the query must have been issued in last 24 hours.
+     * @param id
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @returns any
+     * @throws ApiError
+     */
+    public queryLogRetrieve(
+        id: string,
+        projectId: string,
+    ): CancelablePromise<Record<string, any>> {
+        return this.httpRequest.request({
+            method: 'GET',
+            url: '/api/projects/{project_id}/query/{id}/log/',
+            path: {
+                'id': id,
+                'project_id': projectId,
+            },
+        });
+    }
+    /**
      * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
      * @returns any No response body
      * @throws ApiError
      */
-    public queryChatCreate(
+    public queryCheckAuthForAsyncCreate(
         projectId: string,
     ): CancelablePromise<any> {
         return this.httpRequest.request({
             method: 'POST',
-            url: '/api/projects/{project_id}/query/chat/',
+            url: '/api/projects/{project_id}/query/check_auth_for_async/',
             path: {
                 'project_id': projectId,
             },
@@ -99,6 +121,27 @@ export class QueryService {
             path: {
                 'project_id': projectId,
             },
+        });
+    }
+    /**
+     * Upgrades a query without executing it. Returns a query with all nodes migrated to the latest version.
+     * @param projectId Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+     * @param requestBody
+     * @returns QueryUpgradeResponse
+     * @throws ApiError
+     */
+    public queryUpgradeCreate(
+        projectId: string,
+        requestBody: QueryUpgradeRequest,
+    ): CancelablePromise<QueryUpgradeResponse> {
+        return this.httpRequest.request({
+            method: 'POST',
+            url: '/api/projects/{project_id}/query/upgrade/',
+            path: {
+                'project_id': projectId,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
         });
     }
 }

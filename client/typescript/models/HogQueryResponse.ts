@@ -3,9 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type HogQueryResponse = {
-    bytecode?: null;
-    coloredBytecode?: null;
+    bytecode?: Array<any> | null;
+    coloredBytecode?: Array<any> | null;
     results: any;
-    stdout?: (string | null);
+    stdout?: string | null;
 };
 

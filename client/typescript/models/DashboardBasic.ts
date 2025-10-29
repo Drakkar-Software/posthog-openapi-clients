@@ -17,6 +17,8 @@ export type DashboardBasic = {
     readonly pinned: boolean;
     readonly created_at: string;
     readonly created_by: UserBasic;
+    readonly last_accessed_at: string | null;
+    readonly last_viewed_at: string | null;
     readonly is_shared: boolean;
     readonly deleted: boolean;
     readonly creation_mode: CreationModeEnum;
@@ -24,5 +26,12 @@ export type DashboardBasic = {
     readonly restriction_level: DashboardRestrictionLevel;
     readonly effective_restriction_level: EffectiveRestrictionLevelEnum;
     readonly effective_privilege_level: EffectivePrivilegeLevelEnum;
+    /**
+     * The effective access level the user has for this object
+     */
+    readonly user_access_level: string | null;
+    readonly access_control_version: string;
+    readonly last_refresh: string | null;
+    readonly team_id: number;
 };
 
